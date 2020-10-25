@@ -25,8 +25,12 @@ abstract class Builder {
 		return $instance[ $class ];
 	}
 
-	public function settings( $base, $type, $name, $class ) {
+	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array();
+	}
+
+	protected function el_wrapper_class( $class, $hidden = false ) {
+		return $class . '-switch ' . $class . '-data-' . $this->name . ($hidden ? ' demopress-is-hidden' : '');
 	}
 
 	abstract public function run( $settings = array() );

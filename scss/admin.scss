@@ -26,6 +26,10 @@
 
 .d4p-generator-control {
     .d4p-group {
+        .demopress-is-hidden {
+            display: none;
+        }
+
         &.demopress-type-settings-hidden {
             .d4p-settings-section {
                 &:first-child {

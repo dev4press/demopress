@@ -150,7 +150,7 @@ class Plugin extends Core {
 
 		foreach ( $this->builders[ $type ] as $code => $builder ) {
 			if ( in_array( $code, $builders ) ) {
-				$list[ $code ] = $builder['label'];
+				$list[ $builder['slug'] ] = $builder['label'];
 			}
 		}
 
@@ -189,6 +189,7 @@ class Plugin extends Core {
 
 		$this->builders['text'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -201,6 +202,7 @@ class Plugin extends Core {
 
 		$this->builders['name'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -213,6 +215,7 @@ class Plugin extends Core {
 
 		$this->builders['term'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -223,7 +226,7 @@ class Plugin extends Core {
 	public function register_builder_title( $name, $label, $description, $settings = array(), $class = '' ) {
 		$defaults = array();
 
-		$this->builders['term'][ $name ] = array(
+		$this->builders['title'][ $name ] = array(
 			'name'        => $name,
 			'label'       => $label,
 			'description' => $description,
@@ -240,6 +243,7 @@ class Plugin extends Core {
 
 		$this->builders['image'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -255,6 +259,7 @@ class Plugin extends Core {
 
 		$this->builders['video'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -277,6 +282,10 @@ class Plugin extends Core {
 			__( "Generate terms using PHP Lorem Ipsum generator.", "demopress" )
 		);
 
+		$this->register_builder_term( 'Randomizer', 'Randomizer',
+			__( "Generate terms using PHP Randomizer generator.", "demopress" )
+		);
+
 		$this->register_builder_name( 'LoremIpsum', 'Lorem Ipsum',
 			__( "Generate names using PHP Lorem Ipsum generator.", "demopress" )
 		);
@@ -291,6 +300,10 @@ class Plugin extends Core {
 
 		$this->register_builder_title( 'LoremIpsum', 'Lorem Ipsum',
 			__( "Generate titles using PHP Lorem Ipsum generator.", "demopress" )
+		);
+
+		$this->register_builder_title( 'Randomizer', 'Randomizer',
+			__( "Generate titles using PHP Randomizer generator.", "demopress" )
 		);
 
 		$this->register_builder_image( 'picsumphotos', 'Picsum.photos',

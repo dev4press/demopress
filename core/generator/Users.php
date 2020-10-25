@@ -31,12 +31,15 @@ class Users extends Generator {
 			EL::i( 'users', 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array( 'class' => 'demopress-builders-name' ) )
 		);
 
+		$_hidden = false;
 		foreach ( $this->objects['name'] as $obj ) {
-			$settings = $obj->settings( 'users', 'users', 'name', 'demopress-builders-name' );
+			$settings = $obj->settings( 'users', 'users', 'name', 'demopress-builders-name', $_hidden );
 
 			if ( ! empty( $settings ) ) {
 				$_username_settings = array_merge( $_username_settings, $settings );
 			}
+
+			$_hidden = true;
 		}
 
 		$_sections[] = array(
@@ -51,12 +54,15 @@ class Users extends Generator {
 			EL::i( 'users', 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array( 'class' => 'demopress-builders-about' ) )
 		);
 
+		$_hidden = false;
 		foreach ( $this->objects['about'] as $obj ) {
-			$settings = $obj->settings( 'users', 'users', 'about', 'demopress-builders-about' );
+			$settings = $obj->settings( 'users', 'users', 'about', 'demopress-builders-about', $_hidden );
 
 			if ( ! empty( $settings ) ) {
 				$_settings = array_merge( $_settings, $settings );
 			}
+
+			$_hidden = true;
 		}
 
 		$_sections[] = array(

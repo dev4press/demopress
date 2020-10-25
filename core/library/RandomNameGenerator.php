@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DEMOPRESS\Library;
 
+use Dev4Press\Generator\Name\Random;
 use Dev4Press\Plugin\DEMOPRESS\Base\Library;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,13 +13,11 @@ class RandomNameGenerator extends Library {
 	private $_object;
 
 	public function __construct() {
-		require_once( DEMOPRESS_PATH . 'libs/php-random-name-generator/randomNameGenerator.php' );
-
-		$this->_object = new \randomNameGenerator();
+		$this->_object = Random::instance();
 	}
 
 	public function get_name() {
-		$list = $this->_object->generateNames( 1 );
+		$list = $this->_object->generate_names( 1 );
 
 		return $list[0];
 	}

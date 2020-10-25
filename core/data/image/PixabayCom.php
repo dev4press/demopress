@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Video;
+namespace Dev4Press\Plugin\DEMOPRESS\Data\Image;
 
 use Dev4Press\Plugin\DEMOPRESS\Builder\Image;
 

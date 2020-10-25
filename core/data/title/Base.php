@@ -11,10 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Title {
-	public function settings( $base, $type, $name, $class ) {
+	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
 			EL::i( $base, $type . '-builder-' . $name . '-' . $this->name . '-words', __( "Limit number of words", "demopress" ), __( "The title will have 2 or more words, up to the limit.", "demopress" ), Type::ABSINT, 8 )->args( array(
-				'class' => $class . '-' . $this->name,
+				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'   => 1
 			) )
 		);

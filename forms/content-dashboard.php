@@ -3,14 +3,6 @@
 <div class="d4p-content">
 	<?php
 
-	$r = new \Dev4Press\Generator\Text\Randomizer();
-
-	d4p_print_r( $r->words(10) );
-
-	d4p_print_r( $r->sentence() );
-
-	d4p_print_r( $r->paragraphs(4) );
-
 	if ( demopress_gen()->is_idle() ) {
 		if ( demopress_admin()->subpanel == 'index' ) {
 			?>

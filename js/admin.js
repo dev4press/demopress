@@ -43,6 +43,15 @@
             run: function() {
                 wp.dev4press.admin.panels.settings.run();
 
+                $(document).on("change", ".demopress-builder-switch select", function() {
+                    var c = $(this).closest(".demopress-builder-switch"),
+                        v = $(this).val(),
+                        s = c.data("switch");
+
+                    $("." + s + "-switch").addClass("demopress-is-hidden");
+                    $("." + s + "-data-" + v).removeClass("demopress-is-hidden");
+                });
+
                 $(document).on("change", ".demopress-type-settings-ctrl input[type=checkbox]", function(){
                     var checked = $(this).is(":checked"),
                         group = $(this).closest(".d4p-group");

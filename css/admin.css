@@ -18,6 +18,9 @@
   min-height: 40px;
 }
 
+.d4p-generator-control .d4p-group .demopress-is-hidden {
+  display: none;
+}
 .d4p-generator-control .d4p-group.demopress-type-settings-hidden .d4p-settings-section:first-child {
   margin: 0;
 }

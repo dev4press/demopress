@@ -36,6 +36,7 @@ define('DEMOPRESS_D4PLIB_URL', $demopress_urlname_basic.'d4plib/');
 
 require_once(DEMOPRESS_D4PLIB_PATH.'core.php');
 
+require_once(DEMOPRESS_PATH.'libs/autoload.php');
 require_once(DEMOPRESS_PATH.'core/autoload.php');
 require_once(DEMOPRESS_PATH.'core/bridge.php');
 require_once(DEMOPRESS_PATH.'core/functions.php');

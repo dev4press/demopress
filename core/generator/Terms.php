@@ -57,15 +57,18 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array( 'class' => 'demopress-builders-term-' . $tax ) )
+				EL::i( 'terms', $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array( 'data' => array('switch' => 'demopress-builders-term-' . $tax), 'wrapper_class' => 'demopress-builder-switch' ) )
 			);
 
+			$_hidden = false;
 			foreach ( $this->objects['term'] as $obj ) {
-				$settings = $obj->settings( 'terms', $tax, 'term', 'demopress-builders-term-' . $tax );
+				$settings = $obj->settings( 'terms', $tax, 'term', 'demopress-builders-term-' . $tax, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
 				}
+
+				$_hidden = true;
 			}
 
 			$_sections[] = array(
@@ -77,15 +80,18 @@ class Terms extends Generator {
 
 			$_settings = array(
 				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
-				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array( 'class' => 'demopress-builders-description-' . $tax ) )
+				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array( 'data' => array('switch' => 'demopress-builders-description-' . $tax), 'wrapper_class' => 'demopress-builder-switch' ) )
 			);
 
+			$_hidden = false;
 			foreach ( $this->objects['description'] as $obj ) {
-				$settings = $obj->settings( 'terms', $tax, 'description', 'demopress-builders-description-' . $tax );
+				$settings = $obj->settings( 'terms', $tax, 'description', 'demopress-builders-description-' . $tax, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
 				}
+
+				$_hidden = true;
 			}
 
 			$_sections[] = array(
