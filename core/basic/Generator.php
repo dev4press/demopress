@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Basic;
+namespace Dev4Press\Plugin\DemoPress\Basic;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -25,7 +25,7 @@ class Generator {
 		add_action( 'demopress_run_generator', array( $this, 'run' ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DEMOPRESS\Basic\Generator */
+	/** @return \Dev4Press\Plugin\DemoPress\Basic\Generator */
 	public static function instance() {
 		static $_demopress_gen = false;
 

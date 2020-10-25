@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Base;
+namespace Dev4Press\Plugin\DemoPress\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -30,7 +30,11 @@ abstract class Builder {
 	}
 
 	protected function el_wrapper_class( $class, $hidden = false ) {
-		return $class . '-switch ' . $class . '-data-' . $this->name . ($hidden ? ' demopress-is-hidden' : '');
+		return $class . '-switch ' . $class . '-data-' . $this->name . ( $hidden ? ' demopress-is-hidden' : '' );
+	}
+
+	protected function el_option_name( $type, $name, $option ) {
+		return $type . '-builder-' . $name . '-' . $this->name . '-' . $option;
 	}
 
 	abstract public function run( $settings = array() );

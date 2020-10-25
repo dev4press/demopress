@@ -1,9 +1,9 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin\Panel;
+namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
 use Dev4Press\Core\UI\Admin\PanelSettings;
-use Dev4Press\Plugin\DEMOPRESS\Traits\Panel as TraitPanel;
+use Dev4Press\Plugin\DemoPress\Traits\Panel as TraitPanel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Settings extends PanelSettings {
 	use TraitPanel;
 
-	public $settings_class = '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Settings';
+	public $settings_class = '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Settings';
 
 	public function __construct( $admin ) {
 		parent::__construct( $admin );

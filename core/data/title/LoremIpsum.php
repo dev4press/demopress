@@ -1,8 +1,8 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Title;
+namespace Dev4Press\Plugin\DemoPress\Data\Title;
 
-use Dev4Press\Plugin\DEMOPRESS\Library\LoremIpsum as LibLoremIpsum;
+use Dev4Press\Plugin\DemoPress\Library\LoremIpsum as LibLoremIpsum;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

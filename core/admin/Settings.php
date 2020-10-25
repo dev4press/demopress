@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin;
+namespace Dev4Press\Plugin\DemoPress\Admin;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Settings as BaseSettings;

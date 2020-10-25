@@ -26,28 +26,28 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-$demopress_dirname_basic = dirname(__FILE__).'/';
-$demopress_urlname_basic = plugins_url('/demopress/');
+$demopress_dirname_basic = dirname( __FILE__ ) . '/';
+$demopress_urlname_basic = plugins_url( '/demopress/' );
 
-define('DEMOPRESS_PATH', $demopress_dirname_basic);
-define('DEMOPRESS_URL', $demopress_urlname_basic);
-define('DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic.'d4plib/');
-define('DEMOPRESS_D4PLIB_URL', $demopress_urlname_basic.'d4plib/');
+define( 'DEMOPRESS_PATH', $demopress_dirname_basic );
+define( 'DEMOPRESS_URL', $demopress_urlname_basic );
+define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'd4plib/' );
+define( 'DEMOPRESS_D4PLIB_URL', $demopress_urlname_basic . 'd4plib/' );
 
-require_once(DEMOPRESS_D4PLIB_PATH.'core.php');
+require_once( DEMOPRESS_D4PLIB_PATH . 'core.php' );
 
-require_once(DEMOPRESS_PATH.'libs/autoload.php');
-require_once(DEMOPRESS_PATH.'core/autoload.php');
-require_once(DEMOPRESS_PATH.'core/bridge.php');
-require_once(DEMOPRESS_PATH.'core/functions.php');
+require_once( DEMOPRESS_PATH . 'libs/autoload.php' );
+require_once( DEMOPRESS_PATH . 'core/autoload.php' );
+require_once( DEMOPRESS_PATH . 'core/bridge.php' );
+require_once( DEMOPRESS_PATH . 'core/functions.php' );
 
 demopress();
 demopress_settings();
 
-if (D4P_ADMIN) {
-    demopress_admin();
+if ( D4P_ADMIN ) {
+	demopress_admin();
 
-    if (D4P_AJAX) {
-        demopress_ajax();
-    }
+	if ( D4P_AJAX ) {
+		demopress_ajax();
+	}
 }

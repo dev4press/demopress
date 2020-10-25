@@ -1,10 +1,10 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Generator;
+namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
-use Dev4Press\Plugin\DEMOPRESS\Base\Generator;
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -57,7 +57,10 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array( 'data' => array('switch' => 'demopress-builders-term-' . $tax), 'wrapper_class' => 'demopress-builder-switch' ) )
+				EL::i( 'terms', $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-term-' . $tax ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
 			);
 
 			$_hidden = false;
@@ -80,7 +83,10 @@ class Terms extends Generator {
 
 			$_settings = array(
 				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
-				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array( 'data' => array('switch' => 'demopress-builders-description-' . $tax), 'wrapper_class' => 'demopress-builder-switch' ) )
+				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-description-' . $tax ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
 			);
 
 			$_hidden = false;

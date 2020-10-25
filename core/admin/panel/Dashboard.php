@@ -1,9 +1,9 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin\Panel;
+namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
 use Dev4Press\Core\UI\Admin\PanelDashboard;
-use Dev4Press\Plugin\DEMOPRESS\Traits\Panel as TraitPanel;
+use Dev4Press\Plugin\DemoPress\Traits\Panel as TraitPanel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

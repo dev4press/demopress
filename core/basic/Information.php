@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Basic;
+namespace Dev4Press\Plugin\DemoPress\Basic;
 
 use Dev4Press\Core\Plugins\Information as BaseInformation;
 

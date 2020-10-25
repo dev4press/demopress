@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Base;
+namespace Dev4Press\Plugin\DemoPress\Base;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

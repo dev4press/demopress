@@ -11,8 +11,8 @@ function d4p_plugin_demopress_libs_autoload( $class ) {
 		'Dev4Press\\Generator\\Name\\Random' => 'random-names-generator/Random.php'
 	);
 
-	if (isset($list[$class])) {
-		$path = $base.$list[$class];
+	if ( isset( $list[ $class ] ) ) {
+		$path = $base . $list[ $class ];
 
 		if ( file_exists( $path ) ) {
 			include( $path );

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Title;
+namespace Dev4Press\Plugin\DemoPress\Data\Title;
 
-use Dev4Press\Plugin\DEMOPRESS\Library\Randomizer as LibRandomizer;
+use Dev4Press\Plugin\DemoPress\Library\Randomizer as LibRandomizer;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

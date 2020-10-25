@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin\Panel;
+namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
 use Dev4Press\Core\UI\Admin\PanelAbout;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Generator;
+namespace Dev4Press\Plugin\DemoPress\Generator;
 
-use Dev4Press\Plugin\DEMOPRESS\Base\Generator;
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Name;
+namespace Dev4Press\Plugin\DemoPress\Data\Name;
 
-use Dev4Press\Plugin\DEMOPRESS\Library\RandomNameGenerator;
+use Dev4Press\Plugin\DemoPress\Library\RandomNameGenerator;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

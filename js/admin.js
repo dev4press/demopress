@@ -31,7 +31,7 @@
 
                         pre.scrollTop(pre.prop("scrollHeight"));
                     },
-                    complete: function (data) {
+                    complete: function(data) {
                         wp.demopress.generator.tmp.loader.css("visibility", "hidden");
 
                         setTimeout(wp.demopress.generator.log.run, 5000);
@@ -52,7 +52,7 @@
                     $("." + s + "-data-" + v).removeClass("demopress-is-hidden");
                 });
 
-                $(document).on("change", ".demopress-type-settings-ctrl input[type=checkbox]", function(){
+                $(document).on("change", ".demopress-type-settings-ctrl input[type=checkbox]", function() {
                     var checked = $(this).is(":checked"),
                         group = $(this).closest(".d4p-group");
 

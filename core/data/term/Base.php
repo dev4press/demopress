@@ -1,10 +1,10 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Term;
+namespace Dev4Press\Plugin\DemoPress\Data\Term;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
-use Dev4Press\Plugin\DEMOPRESS\Builder\Term;
+use Dev4Press\Plugin\DemoPress\Builder\Term;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,9 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Base extends Term {
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
-			EL::i( $base, $type . '-builder-' . $name . '-' . $this->name . '-words', __( "Limit number of words", "demopress" ), __( "The term will have 1 or more words, up to the limit.", "demopress" ), Type::ABSINT, 3 )->args( array(
+			EL::i( $base, $this->el_option_name( $type, $name, 'words' ), __( "Limit number of words", "demopress" ), __( "The term will have 1 or more words, up to the limit.", "demopress" ), Type::ABSINT, 3 )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
-				'min'   => 1
+				'min'           => 1
 			) )
 		);
 	}

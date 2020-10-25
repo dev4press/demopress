@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin;
+namespace Dev4Press\Plugin\DemoPress\Admin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,7 +11,7 @@ class AJAX {
 		add_action( 'wp_ajax_demopress_get_generator_status', array( $this, 'get_status' ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DEMOPRESS\Admin\AJAX */
+	/** @return \Dev4Press\Plugin\DemoPress\Admin\AJAX */
 	public static function instance() {
 		static $_store_admin_ajax = null;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Name;
+namespace Dev4Press\Plugin\DemoPress\Data\Name;
 
-use Dev4Press\Plugin\DEMOPRESS\Builder\Name;
+use Dev4Press\Plugin\DemoPress\Builder\Name;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

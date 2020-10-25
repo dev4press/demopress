@@ -1,9 +1,9 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Library;
+namespace Dev4Press\Plugin\DemoPress\Library;
 
 use Dev4Press\Generator\Text\LoremIpsum as BaseLoremIpsum;
-use Dev4Press\Plugin\DEMOPRESS\Base\Library;
+use Dev4Press\Plugin\DemoPress\Base\Library;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

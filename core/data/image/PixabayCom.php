@@ -1,14 +1,12 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Image;
-
-use Dev4Press\Plugin\DEMOPRESS\Builder\Image;
+namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class PixabayCom extends Image {
+class PixabayCom extends Base {
 	public $name = 'pixabaycom';
 
 	public function run( $settings = array() ) {

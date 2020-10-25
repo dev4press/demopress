@@ -1,14 +1,12 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Image;
-
-use Dev4Press\Plugin\DEMOPRESS\Builder\Image;
+namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class PicsumPhotos extends Image {
+class PicsumPhotos extends Base {
 	public $name = 'picsumphotos';
 
 	public function run( $settings = array() ) {

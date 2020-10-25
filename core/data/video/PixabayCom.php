@@ -1,14 +1,12 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Data\Video;
-
-use Dev4Press\Plugin\DEMOPRESS\Builder\Video;
+namespace Dev4Press\Plugin\DemoPress\Data\Video;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class PixabayCom extends Video {
+class PixabayCom extends Base {
 	public $name = 'pixabaycom';
 
 	public function run( $settings = array() ) {

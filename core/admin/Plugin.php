@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Admin;
+namespace Dev4Press\Plugin\DemoPress\Admin;
 
 use Dev4Press\Core\Admin\Submenu\Plugin as BasePlugin;
 
@@ -26,14 +26,14 @@ class Plugin extends BasePlugin {
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin installation was successful.", "gd-topic-polls" ),
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\Install'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install'
 			),
 			'update'  => array(
 				'title' => __( "Update", "gd-topic-polls" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin was successfully updated.", "gd-topic-polls" ),
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\Update'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update'
 			)
 		);
 
@@ -41,22 +41,22 @@ class Plugin extends BasePlugin {
 			'dashboard' => array(
 				'title' => __( "Overview", "gd-topic-polls" ),
 				'icon'  => 'ui-home',
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\Dashboard'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard'
 			),
 			'about'     => array(
 				'title' => __( "About", "gd-topic-polls" ),
 				'icon'  => 'ui-info',
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\About'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About'
 			),
 			'settings'  => array(
 				'title' => __( "Settings", "gd-topic-polls" ),
 				'icon'  => 'ui-cog',
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\Settings'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings'
 			),
 			'tools'     => array(
 				'title' => __( "Tools", "gd-topic-polls" ),
 				'icon'  => 'ui-wrench',
-				'class' => '\\Dev4Press\\Plugin\\DEMOPRESS\\Admin\\Panel\\Tools'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools'
 			)
 		);
 	}

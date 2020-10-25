@@ -38,12 +38,12 @@
 .d4p-generator-status .demopress-generator-panel .demopress-gen-header {
   margin: 0 0 15px;
   padding: 0 0 15px;
-  border-bottom: 2px solid #888888;
+  border-bottom: 2px solid #888;
 }
 .d4p-generator-status .demopress-generator-panel .demopress-gen-status {
   margin: 5px 0 15px 0;
   padding: 0 0 15px;
-  border-bottom: 2px solid #888888;
+  border-bottom: 2px solid #888;
 }
 .d4p-generator-status .demopress-generator-panel .demopress-gen-status pre {
   max-height: 300px;

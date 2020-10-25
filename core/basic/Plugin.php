@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DEMOPRESS\Basic;
+namespace Dev4Press\Plugin\DemoPress\Basic;
 
 use Dev4Press\Core\DateTime;
 use Dev4Press\Core\Plugins\Core;
@@ -95,7 +95,7 @@ class Plugin extends Core {
 		return __( "Unspecified", "demopress" );
 	}
 
-	/** @return \Dev4Press\Plugin\DEMOPRESS\Base\Generator|\WP_Error */
+	/** @return \Dev4Press\Plugin\DemoPress\Base\Generator|\WP_Error */
 	public function get_generator( $name ) {
 		foreach ( $this->generators as $code => $obj ) {
 			if ( $name === $code || $obj['slug'] === $name ) {
@@ -108,7 +108,7 @@ class Plugin extends Core {
 		return new WP_Error( 'generator_missing', __( "Requested generator not found.", "demopress" ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DEMOPRESS\Base\Builder|\WP_Error */
+	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder|\WP_Error */
 	public function get_builder( $type, $name ) {
 		if ( isset( $this->builders[ $type ][ $name ] ) ) {
 			$class = $this->builders[ $type ][ $name ]['class'];
@@ -177,7 +177,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => $settings,
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Generator\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Generator\\' . $name : $class
 		);
 	}
 
@@ -193,7 +193,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Text\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Text\\' . $name : $class
 		);
 	}
 
@@ -206,7 +206,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Name\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Name\\' . $name : $class
 		);
 	}
 
@@ -219,7 +219,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Term\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Term\\' . $name : $class
 		);
 	}
 
@@ -231,7 +231,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Title\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Title\\' . $name : $class
 		);
 	}
 
@@ -247,7 +247,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Image\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Image\\' . $name : $class
 		);
 	}
 
@@ -263,7 +263,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DEMOPRESS\\Data\\Video\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Video\\' . $name : $class
 		);
 	}
 
