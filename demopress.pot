@@ -1,0 +1,668 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
+"Project-Id-Version: GD Demo Data Generator\n"
+"POT-Creation-Date: 11/04/2019 06:40:57 PM\n"
+"Language-Team: Milan Petrovic <support@dev4press.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: GD i18n 2.2\n"
+
+#: core/admin/options.php:34
+msgid "Pixabay.com"
+msgstr ""
+
+#: core/admin/options.php:35
+#: core/admin/options.php:38
+msgid "API Key"
+msgstr ""
+
+#: core/admin/options.php:37
+msgid "Pexels.com"
+msgstr ""
+
+#: core/admin/plugin.php:26
+#: core/admin/plugin.php:30
+msgid "GD Demo Data Generator"
+msgstr ""
+
+#: core/objects/base.generator.php:60
+msgid "Item %s of %s for '%s'."
+msgstr ""
+
+#: core/objects/base.generator.php:98
+msgid "Administrator"
+msgstr ""
+
+#: core/objects/base.generator.php:99
+msgid "Editor"
+msgstr ""
+
+#: core/objects/base.generator.php:100
+msgid "Author"
+msgstr ""
+
+#: core/objects/base.generator.php:101
+msgid "Contributor"
+msgstr ""
+
+#: core/objects/base.generator.php:102
+msgid "Subscriber"
+msgstr ""
+
+#: core/objects/core.generator.php:86
+msgid "New generator task is added."
+msgstr ""
+
+#: core/objects/core.generator.php:115
+msgid "Generator has stalled, trying to recover it..."
+msgstr ""
+
+#: core/objects/core.generator.php:128
+msgid "The generator task has finished."
+msgstr ""
+
+#: core/plugin.php:44
+msgid "GD Demo Data Generator requires WordPress 4.9 or newer. Plugin will now be disabled. To use this plugin, upgrade WordPress to 4.9 or newer version."
+msgstr ""
+
+#: core/plugin.php:116
+msgid "Requested generator not found."
+msgstr ""
+
+#: core/plugin.php:124
+msgid "Unspecified"
+msgstr ""
+
+#: core/plugin.php:145
+msgid "Requested builder not found."
+msgstr ""
+
+#: core/plugin.php:280
+msgid "Generate HTML content using Loripsum.net website."
+msgstr ""
+
+#: core/plugin.php:285
+msgid "Generate content using PHP Lorem Ipsum class."
+msgstr ""
+
+#: core/plugin.php:290
+msgid "Generate terms using PHP Lorem Ipsum generator."
+msgstr ""
+
+#: core/plugin.php:294
+msgid "Generate names using PHP Lorem Ipsum generator."
+msgstr ""
+
+#: core/plugin.php:298
+msgid "Generate names using PHP Random Names generator."
+msgstr ""
+
+#: core/plugin.php:302
+msgid "Build image tags linking to the Picsum.photos website."
+msgstr ""
+
+#: core/plugin.php:307
+msgid "Download and use images from Pixabay.com website."
+msgstr ""
+
+#: core/plugin.php:312
+msgid "Download and use images from Pexels.com website."
+msgstr ""
+
+#: core/plugin.php:317
+msgid "Build video tags embedding Vimeo videos from Pixabay.com website."
+msgstr ""
+
+#: core/plugin.php:321
+msgid "Users"
+msgstr ""
+
+#: core/plugin.php:322
+msgid "Generate users with various user roles"
+msgstr ""
+
+#: core/plugin.php:328
+msgid "Terms"
+msgstr ""
+
+#: core/plugin.php:329
+msgid "Generate terms for default and custom taxonomies."
+msgstr ""
+
+#: core/plugin.php:335
+msgid "Posts"
+msgstr ""
+
+#: core/plugin.php:336
+msgid "Generate posts for default and custom post types."
+msgstr ""
+
+#: core/plugin.php:342
+msgid "Comments"
+msgstr ""
+
+#: core/plugin.php:343
+msgid "Generate comments for post types supporting comments."
+msgstr ""
+
+#: core/plugin.php:351
+msgid "bbPress Forums"
+msgstr ""
+
+#: core/plugin.php:352
+msgid "Generate forums, topics and replies for bbPress powered forums."
+msgstr ""
+
+#: data/generator/terms.php:21
+#: forms/generator.php:125
+msgid "Generate"
+msgstr ""
+
+#: data/generator/terms.php:21
+msgid "Enable this option to generate the terms for this taxonomy, and show options for the generator controls."
+msgstr ""
+
+#: data/generator/terms.php:22
+msgid "Number of Terms"
+msgstr ""
+
+#: data/generator/terms.php:25
+#: data/generator/users.php:14
+msgid "Name"
+msgstr ""
+
+#: data/generator/terms.php:26
+#: data/generator/terms.php:38
+#: data/generator/users.php:15
+#: data/generator/users.php:28
+msgid "Generate with"
+msgstr ""
+
+#: data/generator/terms.php:36
+msgid "Description"
+msgstr ""
+
+#: data/generator/terms.php:37
+#: data/generator/users.php:27
+#: forms/about/info.php:6
+#: forms/generator.php:76
+msgid "Status"
+msgstr ""
+
+#: data/generator/terms.php:49
+msgid "Hierarchy"
+msgstr ""
+
+#: data/generator/terms.php:50
+msgid "Top level terms"
+msgstr ""
+
+#: data/generator/terms.php:50
+msgid "Percentage of total terms to generate to be top level terms."
+msgstr ""
+
+#: data/generator/terms.php:93
+msgid "Added Term - ID: %s, Term: '%s'"
+msgstr ""
+
+#: data/generator/users.php:26
+msgid "Biographical Info"
+msgstr ""
+
+#: data/generator/users.php:40
+msgid "Users to generate"
+msgstr ""
+
+#: data/generator/users.php:42
+msgid "Number of Users"
+msgstr ""
+
+#: data/generator/users.php:46
+msgid "Data for users"
+msgstr ""
+
+#: data/generator/users.php:47
+msgid "Roles"
+msgstr ""
+
+#: data/generator/users.php:48
+msgid "Roles for Users"
+msgstr ""
+
+#: data/generator/users.php:48
+msgid "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role."
+msgstr ""
+
+#: data/generator/users.php:49
+msgid "Email"
+msgstr ""
+
+#: data/generator/users.php:50
+msgid "Email Domains"
+msgstr ""
+
+#: data/generator/users.php:50
+msgid "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random."
+msgstr ""
+
+#: data/generator/users.php:51
+msgid "Password"
+msgstr ""
+
+#: data/generator/users.php:52
+msgid "Default Password"
+msgstr ""
+
+#: data/generator/users.php:52
+msgid "All users will be created with the same password. If this field is empty, each user will get random password."
+msgstr ""
+
+#: data/generator/users.php:56
+msgid "Generated data for users"
+msgstr ""
+
+#: data/generator/users.php:102
+msgid "Added User - ID: %s, Username: '%s'"
+msgstr ""
+
+#: data/generator/users.php:105
+msgid "Email: '%s', Name: '%s'"
+msgstr ""
+
+#: data/term/loremipsum.php:9
+msgid "Limit number of words"
+msgstr ""
+
+#: data/term/loremipsum.php:9
+msgid "The term will have 1 or more words, up to the limit."
+msgstr ""
+
+#: data/text/loremipsum.php:9
+msgid "Number of paragraphs"
+msgstr ""
+
+#: forms/about/changelog.php:1
+#: forms/about/info.php:4
+#: forms/about/info.php:51
+#: forms/about/info.php:56
+#: forms/about/info.php:61
+#: forms/about/info.php:66
+#: forms/about/info.php:71
+#: forms/about/info.php:76
+#: forms/about/info.php:81
+#: forms/about/info.php:86
+#: forms/about/info.php:91
+#: forms/about/info.php:96
+#: forms/about/info.php:101
+#: forms/about/info.php:106
+#: forms/about/info.php:111
+#: forms/about/info.php:116
+#: forms/about/info.php:121
+#: forms/about/minor.php:3
+#: forms/generator.php:37
+msgid "Version"
+msgstr ""
+
+#: forms/about/header.php:11
+msgid "Back to plugin settings"
+msgstr ""
+
+#: forms/about/header.php:12
+msgid "What&#8217;s New"
+msgstr ""
+
+#: forms/about/header.php:13
+msgid "Info"
+msgstr ""
+
+#: forms/about/header.php:14
+msgid "Changelog"
+msgstr ""
+
+#: forms/about/header.php:15
+msgid "Dev4Press"
+msgstr ""
+
+#: forms/about/header.php:21
+msgid "Welcome to GD Demo Data Generator&nbsp;%s"
+msgstr ""
+
+#: forms/about/header.php:27
+msgid "Version %s"
+msgstr ""
+
+#: forms/about/info.php:5
+msgid "Date"
+msgstr ""
+
+#: forms/about/info.php:7
+msgid "Build"
+msgstr ""
+
+#: forms/about/info.php:11
+msgid "First released"
+msgstr ""
+
+#: forms/about/info.php:17
+msgid "System Requirements"
+msgstr ""
+
+#: forms/about/info.php:20
+msgid "WordPress"
+msgstr ""
+
+#: forms/about/info.php:21
+msgid "PHP"
+msgstr ""
+
+#: forms/about/info.php:22
+msgid "MySQL"
+msgstr ""
+
+#: forms/about/info.php:28
+msgid "Knowledge Base and Support Forums"
+msgstr ""
+
+#: forms/about/info.php:41
+msgid "On Dev4Press"
+msgstr ""
+
+#: forms/about/info.php:47
+msgid "Translations"
+msgstr ""
+
+#: forms/about/info.php:31
+msgid "To learn more about the plugin, check out plugin %s articles and FAQ. To get additional help, you can use %s."
+msgstr ""
+
+#: forms/about/info.php:32
+msgid "knowledge base"
+msgstr ""
+
+#: forms/about/info.php:33
+msgid "support forum"
+msgstr ""
+
+#: forms/about/minor.php:1
+msgid "Maintenance and Security Releases"
+msgstr ""
+
+#: forms/about/minor.php:7
+msgid "For more information, see <a href='%s'>the changelog</a>."
+msgstr ""
+
+#: forms/shared/generator.php:1
+msgid "Information"
+msgstr ""
+
+#: forms/shared/generator.php:3
+msgid "This generator doesn't remove any existing data from WordPress, it will add new objects based on the generator and builder settings configured below."
+msgstr ""
+
+#: forms/shared/invalid.php:5
+msgid "Invalid Request"
+msgstr ""
+
+#: forms/shared/invalid.php:9
+msgid "Error"
+msgstr ""
+
+#: forms/shared/invalid.php:12
+msgid "Current request URL is invalid, and it can't be processed."
+msgstr ""
+
+#: forms/shared/top.php:31
+msgid "Generator is already working."
+msgstr ""
+
+#: forms/shared/top.php:34
+msgid "Creating Generator task has failed."
+msgstr ""
+
+#: forms/shared/top.php:37
+msgid "New Generator has been created."
+msgstr ""
+
+#: forms/shared/top.php:40
+msgid "Generator stop flag has been set. Please wait..."
+msgstr ""
+
+#: forms/shared/top.php:43
+msgid "Generator task process data have been removed."
+msgstr ""
+
+#: forms/shared/top.php:46
+msgid "Settings are saved."
+msgstr ""
+
+#: forms/shared/top.php:49
+msgid "Removal operation completed."
+msgstr ""
+
+#: forms/shared/top.php:52
+msgid "Import operation completed."
+msgstr ""
+
+#: forms/shared/top.php:55
+msgid "Nothing to do."
+msgstr ""
+
+#: forms/tools/remove.php:1
+msgid "Important"
+msgstr ""
+
+#: forms/tools/remove.php:3
+msgid "This tool can remove plugin settings saved in the WordPress options table."
+msgstr ""
+
+#: forms/tools/remove.php:4
+msgid "Deletion operations are not reversible, and it is recommended to create database backup before proceeding with this tool."
+msgstr ""
+
+#: forms/tools/remove.php:5
+msgid "If you choose to remove plugin settings, that will also reinitialize all plugin settings to default values."
+msgstr ""
+
+#: forms/tools/remove.php:9
+msgid "Choose what you want to delete"
+msgstr ""
+
+#: forms/tools/remove.php:12
+msgid "All Plugin Settings"
+msgstr ""
+
+#: forms/tools/remove.php:18
+msgid "Disable Plugin"
+msgstr ""
+
+#: forms/tools/remove.php:21
+msgid "Disable plugin"
+msgstr ""
+
+#: forms/front.php:8
+#: forms/generator.php:58
+#: forms/generator.php:75
+#: forms/generator.php:188
+msgid "Generator"
+msgstr ""
+
+#: forms/front.php:9
+#: forms/generator.php:49
+#: forms/settings.php:26
+msgid "Settings"
+msgstr ""
+
+#: forms/front.php:10
+#: forms/generator.php:50
+#: forms/tools.php:28
+msgid "Tools"
+msgstr ""
+
+#: forms/front.php:11
+#: forms/generator.php:51
+msgid "About"
+msgstr ""
+
+#: forms/generator.php:65
+msgid "Run Generator"
+msgstr ""
+
+#: forms/generator.php:68
+#: forms/settings.php:39
+msgid "Return to top"
+msgstr ""
+
+#: forms/generator.php:80
+msgid "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immidiate, it can take up to 15 seconds for the running process to get the stop message."
+msgstr ""
+
+#: forms/generator.php:83
+msgid "Stop Generator"
+msgstr ""
+
+#: forms/generator.php:87
+msgid "The generator is has finished the last task. Use the button below to reset the last task data."
+msgstr ""
+
+#: forms/generator.php:90
+msgid "Reset Generator"
+msgstr ""
+
+#: forms/generator.php:189
+msgid "Started"
+msgstr ""
+
+#: forms/generator.php:190
+msgid "Ended"
+msgstr ""
+
+#: forms/generator.php:196
+msgid "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt autorecovery."
+msgstr ""
+
+#: forms/generator.php:198
+msgid "Checking progress..."
+msgstr ""
+
+#: forms/generator.php:6
+msgid "Index"
+msgstr ""
+
+#: forms/generator.php:7
+msgid "The list of all available generators."
+msgstr ""
+
+#: forms/generator.php:18
+msgid "WordPress Core"
+msgstr ""
+
+#: forms/generator.php:19
+msgid "Third Party Plugins"
+msgstr ""
+
+#: forms/generator.php:169
+msgid "Generator Task Running"
+msgstr ""
+
+#: forms/generator.php:172
+msgid "Generator Task Finished"
+msgstr ""
+
+#: forms/generator.php:175
+msgid "Generator Task Error"
+msgstr ""
+
+#: forms/install.php:17
+msgid "Installation"
+msgstr ""
+
+#: forms/install.php:20
+msgid "Before you continue, make sure plugin installation was successful."
+msgstr ""
+
+#: forms/install.php:25
+#: forms/update.php:25
+msgid "All Done"
+msgstr ""
+
+#: forms/install.php:31
+msgid "Installation completed."
+msgstr ""
+
+#: forms/install.php:35
+#: forms/update.php:35
+msgid "Click here to continue."
+msgstr ""
+
+#: forms/settings.php:36
+#: forms/settings.php:97
+msgid "Save Settings"
+msgstr ""
+
+#: forms/settings.php:70
+msgid "Settings Panel"
+msgstr ""
+
+#: forms/settings.php:6
+msgid "Settings Index"
+msgstr ""
+
+#: forms/settings.php:7
+msgid "All plugin settings are split into panels, and you access each starting from the right."
+msgstr ""
+
+#: forms/settings.php:9
+msgid "API Keys"
+msgstr ""
+
+#: forms/settings.php:10
+msgid "Builder"
+msgstr ""
+
+#: forms/settings.php:11
+msgid "From this panel you can control API keys needed by some data builders."
+msgstr ""
+
+#: forms/tools.php:65
+msgid "Tools Panel"
+msgstr ""
+
+#: forms/tools.php:6
+msgid "Tools Index"
+msgstr ""
+
+#: forms/tools.php:7
+msgid "All plugin tools are split into several panels, and you access each starting from the right."
+msgstr ""
+
+#: forms/tools.php:9
+msgid "Remove Settings"
+msgstr ""
+
+#: forms/tools.php:10
+msgid "Maintenance"
+msgstr ""
+
+#: forms/tools.php:11
+msgid "Remove"
+msgstr ""
+
+#: forms/tools.php:12
+msgid "Remove selected plugin settings and information."
+msgstr ""
+
+#: forms/update.php:17
+msgid "Update"
+msgstr ""
+
+#: forms/update.php:20
+msgid "Before you continue, make sure plugin was successfully updated."
+msgstr ""
+
+#: forms/update.php:31
+msgid "Update completed."
+msgstr ""
+
