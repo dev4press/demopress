@@ -115,7 +115,20 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), '', Type::BOOLEAN, false )->args( array(
+				EL::i( 'posts', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date('Y-m-d', time() - YEAR_IN_SECONDS ) ),
+				EL::i( 'posts', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date('Y-m-d') ),
+				EL::i( 'posts', $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
+			);
+
+			$_sections[] = array(
+				'label'    => __( "Published", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => $_settings
+			);
+
+			$_settings = array(
+				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), __( "Excerpt is optional.", "demopress" ), Type::BOOLEAN, false )->args( array(
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
@@ -144,20 +157,7 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date('Y-m-d', time() - YEAR_IN_SECONDS ) ),
-				EL::i( 'posts', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date('Y-m-d') ),
-				EL::i( 'posts', $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
-			);
-
-			$_sections[] = array(
-				'label'    => __( "Published", "demopress" ),
-				'name'     => '',
-				'class'    => '',
-				'settings' => $_settings
-			);
-
-			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), '', Type::BOOLEAN, true )->args( array(
+				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), __( "Featured image is optional. But, it has to be downloaded, it can't be a link to external image.", "demopress" ), Type::BOOLEAN, true )->args( array(
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
@@ -184,6 +184,22 @@ class Posts extends Generator {
 				'class'    => '',
 				'settings' => $_settings
 			);
+
+			if ( is_post_type_hierarchical( $cpt ) ) {
+				$_sections[] = array(
+					'label'    => __( "Hierarchy", "demopress" ),
+					'name'     => '',
+					'class'    => '',
+					'settings' => array(
+						EL::i( 'posts', $cpt . '-base-toplevel', __( "Top level posts", "demopress" ), __( "Percentage of total posts to generate to be top level posts.", "demopress" ), Type::ABSINT, 70 )->args( array(
+							'label_unit' => '%',
+							'min'        => 0,
+							'step'       => 5,
+							'max'        => 100
+						) )
+					)
+				);
+			}
 
 			$this->settings[ $cpt ] = array(
 				'name'     => $post_type->label,
