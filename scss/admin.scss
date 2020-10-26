@@ -41,6 +41,18 @@
                 }
             }
         }
+
+        .d4p-settings-section {
+            &.demopress-type-section-hidden {
+                table {
+                    tr {
+                        &:not(:first-child) {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

@@ -30,6 +30,7 @@ class Settings extends BaseSettings {
 		),
 		'settings' => array(
 			'pixabay_api_key' => '',
+			'pixabay_full_access' => false,
 			'pexels_api_key'  => ''
 		)
 	);

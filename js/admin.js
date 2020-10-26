@@ -52,6 +52,17 @@
                     $("." + s + "-data-" + v).removeClass("demopress-is-hidden");
                 });
 
+                $(document).on("change", ".demopress-builder-status input[type=checkbox]", function() {
+                    var checked = $(this).is(":checked"),
+                        section = $(this).closest(".d4p-settings-section");
+
+                    if (checked) {
+                        section.removeClass("demopress-type-section-hidden");
+                    } else {
+                        section.addClass("demopress-type-section-hidden");
+                    }
+                });
+
                 $(document).on("change", ".demopress-type-settings-ctrl input[type=checkbox]", function() {
                     var checked = $(this).is(":checked"),
                         group = $(this).closest(".d4p-group");

@@ -13,25 +13,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Base extends HTML {
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
-			EL::i( $base, $this->el_option_name( $type, $name, 'content' ), __( "Content Type" ), '', Type::SELECT, 'html' )->data( 'array', array(
-				'html'      => __( "HTML" ),
-				'plaintext' => __( "Plaintext" )
-			) )->args( array(
-				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
-			) ),
-			EL::i( $base, $this->el_option_name( $type, $name, 'html' ), __( "HTML Settings" ), '', Type::CHECKBOXES, array(
+			EL::i( $base, $this->el_option_name( $type, $name, 'html' ), __( "HTML Settings", "demopress" ), '', Type::CHECKBOXES, array(
 				'decorate',
 				'link',
 				'headers'
 			) )->data( 'array', array(
-				'decorate' => __( "Bold, italic" ),
-				'link'     => __( "Links" ),
-				'ul'       => __( "Unordered lists" ),
-				'ol'       => __( "Ordered lists" ),
-				'dl'       => __( "Description lists" ),
-				'bq'       => __( "Blockquotes" ),
-				'code'     => __( "Code" ),
-				'headers'  => __( "Headers" )
+				'decorate' => __( "Bold, italic", "demopress" ),
+				'link'     => __( "Links", "demopress" ),
+				'ul'       => __( "Unordered lists", "demopress" ),
+				'ol'       => __( "Ordered lists", "demopress" ),
+				'dl'       => __( "Description lists", "demopress" ),
+				'bq'       => __( "Blockquotes", "demopress" ),
+				'code'     => __( "Code", "demopress" ),
+				'headers'  => __( "Headers", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) ),

@@ -65,15 +65,15 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $cpt . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
-					'data'          => array( 'switch' => 'demopress-builders-post-' . $cpt ),
+				EL::i( 'posts', $cpt . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-title-' . $cpt ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
 			);
 
 			$_hidden = false;
 			foreach ( $this->objects['title'] as $obj ) {
-				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-post-' . $cpt, $_hidden );
+				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-title-' . $cpt, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
@@ -83,19 +83,103 @@ class Posts extends Generator {
 			}
 
 			$_sections[] = array(
-				'label'    => __( "Name", "demopress" ),
+				'label'    => __( "Title", "demopress" ),
 				'name'     => '',
 				'class'    => '',
 				'settings' => $_settings
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, '' ),
-				EL::i( 'terms', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, '' ),
+				EL::i( 'posts', $cpt . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'html', $this->builders['content']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-content-' . $cpt ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
+			);
+
+			$_hidden = false;
+			foreach ( $this->objects['content'] as $obj ) {
+				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-content-' . $cpt, $_hidden );
+
+				if ( ! empty( $settings ) ) {
+					$_settings = array_merge( $_settings, $settings );
+				}
+
+				$_hidden = true;
+			}
+
+			$_sections[] = array(
+				'label'    => __( "Content", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => $_settings
+			);
+
+			$_settings = array(
+				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), '', Type::BOOLEAN, false )->args( array(
+					'label' => __( "Generate", "demopress" ),
+					'wrapper_class' => 'demopress-builder-status'
+				) ),
+				EL::i( 'posts', $cpt . '-builder-excerpt', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['excerpt']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-excerpt-' . $cpt ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
+			);
+
+			$_hidden = false;
+			foreach ( $this->objects['excerpt'] as $obj ) {
+				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-excerpt-' . $cpt, $_hidden );
+
+				if ( ! empty( $settings ) ) {
+					$_settings = array_merge( $_settings, $settings );
+				}
+
+				$_hidden = true;
+			}
+
+			$_sections[] = array(
+				'label'    => __( "Excerpt", "demopress" ),
+				'name'     => '',
+				'class'    => 'demopress-type-section-hidden',
+				'settings' => $_settings
+			);
+
+			$_settings = array(
+				EL::i( 'posts', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date('Y-m-d', time() - YEAR_IN_SECONDS ) ),
+				EL::i( 'posts', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date('Y-m-d') ),
+				EL::i( 'posts', $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
 			);
 
 			$_sections[] = array(
 				'label'    => __( "Published", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => $_settings
+			);
+
+			$_settings = array(
+				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), '', Type::BOOLEAN, true )->args( array(
+					'label' => __( "Generate", "demopress" ),
+					'wrapper_class' => 'demopress-builder-status'
+				) ),
+				EL::i( 'posts', $cpt . '-builder-featured', __( "Download from", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-featured-' . $cpt ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
+			);
+
+			$_hidden = false;
+			foreach ( $this->objects['featured'] as $obj ) {
+				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-featured-' . $cpt, $_hidden );
+
+				if ( ! empty( $settings ) ) {
+					$_settings = array_merge( $_settings, $settings );
+				}
+
+				$_hidden = true;
+			}
+
+			$_sections[] = array(
+				'label'    => __( "Featured Image", "demopress" ),
 				'name'     => '',
 				'class'    => '',
 				'settings' => $_settings

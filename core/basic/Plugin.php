@@ -326,28 +326,34 @@ class Plugin extends Core {
 
 		$this->register_builder_image( 'picsumphotos', 'Picsum.photos',
 			__( "Build image tags linking to the Picsum.photos website.", "demopress" ),
-			array( 'remote' => true )
+			array( 'local' => true, 'remote' => true )
 		);
 
-		$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
-			__( "Download and use images from Pixabay.com website.", "demopress" ),
-			array( 'local' => true )
-		);
+		$_api_key = demopress_settings()->get('pixabay_api_key');
+		if (!empty($_api_key)) {
+			$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
+				__( "Download and use images from Pixabay.com website.", "demopress" ),
+				array( 'local' => true, 'api_key' => $_api_key, 'full_access' => demopress_settings()->get('pixabay_full_access') )
+			);
 
-		$this->register_builder_image( 'PexelsCom', 'Pexels.com',
-			__( "Download and use images from Pexels.com website.", "demopress" ),
-			array( 'local' => true )
-		);
+			$this->register_builder_video( 'PixabayCom', 'Pixabay.com',
+				__( "Build video tags embedding Vimeo videos from Pixabay.com website.", "demopress" ),
+				array( 'local' => true, 'remote' => true, 'api_key' => $_api_key )
+			);
+		}
 
-		$this->register_builder_image( 'PicsumPhotos', 'Pexels.com',
-			__( "Download and use images from Pexels.com website.", "demopress" ),
-			array( 'remote' => true )
-		);
+		$_api_key = demopress_settings()->get('pexels_api_key');
+		if (!empty($_api_key)) {
+			$this->register_builder_image( 'PexelsCom', 'Pexels.com',
+				__( "Download and use images from Pexels.com website.", "demopress" ),
+				array( 'local' => true, 'api_key' => $_api_key )
+			);
 
-		$this->register_builder_video( 'PixabayCom', 'Pixabay.com',
-			__( "Build video tags embedding Vimeo videos from Pixabay.com website.", "demopress" ),
-			array( 'remote' => true )
-		);
+			$this->register_builder_video( 'PexelsCom', 'Pixabay.com',
+				__( "Build video tags embedding Vimeo videos from Pexels.com website.", "demopress" ),
+				array( 'remote' => true, 'api_key' => $_api_key )
+			);
+		}
 
 		$this->register_generator( 'Users', __( "Users", "demopress" ),
 			__( "Generate users with various user roles", "demopress" ),

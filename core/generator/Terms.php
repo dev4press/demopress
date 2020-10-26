@@ -82,7 +82,10 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
+				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::BOOLEAN, false )->args( array(
+					'label' => __( "Generate", "demopress" ),
+					'wrapper_class' => 'demopress-builder-status'
+				) ),
 				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-description-' . $tax ),
 					'wrapper_class' => 'demopress-builder-switch'
@@ -103,7 +106,7 @@ class Terms extends Generator {
 			$_sections[] = array(
 				'label'    => __( "Description", "demopress" ),
 				'name'     => '',
-				'class'    => '',
+				'class'    => 'demopress-type-section-hidden',
 				'settings' => $_settings
 			);
 

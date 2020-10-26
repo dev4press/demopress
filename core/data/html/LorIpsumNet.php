@@ -15,16 +15,16 @@ class LorIpsumNet extends Base {
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array_merge( parent::settings( $base, $type, $name, $class, $hidden ), array(
-			EL::i( $base, $this->el_option_name( $type, $name, 'length' ), __( "Paragraph Length" ), '', Type::SELECT, 'short' )->data( 'array', array(
-				'short'  => __( "Short" ),
-				'medium' => __( "Medium" ),
-				'long'   => __( "Long" )
+			EL::i( $base, $this->el_option_name( $type, $name, 'length' ), __( "Paragraph Length", "demopress" ), '', Type::SELECT, 'short' )->data( 'array', array(
+				'short'  => __( "Short", "demopress" ),
+				'medium' => __( "Medium", "demopress" ),
+				'long'   => __( "Long", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) ),
-			EL::i( $base, $this->el_option_name( $type, $name, 'more' ), __( "More Settings" ), '', Type::CHECKBOXES, array() )->data( 'array', array(
-				'allcaps' => __( "All caps" ),
-				'prude'   => __( "Prude" )
+			EL::i( $base, $this->el_option_name( $type, $name, 'more' ), __( "More Settings", "demopress" ), '', Type::CHECKBOXES, array() )->data( 'array', array(
+				'allcaps' => __( "All caps", "demopress" ),
+				'prude'   => __( "Prude", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) )
@@ -59,7 +59,7 @@ class LorIpsumNet extends Base {
 		if ( is_wp_error( $get ) ) {
 			return $get;
 		} else if ( ! isset( $get['body'] ) ) {
-			return new WP_Error( 'remove_get', __( "No response received." ) );
+			return new WP_Error( 'remove_get', __( "No response received.", "demopress" ) );
 		}
 
 		return $get['body'];

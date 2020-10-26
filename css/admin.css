@@ -27,6 +27,9 @@
 .d4p-generator-control .d4p-group.demopress-type-settings-hidden .d4p-settings-section:not(:first-child) {
   display: none;
 }
+.d4p-generator-control .d4p-group .d4p-settings-section.demopress-type-section-hidden table tr:not(:first-child) {
+  display: none;
+}
 
 .d4p-generator-status .demopress-generator-panel {
   max-width: 800px;
