@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DemoPress\Data\Text;
+namespace Dev4Press\Plugin\DemoPress\Data\HTML;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
@@ -35,6 +35,7 @@ class LorIpsumNet extends Base {
 		$defaults = array(
 			'paragraphs' => 2,
 			'length'     => 'short',
+			'html'       => array( 'decorate', 'link', 'headers' ),
 			'more'       => array()
 		);
 
@@ -45,7 +46,9 @@ class LorIpsumNet extends Base {
 		$url .= '/' . $settings['paragraphs'];
 		$url .= '/' . $settings['length'];
 
-		$url .= '/plaintext';
+		if ( ! empty( $settings['html'] ) ) {
+			$url .= '/' . join( '/', $settings['html'] );
+		}
 
 		if ( ! empty( $settings['more'] ) ) {
 			$url .= '/' . join( '/', $settings['more'] );

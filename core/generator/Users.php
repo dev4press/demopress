@@ -20,7 +20,7 @@ class Users extends Generator {
 		);
 		$this->builders['about'] = array(
 			'type' => 'text',
-			'list' => demopress()->find_builders( 'text', array( 'plain' ) )
+			'list' => demopress()->find_builders( 'text' )
 		);
 	}
 
@@ -51,7 +51,10 @@ class Users extends Generator {
 
 		$_settings = array(
 			EL::i( 'users', 'users-base-about', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
-			EL::i( 'users', 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array( 'class' => 'demopress-builders-about' ) )
+			EL::i( 'users', 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array(
+				'data'          => array( 'switch' => 'demopress-builders-about' ),
+				'wrapper_class' => 'demopress-builder-switch'
+			) )
 		);
 
 		$_hidden = false;

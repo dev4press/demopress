@@ -22,7 +22,7 @@ class Terms extends Generator {
 		);
 		$this->builders['description'] = array(
 			'type' => 'text',
-			'list' => demopress()->find_builders( 'text', array( 'plain' ) )
+			'list' => demopress()->find_builders( 'text' )
 		);
 	}
 

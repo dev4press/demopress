@@ -19,6 +19,7 @@ class Plugin extends Core {
 
 	public $generators = array();
 	public $builders = array(
+		'html'  => array(),
 		'text'  => array(),
 		'term'  => array(),
 		'title' => array(),
@@ -182,10 +183,7 @@ class Plugin extends Core {
 	}
 
 	public function register_builder_text( $name, $label, $description, $settings = array(), $class = '' ) {
-		$defaults = array(
-			'html'  => false,
-			'plain' => false
-		);
+		$defaults = array();
 
 		$this->builders['text'][ $name ] = array(
 			'name'        => $name,
@@ -194,6 +192,19 @@ class Plugin extends Core {
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Text\\' . $name : $class
+		);
+	}
+
+	public function register_builder_html( $name, $label, $description, $settings = array(), $class = '' ) {
+		$defaults = array();
+
+		$this->builders['html'][ $name ] = array(
+			'name'        => $name,
+			'slug'        => strtolower( $name ),
+			'label'       => $label,
+			'description' => $description,
+			'settings'    => wp_parse_args( $settings, $defaults ),
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\HTML\\' . $name : $class
 		);
 	}
 
@@ -228,6 +239,7 @@ class Plugin extends Core {
 
 		$this->builders['title'][ $name ] = array(
 			'name'        => $name,
+			'slug'        => strtolower( $name ),
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
@@ -268,14 +280,20 @@ class Plugin extends Core {
 	}
 
 	private function _registration() {
+		$this->register_builder_html( 'LorIpsumNet', 'Loripsum.net',
+			__( "Generate HTML content using Loripsum.net website.", "demopress" )
+		);
+
+		$this->register_builder_html( 'LoremIpsum', 'Lorem Ipsum',
+			__( "Generate HTML content using PHP Lorem Ipsum class.", "demopress" )
+		);
+
 		$this->register_builder_text( 'LorIpsumNet', 'Loripsum.net',
-			__( "Generate HTML content using Loripsum.net website.", "demopress" ),
-			array( 'html' => true )
+			__( "Generate plaintext content using Loripsum.net website.", "demopress" )
 		);
 
 		$this->register_builder_text( 'LoremIpsum', 'Lorem Ipsum',
-			__( "Generate content using PHP Lorem Ipsum class.", "demopress" ),
-			array( 'plain' => true )
+			__( "Generate plaintext content using PHP Lorem Ipsum class.", "demopress" )
 		);
 
 		$this->register_builder_term( 'LoremIpsum', 'Lorem Ipsum',

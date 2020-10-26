@@ -1,6 +1,6 @@
 <?php
 
-namespace Dev4Press\Plugin\DemoPress\Data\Text;
+namespace Dev4Press\Plugin\DemoPress\Data\HTML;
 
 use Dev4Press\Plugin\DemoPress\Library\LoremIpsum as LibLoremIpsum;
 
@@ -13,11 +13,12 @@ class LoremIpsum extends Base {
 
 	public function run( $settings = array() ) {
 		$defaults = array(
-			'paragraphs' => 2
+			'paragraphs' => 2,
+			'html'       => array( 'decorate', 'link', 'headers' )
 		);
 
 		$settings = wp_parse_args( $settings, $defaults );
 
-		return LibLoremIpsum::instance()->paragraphs( $settings['paragraphs'], false, false );
+		return LibLoremIpsum::instance()->html( $settings['paragraphs'], $settings['html'] );
 	}
 }

@@ -16,11 +16,15 @@ class LoremIpsum extends Library {
 		$this->_object = new BaseLoremIpsum();
 	}
 
-	public function words( $count, $tags = false, $array = false ) {
-		return $this->_object->words( $count, $tags, $array );
+	public function words( $count ) {
+		return $this->_object->words( $count, false, false );
 	}
 
-	public function paragraphs( $count, $tags = false, $array = false ) {
-		return $this->_object->paragraphs( $count, $tags, $array );
+	public function paragraphs( $count ) {
+		return $this->_object->paragraphs( $count, false, false );
+	}
+
+	public function html( $count, $settings = array() ) {
+		return $this->_object->html( $count, $settings, false );
 	}
 }

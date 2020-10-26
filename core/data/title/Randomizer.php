@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Randomizer extends Base {
-	public $name = 'loremipsum';
+	public $name = 'randomizer';
 
 	protected function data( $words ) {
 		return LibRandomizer::instance()->words( $words );

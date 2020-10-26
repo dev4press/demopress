@@ -19,6 +19,10 @@ class Posts extends Generator {
 			'list' => demopress()->find_builders( 'title' )
 		);
 		$this->builders['content']  = array(
+			'type' => 'html',
+			'list' => demopress()->find_builders( 'html' )
+		);
+		$this->builders['excerpt']  = array(
 			'type' => 'text',
 			'list' => demopress()->find_builders( 'text' )
 		);
@@ -58,6 +62,43 @@ class Posts extends Generator {
 						'min' => 1
 					) )
 				)
+			);
+
+			$_settings = array(
+				EL::i( 'terms', $cpt . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
+					'data'          => array( 'switch' => 'demopress-builders-post-' . $cpt ),
+					'wrapper_class' => 'demopress-builder-switch'
+				) )
+			);
+
+			$_hidden = false;
+			foreach ( $this->objects['title'] as $obj ) {
+				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-post-' . $cpt, $_hidden );
+
+				if ( ! empty( $settings ) ) {
+					$_settings = array_merge( $_settings, $settings );
+				}
+
+				$_hidden = true;
+			}
+
+			$_sections[] = array(
+				'label'    => __( "Name", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => $_settings
+			);
+
+			$_settings = array(
+				EL::i( 'terms', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, '' ),
+				EL::i( 'terms', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, '' ),
+			);
+
+			$_sections[] = array(
+				'label'    => __( "Published", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => $_settings
 			);
 
 			$this->settings[ $cpt ] = array(
