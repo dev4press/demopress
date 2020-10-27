@@ -90,7 +90,7 @@ class Generator {
 
 		$this->add_log_entry( __( "New generator task is added.", "demopress" ), true );
 
-		$this->schedule_next();
+		// $this->schedule_next();
 	}
 
 	public function stop_task() {

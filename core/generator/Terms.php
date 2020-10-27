@@ -27,7 +27,7 @@ class Terms extends Generator {
 	}
 
 	protected function init_settings() {
-		$taxonomies = get_taxonomies( array( 'public' => true, 'show_ui' => true ), 'objects' );
+		$taxonomies = demopress_get_taxonomies();
 
 		$this->settings = array();
 
@@ -188,5 +188,11 @@ class Terms extends Generator {
 		if ( empty( $this->_terms_cache[ $type ] ) ) {
 			$this->_terms_cache[ $type ] = demopress_db()->get_terms_for_taxonomy( $type );
 		}
+	}
+
+	public function get_list_of_types() {
+		$taxonomies = demopress_get_taxonomies();
+
+		return array_keys($taxonomies);
 	}
 }

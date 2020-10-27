@@ -209,4 +209,8 @@ class Users extends Generator {
 
 		return $user_from_mail === false && $user_from_name === false;
 	}
+
+	public function get_list_of_types() {
+		return array('users');
+	}
 }

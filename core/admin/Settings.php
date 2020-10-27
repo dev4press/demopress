@@ -17,6 +17,21 @@ class Settings extends BaseSettings {
 
 	protected function init() {
 		$this->settings = apply_filters( 'demopress_admin_internal_settings', array(
+			'global' => array(
+				'global_remote' => array(
+					'name'     => __( "Remote Builders", "demopress" ),
+					'sections' => array(
+						array(
+							'label'    => '',
+							'name'     => '',
+							'class'    => '',
+							'settings' => array(
+								EL::i( 'settings', 'remote_enabled', __( "Status", "demopress" ), __( "If you want to use only generators that don't depend on the remote third party serivces to generate content or images, disable this option.", "demopress" ), Type::BOOLEAN, $this->value( 'remote_enabled', 'settings' ) )
+							)
+						)
+					)
+				)
+			),
 			'api_keys' => array(
 				'api_pixabay' => array(
 					'name'     => __( "Pixabay.com", "demopress" ),

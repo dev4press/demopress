@@ -4,6 +4,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function demopress_get_taxonomies() {
+	$taxonomies = get_taxonomies( array( 'public' => true, 'show_ui' => true ), 'objects' );
+
+	return apply_filters( 'demopress_get_taxonomies', $taxonomies );
+}
+
 function demopress_get_post_types() {
 	$post_types = get_post_types( array( 'public' => true, 'show_ui' => true ), 'objects' );
 

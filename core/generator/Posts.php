@@ -167,7 +167,7 @@ class Posts extends Generator {
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
-				EL::i( 'posts', $cpt . '-builder-featured', __( "Download from", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
+				EL::i( 'posts', $cpt . '-builder-featured', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-featured-' . $cpt ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -202,7 +202,7 @@ class Posts extends Generator {
 				}
 
 				$_settings = array(
-					EL::i( 'posts', $cpt . '-base-taxonomy-'.$tax, __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
+					EL::i( 'posts', $cpt . '-base-taxonomy-'.$tax.'-generate', __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
 						'on' => __("Enabled"),
 						'off' => __("Disabled")
 					))->args( array(
@@ -252,5 +252,11 @@ class Posts extends Generator {
 
 	protected function generate_item( $type ) {
 
+	}
+
+	public function get_list_of_types() {
+		$post_types = demopress_get_post_types();
+
+		return array_keys($post_types);
 	}
 }

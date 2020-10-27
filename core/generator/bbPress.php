@@ -22,4 +22,12 @@ class bbPress extends Generator {
 	protected function generate_item( $type ) {
 
 	}
+
+	public function get_list_of_types() {
+		return array(
+			bbp_get_forum_post_type(),
+			bbp_get_topic_post_type(),
+			bbp_get_reply_post_type()
+		);
+	}
 }

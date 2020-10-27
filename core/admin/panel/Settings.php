@@ -18,11 +18,16 @@ class Settings extends PanelSettings {
 		parent::__construct( $admin );
 
 		$this->subpanels = $this->subpanels + array(
+				'global' => array(
+					'title'      => __( "Global Control", "gd-topic-polls" ),
+					'icon'       => 'ui-sliders',
+					'break'      => __( "Builder", "demopress" ),
+					'break-icon' => 'ui-code',
+					'info'       => __( "From this panel you can control basic options related to all builders.", "gd-topic-polls" )
+				),
 				'api_keys' => array(
 					'title'      => __( "API Keys", "gd-topic-polls" ),
 					'icon'       => 'ui-key',
-					'break'      => __( "Builder", "demopress" ),
-					'break-icon' => 'ui-code',
 					'info'       => __( "From this panel you can control API keys needed by some data builders.", "gd-topic-polls" )
 				)
 			);

@@ -42,6 +42,22 @@ abstract class Generator {
 		return $instance[ $class ];
 	}
 
+	public function settings_for_processing() {
+		$list = array();
+
+		foreach ($this->settings as $obj) {
+			foreach ( $obj['sections'] as $s ) {
+				foreach ( $s['settings'] as $o ) {
+					if ( ! empty( $o->type ) ) {
+						$list[] = $o;
+					}
+				}
+			}
+		}
+
+		return $list;
+	}
+
 	public function show() {
 		$path = DEMOPRESS_PATH . 'forms/generators/' . $this->name . '.php';
 
@@ -144,6 +160,10 @@ abstract class Generator {
 			if ( substr( $t, 0, 4 ) == 'type' ) {
 				$type = substr( $t, 5 );
 
+				if ($value === false) {
+					continue;
+				}
+
 				$out = array(
 					'base'    => array(),
 					'builder' => array()
@@ -165,6 +185,12 @@ abstract class Generator {
 								'value'    => $val,
 								'settings' => array()
 							);
+						}
+					} else if ( $parts[0] == 'base' ) {
+						if (count ($parts) == 3) {
+							$out['base'][ $parts[1] ][ $parts[2] ] = $val;
+						} else if (count ($parts) == 4) {
+							$out['base'][ $parts[1] ][ $parts[2] ][ $parts[3] ] = $val;
 						}
 					}
 				}
@@ -235,6 +261,8 @@ abstract class Generator {
 
 		return $this->objects[ $name ][ $builder ]->run( $settings );
 	}
+
+	abstract public function get_list_of_types();
 
 	abstract protected function init_builders();
 
