@@ -87,6 +87,38 @@ use Dev4Press\Core\Options\Render;
 			$_title  = __( "Generator Task Error", "demopress" );
 			$_status = 'error';
 		}
+
+		?>
+
+        <div style="clear: both"></div>
+        <div class="d4p-panel-break d4p-clearfix">
+            <h1><?php echo $_title; ?></h1>
+        </div>
+        <div style="clear: both"></div>
+
+        <div class="d4p-generator-status">
+            <div class="demopress-generator-panel demopress-gen-status-<?php echo $_status; ?>">
+                <div class="demopress-gen-header">
+					<?php _e( "Generator", "demopress" ); ?>:
+                    <strong><?php echo demopress()->get_generator_label( demopress_gen()->type ); ?></strong>
+                    <br/><?php _e( "Started", "demopress" ); ?>:
+                    <strong><?php echo date( "c", demopress_gen()->started ); ?></strong>
+					<?php if ( ! demopress_gen()->is_running() ) { ?><br/><?php _e( "Ended", "demopress" ); ?>:
+                        <strong><?php echo date( "c", demopress_gen()->ended ); ?></strong><?php } ?>
+                </div>
+                <div class="demopress-gen-status">
+                    <pre><?php echo join( D4P_EOL, demopress_gen()->format_log_list() ); ?></pre>
+                </div>
+                <p>
+					<?php _e( "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt autorecovery.", "demopress" ); ?>
+                </p>
+                <div class="demopress-gen-loader">
+                    <i class="d4p-icon d4p-ui-spinner d4p-icon-spin"></i> <?php _e( "Checking progress...", "demopress" ); ?>
+                </div>
+            </div>
+        </div>
+
+		<?php
 	}
 
 	?>

@@ -115,8 +115,8 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date('Y-m-d', time() - YEAR_IN_SECONDS ) ),
-				EL::i( 'posts', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date('Y-m-d') ),
+				EL::i( 'posts', $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date( 'Y-m-d', time() - YEAR_IN_SECONDS ) ),
+				EL::i( 'posts', $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date( 'Y-m-d' ) ),
 				EL::i( 'posts', $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
 			);
 
@@ -128,11 +128,11 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), __( "Excerpt is optional.", "demopress" ), Type::SELECT, 'off' )->data('array', array(
-					'on' => __("Enabled"),
-					'off' => __("Disabled")
-				))->args( array(
-					'label' => __( "Generate", "demopress" ),
+				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), __( "Excerpt is optional.", "demopress" ), Type::SELECT, 'off' )->data( 'array', array(
+					'on'  => __( "Enabled", "demopress" ),
+					'off' => __( "Disabled", "demopress" )
+				) )->args( array(
+					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
 				EL::i( 'posts', $cpt . '-builder-excerpt', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['excerpt']['list'] ) )->args( array(
@@ -160,11 +160,11 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), __( "Featured image is optional. But, it has to be downloaded, it can't be a link to external image.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
-					'on' => __("Enabled"),
-					'off' => __("Disabled")
-				))->args( array(
-					'label' => __( "Generate", "demopress" ),
+				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), __( "Featured image is optional. But, it has to be downloaded, it can't be a link to external image.", "demopress" ), Type::SELECT, 'on' )->data( 'array', array(
+					'on'  => __( "Enabled", "demopress" ),
+					'off' => __( "Disabled", "demopress" )
+				) )->args( array(
+					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
 				EL::i( 'posts', $cpt . '-builder-featured', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
@@ -191,35 +191,35 @@ class Posts extends Generator {
 				'settings' => $_settings
 			);
 
-			$_taxonomies = get_object_taxonomies($cpt);
+			$_taxonomies = get_object_taxonomies( $cpt );
 
-			foreach ($_taxonomies as $tax) {
-				$taxonomy = get_taxonomy($tax);
-				$terms = wp_count_terms($tax, array('hide_empty' => false));
+			foreach ( $_taxonomies as $tax ) {
+				$taxonomy = get_taxonomy( $tax );
+				$terms    = wp_count_terms( $tax, array( 'hide_empty' => false ) );
 
-				if ($terms == 0) {
+				if ( $terms == 0 ) {
 					continue;
 				}
 
 				$_settings = array(
-					EL::i( 'posts', $cpt . '-base-taxonomy-'.$tax.'-generate', __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
-						'on' => __("Enabled"),
-						'off' => __("Disabled")
-					))->args( array(
-						'label' => __( "Generate", "demopress" ),
+					EL::i( 'posts', $cpt . '-base-taxonomy-' . $tax . '-generate', __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data( 'array', array(
+						'on'  => __( "Enabled", "demopress" ),
+						'off' => __( "Disabled", "demopress" )
+					) )->args( array(
+						'label'         => __( "Generate", "demopress" ),
 						'wrapper_class' => 'demopress-builder-status'
 					) ),
-					EL::i('posts', $cpt.'-base-taxonomy-'.$tax.'-assign', __("Assign to posts"), __("Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."), Type::ABSINT, 100 )->args( array(
+					EL::i( 'posts', $cpt . '-base-taxonomy-' . $tax . '-assign', __( "Assign to posts", "demopress" ), __( "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts.", "demopress" ), Type::ABSINT, 100 )->args( array(
 						'label_unit' => '%',
 						'min'        => 0,
 						'step'       => 5,
 						'max'        => 100
 					) ),
-					EL::i('posts', $cpt.'-base-taxonomy-'.$tax.'-terms', __("Terms to assign"), __("Number of terms to assign inside the specified range, at random."), Type::RANGE_ABSINT, '1=>3' )
+					EL::i( 'posts', $cpt . '-base-taxonomy-' . $tax . '-terms', __( "Terms to assign", "demopress" ), __( "Number of terms to assign inside the specified range, at random.", "demopress" ), Type::RANGE_ABSINT, '1=>3' )
 				);
 
 				$_sections[] = array(
-					'label'    => sprintf(__( "Assign terms for '%s'", "demopress" ), $taxonomy->labels->name),
+					'label'    => sprintf( __( "Assign terms for '%s'", "demopress" ), $taxonomy->labels->name ),
 					'name'     => '',
 					'class'    => '',
 					'settings' => $_settings
@@ -257,6 +257,6 @@ class Posts extends Generator {
 	public function get_list_of_types() {
 		$post_types = demopress_get_post_types();
 
-		return array_keys($post_types);
+		return array_keys( $post_types );
 	}
 }

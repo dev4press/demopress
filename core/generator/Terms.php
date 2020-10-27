@@ -82,11 +82,11 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::SELECT, 'off' )->data('array', array(
-					'on' => __("Enabled"),
-					'off' => __("Disabled")
-				))->args( array(
-					'label' => __( "Generate", "demopress" ),
+				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::SELECT, 'off' )->data( 'array', array(
+					'on'  => __( "Enabled", "demopress" ),
+					'off' => __( "Disabled", "demopress" )
+				) )->args( array(
+					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
 				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
@@ -193,6 +193,6 @@ class Terms extends Generator {
 	public function get_list_of_types() {
 		$taxonomies = demopress_get_taxonomies();
 
-		return array_keys($taxonomies);
+		return array_keys( $taxonomies );
 	}
 }

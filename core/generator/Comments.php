@@ -24,6 +24,6 @@ class Comments extends Generator {
 	}
 
 	public function get_list_of_types() {
-		return array('comment');
+		return array( 'comment' );
 	}
 }

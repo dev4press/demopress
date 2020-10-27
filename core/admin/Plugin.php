@@ -22,39 +22,39 @@ class Plugin extends BasePlugin {
 	public function after_setup_theme() {
 		$this->setup_items = array(
 			'install' => array(
-				'title' => __( "Install", "gd-topic-polls" ),
+				'title' => __( "Install", "demopress" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
-				'info'  => __( "Before you continue, make sure plugin installation was successful.", "gd-topic-polls" ),
+				'info'  => __( "Before you continue, make sure plugin installation was successful.", "demopress" ),
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install'
 			),
 			'update'  => array(
-				'title' => __( "Update", "gd-topic-polls" ),
+				'title' => __( "Update", "demopress" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
-				'info'  => __( "Before you continue, make sure plugin was successfully updated.", "gd-topic-polls" ),
+				'info'  => __( "Before you continue, make sure plugin was successfully updated.", "demopress" ),
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update'
 			)
 		);
 
 		$this->menu_items = array(
 			'dashboard' => array(
-				'title' => __( "Overview", "gd-topic-polls" ),
+				'title' => __( "Overview", "demopress" ),
 				'icon'  => 'ui-home',
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard'
 			),
 			'about'     => array(
-				'title' => __( "About", "gd-topic-polls" ),
+				'title' => __( "About", "demopress" ),
 				'icon'  => 'ui-info',
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About'
 			),
 			'settings'  => array(
-				'title' => __( "Settings", "gd-topic-polls" ),
+				'title' => __( "Settings", "demopress" ),
 				'icon'  => 'ui-cog',
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings'
 			),
 			'tools'     => array(
-				'title' => __( "Tools", "gd-topic-polls" ),
+				'title' => __( "Tools", "demopress" ),
 				'icon'  => 'ui-wrench',
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools'
 			)
@@ -76,10 +76,10 @@ class Plugin extends BasePlugin {
 	public function message_process( $code, $msg ) {
 		switch ( $code ) {
 			case 'gen-stopped':
-				$msg['message'] = __( "Poll votes are all removed.", "gd-topic-polls" );
+				$msg['message'] = __( "Poll votes are all removed.", "demopress" );
 				break;
 			case 'gen-removed':
-				$msg['message'] = __( "Votes deletion completed.", "gd-topic-polls" );
+				$msg['message'] = __( "Votes deletion completed.", "demopress" );
 				break;
 		}
 

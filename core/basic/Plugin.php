@@ -93,6 +93,12 @@ class Plugin extends Core {
 			return $this->generators[ $name ]['label'];
 		}
 
+		foreach ( $this->generators as $generator ) {
+			if ( $name == $generator['slug'] ) {
+				return $generator['label'];
+			}
+		}
+
 		return __( "Unspecified", "demopress" );
 	}
 
@@ -343,11 +349,14 @@ class Plugin extends Core {
 			true, array( 'local' => true, 'remote' => true )
 		);
 
-		$_api_key = demopress_settings()->get('pixabay_api_key');
-		if (!empty($_api_key)) {
+		$_api_key = demopress_settings()->get( 'pixabay_api_key' );
+		if ( ! empty( $_api_key ) ) {
 			$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
 				__( "Download and use images from Pixabay.com website.", "demopress" ),
-				true, array( 'local' => true, 'api_key' => $_api_key, 'full_access' => demopress_settings()->get('pixabay_full_access') )
+				true, array( 'local'       => true,
+				             'api_key'     => $_api_key,
+				             'full_access' => demopress_settings()->get( 'pixabay_full_access' )
+				)
 			);
 
 			$this->register_builder_video( 'PixabayCom', 'Pixabay.com',
@@ -356,8 +365,8 @@ class Plugin extends Core {
 			);
 		}
 
-		$_api_key = demopress_settings()->get('pexels_api_key');
-		if (!empty($_api_key)) {
+		$_api_key = demopress_settings()->get( 'pexels_api_key' );
+		if ( ! empty( $_api_key ) ) {
 			$this->register_builder_image( 'PexelsCom', 'Pexels.com',
 				__( "Download and use images from Pexels.com website.", "demopress" ),
 				true, array( 'local' => true, 'api_key' => $_api_key )

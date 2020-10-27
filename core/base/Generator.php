@@ -45,7 +45,7 @@ abstract class Generator {
 	public function settings_for_processing() {
 		$list = array();
 
-		foreach ($this->settings as $obj) {
+		foreach ( $this->settings as $obj ) {
 			foreach ( $obj['sections'] as $s ) {
 				foreach ( $s['settings'] as $o ) {
 					if ( ! empty( $o->type ) ) {
@@ -160,7 +160,7 @@ abstract class Generator {
 			if ( substr( $t, 0, 4 ) == 'type' ) {
 				$type = substr( $t, 5 );
 
-				if ($value === false) {
+				if ( $value === false ) {
 					continue;
 				}
 
@@ -187,9 +187,9 @@ abstract class Generator {
 							);
 						}
 					} else if ( $parts[0] == 'base' ) {
-						if (count ($parts) == 3) {
+						if ( count( $parts ) == 3 ) {
 							$out['base'][ $parts[1] ][ $parts[2] ] = $val;
-						} else if (count ($parts) == 4) {
+						} else if ( count( $parts ) == 4 ) {
 							$out['base'][ $parts[1] ][ $parts[2] ][ $parts[3] ] = $val;
 						}
 					}

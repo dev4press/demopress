@@ -14,7 +14,7 @@ class PostBack extends BasePostBack {
 		parent::process();
 
 		if ( $this->p() == $this->get_page_name( 'generator' ) ) {
-			if (isset($_POST['option_page']) && $_POST['option_page'] == 'demopress-generator') {
+			if ( isset( $_POST['option_page'] ) && $_POST['option_page'] == 'demopress-generator' ) {
 				$this->generator();
 			}
 		}
@@ -23,24 +23,24 @@ class PostBack extends BasePostBack {
 	}
 
 	protected function generator() {
-		check_admin_referer('demopress-generator-options');
+		check_admin_referer( 'demopress-generator-options' );
 
-		if (!demopress_gen()->is_idle()) {
-			wp_redirect($this->a()->current_url().'&message=gen-working');
+		if ( ! demopress_gen()->is_idle() ) {
+			wp_redirect( $this->a()->current_url() . '&message=gen-working' );
 			exit;
 		}
 
-		$input = isset($_POST['demopress_value']) ? (array)$_POST['demopress_value'] : array();
+		$input = isset( $_POST['demopress_value'] ) ? (array) $_POST['demopress_value'] : array();
 
-		if (!empty($input)) {
-			$gen_input = isset($input['demo-generator-type']) ? d4p_sanitize_key_expanded($input['demo-generator-type']) : '';
+		if ( ! empty( $input ) ) {
+			$gen_input = isset( $input['demo-generator-type'] ) ? d4p_sanitize_key_expanded( $input['demo-generator-type'] ) : '';
 			$generator = demopress()->get_generator( $gen_input );
 
-			if (!is_wp_error( $generator )) {
+			if ( ! is_wp_error( $generator ) ) {
 				$process = Process::instance( $this->a()->n(), $this->a()->plugin_prefix )->prepare( $generator->settings_for_processing() )->process();
-				$request = $generator->process_request($process[$gen_input]);
+				$request = $generator->process_request( $process[ $gen_input ] );
 
-				demopress_gen()->new_task($gen_input, $request);
+				demopress_gen()->new_task( $gen_input, $request );
 
 				wp_redirect( $this->a()->current_url() . '&message=gen-added' );
 				exit;

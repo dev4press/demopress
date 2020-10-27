@@ -19,7 +19,7 @@ class Dashboard extends PanelDashboard {
 
 		$this->subpanels = array(
 			'index' => array(
-				'title' => __( "Generators", "gd-topic-polls" ),
+				'title' => __( "Generators", "demopress" ),
 				'icon'  => 'ui-sun'
 			)
 		);

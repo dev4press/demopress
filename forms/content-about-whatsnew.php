@@ -27,7 +27,7 @@
                 </p>
             </div>
             <div class="d4p-layout-unit half align-left">
-                <img src="https://dev4press.s3.amazonaws.com/plugins/gd-topic-polls/2.0/about/dashboard.jpg" />
+                <img src="https://dev4press.s3.amazonaws.com/plugins/gd-topic-polls/2.0/about/dashboard.jpg"/>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                 </p>
             </div>
             <div class="d4p-layout-unit half align-left">
-                <img src="https://dev4press.s3.amazonaws.com/plugins/gd-topic-polls/2.0/about/notifications.jpg" />
+                <img src="https://dev4press.s3.amazonaws.com/plugins/gd-topic-polls/2.0/about/notifications.jpg"/>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                     Plugin now uses new Dev4Press Shared Code Library, and this affects many core elements of the plugin. And, there are various minor updates and code improvements.
                 </p>
                 <p>
-                    
+
                 </p>
             </div>
         </div>

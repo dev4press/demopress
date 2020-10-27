@@ -18,10 +18,10 @@ class PicsumPhotos extends Base {
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'           => 1
 			) ),
-			EL::i( $base, $this->el_option_name( $type, $name, 'effects' ), __( "Effects", "demopress" ), '', Type::CHECKBOXES, array() )->data('array', array(
-				'grayscale' => __("Grayscale"),
-				'blur' => __("Blur")
-			))->args( array(
+			EL::i( $base, $this->el_option_name( $type, $name, 'effects' ), __( "Effects", "demopress" ), '', Type::CHECKBOXES, array() )->data( 'array', array(
+				'grayscale' => __( "Grayscale", "demopress" ),
+				'blur'      => __( "Blur", "demopress" )
+			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'           => 1
 			) )

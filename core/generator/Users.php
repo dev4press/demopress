@@ -211,6 +211,6 @@ class Users extends Generator {
 	}
 
 	public function get_list_of_types() {
-		return array('users');
+		return array( 'users' );
 	}
 }

@@ -1,3 +1,5 @@
-<?php if (!defined('ABSPATH')) exit; ?>
-    </div>
+<?php if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} ?>
+</div>
 </div>

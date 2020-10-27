@@ -29,10 +29,10 @@ class Settings extends BaseSettings {
 			'log'      => array()
 		),
 		'settings' => array(
-			'remote_enabled' => true,
-			'pixabay_api_key' => '',
+			'remote_enabled'      => true,
+			'pixabay_api_key'     => '',
 			'pixabay_full_access' => false,
-			'pexels_api_key'  => ''
+			'pexels_api_key'      => ''
 		)
 	);
 
