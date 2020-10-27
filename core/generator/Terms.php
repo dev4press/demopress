@@ -82,7 +82,10 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::BOOLEAN, false )->args( array(
+				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::SELECT, 'off' )->data('array', array(
+					'on' => __("Enabled"),
+					'off' => __("Disabled")
+				))->args( array(
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),

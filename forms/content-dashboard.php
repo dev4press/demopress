@@ -60,7 +60,7 @@ use Dev4Press\Core\Options\Render;
 
                 <div class="d4p-generator-control">
                 <input type="hidden" name="demopress_handler" value="postback"/>
-                <input type="hidden" name="demopressen[type]" value="<?php echo $generator->name; ?>"/>
+                <input type="hidden" name="demopress_value[demo-generator-type]" value="<?php echo $generator->name; ?>"/>
 
 				<?php
 

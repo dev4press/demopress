@@ -73,7 +73,7 @@ class Posts extends Generator {
 
 			$_hidden = false;
 			foreach ( $this->objects['title'] as $obj ) {
-				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-title-' . $cpt, $_hidden );
+				$settings = $obj->settings( 'posts', $cpt, 'title', 'demopress-builders-title-' . $cpt, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
@@ -98,7 +98,7 @@ class Posts extends Generator {
 
 			$_hidden = false;
 			foreach ( $this->objects['content'] as $obj ) {
-				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-content-' . $cpt, $_hidden );
+				$settings = $obj->settings( 'posts', $cpt, 'content', 'demopress-builders-content-' . $cpt, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
@@ -128,7 +128,10 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), __( "Excerpt is optional.", "demopress" ), Type::BOOLEAN, false )->args( array(
+				EL::i( 'posts', $cpt . '-base-excerpt', __( "Status", "demopress" ), __( "Excerpt is optional.", "demopress" ), Type::SELECT, 'off' )->data('array', array(
+					'on' => __("Enabled"),
+					'off' => __("Disabled")
+				))->args( array(
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
@@ -140,7 +143,7 @@ class Posts extends Generator {
 
 			$_hidden = false;
 			foreach ( $this->objects['excerpt'] as $obj ) {
-				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-excerpt-' . $cpt, $_hidden );
+				$settings = $obj->settings( 'posts', $cpt, 'excerpt', 'demopress-builders-excerpt-' . $cpt, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
@@ -157,7 +160,10 @@ class Posts extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), __( "Featured image is optional. But, it has to be downloaded, it can't be a link to external image.", "demopress" ), Type::BOOLEAN, true )->args( array(
+				EL::i( 'posts', $cpt . '-base-featured', __( "Status", "demopress" ), __( "Featured image is optional. But, it has to be downloaded, it can't be a link to external image.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
+					'on' => __("Enabled"),
+					'off' => __("Disabled")
+				))->args( array(
 					'label' => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
@@ -169,7 +175,7 @@ class Posts extends Generator {
 
 			$_hidden = false;
 			foreach ( $this->objects['featured'] as $obj ) {
-				$settings = $obj->settings( 'posts', $cpt, 'post', 'demopress-builders-featured-' . $cpt, $_hidden );
+				$settings = $obj->settings( 'posts', $cpt, 'featured', 'demopress-builders-featured-' . $cpt, $_hidden );
 
 				if ( ! empty( $settings ) ) {
 					$_settings = array_merge( $_settings, $settings );
@@ -184,6 +190,41 @@ class Posts extends Generator {
 				'class'    => '',
 				'settings' => $_settings
 			);
+
+			$_taxonomies = get_object_taxonomies($cpt);
+
+			foreach ($_taxonomies as $tax) {
+				$taxonomy = get_taxonomy($tax);
+				$terms = wp_count_terms($tax, array('hide_empty' => false));
+
+				if ($terms == 0) {
+					continue;
+				}
+
+				$_settings = array(
+					EL::i( 'posts', $cpt . '-base-taxonomy-'.$tax, __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data('array', array(
+						'on' => __("Enabled"),
+						'off' => __("Disabled")
+					))->args( array(
+						'label' => __( "Generate", "demopress" ),
+						'wrapper_class' => 'demopress-builder-status'
+					) ),
+					EL::i('posts', $cpt.'-base-taxonomy-'.$tax.'-assign', __("Assign to posts"), __("Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."), Type::ABSINT, 100 )->args( array(
+						'label_unit' => '%',
+						'min'        => 0,
+						'step'       => 5,
+						'max'        => 100
+					) ),
+					EL::i('posts', $cpt.'-base-taxonomy-'.$tax.'-terms', __("Terms to assign"), __("Number of terms to assign inside the specified range, at random."), Type::RANGE_ABSINT, '1=>3' )
+				);
+
+				$_sections[] = array(
+					'label'    => sprintf(__( "Assign terms for '%s'", "demopress" ), $taxonomy->labels->name),
+					'name'     => '',
+					'class'    => '',
+					'settings' => $_settings
+				);
+			}
 
 			if ( is_post_type_hierarchical( $cpt ) ) {
 				$_sections[] = array(

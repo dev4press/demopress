@@ -144,7 +144,7 @@ require_once(DEMOPRESS_PATH.'forms/shared/top.php');
 
                 <?php settings_fields('demopress-generator'); ?>
                 <input type="hidden" name="demopress_handler" value="postback" />
-                <input type="hidden" name="demopressen[type]" value="<?php echo $generator->name; ?>" />
+                <input type="hidden" name="demopress_value[type]" value="<?php echo $generator->name; ?>" />
                 <?php
 
                 d4p_includes(array(
@@ -157,7 +157,7 @@ require_once(DEMOPRESS_PATH.'forms/shared/top.php');
                 $generator->show();
 
                 $render = new d4pSettingsRender($_task, $generator->settings);
-                $render->base = 'demopressen';
+                $render->base = 'demopressgen';
                 $render->render();
 
             }

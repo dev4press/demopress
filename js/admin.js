@@ -44,33 +44,33 @@
                 wp.dev4press.admin.panels.settings.run();
 
                 $(document).on("change", ".demopress-builder-switch select", function() {
-                    var c = $(this).closest(".demopress-builder-switch"),
-                        v = $(this).val(),
-                        s = c.data("switch");
+                    var v = $(this).val(),
+                        s = $(this).closest(".demopress-builder-switch"),
+                        x = s.data("switch");
 
-                    $("." + s + "-switch").addClass("demopress-is-hidden");
-                    $("." + s + "-data-" + v).removeClass("demopress-is-hidden");
+                    $("." + x + "-switch").addClass("demopress-is-hidden");
+                    $("." + x + "-data-" + v).removeClass("demopress-is-hidden");
                 });
 
-                $(document).on("change", ".demopress-builder-status input[type=checkbox]", function() {
-                    var checked = $(this).is(":checked"),
-                        section = $(this).closest(".d4p-settings-section");
+                $(document).on("change", ".demopress-builder-status select", function() {
+                    var v = $(this).val(),
+                        s = $(this).closest(".d4p-settings-section");
 
-                    if (checked) {
-                        section.removeClass("demopress-type-section-hidden");
+                    if (v === "on") {
+                        s.removeClass("demopress-type-section-hidden");
                     } else {
-                        section.addClass("demopress-type-section-hidden");
+                        s.addClass("demopress-type-section-hidden");
                     }
                 });
 
                 $(document).on("change", ".demopress-type-settings-ctrl input[type=checkbox]", function() {
-                    var checked = $(this).is(":checked"),
-                        group = $(this).closest(".d4p-group");
+                    var c = $(this).is(":checked"),
+                        g = $(this).closest(".d4p-group");
 
-                    if (checked) {
-                        group.removeClass("demopress-type-settings-hidden");
+                    if (c) {
+                        g.removeClass("demopress-type-settings-hidden");
                     } else {
-                        group.addClass("demopress-type-settings-hidden");
+                        g.addClass("demopress-type-settings-hidden");
                     }
                 });
             }

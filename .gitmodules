@@ -4,3 +4,6 @@
 [submodule "libs/random-names-generator"]
 	path = libs/random-names-generator
 	url = https://github.com/dev4press/random-names-generator
+[submodule "libs/placeholder-image-generator"]
+	path = libs/placeholder-image-generator
+	url = https://github.com/dev4press/placeholder-image-generator.git

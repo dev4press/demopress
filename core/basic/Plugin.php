@@ -182,72 +182,77 @@ class Plugin extends Core {
 		);
 	}
 
-	public function register_builder_text( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_text( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array();
 
 		$this->builders['text'][ $name ] = array(
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Text\\' . $name : $class
 		);
 	}
 
-	public function register_builder_html( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_html( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array();
 
 		$this->builders['html'][ $name ] = array(
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\HTML\\' . $name : $class
 		);
 	}
 
-	public function register_builder_name( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_name( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array();
 
 		$this->builders['name'][ $name ] = array(
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Name\\' . $name : $class
 		);
 	}
 
-	public function register_builder_term( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_term( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array();
 
 		$this->builders['term'][ $name ] = array(
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Term\\' . $name : $class
 		);
 	}
 
-	public function register_builder_title( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_title( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array();
 
 		$this->builders['title'][ $name ] = array(
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Title\\' . $name : $class
 		);
 	}
 
-	public function register_builder_image( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_image( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array(
 			'remote' => false,
 			'local'  => false
@@ -257,13 +262,14 @@ class Plugin extends Core {
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Image\\' . $name : $class
 		);
 	}
 
-	public function register_builder_video( $name, $label, $description, $settings = array(), $class = '' ) {
+	public function register_builder_video( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array(
 			'remote' => false,
 			'local'  => false
@@ -273,6 +279,7 @@ class Plugin extends Core {
 			'name'        => $name,
 			'slug'        => strtolower( $name ),
 			'label'       => $label,
+			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
 			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Video\\' . $name : $class
@@ -280,20 +287,22 @@ class Plugin extends Core {
 	}
 
 	private function _registration() {
-		$this->register_builder_html( 'LorIpsumNet', 'Loripsum.net',
-			__( "Generate HTML content using Loripsum.net website.", "demopress" )
-		);
-
 		$this->register_builder_html( 'LoremIpsum', 'Lorem Ipsum',
 			__( "Generate HTML content using PHP Lorem Ipsum class.", "demopress" )
 		);
 
-		$this->register_builder_text( 'LorIpsumNet', 'Loripsum.net',
-			__( "Generate plaintext content using Loripsum.net website.", "demopress" )
+		$this->register_builder_html( 'LorIpsumNet', 'Loripsum.net',
+			__( "Generate HTML content using Loripsum.net website.", "demopress" ),
+			true
 		);
 
 		$this->register_builder_text( 'LoremIpsum', 'Lorem Ipsum',
 			__( "Generate plaintext content using PHP Lorem Ipsum class.", "demopress" )
+		);
+
+		$this->register_builder_text( 'LorIpsumNet', 'Loripsum.net',
+			__( "Generate plaintext content using Loripsum.net website.", "demopress" ),
+			true
 		);
 
 		$this->register_builder_term( 'LoremIpsum', 'Lorem Ipsum',
@@ -324,21 +333,26 @@ class Plugin extends Core {
 			__( "Generate titles using PHP Randomizer generator.", "demopress" )
 		);
 
-		$this->register_builder_image( 'picsumphotos', 'Picsum.photos',
+		$this->register_builder_image( 'Placeholder', 'Placeholder',
+			__( "Build placeholder image with random colors and basic text.", "demopress" ),
+			false, array( 'local' => true )
+		);
+
+		$this->register_builder_image( 'PicsumPhotos', 'Picsum.photos',
 			__( "Build image tags linking to the Picsum.photos website.", "demopress" ),
-			array( 'local' => true, 'remote' => true )
+			true, array( 'local' => true, 'remote' => true )
 		);
 
 		$_api_key = demopress_settings()->get('pixabay_api_key');
 		if (!empty($_api_key)) {
 			$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
 				__( "Download and use images from Pixabay.com website.", "demopress" ),
-				array( 'local' => true, 'api_key' => $_api_key, 'full_access' => demopress_settings()->get('pixabay_full_access') )
+				true, array( 'local' => true, 'api_key' => $_api_key, 'full_access' => demopress_settings()->get('pixabay_full_access') )
 			);
 
 			$this->register_builder_video( 'PixabayCom', 'Pixabay.com',
 				__( "Build video tags embedding Vimeo videos from Pixabay.com website.", "demopress" ),
-				array( 'local' => true, 'remote' => true, 'api_key' => $_api_key )
+				true, array( 'local' => true, 'remote' => true, 'api_key' => $_api_key )
 			);
 		}
 
@@ -346,12 +360,12 @@ class Plugin extends Core {
 		if (!empty($_api_key)) {
 			$this->register_builder_image( 'PexelsCom', 'Pexels.com',
 				__( "Download and use images from Pexels.com website.", "demopress" ),
-				array( 'local' => true, 'api_key' => $_api_key )
+				true, array( 'local' => true, 'api_key' => $_api_key )
 			);
 
 			$this->register_builder_video( 'PexelsCom', 'Pixabay.com',
 				__( "Build video tags embedding Vimeo videos from Pexels.com website.", "demopress" ),
-				array( 'remote' => true, 'api_key' => $_api_key )
+				true, array( 'remote' => true, 'api_key' => $_api_key )
 			);
 		}
 
