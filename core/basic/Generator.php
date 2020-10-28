@@ -52,6 +52,16 @@ class Generator {
 				$this->$key = $data;
 			}
 
+			$stop = demopress_settings()->get( 'stop', 'ctrl' );
+
+			if ( $stop ) {
+				$this->status = 'finished';
+
+				$this->save();
+
+				demopress_settings()->set( 'stop', false, 'ctrl', true );
+			}
+
 			$this->_init = true;
 		}
 	}
@@ -90,7 +100,7 @@ class Generator {
 
 		$this->add_log_entry( __( "New generator task is added.", "demopress" ), true );
 
-		// $this->schedule_next();
+		$this->schedule_next();
 	}
 
 	public function stop_task() {

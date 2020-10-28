@@ -148,7 +148,7 @@ class Terms extends Generator {
 
 		$term['slug'] = sanitize_title( $term['name'] );
 
-		if ( $this->get_from_base( $type, 'description' ) ) {
+		if ( $this->get_from_base( $type, 'description' ) == 'on' ) {
 			$term['description'] = $this->get_from_builder( $type, 'description' );
 		}
 
@@ -170,9 +170,9 @@ class Terms extends Generator {
 		if ( ! is_wp_error( $the_term ) ) {
 			$term_id = $the_term['term_id'];
 
-			$this->_terms_cache[ $type ][] = (object) array( 'term_id' => $term_id, 'slug' => $term['slug'] );
+			$this->_terms_cache[ $type ][] = (object) array( 'term_id' => $term_id );
 
-			update_term_meta( $term_id, '_demopress_auto_generated', '1' );
+			update_term_meta( $term_id, '_demopress_generated_content', '1' );
 
 			$this->add_log_entry(
 				sprintf( __( "Added Term - ID: %s, Term: '%s'", "demopress" ),

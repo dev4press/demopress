@@ -6,6 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use Dev4Press\Plugin\DemoPress\Exception\Builder;
+
 abstract class Generator {
 	protected $_settings = array();
 	protected $_progress = array();
@@ -98,7 +100,17 @@ abstract class Generator {
 				sprintf( __( "Item %s of %s for '%s'.", "demopress" ),
 					$this->current_item(), $this->current_type_total_item(), $this->current_type() ), true );
 
-			$this->generate_item( $this->current_type() );
+			try {
+				$this->generate_item( $this->current_type() );
+			} catch ( Builder $e ) {
+				$this->add_log_entry(
+					sprintf( __( "Generator failed! Builder %s for %s error with message '%s'.", "demopress" ),
+						$e->getBuilder(), ucfirst( $e->getType() ), $e->getMessage() ) );
+
+				demopress_gen()->change_status( 'error' );
+
+				break;
+			}
 		}
 	}
 
@@ -247,9 +259,13 @@ abstract class Generator {
 		usleep( 5000 );
 	}
 
-	protected function get_from_base( $type, $name ) {
+	protected function get_from_base( $type, $name, $sub = false ) {
 		if ( isset( $this->_settings[ $type ]['base'][ $name ] ) ) {
-			return $this->_settings[ $type ]['base'][ $name ];
+			if ( $sub === false ) {
+				return $this->_settings[ $type ]['base'][ $name ];
+			} else {
+				return $this->_settings[ $type ]['base'][ $name ][ $sub ];
+			}
 		}
 
 		return '';
@@ -259,7 +275,22 @@ abstract class Generator {
 		$builder  = $this->_settings[ $type ]['builder'][ $name ]['value'];
 		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
 
-		return $this->objects[ $name ][ $builder ]->run( $settings );
+		$_real_name = '';
+
+		foreach ( $this->objects[ $name ] as $real => $obj ) {
+			if ( $obj->name == $builder ) {
+				$_real_name = $real;
+				break;
+			}
+		}
+
+		$result = $this->objects[ $name ][ $_real_name ]->run( $settings );
+
+		if ( is_wp_error( $result ) ) {
+			throw new Builder( 'builder-failed', $result->get_message(), $type, $_real_name );
+		}
+
+		return $result;
 	}
 
 	abstract public function get_list_of_types();

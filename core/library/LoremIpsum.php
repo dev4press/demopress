@@ -24,7 +24,7 @@ class LoremIpsum extends Library {
 		return $this->_object->paragraphs( $count, false, false );
 	}
 
-	public function html( $count, $settings = array() ) {
-		return $this->_object->html( $count, $settings, false );
+	public function html( $count, $settings = array(), $block_formatted = false ) {
+		return $this->_object->html( $count, $settings, $block_formatted, false );
 	}
 }

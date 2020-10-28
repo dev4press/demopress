@@ -2,15 +2,22 @@
 
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
+use DateTime;
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
+use Dev4Press\WordPress\Media\ToLibrary\LocalImage;
+use WP_User_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Posts extends Generator {
+	private $_terms_cache = array();
+	private $_posts_cache = array();
+	private $_users_cache = array();
+
 	public $name = 'posts';
 
 	protected function init_builders() {
@@ -240,6 +247,8 @@ class Posts extends Generator {
 						) )
 					)
 				);
+			} else {
+				$_sections[0]['settings'][] = EL::i( 'posts', $cpt . '-base-toplevel', '', '', Type::HIDDEN, 100 );
 			}
 
 			$this->settings[ $cpt ] = array(
@@ -251,7 +260,172 @@ class Posts extends Generator {
 	}
 
 	protected function generate_item( $type ) {
+		$this->_cache_posts( $type );
 
+		$post = array(
+			'post_title'   => $this->get_from_builder( $type, 'title' ),
+			'post_content' => $this->get_from_builder( $type, 'content' ),
+			'post_date'    => $this->_get_publish_date( $type ),
+			'post_author'  => $this->_get_author( $type ),
+			'post_status'  => 'publish',
+			'post_type'    => $type
+		);
+
+		if ( $this->get_from_base( $type, 'excerpt' ) == 'on' ) {
+			$post['post_excerpt'] = $this->get_from_builder( $type, 'excerpt' );
+		}
+
+		$post['tax_input'] = $this->_get_terms( $type );
+
+		if ( is_post_type_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {
+			$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
+
+			if ( $toplevel >= $this->current_item() + 1 && ! empty( $this->_posts_cache[ $type ] ) ) {
+				$item                = $this->_posts_cache[ $type ][ array_rand( $this->_posts_cache[ $type ] ) ];
+				$post['post_parent'] = $item->post_id;
+			}
+		}
+
+		$post_id = wp_insert_post( $post );
+
+		if ( ! is_wp_error( $post_id ) ) {
+			$this->_posts_cache[ $type ][] = (object) array( 'post_id' => $post_id );
+
+			update_post_meta( $post_id, '_demopress_generated_content', '1' );
+
+			$this->add_log_entry(
+				sprintf( __( "Added Post - ID: %s, Name: '%s'", "demopress" ),
+					$post_id, $post['post_title'] ) );
+
+			if ( $this->get_from_base( $type, 'featured' ) == 'on' ) {
+				$image = $this->get_from_builder( $type, 'featured' );
+
+				if ( ! is_wp_error( $image ) && is_string( $image ) && file_exists( $image ) ) {
+					$image = $this->_attach_featured_image( $image, $post_id );
+				}
+
+				if ( is_wp_error( $image ) ) {
+					$this->add_log_entry( __( "Failed attaching the image.", "demopress" ) );
+				}
+			}
+
+			shuffle( $this->_posts_cache[ $type ] );
+		} else {
+			$this->add_log_entry(
+				sprintf( __( "Failed creating the post. Name: '%s'", "demopress" ),
+					$post['post_title'] ) );
+		}
+
+		$this->item_done();
+	}
+
+	private function _get_terms( $type ) {
+		$terms      = array();
+		$taxonomies = $this->get_from_base( $type, 'taxonomy' );
+
+		foreach ( $taxonomies as $tax => $settings ) {
+			if ( $settings['generate'] == 'on' ) {
+				$this->_cache_terms( $tax );
+
+				if ( ! empty( $this->_terms_cache[ $tax ] ) ) {
+					$assign = true;
+					if ( $settings['assign'] < 100 ) {
+						$assign = $settings['assign'] > mt_rand( 1, 100 );
+					}
+
+					if ( $assign ) {
+						$range = explode( '=>', $settings['terms'] );
+						$range = array_map( 'absint', $range );
+
+						$count = mt_rand( $range[0], $range[1] );
+
+						if ( $count >= count( $this->_terms_cache[ $tax ] ) ) {
+							$pick = array_keys( $this->_terms_cache[ $tax ] );
+						} else {
+							$pick = (array) array_rand( $this->_terms_cache[ $tax ], $count );
+						}
+
+						foreach ( $pick as $key ) {
+							$terms[ $tax ][] = $this->_terms_cache[ $tax ][ $key ]->term_id;
+						}
+					}
+				}
+			}
+		}
+
+		return $terms;
+	}
+
+	private function _get_author( $type ) {
+		$authors = $this->get_from_base( $type, 'published', 'author' );
+
+		if ( ! empty( $authors ) ) {
+			$authors = explode( ',', $authors );
+			$authors = array_map( 'trim', $authors );
+			$authors = array_map( 'absint', $authors );
+			$authors = array_unique( $authors );
+			$authors = array_filter( $authors );
+		} else {
+			$authors = array();
+		}
+
+		if ( empty( $authors ) ) {
+			$this->_cache_users();
+
+			$authors = $this->_users_cache;
+		}
+
+		$key = array_rand( $authors );
+
+		return $authors[ $key ];
+	}
+
+	private function _get_publish_date( $type ) {
+		$range = $this->get_from_base( $type, 'published' );
+
+		$from_date = DateTime::createFromFormat( '!Y-m-d', $range['from'] );
+		$to_date   = DateTime::createFromFormat( '!Y-m-d', $range['to'] );
+
+		$random      = mt_rand( $from_date->getTimestamp(), $to_date->getTimestamp() + DAY_IN_SECONDS - 1 );
+		$random_date = new DateTime();
+		$random_date->setTimestamp( $random );
+
+		return $random_date->format( 'Y-m-d H:i:s' );
+	}
+
+	private function _attach_featured_image( $image, $post_id = 1 ) {
+		$uploader      = new LocalImage( $image );
+		$attachment_id = $uploader->upload( $post_id, true );
+
+		if ( file_exists( $image ) ) {
+			unlink( $image );
+		}
+
+		return $attachment_id;
+	}
+
+	private function _cache_users() {
+		if ( empty( $this->_users_cache ) ) {
+			$query = new WP_User_Query( array(
+				'role__in' => array( 'administrator', 'editor', 'author' ),
+				'fields'   => 'ID',
+				'number'   => - 1
+			) );
+
+			$this->_users_cache = $query->get_results();
+		}
+	}
+
+	private function _cache_posts( $type ) {
+		if ( empty( $this->_posts_cache[ $type ] ) ) {
+			$this->_posts_cache[ $type ] = demopress_db()->get_posts_for_post_type( $type );
+		}
+	}
+
+	private function _cache_terms( $tax ) {
+		if ( empty( $this->_terms_cache[ $tax ] ) ) {
+			$this->_terms_cache[ $tax ] = demopress_db()->get_terms_for_taxonomy( $tax );
+		}
 	}
 
 	public function get_list_of_types() {

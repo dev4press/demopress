@@ -12,7 +12,7 @@ class GetBack extends BaseGetBack {
 	protected function process() {
 		parent::process();
 
-		if ( $this->a()->panel === 'generator' ) {
+		if ( $this->a()->page ) {
 			if ( $this->is_single_action( 'stoptask' ) ) {
 				$this->task_stop();
 			}

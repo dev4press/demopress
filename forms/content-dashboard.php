@@ -119,6 +119,9 @@ use Dev4Press\Core\Options\Render;
         </div>
 
 		<?php
+
+        demopress_gen()->run();
+
 	}
 
 	?>

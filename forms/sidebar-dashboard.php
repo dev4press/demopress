@@ -58,14 +58,14 @@ $_subpanels = d4p_panel()->subpanels();
 					<?php _e( "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immidiate, it can take up to 15 seconds for the running process to get the stop message.", "demopress" ) ?>
                 </div>
                 <div class="d4p-panel-buttons">
-                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&action=stoptask' ), 'demopress-task-stop' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Stop Generator", "demopress" ); ?></a>
+                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=stoptask' ), 'demopress-task-stop' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Stop Generator", "demopress" ); ?></a>
                 </div>
 			<?php } else if ( demopress_gen()->is_finished() || demopress_gen()->is_error() ) { ?>
                 <div class="d4p-panel-info">
 					<?php _e( "The generator is has finished the last task. Use the button below to reset the last task data.", "demopress" ) ?>
                 </div>
                 <div class="d4p-panel-buttons">
-                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&action=resettask' ), 'demopress-task-reset' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Reset Generator", "demopress" ); ?></a>
+                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=resettask' ), 'demopress-task-reset' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Reset Generator", "demopress" ); ?></a>
                 </div>
 			<?php } ?>
         </div>

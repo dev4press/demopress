@@ -9,5 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Image {
-
+	public function get_temp_dir() {
+		return get_temp_dir();
+	}
 }

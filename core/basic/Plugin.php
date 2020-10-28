@@ -353,9 +353,10 @@ class Plugin extends Core {
 		if ( ! empty( $_api_key ) ) {
 			$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
 				__( "Download and use images from Pixabay.com website.", "demopress" ),
-				true, array( 'local'       => true,
-				             'api_key'     => $_api_key,
-				             'full_access' => demopress_settings()->get( 'pixabay_full_access' )
+				true, array(
+					'local'       => true,
+					'api_key'     => $_api_key,
+					'full_access' => demopress_settings()->get( 'pixabay_full_access' )
 				)
 			);
 

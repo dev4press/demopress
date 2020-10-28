@@ -4,6 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
+use Dev4Press\Plugin\DemoPress\Library\Placeholder as LibPlaceholder;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,6 +23,17 @@ class Placeholder extends Base {
 	}
 
 	public function run( $settings = array() ) {
+		$args = array(
+			'path' => $this->get_temp_dir()
+		);
 
+		$dim = isset( $settings['dimensions'] ) ? explode( 'x', $settings['dimensions'] ) : false;
+
+		if ( $dim !== false ) {
+			$args['width']  = absint( $dim[0] );
+			$args['height'] = absint( $dim[1] );
+		}
+
+		return LibPlaceholder::instance()->image( $args );
 	}
 }
