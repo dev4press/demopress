@@ -36,7 +36,7 @@ class Users extends Generator {
 			$settings = $obj->settings( 'users', 'users', 'name', 'demopress-builders-name', $_hidden );
 
 			if ( ! empty( $settings ) ) {
-				$_username_settings = array_merge( $_username_settings, $settings );
+				$_settings = array_merge( $_settings, $settings );
 			}
 
 			$_hidden = true;
@@ -133,12 +133,11 @@ class Users extends Generator {
 			'about'    => ''
 		);
 
-		$user['username'] = sanitize_title( $user['name'] );
-		$user['email']    = $this->_generate_email( $user['username'] );
-
 		$name              = explode( ' ', $user['name'] );
 		$user['firstname'] = $name[0];
 		$user['lastname']  = $name[1];
+		$user['username']  = sanitize_user( $user['name'], true );
+		$user['email']     = $this->_generate_email( $user['username'] );
 
 		if ( empty( $user['password'] ) ) {
 			$user['password'] = wp_generate_password();
@@ -156,13 +155,13 @@ class Users extends Generator {
 				$u->set_role( $this->_generate_role() );
 
 				wp_update_user( array(
-					'ID'                        => $user_id,
-					'description'               => $user['about'],
-					'nickname'                  => $user['firstname'],
-					'first_name'                => $user['firstname'],
-					'last_name'                 => $user['lastname'],
-					'display_name'              => $user['name'],
-					'_demopress_auto_generated' => '1'
+					'ID'                           => $user_id,
+					'description'                  => $user['about'],
+					'nickname'                     => $user['firstname'],
+					'first_name'                   => $user['firstname'],
+					'last_name'                    => $user['lastname'],
+					'display_name'                 => $user['name'],
+					'_demopress_generated_content' => '1'
 				) );
 			}
 
