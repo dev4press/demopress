@@ -28,12 +28,14 @@ class Users extends Generator {
 		$_sections = array();
 
 		$_settings = array(
-			EL::i( 'users', 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array( 'class' => 'demopress-builders-name' ) )
+			EL::i( $this->name, 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array(
+				'data'          => array( 'switch' => 'demopress-builders-name' ),
+				'wrapper_class' => 'demopress-builder-switch' ) )
 		);
 
 		$_hidden = false;
 		foreach ( $this->objects['name'] as $obj ) {
-			$settings = $obj->settings( 'users', 'users', 'name', 'demopress-builders-name', $_hidden );
+			$settings = $obj->settings( $this->name, 'users', 'name', 'demopress-builders-name', $_hidden );
 
 			if ( ! empty( $settings ) ) {
 				$_settings = array_merge( $_settings, $settings );
@@ -50,8 +52,8 @@ class Users extends Generator {
 		);
 
 		$_settings = array(
-			EL::i( 'users', 'users-base-about', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
-			EL::i( 'users', 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array(
+			EL::i( $this->name, 'users-base-about', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
+			EL::i( $this->name, 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array(
 				'data'          => array( 'switch' => 'demopress-builders-about' ),
 				'wrapper_class' => 'demopress-builder-switch'
 			) )
@@ -59,7 +61,7 @@ class Users extends Generator {
 
 		$_hidden = false;
 		foreach ( $this->objects['about'] as $obj ) {
-			$settings = $obj->settings( 'users', 'users', 'about', 'demopress-builders-about', $_hidden );
+			$settings = $obj->settings( $this->name, 'users', 'about', 'demopress-builders-about', $_hidden );
 
 			if ( ! empty( $settings ) ) {
 				$_settings = array_merge( $_settings, $settings );
@@ -84,8 +86,8 @@ class Users extends Generator {
 						'name'     => '',
 						'class'    => '',
 						'settings' => array(
-							EL::i( 'users', 'type-users', '', '', Type::HIDDEN, 'on' ),
-							EL::i( 'users', 'users-base-count', __( "Number of Users", "demopress" ), '', Type::ABSINT, 5 )->args( array( 'min' => 1 ) )
+							EL::i( $this->name, 'type-users', '', '', Type::HIDDEN, 'on' ),
+							EL::i( $this->name, 'users-base-count', __( "Number of Users", "demopress" ), '', Type::ABSINT, 5 )->args( array( 'min' => 1 ) )
 						)
 					)
 				)
@@ -98,7 +100,7 @@ class Users extends Generator {
 						'name'     => '',
 						'class'    => '',
 						'settings' => array(
-							EL::i( 'users', 'users-base-roles', __( "Roles for Users", "demopress" ), __( "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role.", "demopress" ), Type::CHECKBOXES, array( 'subscriber' ) )->data( 'array', $this->get_user_roles() )
+							EL::i( $this->name, 'users-base-roles', __( "Roles for Users", "demopress" ), __( "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role.", "demopress" ), Type::CHECKBOXES, array( 'subscriber' ) )->data( 'array', $this->get_user_roles() )
 						)
 					),
 					array(
@@ -106,7 +108,7 @@ class Users extends Generator {
 						'name'     => '',
 						'class'    => '',
 						'settings' => array(
-							EL::i( 'users', 'users-base-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
+							EL::i( $this->name, 'users-base-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
 						)
 					),
 					array(
@@ -114,7 +116,7 @@ class Users extends Generator {
 						'name'     => '',
 						'class'    => '',
 						'settings' => array(
-							EL::i( 'users', 'users-base-password', __( "Default Password", "demopress" ), __( "All users will be created with the same password. If this field is empty, each user will get random password.", "demopress" ), Type::TEXT )
+							EL::i( $this->name, 'users-base-password', __( "Default Password", "demopress" ), __( "All users will be created with the same password. If this field is empty, each user will get random password.", "demopress" ), Type::TEXT )
 						)
 					)
 				)

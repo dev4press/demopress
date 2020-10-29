@@ -25,10 +25,13 @@ class LoremIpsum extends Base {
 		$defaults = array(
 			'paragraphs' => 2,
 			'block'      => false,
+			'length'     => 'short',
 			'html'       => array( 'decorate', 'link', 'headers' )
 		);
 
 		$settings = wp_parse_args( $settings, $defaults );
+
+		LibLoremIpsum::instance()->change_length( $settings['length'] );
 
 		return LibLoremIpsum::instance()->html( $settings['paragraphs'], $settings['html'], $settings['block'] );
 	}

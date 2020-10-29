@@ -20,6 +20,10 @@ class LoremIpsum extends Library {
 		return $this->_object->protected_first( 0 )->words( $count, false, false );
 	}
 
+	public function change_length( $method ) {
+		$this->_object->set_paragraph_gauss( $method );
+	}
+
 	public function paragraphs( $count ) {
 		return $this->_object->paragraphs( $count, false, false );
 	}

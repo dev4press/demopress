@@ -4,6 +4,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+function demopress_post_type_support_comment_type( $post_type, $comment_type ) {
+	switch ( $comment_type ) {
+		case 'comment':
+			return post_type_supports( $post_type, 'comments' );
+		default:
+			return apply_filters( 'demopress_post_type_support_comment_type', false, $post_type, $comment_type );
+	}
+}
+
+function demopress_get_comment_types() {
+	return apply_filters( 'demopress_get_comment_types', array(
+			'comment' => (object) array(
+				'label' => __( "Comment" )
+			)
+		)
+	);
+}
+
 function demopress_get_taxonomies() {
 	$taxonomies = get_taxonomies( array( 'public' => true, 'show_ui' => true ), 'objects' );
 

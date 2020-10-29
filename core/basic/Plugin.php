@@ -319,12 +319,12 @@ class Plugin extends Core {
 			__( "Generate terms using PHP Randomizer generator.", "demopress" )
 		);
 
-		$this->register_builder_name( 'LoremIpsum', 'Lorem Ipsum',
-			__( "Generate names using PHP Lorem Ipsum generator.", "demopress" )
-		);
-
 		$this->register_builder_name( 'RandomNames', 'Random Names',
 			__( "Generate names using PHP Random Names generator.", "demopress" )
+		);
+
+		$this->register_builder_name( 'LoremIpsum', 'Lorem Ipsum',
+			__( "Generate names using PHP Lorem Ipsum generator.", "demopress" )
 		);
 
 		$this->register_builder_name( 'Randomizer', 'Randomizer',
