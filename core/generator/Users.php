@@ -138,8 +138,8 @@ class Users extends Generator {
 		$name              = explode( ' ', $user['name'] );
 		$user['firstname'] = $name[0];
 		$user['lastname']  = $name[1];
-		$user['username']  = sanitize_user( $user['name'], true );
-		$user['email']     = $this->_generate_email( $user['username'] );
+		$user['username']  = str_replace(' ', '.', strtolower(sanitize_user( $user['name'], true )));
+		$user['email']     = $this->_generate_email( strtolower($name[0].'.'.$name[1]) );
 
 		if ( empty( $user['password'] ) ) {
 			$user['password'] = wp_generate_password();

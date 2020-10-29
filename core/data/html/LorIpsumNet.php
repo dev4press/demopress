@@ -55,6 +55,6 @@ class LorIpsumNet extends Base {
 			return new WP_Error( 'remove_get', __( "No response received.", "demopress" ) );
 		}
 
-		return $get['body'];
+		return trim($get['body']);
 	}
 }

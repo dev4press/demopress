@@ -283,7 +283,21 @@ class Posts extends Generator {
 			$post['post_excerpt'] = $this->get_from_builder( $type, 'excerpt' );
 		}
 
-		$post['tax_input'] = $this->_get_terms( $type );
+		$terms = $this->_get_terms( $type );
+
+		foreach ($terms as $tax => $t) {
+			if ($tax == 'category') {
+				$post['post_category'] = $t;
+				unset($terms[$tax]);
+			} else if ($tax == 'post_tag') {
+				$post['tags_input'] = $t;
+				unset($terms[$tax]);
+			}
+		}
+
+		if (!empty($terms)) {
+			$post['tax_input'] = '';
+		}
 
 		if ( is_post_type_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {
 			$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
@@ -354,7 +368,8 @@ class Posts extends Generator {
 						}
 
 						foreach ( $pick as $key ) {
-							$terms[ $tax ][] = $this->_terms_cache[ $tax ][ $key ]->term_id;
+							$id = $this->_terms_cache[ $tax ][ $key ]->term_id;
+							$terms[ $tax ][] = absint($id);
 						}
 					}
 				}

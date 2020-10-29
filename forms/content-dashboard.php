@@ -116,12 +116,17 @@ use Dev4Press\Core\Options\Render;
                     <i class="d4p-icon d4p-ui-spinner d4p-icon-spin"></i> <?php _e( "Checking progress...", "demopress" ); ?>
                 </div>
             </div>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    if (jQuery(".demopress-gen-status-running").length === 1) {
+                        window.wp.demopress.generator.log.init();
+                    }
+                });
+            </script>
         </div>
 
 		<?php
-
-        demopress_gen()->run();
-
 	}
 
 	?>
