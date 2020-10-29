@@ -8,8 +8,8 @@ trait Panel {
 		$admin->css( 'admin' );
 		$admin->js( 'admin' );
 
-		wp_localize_script('demopress-admin', 'demopress_data', array(
-			'nonce' => wp_create_nonce('demopress_get_generator_status')
-		));
+		wp_localize_script( 'demopress-admin', 'demopress_data', array(
+			'nonce' => wp_create_nonce( 'demopress_get_generator_status' )
+		) );
 	}
 }

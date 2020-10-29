@@ -9,6 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 use Dev4Press\Plugin\DemoPress\Exception\Builder;
 
 abstract class Generator {
+	protected $_terms_cache = array();
+	protected $_posts_cache = array();
+	protected $_users_cache = array();
+
 	protected $_settings = array();
 	protected $_progress = array();
 	protected $_types = array();
@@ -293,7 +297,31 @@ abstract class Generator {
 		return $result;
 	}
 
-	abstract public function get_list_of_types();
+	protected function _cache_users( $roles = array() ) {
+		if ( empty( $this->_users_cache ) ) {
+			$query = new WP_User_Query( array(
+				'role__in' => $roles,
+				'fields'   => 'ID',
+				'number'   => - 1
+			) );
+
+			$this->_users_cache = $query->get_results();
+		}
+	}
+
+	protected function _cache_posts( $type ) {
+		if ( empty( $this->_posts_cache[ $type ] ) ) {
+			$this->_posts_cache[ $type ] = demopress_db()->get_posts_for_post_type( $type );
+		}
+	}
+
+	protected function _cache_terms( $tax ) {
+		if ( empty( $this->_terms_cache[ $tax ] ) ) {
+			$this->_terms_cache[ $tax ] = demopress_db()->get_terms_for_taxonomy( $tax );
+		}
+	}
+
+	abstract public function get_list_of_types( $return = 'objects' );
 
 	abstract protected function init_builders();
 

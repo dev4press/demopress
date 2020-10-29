@@ -7,18 +7,19 @@ use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\WordPress\Media\ToLibrary\LocalImage;
-use WP_User_Query;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Posts extends Generator {
-	private $_terms_cache = array();
-	private $_posts_cache = array();
-	private $_users_cache = array();
-
 	public $name = 'posts';
+
+	public function get_list_of_types( $return = 'objects' ) {
+		$post_types = demopress_get_post_types();
+
+		return $return == 'keys' ? array_keys( $post_types ) : $post_types;
+	}
 
 	protected function init_builders() {
 		$this->builders['title']    = array(
@@ -44,7 +45,7 @@ class Posts extends Generator {
 	}
 
 	protected function init_settings() {
-		$post_types = demopress_get_post_types();
+		$post_types = $this->get_list_of_types();
 
 		foreach ( $post_types as $cpt => $post_type ) {
 			$_sections = array(
@@ -285,17 +286,17 @@ class Posts extends Generator {
 
 		$terms = $this->_get_terms( $type );
 
-		foreach ($terms as $tax => $t) {
-			if ($tax == 'category') {
+		foreach ( $terms as $tax => $t ) {
+			if ( $tax == 'category' ) {
 				$post['post_category'] = $t;
-				unset($terms[$tax]);
-			} else if ($tax == 'post_tag') {
+				unset( $terms[ $tax ] );
+			} else if ( $tax == 'post_tag' ) {
 				$post['tags_input'] = $t;
-				unset($terms[$tax]);
+				unset( $terms[ $tax ] );
 			}
 		}
 
-		if (!empty($terms)) {
+		if ( ! empty( $terms ) ) {
 			$post['tax_input'] = '';
 		}
 
@@ -341,7 +342,7 @@ class Posts extends Generator {
 		$this->item_done();
 	}
 
-	private function _get_terms( $type ) {
+	protected function _get_terms( $type ) {
 		$terms      = array();
 		$taxonomies = $this->get_from_base( $type, 'taxonomy' );
 
@@ -368,8 +369,8 @@ class Posts extends Generator {
 						}
 
 						foreach ( $pick as $key ) {
-							$id = $this->_terms_cache[ $tax ][ $key ]->term_id;
-							$terms[ $tax ][] = absint($id);
+							$id              = $this->_terms_cache[ $tax ][ $key ]->term_id;
+							$terms[ $tax ][] = absint( $id );
 						}
 					}
 				}
@@ -379,7 +380,7 @@ class Posts extends Generator {
 		return $terms;
 	}
 
-	private function _get_author( $type ) {
+	protected function _get_author( $type ) {
 		$authors = $this->get_from_base( $type, 'published', 'author' );
 
 		if ( ! empty( $authors ) ) {
@@ -393,7 +394,7 @@ class Posts extends Generator {
 		}
 
 		if ( empty( $authors ) ) {
-			$this->_cache_users();
+			$this->_cache_users( array( 'administrator', 'editor', 'author' ) );
 
 			$authors = $this->_users_cache;
 		}
@@ -403,7 +404,7 @@ class Posts extends Generator {
 		return $authors[ $key ];
 	}
 
-	private function _get_publish_date( $type ) {
+	protected function _get_publish_date( $type ) {
 		$range = $this->get_from_base( $type, 'published' );
 
 		$from_date = DateTime::createFromFormat( '!Y-m-d', $range['from'] );
@@ -416,7 +417,7 @@ class Posts extends Generator {
 		return $random_date->format( 'Y-m-d H:i:s' );
 	}
 
-	private function _attach_featured_image( $image, $post_id = 1 ) {
+	protected function _attach_featured_image( $image, $post_id = 1 ) {
 		$uploader      = new LocalImage( $image );
 		$attachment_id = $uploader->upload( $post_id, true );
 
@@ -425,35 +426,5 @@ class Posts extends Generator {
 		}
 
 		return $attachment_id;
-	}
-
-	private function _cache_users() {
-		if ( empty( $this->_users_cache ) ) {
-			$query = new WP_User_Query( array(
-				'role__in' => array( 'administrator', 'editor', 'author' ),
-				'fields'   => 'ID',
-				'number'   => - 1
-			) );
-
-			$this->_users_cache = $query->get_results();
-		}
-	}
-
-	private function _cache_posts( $type ) {
-		if ( empty( $this->_posts_cache[ $type ] ) ) {
-			$this->_posts_cache[ $type ] = demopress_db()->get_posts_for_post_type( $type );
-		}
-	}
-
-	private function _cache_terms( $tax ) {
-		if ( empty( $this->_terms_cache[ $tax ] ) ) {
-			$this->_terms_cache[ $tax ] = demopress_db()->get_terms_for_taxonomy( $tax );
-		}
-	}
-
-	public function get_list_of_types() {
-		$post_types = demopress_get_post_types();
-
-		return array_keys( $post_types );
 	}
 }

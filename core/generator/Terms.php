@@ -11,9 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Terms extends Generator {
-	private $_terms_cache = array();
-
 	public $name = 'terms';
+
+	public function get_list_of_types( $return = 'objects' ) {
+		$taxonomies = demopress_get_taxonomies();
+
+		return $return == 'keys' ? array_keys( $taxonomies ) : $taxonomies;
+	}
 
 	protected function init_builders() {
 		$this->builders['term']        = array(
@@ -27,7 +31,7 @@ class Terms extends Generator {
 	}
 
 	protected function init_settings() {
-		$taxonomies = demopress_get_taxonomies();
+		$taxonomies = $this->get_list_of_types();
 
 		$this->settings = array();
 
@@ -182,17 +186,5 @@ class Terms extends Generator {
 
 			$this->item_done();
 		}
-	}
-
-	private function _cache_terms( $type ) {
-		if ( empty( $this->_terms_cache[ $type ] ) ) {
-			$this->_terms_cache[ $type ] = demopress_db()->get_terms_for_taxonomy( $type );
-		}
-	}
-
-	public function get_list_of_types() {
-		$taxonomies = demopress_get_taxonomies();
-
-		return array_keys( $taxonomies );
 	}
 }

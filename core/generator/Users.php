@@ -30,7 +30,8 @@ class Users extends Generator {
 		$_settings = array(
 			EL::i( $this->name, 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array(
 				'data'          => array( 'switch' => 'demopress-builders-name' ),
-				'wrapper_class' => 'demopress-builder-switch' ) )
+				'wrapper_class' => 'demopress-builder-switch'
+			) )
 		);
 
 		$_hidden = false;
@@ -138,8 +139,8 @@ class Users extends Generator {
 		$name              = explode( ' ', $user['name'] );
 		$user['firstname'] = $name[0];
 		$user['lastname']  = $name[1];
-		$user['username']  = str_replace(' ', '.', strtolower(sanitize_user( $user['name'], true )));
-		$user['email']     = $this->_generate_email( strtolower($name[0].'.'.$name[1]) );
+		$user['username']  = str_replace( ' ', '.', strtolower( sanitize_user( $user['name'], true ) ) );
+		$user['email']     = $this->_generate_email( strtolower( $name[0] . '.' . $name[1] ) );
 
 		if ( empty( $user['password'] ) ) {
 			$user['password'] = wp_generate_password();
@@ -211,7 +212,7 @@ class Users extends Generator {
 		return $user_from_mail === false && $user_from_name === false;
 	}
 
-	public function get_list_of_types() {
-		return array( 'users' );
+	public function get_list_of_types( $return = 'objects' ) {
+		return array();
 	}
 }

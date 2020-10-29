@@ -16,7 +16,7 @@ function demopress_post_type_support_comment_type( $post_type, $comment_type ) {
 function demopress_get_comment_types() {
 	return apply_filters( 'demopress_get_comment_types', array(
 			'comment' => (object) array(
-				'label' => __( "Comment" )
+				'label' => __( "Comment", "demopress" )
 			)
 		)
 	);
@@ -26,6 +26,16 @@ function demopress_get_taxonomies() {
 	$taxonomies = get_taxonomies( array( 'public' => true, 'show_ui' => true ), 'objects' );
 
 	return apply_filters( 'demopress_get_taxonomies', $taxonomies );
+}
+
+function demopress_get_bbpress_post_types() {
+	$post_types = array(
+		bbp_get_forum_post_type() => get_post_type_object( bbp_get_forum_post_type() ),
+		bbp_get_topic_post_type() => get_post_type_object( bbp_get_topic_post_type() ),
+		bbp_get_reply_post_type() => get_post_type_object( bbp_get_reply_post_type() )
+	);
+
+	return apply_filters( 'demopress_get_bbpress_post_types', $post_types );
 }
 
 function demopress_get_post_types() {

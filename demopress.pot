@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 10/27/2020 06:05:46 PM\n"
+"POT-Creation-Date: 10/29/2020 08:34:36 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgid "Overview"
 msgstr ""
 
 #: core/admin/Plugin.php:46
-#: core/generator/Users.php:71
+#: core/generator/Users.php:73
 #: forms/generator.php:59
 msgid "About"
 msgstr ""
@@ -83,11 +83,11 @@ msgid "Remote Builders"
 msgstr ""
 
 #: core/admin/Settings.php:28
-#: core/generator/Posts.php:130
-#: core/generator/Posts.php:162
-#: core/generator/Posts.php:204
-#: core/generator/Terms.php:84
-#: core/generator/Users.php:52
+#: core/generator/Posts.php:140
+#: core/generator/Posts.php:176
+#: core/generator/Posts.php:221
+#: core/generator/Terms.php:88
+#: core/generator/Users.php:54
 #: forms/generator.php:87
 #: forms/sidebar-dashboard.php:53
 msgid "Status"
@@ -128,40 +128,44 @@ msgstr ""
 msgid "Pexels.com"
 msgstr ""
 
-#: core/base/Generator.php:97
+#: core/base/Generator.php:103
 msgid "Item %s of %s for '%s'."
 msgstr ""
 
-#: core/base/Generator.php:135
+#: core/base/Generator.php:110
+msgid "Generator failed! Builder %s for %s error with message '%s'."
+msgstr ""
+
+#: core/base/Generator.php:151
 msgid "Administrator"
 msgstr ""
 
-#: core/base/Generator.php:136
+#: core/base/Generator.php:152
 msgid "Editor"
 msgstr ""
 
-#: core/base/Generator.php:137
-#: core/generator/Posts.php:119
+#: core/base/Generator.php:153
+#: core/generator/Posts.php:128
 msgid "Author"
 msgstr ""
 
-#: core/base/Generator.php:138
+#: core/base/Generator.php:154
 msgid "Contributor"
 msgstr ""
 
-#: core/base/Generator.php:139
+#: core/base/Generator.php:155
 msgid "Subscriber"
 msgstr ""
 
-#: core/basic/Generator.php:90
+#: core/basic/Generator.php:100
 msgid "New generator task is added."
 msgstr ""
 
-#: core/basic/Generator.php:119
+#: core/basic/Generator.php:129
 msgid "Generator has stalled, trying to recover it..."
 msgstr ""
 
-#: core/basic/Generator.php:132
+#: core/basic/Generator.php:142
 msgid "The generator task has finished."
 msgstr ""
 
@@ -212,11 +216,11 @@ msgid "Generate terms using PHP Randomizer generator."
 msgstr ""
 
 #: core/basic/Plugin.php:322
-msgid "Generate names using PHP Lorem Ipsum generator."
+msgid "Generate names using PHP Random Names generator."
 msgstr ""
 
 #: core/basic/Plugin.php:326
-msgid "Generate names using PHP Random Names generator."
+msgid "Generate names using PHP Lorem Ipsum generator."
 msgstr ""
 
 #: core/basic/Plugin.php:330
@@ -243,154 +247,162 @@ msgstr ""
 msgid "Download and use images from Pixabay.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:362
+#: core/basic/Plugin.php:363
 msgid "Build video tags embedding Vimeo videos from Pixabay.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:370
+#: core/basic/Plugin.php:371
 msgid "Download and use images from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:375
+#: core/basic/Plugin.php:376
 msgid "Build video tags embedding Vimeo videos from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:380
+#: core/basic/Plugin.php:381
 msgid "Users"
 msgstr ""
 
-#: core/basic/Plugin.php:381
+#: core/basic/Plugin.php:382
 msgid "Generate users with various user roles"
 msgstr ""
 
-#: core/basic/Plugin.php:388
+#: core/basic/Plugin.php:389
 msgid "Terms"
 msgstr ""
 
-#: core/basic/Plugin.php:389
+#: core/basic/Plugin.php:390
 msgid "Generate terms for default and custom taxonomies."
 msgstr ""
 
-#: core/basic/Plugin.php:396
+#: core/basic/Plugin.php:397
 msgid "Posts"
 msgstr ""
 
-#: core/basic/Plugin.php:397
+#: core/basic/Plugin.php:398
 msgid "Generate posts for default and custom post types."
 msgstr ""
 
-#: core/basic/Plugin.php:404
+#: core/basic/Plugin.php:405
 msgid "Comments"
 msgstr ""
 
-#: core/basic/Plugin.php:405
+#: core/basic/Plugin.php:406
 msgid "Generate comments for post types supporting comments."
 msgstr ""
 
-#: core/basic/Plugin.php:414
+#: core/basic/Plugin.php:415
 msgid "bbPress Forums"
 msgstr ""
 
-#: core/basic/Plugin.php:415
+#: core/basic/Plugin.php:416
 msgid "Generate forums, topics and replies for bbPress powered forums."
 msgstr ""
 
 #: core/data/html/Base.php:15
-msgid "HTML Settings"
-msgstr ""
-
-#: core/data/html/Base.php:20
-msgid "Bold, italic"
-msgstr ""
-
-#: core/data/html/Base.php:21
-msgid "Links"
-msgstr ""
-
-#: core/data/html/Base.php:22
-msgid "Unordered lists"
-msgstr ""
-
-#: core/data/html/Base.php:23
-msgid "Ordered lists"
-msgstr ""
-
-#: core/data/html/Base.php:24
-msgid "Description lists"
-msgstr ""
-
-#: core/data/html/Base.php:25
-msgid "Blockquotes"
-msgstr ""
-
-#: core/data/html/Base.php:26
-msgid "Code"
-msgstr ""
-
-#: core/data/html/Base.php:27
-msgid "Headers"
-msgstr ""
-
-#: core/data/html/Base.php:31
 #: core/data/text/Base.php:15
 msgid "Number of paragraphs"
 msgstr ""
 
-#: core/data/html/Base.php:31
+#: core/data/html/Base.php:15
 #: core/data/term/Base.php:15
 #: core/data/text/Base.php:15
 msgid "The term will have 1 or more words, up to the limit."
 msgstr ""
 
+#: core/data/html/Base.php:19
+#: core/data/text/Base.php:19
+msgid "Paragraph Length"
+msgstr ""
+
+#: core/data/html/Base.php:20
+#: core/data/text/Base.php:20
+msgid "Short"
+msgstr ""
+
+#: core/data/html/Base.php:21
+#: core/data/text/Base.php:21
+msgid "Medium"
+msgstr ""
+
+#: core/data/html/Base.php:22
+#: core/data/text/Base.php:22
+msgid "Long"
+msgstr ""
+
+#: core/data/html/Base.php:26
+msgid "HTML Settings"
+msgstr ""
+
+#: core/data/html/Base.php:31
+msgid "Bold, italic"
+msgstr ""
+
+#: core/data/html/Base.php:32
+msgid "Links"
+msgstr ""
+
+#: core/data/html/Base.php:33
+msgid "Unordered lists"
+msgstr ""
+
+#: core/data/html/Base.php:34
+msgid "Ordered lists"
+msgstr ""
+
+#: core/data/html/Base.php:35
+msgid "Description lists"
+msgstr ""
+
+#: core/data/html/Base.php:36
+msgid "Blockquotes"
+msgstr ""
+
+#: core/data/html/Base.php:37
+msgid "Code"
+msgstr ""
+
+#: core/data/html/Base.php:38
+msgid "Headers"
+msgstr ""
+
+#: core/data/html/LoremIpsum.php:17
+msgid "Block Editor Ready"
+msgstr ""
+
+#: core/data/html/LoremIpsum.php:17
+msgid "Generated HTML will be formatted for the WordPress block editor. Currently, 'Description lists' are not supported for block formatted HTML."
+msgstr ""
+
 #: core/data/html/LorIpsumNet.php:17
 #: core/data/text/LorIpsumNet.php:17
-msgid "Paragraph Length"
+msgid "More Settings"
 msgstr ""
 
 #: core/data/html/LorIpsumNet.php:18
 #: core/data/text/LorIpsumNet.php:18
-msgid "Short"
+msgid "All caps"
 msgstr ""
 
 #: core/data/html/LorIpsumNet.php:19
 #: core/data/text/LorIpsumNet.php:19
-msgid "Medium"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:20
-#: core/data/text/LorIpsumNet.php:20
-msgid "Long"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:24
-#: core/data/text/LorIpsumNet.php:24
-msgid "More Settings"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:25
-#: core/data/text/LorIpsumNet.php:25
-msgid "All caps"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:26
-#: core/data/text/LorIpsumNet.php:26
 msgid "Prude"
 msgstr ""
 
-#: core/data/html/LorIpsumNet.php:61
-#: core/data/text/LorIpsumNet.php:58
+#: core/data/html/LorIpsumNet.php:54
+#: core/data/text/LorIpsumNet.php:51
 msgid "No response received."
 msgstr ""
 
 #: core/data/image/PexelsCom.php:16
 #: core/data/image/PicsumPhotos.php:16
-#: core/data/image/Placeholder.php:16
+#: core/data/image/Placeholder.php:17
 msgid "Dimensions"
 msgstr ""
 
 #: core/data/image/PexelsCom.php:16
 #: core/data/image/PicsumPhotos.php:16
-#: core/data/image/Placeholder.php:16
+#: core/data/image/Placeholder.php:17
 msgid "Do not set this to dimensions over 3000 by 2000 pixels."
 msgstr ""
 
@@ -427,219 +439,299 @@ msgstr ""
 msgid "Number of words: To"
 msgstr ""
 
-#: core/generator/Posts.php:48
-#: core/generator/Posts.php:134
-#: core/generator/Posts.php:166
-#: core/generator/Posts.php:208
-#: core/generator/Terms.php:40
-#: core/generator/Terms.php:88
+#: core/generator/Comments.php:47
+#: core/generator/Posts.php:57
+#: core/generator/Posts.php:144
+#: core/generator/Posts.php:180
+#: core/generator/Posts.php:225
+#: core/generator/Terms.php:44
+#: core/generator/Terms.php:92
 #: forms/content-dashboard.php:42
 #: forms/generator.php:138
 msgid "Generate"
 msgstr ""
 
-#: core/generator/Posts.php:48
-msgid "Enable this option to generate the posts for this post type, and show options for the generator controls."
+#: core/generator/Comments.php:47
+msgid "Enable this option to generate the posts for this post type and comment type, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Posts.php:56
-#: core/generator/Terms.php:48
+#: core/generator/Comments.php:55
+#: core/generator/Posts.php:65
+#: core/generator/Terms.php:52
 msgid "Basic"
 msgstr ""
 
-#: core/generator/Posts.php:60
-msgid "Number of Posts"
+#: core/generator/Comments.php:59
+msgid "Comments per post"
 msgstr ""
 
-#: core/generator/Posts.php:67
-#: core/generator/Posts.php:92
-#: core/generator/Posts.php:137
-#: core/generator/Posts.php:169
-#: core/generator/Terms.php:59
-#: core/generator/Terms.php:91
+#: core/generator/Comments.php:59
+msgid "This is number of comments to be generated for each post in this post type."
+msgstr ""
+
+#: core/generator/Comments.php:62
+msgid "For how many posts"
+msgstr ""
+
+#: core/generator/Comments.php:62
+msgid "Percentage of total posts to take into account for generating comments."
+msgstr ""
+
+#: core/generator/Comments.php:72
+#: core/generator/Comments.php:112
+#: core/generator/Posts.php:76
+#: core/generator/Posts.php:101
+#: core/generator/Posts.php:147
+#: core/generator/Posts.php:183
+#: core/generator/Terms.php:63
+#: core/generator/Terms.php:95
 #: core/generator/Users.php:30
-#: core/generator/Users.php:53
+#: core/generator/Users.php:55
 msgid "Generate with"
 msgstr ""
 
-#: core/generator/Posts.php:85
-msgid "Title"
-msgstr ""
-
-#: core/generator/Posts.php:110
+#: core/generator/Comments.php:90
+#: core/generator/Posts.php:119
 msgid "Content"
 msgstr ""
 
-#: core/generator/Posts.php:117
-msgid "From"
+#: core/generator/Comments.php:98
+msgid "Authors"
 msgstr ""
 
-#: core/generator/Posts.php:118
-msgid "To"
+#: core/generator/Comments.php:102
+msgid "Registered users"
 msgstr ""
 
-#: core/generator/Posts.php:119
-msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
+#: core/generator/Comments.php:102
+msgid "Percentage of total comments to be authored by the registered users."
 msgstr ""
 
-#: core/generator/Posts.php:123
-msgid "Published"
+#: core/generator/Comments.php:130
+msgid "Visitors as comment authors"
 msgstr ""
 
-#: core/generator/Posts.php:130
-msgid "Excerpt is optional."
-msgstr ""
-
-#: core/generator/Posts.php:131
-#: core/generator/Posts.php:163
-#: core/generator/Posts.php:205
-#: core/generator/Terms.php:85
-msgid "Enabled"
-msgstr ""
-
-#: core/generator/Posts.php:132
-#: core/generator/Posts.php:164
-#: core/generator/Posts.php:206
-#: core/generator/Terms.php:86
-msgid "Disabled"
-msgstr ""
-
-#: core/generator/Posts.php:155
-msgid "Excerpt"
-msgstr ""
-
-#: core/generator/Posts.php:162
-msgid "Featured image is optional. But, it has to be downloaded, it can't be a link to external image."
-msgstr ""
-
-#: core/generator/Posts.php:187
-msgid "Featured Image"
-msgstr ""
-
-#: core/generator/Posts.php:204
-msgid "Assigning terms is optional."
-msgstr ""
-
-#: core/generator/Posts.php:211
-msgid "Assign to posts"
-msgstr ""
-
-#: core/generator/Posts.php:211
-msgid "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."
-msgstr ""
-
-#: core/generator/Posts.php:217
-msgid "Terms to assign"
-msgstr ""
-
-#: core/generator/Posts.php:217
-msgid "Number of terms to assign inside the specified range, at random."
-msgstr ""
-
-#: core/generator/Posts.php:221
-msgid "Assign terms for '%s'"
-msgstr ""
-
-#: core/generator/Posts.php:230
-#: core/generator/Terms.php:117
-msgid "Hierarchy"
-msgstr ""
-
-#: core/generator/Posts.php:234
-msgid "Top level posts"
-msgstr ""
-
-#: core/generator/Posts.php:234
-msgid "Percentage of total posts to generate to be top level posts."
-msgstr ""
-
-#: core/generator/Terms.php:40
-msgid "Enable this option to generate the terms for this taxonomy, and show options for the generator controls."
-msgstr ""
-
-#: core/generator/Terms.php:52
-msgid "Number of Terms"
-msgstr ""
-
-#: core/generator/Terms.php:77
-#: core/generator/Users.php:45
-msgid "Name"
-msgstr ""
-
-#: core/generator/Terms.php:109
-msgid "Description"
-msgstr ""
-
-#: core/generator/Terms.php:121
-msgid "Top level terms"
-msgstr ""
-
-#: core/generator/Terms.php:121
-msgid "Percentage of total terms to generate to be top level terms."
-msgstr ""
-
-#: core/generator/Terms.php:177
-msgid "Added Term - ID: %s, Term: '%s'"
-msgstr ""
-
-#: core/generator/Users.php:79
-msgid "Users to generate"
-msgstr ""
-
-#: core/generator/Users.php:87
-msgid "Number of Users"
-msgstr ""
-
-#: core/generator/Users.php:93
-msgid "Data for users"
-msgstr ""
-
-#: core/generator/Users.php:96
-msgid "Roles"
-msgstr ""
-
-#: core/generator/Users.php:100
-msgid "Roles for Users"
-msgstr ""
-
-#: core/generator/Users.php:100
-msgid "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role."
-msgstr ""
-
-#: core/generator/Users.php:104
-msgid "Email"
-msgstr ""
-
-#: core/generator/Users.php:108
+#: core/generator/Comments.php:141
+#: core/generator/Users.php:110
 msgid "Email Domains"
 msgstr ""
 
-#: core/generator/Users.php:108
+#: core/generator/Comments.php:141
+#: core/generator/Users.php:110
 msgid "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random."
 msgstr ""
 
-#: core/generator/Users.php:112
+#: core/generator/Comments.php:150
+#: core/generator/Posts.php:247
+#: core/generator/Terms.php:121
+msgid "Hierarchy"
+msgstr ""
+
+#: core/generator/Comments.php:154
+msgid "Top level comments"
+msgstr ""
+
+#: core/generator/Comments.php:154
+msgid "Percentage of total comments to generate to be top level comments."
+msgstr ""
+
+#: core/generator/Comments.php:167
+msgid "%s for %s"
+msgstr ""
+
+#: core/generator/Posts.php:57
+msgid "Enable this option to generate the posts for this post type, and show options for the generator controls."
+msgstr ""
+
+#: core/generator/Posts.php:69
+msgid "Number of Posts"
+msgstr ""
+
+#: core/generator/Posts.php:94
+msgid "Title"
+msgstr ""
+
+#: core/generator/Posts.php:126
+msgid "From"
+msgstr ""
+
+#: core/generator/Posts.php:127
+msgid "To"
+msgstr ""
+
+#: core/generator/Posts.php:128
+msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
+msgstr ""
+
+#: core/generator/Posts.php:132
+msgid "Published"
+msgstr ""
+
+#: core/generator/Posts.php:140
+msgid "Excerpt is optional."
+msgstr ""
+
+#: core/generator/Posts.php:141
+#: core/generator/Posts.php:177
+#: core/generator/Posts.php:222
+#: core/generator/Terms.php:89
+msgid "Enabled"
+msgstr ""
+
+#: core/generator/Posts.php:142
+#: core/generator/Posts.php:178
+#: core/generator/Posts.php:223
+#: core/generator/Terms.php:90
+msgid "Disabled"
+msgstr ""
+
+#: core/generator/Posts.php:165
+msgid "Excerpt"
+msgstr ""
+
+#: core/generator/Posts.php:176
+msgid "Featured image is optional. But, it has to be downloaded, it can't be a link to external image."
+msgstr ""
+
+#: core/generator/Posts.php:201
+msgid "Featured Image"
+msgstr ""
+
+#: core/generator/Posts.php:221
+msgid "Assigning terms is optional."
+msgstr ""
+
+#: core/generator/Posts.php:228
+msgid "Assign to posts"
+msgstr ""
+
+#: core/generator/Posts.php:228
+msgid "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."
+msgstr ""
+
+#: core/generator/Posts.php:234
+msgid "Terms to assign"
+msgstr ""
+
+#: core/generator/Posts.php:234
+msgid "Number of terms to assign inside the specified range, at random."
+msgstr ""
+
+#: core/generator/Posts.php:238
+msgid "Assign terms for '%s'"
+msgstr ""
+
+#: core/generator/Posts.php:251
+msgid "Top level posts"
+msgstr ""
+
+#: core/generator/Posts.php:251
+msgid "Percentage of total posts to generate to be top level posts."
+msgstr ""
+
+#: core/generator/Posts.php:320
+msgid "Added Post - ID: %s, Name: '%s'"
+msgstr ""
+
+#: core/generator/Posts.php:331
+msgid "Failed attaching the image."
+msgstr ""
+
+#: core/generator/Posts.php:338
+msgid "Failed creating the post. Name: '%s'"
+msgstr ""
+
+#: core/generator/Terms.php:44
+msgid "Enable this option to generate the terms for this taxonomy, and show options for the generator controls."
+msgstr ""
+
+#: core/generator/Terms.php:56
+msgid "Number of Terms"
+msgstr ""
+
+#: core/generator/Terms.php:81
+#: core/generator/Users.php:47
+msgid "Name"
+msgstr ""
+
+#: core/generator/Terms.php:113
+msgid "Description"
+msgstr ""
+
+#: core/generator/Terms.php:125
+msgid "Top level terms"
+msgstr ""
+
+#: core/generator/Terms.php:125
+msgid "Percentage of total terms to generate to be top level terms."
+msgstr ""
+
+#: core/generator/Terms.php:181
+msgid "Added Term - ID: %s, Term: '%s'"
+msgstr ""
+
+#: core/generator/Users.php:81
+msgid "Users to generate"
+msgstr ""
+
+#: core/generator/Users.php:89
+msgid "Number of Users"
+msgstr ""
+
+#: core/generator/Users.php:95
+msgid "Data for users"
+msgstr ""
+
+#: core/generator/Users.php:98
+msgid "Roles"
+msgstr ""
+
+#: core/generator/Users.php:102
+msgid "Roles for Users"
+msgstr ""
+
+#: core/generator/Users.php:102
+msgid "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role."
+msgstr ""
+
+#: core/generator/Users.php:106
+msgid "Email"
+msgstr ""
+
+#: core/generator/Users.php:114
 msgid "Password"
 msgstr ""
 
-#: core/generator/Users.php:116
+#: core/generator/Users.php:118
 msgid "Default Password"
 msgstr ""
 
-#: core/generator/Users.php:116
+#: core/generator/Users.php:118
 msgid "All users will be created with the same password. If this field is empty, each user will get random password."
 msgstr ""
 
-#: core/generator/Users.php:122
+#: core/generator/Users.php:124
 msgid "Generated data for users"
 msgstr ""
 
-#: core/generator/Users.php:169
+#: core/generator/Users.php:170
 msgid "Added User - ID: %s, Username: '%s'"
 msgstr ""
 
-#: core/generator/Users.php:172
+#: core/generator/Users.php:173
 msgid "Email: '%s', Name: '%s'"
+msgstr ""
+
+#: core/functions.php:18
+msgid "Comment"
+msgstr ""
+
+#: forms/generators/comments.php:1
+msgid "Comments Generator"
+msgstr ""
+
+#: forms/generators/comments.php:3
+msgid "Some of the generator features depend on the global comments settings, and these features will be disabled if they are not currently enabled in WordPress settings. This includes threaded comments and allowing non-registered users to leave comments."
 msgstr ""
 
 #: forms/generators/posts.php:1
@@ -648,6 +740,22 @@ msgstr ""
 
 #: forms/generators/posts.php:3
 msgid "Each post type can be configured individually. Terms assignment options for each post type will be displayed for taxonomies assigned to post types and only if these taxonomies have at least one available term. If you are generating data for everything, it is best to first run terms generator and create terms before running posts generator."
+msgstr ""
+
+#: forms/generators/terms.php:1
+msgid "Terms Generator"
+msgstr ""
+
+#: forms/generators/terms.php:3
+msgid "X"
+msgstr ""
+
+#: forms/generators/users.php:1
+msgid "Users Generator"
+msgstr ""
+
+#: forms/generators/users.php:3
+msgid "If you use the generated users for testing purposes, you can set the same password for all users, and you can easily log in into different generated accounts."
 msgstr ""
 
 #: forms/shared/generator.php:1

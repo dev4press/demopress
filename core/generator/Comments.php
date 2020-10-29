@@ -13,6 +13,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Comments extends Generator {
 	public $name = 'comments';
 
+	public function get_list_of_types( $return = 'objects' ) {
+		$comment_types = demopress_get_comment_types();
+
+		return $return == 'keys' ? array_keys( $comment_types ) : $comment_types;
+	}
+
 	protected function init_builders() {
 		$this->builders['content'] = array(
 			'type' => 'text',
@@ -25,8 +31,8 @@ class Comments extends Generator {
 	}
 
 	protected function init_settings() {
+		$comment_types = $this->get_list_of_types();
 		$post_types    = demopress_get_post_types();
-		$comment_types = demopress_get_comment_types();
 
 		foreach ( $post_types as $cpt => $post_type ) {
 			foreach ( $comment_types as $cmm => $comment_type ) {
@@ -104,15 +110,15 @@ class Comments extends Generator {
 						);
 
 						$_settings = array(
-							EL::i( $this->name, $_type.'-builder-authors-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
-								'data'          => array( 'switch' => 'demopress-builders-name'.$_type ),
+							EL::i( $this->name, $_type . '-builder-authors-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
+								'data'          => array( 'switch' => 'demopress-builders-name' . $_type ),
 								'wrapper_class' => 'demopress-builder-switch'
 							) )
 						);
 
 						$_hidden = false;
 						foreach ( $this->objects['name'] as $obj ) {
-							$settings = $obj->settings( $this->name, $_type, 'authors-name', 'demopress-builders-name'.$_type, $_hidden );
+							$settings = $obj->settings( $this->name, $_type, 'authors-name', 'demopress-builders-name' . $_type, $_hidden );
 
 							if ( ! empty( $settings ) ) {
 								$_settings = array_merge( $_settings, $settings );
@@ -133,7 +139,7 @@ class Comments extends Generator {
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( $this->name, $_type.'-builder-authors-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
+								EL::i( $this->name, $_type . '-builder-authors-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
 							)
 						);
 					} else {
@@ -159,7 +165,7 @@ class Comments extends Generator {
 					}
 
 					$this->settings[ $cpt ] = array(
-						'name'     => sprintf( __( "%s for %s" ), $comment_type->label, $post_type->label ),
+						'name'     => sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label ),
 						'sections' => $_sections,
 						'args'     => array( 'class' => 'demopress-type-settings-hidden' )
 					);
@@ -173,12 +179,7 @@ class Comments extends Generator {
 	}
 
 	protected function generate_item( $type ) {
+		list( $cpt, $cmm ) = explode( '::', $type );
 
-	}
-
-	public function get_list_of_types() {
-		$comment_types = demopress_get_comment_types();
-
-		return array_keys( $comment_types );
 	}
 }
