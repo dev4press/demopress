@@ -8,10 +8,10 @@ Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Responsive and modern theme to fully replace default bbPress theme templates and styles, with multiple colour schemes and Customizer integration for more control.
+Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
 
 == Description ==
-Responsive and modern theme to fully replace default bbPress theme templates and styles, with multiple colour schemes and Customizer integration for more control.
+Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
 
 == Installation ==
 = General Requirements =
