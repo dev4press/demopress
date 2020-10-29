@@ -21,7 +21,7 @@ class Placeholder extends Library {
 	public function image( $args = array() ) {
 		$defaults = array(
 			'width'  => 1280,
-			'height' => 1280,
+			'height' => 720,
 			'name'   => false,
 			'path'   => false
 		);
@@ -33,7 +33,7 @@ class Placeholder extends Library {
 		try {
 			$file = $this->_object->generate( $args['name'], $args['path'] );
 		} catch ( Exception $e ) {
-			$file = new WP_Error( 'image_faild', $e->getMessage() );
+			$file = new WP_Error( 'image_failed', $e->getMessage() );
 		}
 
 		return $file;
