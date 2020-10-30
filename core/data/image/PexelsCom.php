@@ -4,6 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
+use Dev4Press\Plugin\DemoPress\Library\Pexels;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,13 +27,19 @@ class PexelsCom extends Base {
 	}
 
 	public function run( $settings = array() ) {
-		$defaults = array(
-			'dimensions' => '1280x720',
-			'query' => ''
+		$args = array(
+			'query' => isset($settings['query']) ? $settings['query'] : '',
+			'width' => 1280,
+			'height' => 720
 		);
 
-		$settings = wp_parse_args($settings, $defaults);
+		$dim = isset( $settings['dimensions'] ) ? explode( 'x', $settings['dimensions'] ) : false;
 
+		if ( $dim !== false ) {
+			$args['width']  = absint( $dim[0] );
+			$args['height'] = absint( $dim[1] );
+		}
 
+		return Pexels::instance()->image($args);
 	}
 }

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Placeholder extends Base {
 	public $name = 'placeholder';
+	public $scope = 'local';
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(

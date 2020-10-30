@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use Dev4Press\Plugin\DemoPress\Exception\Builder;
+use WP_User_Query;
 
 abstract class Generator {
 	protected $_terms_cache = array();
@@ -275,9 +276,9 @@ abstract class Generator {
 		return '';
 	}
 
-	protected function get_from_builder( $type, $name ) {
+	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder */
+	protected function get_the_builder( $type, $name ) {
 		$builder  = $this->_settings[ $type ]['builder'][ $name ]['value'];
-		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
 
 		$_real_name = '';
 
@@ -288,10 +289,27 @@ abstract class Generator {
 			}
 		}
 
-		$result = $this->objects[ $name ][ $_real_name ]->run( $settings );
+		if (isset($this->objects[ $name ][ $_real_name ])) {
+			return $this->objects[ $name ][ $_real_name ];
+		}
+
+		throw new Builder( 'builder-missing', __("Requested builder not found."), $type, $name );
+	}
+
+	protected function get_builder_scope( $type, $name ) {
+		$builder = $this->get_the_builder($type, $name);
+
+		return $builder->scope;
+	}
+
+	protected function get_from_builder( $type, $name ) {
+		$builder = $this->get_the_builder($type, $name);
+		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
+
+		$result = $builder->run( $settings );
 
 		if ( is_wp_error( $result ) ) {
-			throw new Builder( 'builder-failed', $result->get_message(), $type, $_real_name );
+			throw new Builder( 'builder-failed', $result->get_message(), $type, $name );
 		}
 
 		return $result;

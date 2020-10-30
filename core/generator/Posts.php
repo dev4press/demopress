@@ -7,6 +7,7 @@ use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\WordPress\Media\ToLibrary\LocalImage;
+use Dev4Press\WordPress\Media\ToLibrary\RemoteImage;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -323,12 +324,17 @@ class Posts extends Generator {
 			if ( $this->get_from_base( $type, 'featured' ) == 'on' ) {
 				$image = $this->get_from_builder( $type, 'featured' );
 
-				if ( ! is_wp_error( $image ) && is_string( $image ) && file_exists( $image ) ) {
-					$image = $this->_attach_featured_image( $image, $post_id );
+				if ( ! is_wp_error( $image ) && is_string( $image ) ) {
+					if ($this->get_builder_scope( $type, 'featured') == 'remote') {
+						$image = $this->_attach_featured_image_remote( $image, $post_id );
+					} else {
+						$image = $this->_attach_featured_image_local( $image, $post_id );
+					}
 				}
 
 				if ( is_wp_error( $image ) ) {
 					$this->add_log_entry( __( "Failed attaching the image.", "demopress" ) );
+					$this->add_log_entry( $image->get_error_message() );
 				}
 			}
 
@@ -417,14 +423,24 @@ class Posts extends Generator {
 		return $random_date->format( 'Y-m-d H:i:s' );
 	}
 
-	protected function _attach_featured_image( $image, $post_id = 1 ) {
-		$uploader      = new LocalImage( $image );
-		$attachment_id = $uploader->upload( $post_id, true );
+	protected function _attach_featured_image_remote( $image, $post_id = 1 ) {
+		$uploader = new RemoteImage($image);
 
-		if ( file_exists( $image ) ) {
-			unlink( $image );
+		return $uploader->download($post_id, true);
+	}
+
+	protected function _attach_featured_image_local( $image, $post_id = 1 ) {
+		if (file_exists( $image )) {
+			$uploader      = new LocalImage( $image );
+			$attachment_id = $uploader->upload( $post_id, true );
+
+			if ( file_exists( $image ) ) {
+				unlink( $image );
+			}
+
+			return $attachment_id;
+		} else {
+			return new \WP_Error('image_missing', __("Image is not found at temp location."));
 		}
-
-		return $attachment_id;
 	}
 }

@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class LorIpsumNet extends Base {
 	public $name = 'loripsumnet';
+	public $scope = 'remote';
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array_merge( parent::settings( $base, $type, $name, $class, $hidden ), array(

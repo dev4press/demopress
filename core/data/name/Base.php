@@ -9,6 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Name {
+	public $scope = 'local';
+
 	public function run( $settings = array() ) {
 		return ucwords( $this->data() );
 	}

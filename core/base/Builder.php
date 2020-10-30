@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Builder {
 	public $name = '';
+	public $scope = '';
 
 	public function __construct() {
 	}

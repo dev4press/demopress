@@ -9,5 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Video {
+	public $scope = 'remote';
 
 }

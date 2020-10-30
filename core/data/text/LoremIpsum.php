@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class LoremIpsum extends Base {
 	public $name = 'loremipsum';
+	public $scope = 'local';
 
 	public function run( $settings = array() ) {
 		$defaults = array(

@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Term {
+	public $scope = 'local';
+
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
 			EL::i( $base, $this->el_option_name( $type, $name, 'words' ), __( "Limit number of words", "demopress" ), __( "The term will have 1 or more words, up to the limit.", "demopress" ), Type::ABSINT, 3 )->args( array(

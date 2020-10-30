@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Base extends Title {
+	public $scope = 'local';
+
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
 			EL::i( $base, $this->el_option_name( $type, $name, 'min' ), __( "Number of words: From", "demopress" ), __( "The title will have 2 or more words, up to the limit.", "demopress" ), Type::ABSINT, 3 )->args( array(
