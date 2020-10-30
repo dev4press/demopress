@@ -7,6 +7,9 @@ use Dev4Press\Core\Options\Render;
 <div class="d4p-content">
 	<?php
 
+    $obj = \Dev4Press\Plugin\DemoPress\Library\Pixabay::instance();
+    $obj->image();
+
 	if ( demopress_gen()->is_idle() ) {
 		if ( demopress_admin()->subpanel == 'index' ) {
 			?>

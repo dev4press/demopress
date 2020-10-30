@@ -31,9 +31,9 @@ class PicsumPhotos extends Base {
 	public function run( $settings = array() ) {
 		$defaults = array(
 			'dimensions' => '1280x720',
-			'effects' => array()
+			'effects'    => array()
 		);
 
-		$settings = wp_parse_args($settings, $defaults);
+		$settings = wp_parse_args( $settings, $defaults );
 	}
 }

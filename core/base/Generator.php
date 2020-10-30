@@ -278,7 +278,7 @@ abstract class Generator {
 
 	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder */
 	protected function get_the_builder( $type, $name ) {
-		$builder  = $this->_settings[ $type ]['builder'][ $name ]['value'];
+		$builder = $this->_settings[ $type ]['builder'][ $name ]['value'];
 
 		$_real_name = '';
 
@@ -289,21 +289,21 @@ abstract class Generator {
 			}
 		}
 
-		if (isset($this->objects[ $name ][ $_real_name ])) {
+		if ( isset( $this->objects[ $name ][ $_real_name ] ) ) {
 			return $this->objects[ $name ][ $_real_name ];
 		}
 
-		throw new Builder( 'builder-missing', __("Requested builder not found."), $type, $name );
+		throw new Builder( 'builder-missing', __( "Requested builder not found." ), $type, $name );
 	}
 
 	protected function get_builder_scope( $type, $name ) {
-		$builder = $this->get_the_builder($type, $name);
+		$builder = $this->get_the_builder( $type, $name );
 
 		return $builder->scope;
 	}
 
 	protected function get_from_builder( $type, $name ) {
-		$builder = $this->get_the_builder($type, $name);
+		$builder  = $this->get_the_builder( $type, $name );
 		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
 
 		$result = $builder->run( $settings );

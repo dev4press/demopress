@@ -20,4 +20,10 @@ class DB extends DBLite {
 
 		return $this->get_results( $sql );
 	}
+
+	public function check_if_image_exists( $name ) {
+		$sql = $this->prepare( "SELECT count(*) FROM " . $this->wpdb()->posts . " WHERE post_name = %s", $name );
+d4p_error_log($sql);
+		return $this->get_var( $sql ) > 0;
+	}
 }

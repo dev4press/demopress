@@ -28,8 +28,8 @@ class PexelsCom extends Base {
 
 	public function run( $settings = array() ) {
 		$args = array(
-			'query' => isset($settings['query']) ? $settings['query'] : '',
-			'width' => 1280,
+			'query'  => isset( $settings['query'] ) ? $settings['query'] : '',
+			'width'  => 1280,
 			'height' => 720
 		);
 
@@ -40,6 +40,6 @@ class PexelsCom extends Base {
 			$args['height'] = absint( $dim[1] );
 		}
 
-		return Pexels::instance()->image($args);
+		return Pexels::instance()->image( $args );
 	}
 }

@@ -36,6 +36,9 @@ class Placeholder extends Library {
 			$file = new WP_Error( 'image_failed', $e->getMessage() );
 		}
 
-		return $file;
+		return array(
+			'path' => $file,
+			'data' => array()
+		);
 	}
 }
