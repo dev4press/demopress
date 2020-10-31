@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 10/29/2020 08:34:36 PM\n"
+"POT-Creation-Date: 10/31/2020 06:22:05 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgid "Overview"
 msgstr ""
 
 #: core/admin/Plugin.php:46
-#: core/generator/Users.php:73
+#: core/generator/Users.php:74
 #: forms/generator.php:59
 msgid "About"
 msgstr ""
@@ -83,11 +83,11 @@ msgid "Remote Builders"
 msgstr ""
 
 #: core/admin/Settings.php:28
-#: core/generator/Posts.php:140
-#: core/generator/Posts.php:176
-#: core/generator/Posts.php:221
+#: core/generator/Posts.php:141
+#: core/generator/Posts.php:177
+#: core/generator/Posts.php:222
 #: core/generator/Terms.php:88
-#: core/generator/Users.php:54
+#: core/generator/Users.php:55
 #: forms/generator.php:87
 #: forms/sidebar-dashboard.php:53
 msgid "Status"
@@ -128,33 +128,38 @@ msgstr ""
 msgid "Pexels.com"
 msgstr ""
 
-#: core/base/Generator.php:103
+#: core/base/Generator.php:104
 msgid "Item %s of %s for '%s'."
 msgstr ""
 
-#: core/base/Generator.php:110
+#: core/base/Generator.php:111
 msgid "Generator failed! Builder %s for %s error with message '%s'."
 msgstr ""
 
-#: core/base/Generator.php:151
+#: core/base/Generator.php:152
 msgid "Administrator"
 msgstr ""
 
-#: core/base/Generator.php:152
+#: core/base/Generator.php:153
 msgid "Editor"
 msgstr ""
 
-#: core/base/Generator.php:153
-#: core/generator/Posts.php:128
+#: core/base/Generator.php:154
+#: core/generator/Posts.php:129
 msgid "Author"
 msgstr ""
 
-#: core/base/Generator.php:154
+#: core/base/Generator.php:155
 msgid "Contributor"
 msgstr ""
 
-#: core/base/Generator.php:155
+#: core/base/Generator.php:156
 msgid "Subscriber"
+msgstr ""
+
+#: core/base/Generator.php:295
+#: core/basic/Plugin.php:125
+msgid "Requested builder not found."
 msgstr ""
 
 #: core/basic/Generator.php:100
@@ -185,10 +190,6 @@ msgstr ""
 
 #: core/basic/Plugin.php:114
 msgid "Requested generator not found."
-msgstr ""
-
-#: core/basic/Plugin.php:125
-msgid "Requested builder not found."
 msgstr ""
 
 #: core/basic/Plugin.php:296
@@ -305,7 +306,7 @@ msgid "Number of paragraphs"
 msgstr ""
 
 #: core/data/html/Base.php:15
-#: core/data/term/Base.php:15
+#: core/data/term/Base.php:17
 #: core/data/text/Base.php:15
 msgid "The term will have 1 or more words, up to the limit."
 msgstr ""
@@ -366,47 +367,48 @@ msgstr ""
 msgid "Headers"
 msgstr ""
 
-#: core/data/html/LoremIpsum.php:17
+#: core/data/html/LoremIpsum.php:18
 msgid "Block Editor Ready"
 msgstr ""
 
-#: core/data/html/LoremIpsum.php:17
+#: core/data/html/LoremIpsum.php:18
 msgid "Generated HTML will be formatted for the WordPress block editor. Currently, 'Description lists' are not supported for block formatted HTML."
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:17
-#: core/data/text/LorIpsumNet.php:17
-msgid "More Settings"
 msgstr ""
 
 #: core/data/html/LorIpsumNet.php:18
 #: core/data/text/LorIpsumNet.php:18
-msgid "All caps"
+msgid "More Settings"
 msgstr ""
 
 #: core/data/html/LorIpsumNet.php:19
 #: core/data/text/LorIpsumNet.php:19
+msgid "All caps"
+msgstr ""
+
+#: core/data/html/LorIpsumNet.php:20
+#: core/data/text/LorIpsumNet.php:20
 msgid "Prude"
 msgstr ""
 
-#: core/data/html/LorIpsumNet.php:54
-#: core/data/text/LorIpsumNet.php:51
+#: core/data/html/LorIpsumNet.php:55
+#: core/data/text/LorIpsumNet.php:52
 msgid "No response received."
 msgstr ""
 
-#: core/data/image/PexelsCom.php:16
+#: core/data/image/PexelsCom.php:17
 #: core/data/image/PicsumPhotos.php:16
-#: core/data/image/Placeholder.php:17
+#: core/data/image/Placeholder.php:18
 msgid "Dimensions"
 msgstr ""
 
-#: core/data/image/PexelsCom.php:16
+#: core/data/image/PexelsCom.php:17
 #: core/data/image/PicsumPhotos.php:16
-#: core/data/image/Placeholder.php:17
+#: core/data/image/Placeholder.php:18
 msgid "Do not set this to dimensions over 3000 by 2000 pixels."
 msgstr ""
 
-#: core/data/image/PexelsCom.php:20
+#: core/data/image/PexelsCom.php:21
+#: core/data/image/PixabayCom.php:62
 msgid "Search query"
 msgstr ""
 
@@ -415,6 +417,7 @@ msgid "Effects"
 msgstr ""
 
 #: core/data/image/PicsumPhotos.php:21
+#: core/data/image/PixabayCom.php:44
 msgid "Grayscale"
 msgstr ""
 
@@ -422,28 +425,212 @@ msgstr ""
 msgid "Blur"
 msgstr ""
 
-#: core/data/term/Base.php:15
+#: core/data/image/PixabayCom.php:17
+msgid "Category"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:18
+msgid "All"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:19
+msgid "Backgrounds"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:20
+msgid "Fashion"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:21
+msgid "Nature"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:22
+msgid "Science"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:23
+msgid "Education"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:24
+msgid "Feelings"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:25
+msgid "Health"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:26
+msgid "Poeple"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:27
+msgid "Religion"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:28
+msgid "Places"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:29
+msgid "Animals"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:30
+msgid "Indistry"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:31
+msgid "Computer"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:32
+msgid "Food"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:33
+msgid "Sports"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:34
+msgid "Transportation"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:35
+msgid "Travel"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:36
+msgid "Buildings"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:37
+msgid "Business"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:38
+msgid "Music"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:43
+msgid "Colors"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:45
+msgid "Transparent"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:46
+msgid "Red"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:47
+msgid "Orange"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:48
+msgid "Yellow"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:49
+msgid "Green"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:50
+msgid "Turquoise"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:51
+msgid "Blue"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:52
+msgid "Lilac"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:53
+msgid "Pink"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:54
+msgid "White"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:55
+msgid "Gray"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:56
+msgid "Black"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:57
+msgid "Brown"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:66
+msgid "Orientation"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:67
+msgid "Any"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:68
+msgid "Horizontal"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:69
+msgid "Vertical"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:74
+msgid "Size"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:74
+msgid "You can not choose exact image size. To get Full HD and Original sizes, your Pixabay account has to be approved for full access."
+msgstr ""
+
+#: core/data/image/PixabayCom.php:75
+msgid "Large (1280x1280 max)"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:76
+msgid "Web (960x720 max)"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:77
+msgid "Full HD (1920x1920 max)"
+msgstr ""
+
+#: core/data/image/PixabayCom.php:78
+msgid "Original"
+msgstr ""
+
+#: core/data/term/Base.php:17
 msgid "Limit number of words"
 msgstr ""
 
-#: core/data/title/Base.php:15
+#: core/data/title/Base.php:17
 msgid "Number of words: From"
 msgstr ""
 
-#: core/data/title/Base.php:15
-#: core/data/title/Base.php:19
+#: core/data/title/Base.php:17
+#: core/data/title/Base.php:21
 msgid "The title will have 2 or more words, up to the limit."
 msgstr ""
 
-#: core/data/title/Base.php:19
+#: core/data/title/Base.php:21
 msgid "Number of words: To"
 msgstr ""
 
 #: core/generator/Comments.php:47
-#: core/generator/Posts.php:57
-#: core/generator/Posts.php:144
-#: core/generator/Posts.php:180
-#: core/generator/Posts.php:225
+#: core/generator/Posts.php:58
+#: core/generator/Posts.php:145
+#: core/generator/Posts.php:181
+#: core/generator/Posts.php:226
 #: core/generator/Terms.php:44
 #: core/generator/Terms.php:92
 #: forms/content-dashboard.php:42
@@ -456,7 +643,7 @@ msgid "Enable this option to generate the posts for this post type and comment t
 msgstr ""
 
 #: core/generator/Comments.php:55
-#: core/generator/Posts.php:65
+#: core/generator/Posts.php:66
 #: core/generator/Terms.php:52
 msgid "Basic"
 msgstr ""
@@ -479,19 +666,19 @@ msgstr ""
 
 #: core/generator/Comments.php:72
 #: core/generator/Comments.php:112
-#: core/generator/Posts.php:76
-#: core/generator/Posts.php:101
-#: core/generator/Posts.php:147
-#: core/generator/Posts.php:183
+#: core/generator/Posts.php:77
+#: core/generator/Posts.php:102
+#: core/generator/Posts.php:148
+#: core/generator/Posts.php:184
 #: core/generator/Terms.php:63
 #: core/generator/Terms.php:95
 #: core/generator/Users.php:30
-#: core/generator/Users.php:55
+#: core/generator/Users.php:56
 msgid "Generate with"
 msgstr ""
 
 #: core/generator/Comments.php:90
-#: core/generator/Posts.php:119
+#: core/generator/Posts.php:120
 msgid "Content"
 msgstr ""
 
@@ -512,17 +699,17 @@ msgid "Visitors as comment authors"
 msgstr ""
 
 #: core/generator/Comments.php:141
-#: core/generator/Users.php:110
+#: core/generator/Users.php:111
 msgid "Email Domains"
 msgstr ""
 
 #: core/generator/Comments.php:141
-#: core/generator/Users.php:110
+#: core/generator/Users.php:111
 msgid "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random."
 msgstr ""
 
 #: core/generator/Comments.php:150
-#: core/generator/Posts.php:247
+#: core/generator/Posts.php:248
 #: core/generator/Terms.php:121
 msgid "Hierarchy"
 msgstr ""
@@ -539,106 +726,119 @@ msgstr ""
 msgid "%s for %s"
 msgstr ""
 
-#: core/generator/Posts.php:57
+#: core/generator/Posts.php:58
 msgid "Enable this option to generate the posts for this post type, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Posts.php:69
+#: core/generator/Posts.php:70
 msgid "Number of Posts"
 msgstr ""
 
-#: core/generator/Posts.php:94
+#: core/generator/Posts.php:95
 msgid "Title"
 msgstr ""
 
-#: core/generator/Posts.php:126
+#: core/generator/Posts.php:127
 msgid "From"
 msgstr ""
 
-#: core/generator/Posts.php:127
+#: core/generator/Posts.php:128
 msgid "To"
 msgstr ""
 
-#: core/generator/Posts.php:128
+#: core/generator/Posts.php:129
 msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
 msgstr ""
 
-#: core/generator/Posts.php:132
+#: core/generator/Posts.php:133
 msgid "Published"
 msgstr ""
 
-#: core/generator/Posts.php:140
-msgid "Excerpt is optional."
-msgstr ""
-
 #: core/generator/Posts.php:141
-#: core/generator/Posts.php:177
-#: core/generator/Posts.php:222
-#: core/generator/Terms.php:89
-msgid "Enabled"
+msgid "Excerpt is optional."
 msgstr ""
 
 #: core/generator/Posts.php:142
 #: core/generator/Posts.php:178
 #: core/generator/Posts.php:223
+#: core/generator/Terms.php:89
+msgid "Enabled"
+msgstr ""
+
+#: core/generator/Posts.php:143
+#: core/generator/Posts.php:179
+#: core/generator/Posts.php:224
 #: core/generator/Terms.php:90
 msgid "Disabled"
 msgstr ""
 
-#: core/generator/Posts.php:165
+#: core/generator/Posts.php:166
 msgid "Excerpt"
 msgstr ""
 
-#: core/generator/Posts.php:176
+#: core/generator/Posts.php:177
 msgid "Featured image is optional. But, it has to be downloaded, it can't be a link to external image."
 msgstr ""
 
-#: core/generator/Posts.php:201
+#: core/generator/Posts.php:202
 msgid "Featured Image"
 msgstr ""
 
-#: core/generator/Posts.php:221
+#: core/generator/Posts.php:222
 msgid "Assigning terms is optional."
 msgstr ""
 
-#: core/generator/Posts.php:228
+#: core/generator/Posts.php:229
 msgid "Assign to posts"
 msgstr ""
 
-#: core/generator/Posts.php:228
+#: core/generator/Posts.php:229
 msgid "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."
 msgstr ""
 
-#: core/generator/Posts.php:234
+#: core/generator/Posts.php:235
 msgid "Terms to assign"
 msgstr ""
 
-#: core/generator/Posts.php:234
+#: core/generator/Posts.php:235
 msgid "Number of terms to assign inside the specified range, at random."
 msgstr ""
 
-#: core/generator/Posts.php:238
+#: core/generator/Posts.php:239
 msgid "Assign terms for '%s'"
 msgstr ""
 
-#: core/generator/Posts.php:251
+#: core/generator/Posts.php:252
+#: core/generator/Terms.php:125
+msgid "Parent"
+msgstr ""
+
+#: core/generator/Posts.php:252
+msgid "If you select the parent, all generated posts in this task will be children of the selected parent."
+msgstr ""
+
+#: core/generator/Posts.php:253
 msgid "Top level posts"
 msgstr ""
 
-#: core/generator/Posts.php:251
-msgid "Percentage of total posts to generate to be top level posts."
+#: core/generator/Posts.php:253
+msgid "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent."
 msgstr ""
 
-#: core/generator/Posts.php:320
+#: core/generator/Posts.php:325
 msgid "Added Post - ID: %s, Name: '%s'"
 msgstr ""
 
-#: core/generator/Posts.php:331
+#: core/generator/Posts.php:340
 msgid "Failed attaching the image."
 msgstr ""
 
-#: core/generator/Posts.php:338
+#: core/generator/Posts.php:348
 msgid "Failed creating the post. Name: '%s'"
+msgstr ""
+
+#: core/generator/Posts.php:452
+msgid "Image is not found at temp location."
 msgstr ""
 
 #: core/generator/Terms.php:44
@@ -650,7 +850,7 @@ msgid "Number of Terms"
 msgstr ""
 
 #: core/generator/Terms.php:81
-#: core/generator/Users.php:47
+#: core/generator/Users.php:48
 msgid "Name"
 msgstr ""
 
@@ -659,67 +859,76 @@ msgid "Description"
 msgstr ""
 
 #: core/generator/Terms.php:125
+msgid "If you select the parent, all generated terms in this task will be children of the selected parent."
+msgstr ""
+
+#: core/generator/Terms.php:126
 msgid "Top level terms"
 msgstr ""
 
-#: core/generator/Terms.php:125
+#: core/generator/Terms.php:126
 msgid "Percentage of total terms to generate to be top level terms."
 msgstr ""
 
-#: core/generator/Terms.php:181
+#: core/generator/Terms.php:185
 msgid "Added Term - ID: %s, Term: '%s'"
 msgstr ""
 
-#: core/generator/Users.php:81
+#: core/generator/Users.php:82
 msgid "Users to generate"
 msgstr ""
 
-#: core/generator/Users.php:89
+#: core/generator/Users.php:90
 msgid "Number of Users"
 msgstr ""
 
-#: core/generator/Users.php:95
+#: core/generator/Users.php:96
 msgid "Data for users"
 msgstr ""
 
-#: core/generator/Users.php:98
+#: core/generator/Users.php:99
 msgid "Roles"
 msgstr ""
 
-#: core/generator/Users.php:102
+#: core/generator/Users.php:103
 msgid "Roles for Users"
 msgstr ""
 
-#: core/generator/Users.php:102
+#: core/generator/Users.php:103
 msgid "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role."
 msgstr ""
 
-#: core/generator/Users.php:106
+#: core/generator/Users.php:107
 msgid "Email"
 msgstr ""
 
-#: core/generator/Users.php:114
+#: core/generator/Users.php:115
 msgid "Password"
 msgstr ""
 
-#: core/generator/Users.php:118
+#: core/generator/Users.php:119
 msgid "Default Password"
 msgstr ""
 
-#: core/generator/Users.php:118
+#: core/generator/Users.php:119
 msgid "All users will be created with the same password. If this field is empty, each user will get random password."
 msgstr ""
 
-#: core/generator/Users.php:124
+#: core/generator/Users.php:125
 msgid "Generated data for users"
 msgstr ""
 
-#: core/generator/Users.php:170
+#: core/generator/Users.php:171
 msgid "Added User - ID: %s, Username: '%s'"
 msgstr ""
 
-#: core/generator/Users.php:173
+#: core/generator/Users.php:174
 msgid "Email: '%s', Name: '%s'"
+msgstr ""
+
+#: core/library/Pexels.php:79
+#: core/library/Pixabay.php:84
+msgid "No results received."
 msgstr ""
 
 #: core/functions.php:18

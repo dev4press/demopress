@@ -250,7 +250,8 @@ class Posts extends Generator {
 					'name'     => '',
 					'class'    => '',
 					'settings' => array(
-						EL::i( $this->name, $cpt . '-base-toplevel', __( "Top level posts", "demopress" ), __( "Percentage of total posts to generate to be top level posts.", "demopress" ), Type::ABSINT, 70 )->args( array(
+						EL::i( $this->name, $cpt . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated posts in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_PAGES, 0 ),
+						EL::i( $this->name, $cpt . '-base-toplevel', __( "Top level posts", "demopress" ), __( "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent.", "demopress" ), Type::ABSINT, 70 )->args( array(
 							'label_unit' => '%',
 							'min'        => 0,
 							'step'       => 5,
@@ -271,7 +272,9 @@ class Posts extends Generator {
 	}
 
 	protected function generate_item( $type ) {
-		$this->_cache_posts( $type );
+		$parent = $this->get_from_base( $type, 'parent', false, 0 );
+
+		$this->_cache_posts( $type, $parent );
 
 		$post = array(
 			'post_title'   => $this->get_from_builder( $type, 'title' ),
@@ -303,18 +306,19 @@ class Posts extends Generator {
 		}
 
 		if ( is_post_type_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {
+			$post['post_parent'] = $parent;
+
 			$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
 
 			if ( $toplevel >= $this->current_item() + 1 && ! empty( $this->_posts_cache[ $type ] ) ) {
-				$item                = $this->_posts_cache[ $type ][ array_rand( $this->_posts_cache[ $type ] ) ];
-				$post['post_parent'] = $item->post_id;
+				$post['post_parent'] = $this->_posts_cache[ $type ][ array_rand( $this->_posts_cache[ $type ] ) ];
 			}
 		}
 
 		$post_id = wp_insert_post( $post );
 
 		if ( ! is_wp_error( $post_id ) ) {
-			$this->_posts_cache[ $type ][] = (object) array( 'post_id' => $post_id );
+			$this->_posts_cache[ $type ][] = $post_id;
 
 			update_post_meta( $post_id, '_demopress_generated_content', '1' );
 
@@ -376,8 +380,7 @@ class Posts extends Generator {
 						}
 
 						foreach ( $pick as $key ) {
-							$id              = $this->_terms_cache[ $tax ][ $key ]->term_id;
-							$terms[ $tax ][] = absint( $id );
+							$terms[ $tax ][] = absint( $this->_terms_cache[ $tax ][ $key ] );
 						}
 					}
 				}
@@ -447,7 +450,7 @@ class Posts extends Generator {
 
 			return $attachment_id;
 		} else {
-			return new WP_Error( 'image_missing', __( "Image is not found at temp location." ) );
+			return new WP_Error( 'image_missing', __( "Image is not found at temp location.", "demopress" ) );
 		}
 	}
 }

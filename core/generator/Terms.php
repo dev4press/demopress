@@ -42,7 +42,7 @@ class Terms extends Generator {
 					'name'     => '',
 					'class'    => '',
 					'settings' => array(
-						EL::i( 'terms', 'type-' . $tax, __( "Generate", "demopress" ), __( "Enable this option to generate the terms for this taxonomy, and show options for the generator controls.", "demopress" ), Type::BOOLEAN, false )->args( array(
+						EL::i( $this->name, 'type-' . $tax, __( "Generate", "demopress" ), __( "Enable this option to generate the terms for this taxonomy, and show options for the generator controls.", "demopress" ), Type::BOOLEAN, false )->args( array(
 							'class' => 'demopress-type-settings-ctrl'
 						) )
 					)
@@ -54,14 +54,14 @@ class Terms extends Generator {
 				'name'     => '',
 				'class'    => '',
 				'settings' => array(
-					EL::i( 'terms', $tax . '-base-count', __( "Number of Terms", "demopress" ), '', Type::ABSINT, 5 )->args( array(
+					EL::i( $this->name, $tax . '-base-count', __( "Number of Terms", "demopress" ), '', Type::ABSINT, 5 )->args( array(
 						'min' => 1
 					) )
 				)
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array(
+				EL::i( $this->name, $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-term-' . $tax ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -86,14 +86,14 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( 'terms', $tax . '-base-description', __( "Status", "demopress" ), '', Type::SELECT, 'off' )->data( 'array', array(
+				EL::i( $this->name, $tax . '-base-description', __( "Status", "demopress" ), '', Type::SELECT, 'off' )->data( 'array', array(
 					'on'  => __( "Enabled", "demopress" ),
 					'off' => __( "Disabled", "demopress" )
 				) )->args( array(
 					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
-				EL::i( 'terms', $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
+				EL::i( $this->name, $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-description-' . $tax ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -123,7 +123,8 @@ class Terms extends Generator {
 					'name'     => '',
 					'class'    => '',
 					'settings' => array(
-						EL::i( 'terms', $tax . '-base-toplevel', __( "Top level terms", "demopress" ), __( "Percentage of total terms to generate to be top level terms.", "demopress" ), Type::ABSINT, 50 )->args( array(
+						EL::i( $this->name, $tax . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated terms in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_CATEGORIES, 0 ),
+						EL::i( $this->name, $tax . '-base-toplevel', __( "Top level terms", "demopress" ), __( "Percentage of total terms to generate to be top level terms.", "demopress" ), Type::ABSINT, 50 )->args( array(
 							'label_unit' => '%',
 							'min'        => 0,
 							'step'       => 5,
@@ -142,7 +143,9 @@ class Terms extends Generator {
 	}
 
 	protected function generate_item( $type ) {
-		$this->_cache_terms( $type );
+		$parent = $this->get_from_base( $type, 'parent', false, 0 );
+
+		$this->_cache_terms( $type, $parent );
 
 		$term = array(
 			'name'        => $this->get_from_builder( $type, 'term' ),
@@ -157,11 +160,12 @@ class Terms extends Generator {
 		}
 
 		if ( is_taxonomy_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {
+			$term['parent'] = $parent;
+
 			$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
 
 			if ( $toplevel >= $this->current_item() + 1 && ! empty( $this->_terms_cache[ $type ] ) ) {
-				$item           = $this->_terms_cache[ $type ][ array_rand( $this->_terms_cache[ $type ] ) ];
-				$term['parent'] = $item->term_id;
+				$term['parent'] = $this->_terms_cache[ $type ][ array_rand( $this->_terms_cache[ $type ] ) ];
 			}
 		}
 
@@ -174,7 +178,7 @@ class Terms extends Generator {
 		if ( ! is_wp_error( $the_term ) ) {
 			$term_id = $the_term['term_id'];
 
-			$this->_terms_cache[ $type ][] = (object) array( 'term_id' => $term_id );
+			$this->_terms_cache[ $type ][] = $term_id;
 
 			update_term_meta( $term_id, '_demopress_generated_content', '1' );
 

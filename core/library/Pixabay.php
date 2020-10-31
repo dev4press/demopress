@@ -48,6 +48,30 @@ class Pixabay extends Library {
 
 		$image  = false;
 		$unique = false;
+
+		while ( $unique === false ) {
+			foreach ( $images as $img ) {
+				$check = 'pixabay-' . $img->slug . '-' . $img->id;
+
+				if (! in_array($check, $this->_cache) && ! demopress_db()->check_if_image_exists( $check ) ) {
+					$image = $img;
+					$this->_cache[] = $check;
+					break 2;
+				}
+			}
+
+			$key++;
+			$images = $this->find_images( $words[ $key ], $args );
+		}
+
+		return array(
+			'url'  => $image->by_name( $size ),
+			'data' => array(
+				'slug'  => 'pixabay-' . $image->slug . '-' . $image->id,
+				'name'  => 'pixabay-' . $image->slug . '-' . $image->id . '.' . $image->extension,
+				'title' => $image->name
+			)
+		);
 	}
 
 	private function find_images( $query, $args ) {
@@ -58,9 +82,9 @@ class Pixabay extends Library {
 		if ( is_wp_error( $images ) ) {
 			return $images;
 		} else if ( empty( $images->results ) ) {
-			new WP_Error( 'image_failed', __( "No results received." ) );
+			new WP_Error( 'image_failed', __( "No results received.", "demopress" ) );
 		}
-d4p_print_r($images); exit;
+
 		shuffle($images->results);
 
 		return $images->results;

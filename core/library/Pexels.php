@@ -77,7 +77,7 @@ class Pexels extends Library {
 		if ( is_wp_error( $images ) ) {
 			return $images;
 		} else if ( empty( $images->results ) ) {
-			new WP_Error( 'image_failed', __( "No results received." ) );
+			new WP_Error( 'image_failed', __( "No results received.", "demopress" ) );
 		}
 
 		shuffle($images->results);

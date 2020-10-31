@@ -4,6 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
+use Dev4Press\Plugin\DemoPress\Library\Pixabay;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -66,7 +67,7 @@ class PixabayCom extends Base {
 			EL::i( $base, $this->el_option_name( $type, $name, 'orientation' ), __( "Orientation", "demopress" ), '', Type::SELECT, 'all' )->data( 'array', array(
 				'all'        => __( "Any", "demopress" ),
 				'horizontal' => __( "Horizontal", "demopress" ),
-				'vertical'   => __( "Vertical" )
+				'vertical'   => __( "Vertical", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'           => 1
@@ -74,8 +75,8 @@ class PixabayCom extends Base {
 			EL::i( $base, $this->el_option_name( $type, $name, 'size' ), __( "Size", "demopress" ), __( "You can not choose exact image size. To get Full HD and Original sizes, your Pixabay account has to be approved for full access.", "demopress" ), Type::SELECT, 'large' )->data( 'array', array(
 				'large'    => __( "Large (1280x1280 max)", "demopress" ),
 				'web'      => __( "Web (960x720 max)", "demopress" ),
-				'fullhd'     => __( "Full HD (1920x1920 max)" ),
-				'original' => __( "Original" )
+				'fullhd'     => __( "Full HD (1920x1920 max)", "demopress" ),
+				'original' => __( "Original", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'           => 1
@@ -101,5 +102,7 @@ class PixabayCom extends Base {
 		if (isset($settings['category']) && !empty($settings['category'])) {
 			$args['category'] = $settings['category'];
 		}
+
+		return Pixabay::instance()->image( $args );
 	}
 }
