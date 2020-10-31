@@ -123,7 +123,7 @@ class Terms extends Generator {
 					'name'     => '',
 					'class'    => '',
 					'settings' => array(
-						EL::i( $this->name, $tax . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated terms in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_CATEGORIES, 0 )->args(array('taxonomy' => $tax)),
+						EL::i( $this->name, $tax . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated terms in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_CATEGORIES, 0 )->args( array( 'taxonomy' => $tax ) ),
 						EL::i( $this->name, $tax . '-base-toplevel', __( "Top level terms", "demopress" ), __( "Percentage of total terms to generate to be top level terms.", "demopress" ), Type::ABSINT, 50 )->args( array(
 							'label_unit' => '%',
 							'min'        => 0,

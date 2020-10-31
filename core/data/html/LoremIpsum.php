@@ -15,11 +15,19 @@ class LoremIpsum extends Base {
 	public $scope = 'local';
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
-		return array_merge( parent::settings( $base, $type, $name, $class, $hidden ), array(
-			EL::i( $base, $this->el_option_name( $type, $name, 'block' ), __( "Block Editor Ready", "demopress" ), __( "Generated HTML will be formatted for the WordPress block editor. Currently, 'Description lists' are not supported for block formatted HTML.", "demopress" ), Type::BOOLEAN, false )->args( array(
-				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
-			) )
-		) );
+		$_are_blocks_supported = apply_filters( 'demopress_data_text_lorem_ipsum_block_supported', true );
+
+		$_the_settings = parent::settings( $base, $type, $name, $class, $hidden );
+
+		if ( $_are_blocks_supported ) {
+			return array_merge( $_the_settings, array(
+				EL::i( $base, $this->el_option_name( $type, $name, 'block' ), __( "Block Editor Ready", "demopress" ), __( "Generated HTML will be formatted for the WordPress block editor. Currently, 'Description lists' are not supported for block formatted HTML.", "demopress" ), Type::BOOLEAN, false )->args( array(
+					'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
+				) )
+			) );
+		} else {
+			return $_the_settings;
+		}
 	}
 
 	public function run( $settings = array() ) {

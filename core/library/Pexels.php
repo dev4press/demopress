@@ -18,7 +18,7 @@ class Pexels extends Library {
 	public function __construct() {
 		$this->_object = Query::instance( demopress_settings()->get( 'pexels_api_key' ) );
 
-		shuffle($this->_words);
+		shuffle( $this->_words );
 	}
 
 	public function image( $args = array() ) {
@@ -46,14 +46,14 @@ class Pexels extends Library {
 			foreach ( $images as $img ) {
 				$check = 'pexels-' . $img->slug . '-' . $img->id;
 
-				if (! in_array($check, $this->_cache) && ! demopress_db()->check_if_image_exists( $check ) ) {
-					$image = $img;
+				if ( ! in_array( $check, $this->_cache ) && ! demopress_db()->check_if_image_exists( $check ) ) {
+					$image          = $img;
 					$this->_cache[] = $check;
 					break 2;
 				}
 			}
 
-			$key++;
+			$key ++;
 			$images = $this->find_images( $words[ $key ] );
 		}
 
@@ -80,7 +80,7 @@ class Pexels extends Library {
 			new WP_Error( 'image_failed', __( "No results received.", "demopress" ) );
 		}
 
-		shuffle($images->results);
+		shuffle( $images->results );
 
 		return $images->results;
 	}

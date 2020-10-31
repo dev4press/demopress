@@ -219,7 +219,7 @@ abstract class Content extends Generator {
 					'name'     => '',
 					'class'    => '',
 					'settings' => array(
-						EL::i( $this->name, $cpt . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated posts in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_PAGES, 0 )->args(array('post_type' => $cpt)),
+						EL::i( $this->name, $cpt . '-base-parent', __( "Parent", "demopress" ), __( "If you select the parent, all generated posts in this task will be children of the selected parent.", "demopress" ), Type::DROPDOWN_PAGES, 0 )->args( array( 'post_type' => $cpt ) ),
 						EL::i( $this->name, $cpt . '-base-toplevel', __( "Top level posts", "demopress" ), __( "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent.", "demopress" ), Type::ABSINT, 70 )->args( array(
 							'label_unit' => '%',
 							'min'        => 0,
@@ -234,13 +234,13 @@ abstract class Content extends Generator {
 
 			$this->settings[ $cpt ] = array(
 				'name'     => $post_type->label,
-				'sections' => $this->pre_sections($_sections, $cpt),
+				'sections' => $this->pre_sections( $_sections, $cpt ),
 				'args'     => array( 'class' => 'demopress-type-settings-hidden' )
 			);
 		}
 	}
 
-	protected function pre_sections($sections, $cpt) {
+	protected function pre_sections( $sections, $cpt ) {
 		return $sections;
 	}
 

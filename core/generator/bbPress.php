@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class bbPress extends Content {
 	public $name = 'bbpress';
+	public $_list_forums = array();
 
 	public function get_list_of_types( $return = 'objects' ) {
 		$post_types = demopress_get_bbpress_post_types();
@@ -19,31 +20,65 @@ class bbPress extends Content {
 	}
 
 	protected function init_builders() {
-		$this->builders['title']    = array(
+		add_filter( 'demopress_data_text_lorem_ipsum_block_supported', '__return_false' );
+
+		$this->builders['title']   = array(
 			'type' => 'title',
 			'list' => demopress()->find_builders( 'title' )
 		);
-		$this->builders['content']  = array(
+		$this->builders['content'] = array(
 			'type' => 'html',
 			'list' => demopress()->find_builders( 'html' )
 		);
 	}
 
+	protected function pre_sections( $sections, $cpt ) {
+		if ( $cpt == bbp_get_topic_post_type() || $cpt == bbp_get_reply_post_type() ) {
+			$_info = $cpt == bbp_get_topic_post_type()
+				?
+				__( "Topics can be added to any of the existing forums at random, or you can select which forums to limit the process to.", "demopress" )
+				:
+				__( "Replies can be added to topics of any of the existing forums at random, or you can select which forums to limit the process to.", "demopress" );
+
+			$sections[] = array(
+				'label'    => __( "Add to Forums", "demopress" ),
+				'name'     => '',
+				'class'    => '',
+				'settings' => array(
+					EL::i( $this->name, $cpt . '-base-forum-method', __( "Method", "demopress" ), $_info, Type::SELECT, 'any' )->data( 'array', array(
+						'any' => __( "Any of the exisiting forums", "demopress" ),
+						'sel' => __( "Selected forums only", "demopress" )
+					) )->args( array(
+						'data'          => array( 'switch' => 'demopress-builders-forum-method-' . $cpt ),
+						'wrapper_class' => 'demopress-builder-switch'
+					) ),
+					EL::i( $this->name, $cpt . '-base-forum-list', __( "Selected forums", "demopress" ), '', Type::CHECKBOXES_HIERARCHY, array() )->data( 'array',
+						demopress_get_bbpress_forums_list()
+					)->args( array(
+						'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-forum-method-' . $cpt, 'sel', true )
+					) )
+				)
+			);
+		}
+
+		return $sections;
+	}
+
 	protected function generate_item( $type ) {
-		switch ($type) {
+		switch ( $type ) {
 			case bbp_get_forum_post_type():
-				$this->_item_forum($type);
+				$this->_item_forum( $type );
 				break;
 			case bbp_get_topic_post_type():
-				$this->_item_topic($type);
+				$this->_item_topic( $type );
 				break;
 			case bbp_get_reply_post_type():
-				$this->_item_reply($type);
+				$this->_item_reply( $type );
 				break;
 		}
 	}
 
-	private function _item_forum($type) {
+	private function _item_forum( $type ) {
 		$parent = $this->get_from_base( $type, 'parent', false, 0 );
 
 		$this->_cache_posts( $type, $parent );
@@ -88,11 +123,80 @@ class bbPress extends Content {
 		$this->item_done();
 	}
 
-	private function _item_topic($type) {
+	private function _item_topic( $type ) {
+		$this->_cache_forums( $type );
 
+		if ( ! empty( $this->_list_forums ) ) {
+			$forum_key = array_rand( $this->_list_forums );
+
+			$post = array(
+				'post_title'   => $this->get_from_builder( $type, 'title' ),
+				'post_content' => $this->get_from_builder( $type, 'content' ),
+				'post_date'    => $this->_get_publish_date( $type ),
+				'post_author'  => $this->_get_author( $type ),
+				'post_status'  => 'publish',
+				'post_type'    => $type,
+				'post_parent'  => $this->_list_forums[ $forum_key ]
+			);
+
+			$post_id = bbp_insert_forum( $post );
+
+			if ( ! is_wp_error( $post_id ) && $post_id !== false ) {
+				update_post_meta( $post_id, '_demopress_generated_content', '1' );
+
+				$this->add_log_entry(
+					sprintf( __( "Added Post - ID: %s, Name: '%s'", "demopress" ),
+						$post_id, $post['post_title'] ) );
+			} else {
+				$this->add_log_entry(
+					sprintf( __( "Failed creating the post. Name: '%s'", "demopress" ),
+						$post['post_title'] ) );
+			}
+		} else {
+			$this->add_log_entry( __( "No forums found.", "demopress" ) );
+		}
+
+		$this->item_done();
 	}
 
-	private function _item_reply($type) {
+	private function _item_reply( $type ) {
+		$this->_cache_forums( $type );
 
+		$post = array(
+			'post_title'   => $this->get_from_builder( $type, 'title' ),
+			'post_content' => $this->get_from_builder( $type, 'content' ),
+			'post_date'    => $this->_get_publish_date( $type ),
+			'post_author'  => $this->_get_author( $type ),
+			'post_status'  => 'publish',
+			'post_type'    => $type
+		);
+	}
+
+	private function _cache_forums( $type ) {
+		$what = $this->get_from_base( $type, 'forum', 'method' );
+
+		if ( $what == 'any' ) {
+			$raw = demopress_db()->get_posts_for_post_type( bbp_get_forum_post_type() );
+
+			$this->_list_forums = wp_list_pluck( $raw, 'ID' );
+		} else {
+			$this->_list_forums = d4p_clean_ids_list( $this->get_from_base( $type, 'forum', 'list' ) );
+		}
+	}
+
+	protected function generate_thread_finished( $type ) {
+		require_once( bbpress()->includes_dir . 'admin/tools/repair.php' );
+
+		if ( $type == bbp_get_topic_post_type() ) {
+			bbp_admin_repair_forum_topic_count();
+		}
+
+		if ( $type == bbp_get_reply_post_type() ) {
+			bbp_admin_repair_forum_reply_count();
+		}
+	}
+
+	protected function el_wrapper_class( $class, $name, $hidden = false ) {
+		return $class . '-switch ' . $class . '-data-' . $name . ( $hidden ? ' demopress-is-hidden' : '' );
 	}
 }

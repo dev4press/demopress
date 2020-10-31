@@ -117,6 +117,8 @@ abstract class Generator {
 				break;
 			}
 		}
+
+		$this->generate_thread_finished( $this->current_type() );
 	}
 
 	protected function has_more_to_do() {
@@ -357,6 +359,10 @@ abstract class Generator {
 
 			$this->_terms_cache[ $tax ] = get_terms( 'category', $args );
 		}
+	}
+
+	protected function generate_thread_finished( $type ) {
+
 	}
 
 	abstract public function get_list_of_types( $return = 'objects' );

@@ -75,7 +75,7 @@ class PixabayCom extends Base {
 			EL::i( $base, $this->el_option_name( $type, $name, 'size' ), __( "Size", "demopress" ), __( "You can not choose exact image size. To get Full HD and Original sizes, your Pixabay account has to be approved for full access.", "demopress" ), Type::SELECT, 'large' )->data( 'array', array(
 				'large'    => __( "Large (1280x1280 max)", "demopress" ),
 				'web'      => __( "Web (960x720 max)", "demopress" ),
-				'fullhd'     => __( "Full HD (1920x1920 max)", "demopress" ),
+				'fullhd'   => __( "Full HD (1920x1920 max)", "demopress" ),
 				'original' => __( "Original", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
@@ -87,19 +87,19 @@ class PixabayCom extends Base {
 	public function run( $settings = array() ) {
 		$args = array(
 			'image_type' => 'photo',
-			'q'  => isset( $settings['query'] ) ? $settings['query'] : '',
-			'size' => isset($settings['size']) ? $settings['size'] : 'large'
+			'q'          => isset( $settings['query'] ) ? $settings['query'] : '',
+			'size'       => isset( $settings['size'] ) ? $settings['size'] : 'large'
 		);
 
-		if (isset($settings['orientation']) && $settings['orientation'] != 'all') {
+		if ( isset( $settings['orientation'] ) && $settings['orientation'] != 'all' ) {
 			$args['orientation'] = $settings['orientation'];
 		}
 
-		if (isset($settings['colors']) && !empty($settings['colors'])) {
-			$args['colors'] = join(',', (array)$settings['colors']);
+		if ( isset( $settings['colors'] ) && ! empty( $settings['colors'] ) ) {
+			$args['colors'] = join( ',', (array) $settings['colors'] );
 		}
 
-		if (isset($settings['category']) && !empty($settings['category'])) {
+		if ( isset( $settings['category'] ) && ! empty( $settings['category'] ) ) {
 			$args['category'] = $settings['category'];
 		}
 

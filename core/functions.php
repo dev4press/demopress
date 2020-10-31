@@ -53,3 +53,23 @@ function demopress_get_post_types() {
 
 	return apply_filters( 'demopress_get_post_types', $post_types );
 }
+
+function demopress_get_bbpress_forums_list() {
+	$_base_forums = get_posts( array(
+		'post_type'   => bbp_get_forum_post_type(),
+		'numberposts' => - 1,
+	) );
+
+	$forums = array();
+
+	foreach ( $_base_forums as $forum ) {
+		$forums[ $forum->ID ] = (object) array(
+			'id'     => $forum->ID,
+			'url'    => get_permalink( $forum->ID ),
+			'parent' => $forum->post_parent,
+			'title'  => $forum->post_title
+		);
+	}
+
+	return $forums;
+}

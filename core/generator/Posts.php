@@ -2,9 +2,6 @@
 
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
-use Dev4Press\Core\Options\Element as EL;
-use Dev4Press\Core\Options\Type;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
