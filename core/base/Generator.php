@@ -329,33 +329,33 @@ abstract class Generator {
 
 	protected function _cache_posts( $type, $child_of = 0 ) {
 		if ( empty( $this->_posts_cache[ $type ] ) ) {
-			if (is_post_type_hierarchical($type)) {
-				$args = array('post_type' => $type);
+			if ( is_post_type_hierarchical( $type ) ) {
+				$args = array( 'post_type' => $type );
 
-				if ($child_of > 0) {
+				if ( $child_of > 0 ) {
 					$args['child_of'] = $child_of;
 				}
 
-				$pages = get_pages($args);
+				$pages = get_pages( $args );
 
-				$this->_posts_cache[ $type ] = wp_list_pluck($pages, 'ID');
+				$this->_posts_cache[ $type ] = wp_list_pluck( $pages, 'ID' );
 			} else {
 				$raw = demopress_db()->get_posts_for_post_type( $type );
 
-				$this->_posts_cache[ $type ] = wp_list_pluck($raw, 'ID');
+				$this->_posts_cache[ $type ] = wp_list_pluck( $raw, 'ID' );
 			}
 		}
 	}
 
 	protected function _cache_terms( $tax, $child_of = 0 ) {
 		if ( empty( $this->_terms_cache[ $tax ] ) ) {
-			$args = array('fields' => 'ids');
+			$args = array( 'fields' => 'ids' );
 
-			if (is_taxonomy_hierarchical($this) && $child_of > 0) {
+			if ( is_taxonomy_hierarchical( $tax ) && $child_of > 0 ) {
 				$args['child_of'] = $child_of;
 			}
 
-			$this->_terms_cache[ $tax ] = get_terms('category', $args);
+			$this->_terms_cache[ $tax ] = get_terms( 'category', $args );
 		}
 	}
 

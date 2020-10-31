@@ -37,7 +37,7 @@ class Pixabay extends Library {
 		$size = $args['size'];
 		unset($args['size']);
 
-		$words = explode( ',', strtolower( $args['query'] ) );
+		$words = explode( ',', strtolower( $args['q'] ) );
 		$words = array_map( 'trim', $words );
 		$words = array_merge( $words, $this->_words );
 		$words = array_unique( $words );
@@ -64,8 +64,10 @@ class Pixabay extends Library {
 			$images = $this->find_images( $words[ $key ], $args );
 		}
 
+		$i = $image->by_name( $size );
+
 		return array(
-			'url'  => $image->by_name( $size ),
+			'url'  => $i->url,
 			'data' => array(
 				'slug'  => 'pixabay-' . $image->slug . '-' . $image->id,
 				'name'  => 'pixabay-' . $image->slug . '-' . $image->id . '.' . $image->extension,
