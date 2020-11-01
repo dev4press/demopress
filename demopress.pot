@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 10/31/2020 11:15:58 PM\n"
+"POT-Creation-Date: 11/01/2020 10:16:55 AM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -80,9 +80,10 @@ msgid "Remote Builders"
 msgstr ""
 
 #: core/admin/Settings.php:28
-#: core/generator/Content.php:110
-#: core/generator/Content.php:146
-#: core/generator/Content.php:191
+#: core/generator/bbPress.php:37
+#: core/generator/Content.php:115
+#: core/generator/Content.php:152
+#: core/generator/Content.php:198
 #: core/generator/Terms.php:88
 #: core/generator/Users.php:55
 #: forms/sidebar-dashboard.php:53
@@ -141,7 +142,8 @@ msgid "Editor"
 msgstr ""
 
 #: core/base/Generator.php:156
-#: core/generator/Content.php:98
+#: core/generator/bbPress.php:82
+#: core/generator/Content.php:102
 msgid "Author"
 msgstr ""
 
@@ -620,59 +622,110 @@ msgstr ""
 msgid "Number of words: To"
 msgstr ""
 
+#: core/generator/bbPress.php:37
+msgid "Title is not normally used for replies. You can still generate it, if you want."
+msgstr ""
+
 #: core/generator/bbPress.php:38
-msgid "Topics can be added to any of the existing forums at random, or you can select which forums to limit the process to."
+#: core/generator/Content.php:116
+#: core/generator/Content.php:153
+#: core/generator/Content.php:199
+#: core/generator/Terms.php:89
+msgid "Enabled"
 msgstr ""
 
-#: core/generator/bbPress.php:40
-msgid "Replies can be added to topics of any of the existing forums at random, or you can select which forums to limit the process to."
+#: core/generator/bbPress.php:39
+#: core/generator/Content.php:117
+#: core/generator/Content.php:154
+#: core/generator/Content.php:200
+#: core/generator/Terms.php:90
+msgid "Disabled"
 msgstr ""
 
-#: core/generator/bbPress.php:43
-msgid "Add to Forums"
-msgstr ""
-
-#: core/generator/bbPress.php:47
-msgid "Method"
-msgstr ""
-
-#: core/generator/bbPress.php:48
-msgid "Any of the exisiting forums"
-msgstr ""
-
-#: core/generator/bbPress.php:49
-msgid "Selected forums only"
-msgstr ""
-
-#: core/generator/bbPress.php:54
-msgid "Selected forums"
-msgstr ""
-
-#: core/generator/bbPress.php:112
-#: core/generator/bbPress.php:147
-#: core/generator/Posts.php:92
-msgid "Added Post - ID: %s, Name: '%s'"
-msgstr ""
-
-#: core/generator/bbPress.php:118
-#: core/generator/bbPress.php:151
-#: core/generator/Posts.php:115
-msgid "Failed creating the post. Name: '%s'"
-msgstr ""
-
-#: core/generator/bbPress.php:155
-msgid "No forums found."
-msgstr ""
-
+#: core/generator/bbPress.php:41
 #: core/generator/Comments.php:47
-#: core/generator/Content.php:27
-#: core/generator/Content.php:114
-#: core/generator/Content.php:150
-#: core/generator/Content.php:195
+#: core/generator/Content.php:28
+#: core/generator/Content.php:119
+#: core/generator/Content.php:156
+#: core/generator/Content.php:202
 #: core/generator/Terms.php:44
 #: core/generator/Terms.php:92
 #: forms/content-dashboard.php:42
 msgid "Generate"
+msgstr ""
+
+#: core/generator/bbPress.php:44
+#: core/generator/Comments.php:72
+#: core/generator/Comments.php:112
+#: core/generator/Content.php:48
+#: core/generator/Content.php:74
+#: core/generator/Content.php:122
+#: core/generator/Content.php:159
+#: core/generator/Terms.php:63
+#: core/generator/Terms.php:95
+#: core/generator/Users.php:30
+#: core/generator/Users.php:56
+msgid "Generate with"
+msgstr ""
+
+#: core/generator/bbPress.php:63
+#: core/generator/Content.php:67
+msgid "Title"
+msgstr ""
+
+#: core/generator/bbPress.php:78
+#: core/generator/Content.php:107
+msgid "Published"
+msgstr ""
+
+#: core/generator/bbPress.php:82
+#: core/generator/Content.php:102
+msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
+msgstr ""
+
+#: core/generator/bbPress.php:97
+msgid "Topics can be added to any of the existing forums at random, or you can select which forums to limit the process to."
+msgstr ""
+
+#: core/generator/bbPress.php:99
+msgid "Replies can be added to topics of any of the existing forums at random, or you can select which forums to limit the process to."
+msgstr ""
+
+#: core/generator/bbPress.php:102
+msgid "Add to Forums"
+msgstr ""
+
+#: core/generator/bbPress.php:106
+msgid "Method"
+msgstr ""
+
+#: core/generator/bbPress.php:107
+msgid "Any of the exisiting forums"
+msgstr ""
+
+#: core/generator/bbPress.php:108
+msgid "Selected forums only"
+msgstr ""
+
+#: core/generator/bbPress.php:113
+msgid "Selected forums"
+msgstr ""
+
+#: core/generator/bbPress.php:171
+#: core/generator/bbPress.php:209
+#: core/generator/Posts.php:92
+msgid "Added Post - ID: %s, Name: '%s'"
+msgstr ""
+
+#: core/generator/bbPress.php:177
+#: core/generator/bbPress.php:213
+#: core/generator/Posts.php:115
+msgid "Failed creating the post. Name: '%s'"
+msgstr ""
+
+#: core/generator/bbPress.php:217
+#: core/generator/bbPress.php:236
+msgid "No forums found."
 msgstr ""
 
 #: core/generator/Comments.php:47
@@ -680,7 +733,7 @@ msgid "Enable this option to generate the posts for this post type and comment t
 msgstr ""
 
 #: core/generator/Comments.php:55
-#: core/generator/Content.php:35
+#: core/generator/Content.php:37
 #: core/generator/Terms.php:52
 msgid "Basic"
 msgstr ""
@@ -701,21 +754,8 @@ msgstr ""
 msgid "Percentage of total posts to take into account for generating comments."
 msgstr ""
 
-#: core/generator/Comments.php:72
-#: core/generator/Comments.php:112
-#: core/generator/Content.php:46
-#: core/generator/Content.php:71
-#: core/generator/Content.php:117
-#: core/generator/Content.php:153
-#: core/generator/Terms.php:63
-#: core/generator/Terms.php:95
-#: core/generator/Users.php:30
-#: core/generator/Users.php:56
-msgid "Generate with"
-msgstr ""
-
 #: core/generator/Comments.php:90
-#: core/generator/Content.php:89
+#: core/generator/Content.php:93
 msgid "Content"
 msgstr ""
 
@@ -746,7 +786,7 @@ msgid "Names of one or more email domains to use for emails of generated users. 
 msgstr ""
 
 #: core/generator/Comments.php:150
-#: core/generator/Content.php:217
+#: core/generator/Content.php:226
 #: core/generator/Terms.php:121
 msgid "Hierarchy"
 msgstr ""
@@ -763,106 +803,80 @@ msgstr ""
 msgid "%s for %s"
 msgstr ""
 
-#: core/generator/Content.php:27
+#: core/generator/Content.php:28
 msgid "Enable this option to generate the posts for this post type, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Content.php:39
+#: core/generator/Content.php:41
 msgid "Number of Posts"
 msgstr ""
 
-#: core/generator/Content.php:64
-msgid "Title"
-msgstr ""
-
-#: core/generator/Content.php:96
+#: core/generator/Content.php:100
 msgid "From"
 msgstr ""
 
-#: core/generator/Content.php:97
+#: core/generator/Content.php:101
 msgid "To"
 msgstr ""
 
-#: core/generator/Content.php:98
-msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
-msgstr ""
-
-#: core/generator/Content.php:102
-msgid "Published"
-msgstr ""
-
-#: core/generator/Content.php:110
+#: core/generator/Content.php:115
 msgid "Excerpt is optional."
 msgstr ""
 
-#: core/generator/Content.php:111
-#: core/generator/Content.php:147
-#: core/generator/Content.php:192
-#: core/generator/Terms.php:89
-msgid "Enabled"
-msgstr ""
-
-#: core/generator/Content.php:112
-#: core/generator/Content.php:148
-#: core/generator/Content.php:193
-#: core/generator/Terms.php:90
-msgid "Disabled"
-msgstr ""
-
-#: core/generator/Content.php:135
+#: core/generator/Content.php:141
 msgid "Excerpt"
 msgstr ""
 
-#: core/generator/Content.php:146
+#: core/generator/Content.php:152
 msgid "Featured image is optional. But, it has to be downloaded, it can't be a link to external image."
 msgstr ""
 
-#: core/generator/Content.php:171
+#: core/generator/Content.php:178
 msgid "Featured Image"
 msgstr ""
 
-#: core/generator/Content.php:191
+#: core/generator/Content.php:198
 msgid "Assigning terms is optional."
 msgstr ""
 
-#: core/generator/Content.php:198
+#: core/generator/Content.php:205
 msgid "Assign to posts"
 msgstr ""
 
-#: core/generator/Content.php:198
+#: core/generator/Content.php:205
 msgid "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."
 msgstr ""
 
-#: core/generator/Content.php:204
+#: core/generator/Content.php:211
 msgid "Terms to assign"
 msgstr ""
 
-#: core/generator/Content.php:204
+#: core/generator/Content.php:211
 msgid "Number of terms to assign inside the specified range, at random."
 msgstr ""
 
-#: core/generator/Content.php:208
+#: core/generator/Content.php:216
 msgid "Assign terms for '%s'"
 msgstr ""
 
-#: core/generator/Content.php:221
+#: core/generator/Content.php:230
 #: core/generator/Terms.php:125
 msgid "Parent"
 msgstr ""
 
-#: core/generator/Content.php:221
+#: core/generator/Content.php:230
 msgid "If you select the parent, all generated posts in this task will be children of the selected parent."
 msgstr ""
 
-#: core/generator/Content.php:222
+#: core/generator/Content.php:231
 msgid "Top level posts"
 msgstr ""
 
-#: core/generator/Content.php:222
+#: core/generator/Content.php:231
 msgid "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent."
 msgstr ""
 
-#: core/generator/Content.php:343
+#: core/generator/Content.php:352
 msgid "Image is not found at temp location."
 msgstr ""
 

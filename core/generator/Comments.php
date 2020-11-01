@@ -41,6 +41,7 @@ class Comments extends Generator {
 
 					$_sections = array(
 						array(
+							'key'      => 'status',
 							'label'    => '',
 							'name'     => '',
 							'class'    => '',
@@ -53,6 +54,7 @@ class Comments extends Generator {
 					);
 
 					$_sections[] = array(
+						'key'      => 'basic',
 						'label'    => __( "Basic", "demopress" ),
 						'name'     => '',
 						'class'    => '',
@@ -88,6 +90,7 @@ class Comments extends Generator {
 					}
 
 					$_sections[] = array(
+						'key'      => 'content',
 						'label'    => __( "Content", "demopress" ),
 						'name'     => '',
 						'class'    => '',
@@ -96,6 +99,7 @@ class Comments extends Generator {
 
 					if ( get_option( 'comment_registration' ) == 0 ) {
 						$_sections[] = array(
+							'key'      => 'authors',
 							'label'    => __( "Authors", "demopress" ),
 							'name'     => '',
 							'class'    => '',
@@ -128,6 +132,7 @@ class Comments extends Generator {
 						}
 
 						$_sections[] = array(
+							'key'      => 'visitors',
 							'label'    => __( "Visitors as comment authors", "demopress" ),
 							'name'     => '',
 							'class'    => '',
@@ -135,6 +140,7 @@ class Comments extends Generator {
 						);
 
 						$_sections[] = array(
+							'key'      => 'domains',
 							'label'    => '',
 							'name'     => '',
 							'class'    => '',
@@ -143,16 +149,17 @@ class Comments extends Generator {
 							)
 						);
 					} else {
-						$_sections[0]['settings'][] = EL::i( $this->name, $cpt . '-base-authors-registered', '', '', Type::HIDDEN, 100 );
+						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-authors-registered', '', '', Type::HIDDEN, 100 );
 					}
 
 					if ( get_option( 'thread_comments' ) == 1 ) {
 						$_sections[] = array(
+							'key'      => 'hierarchy',
 							'label'    => __( "Hierarchy", "demopress" ),
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( $this->name, $cpt . '-base-toplevel', __( "Top level comments", "demopress" ), __( "Percentage of total comments to generate to be top level comments.", "demopress" ), Type::ABSINT, 50 )->args( array(
+								EL::i( $this->name, $_type . '-base-toplevel', __( "Top level comments", "demopress" ), __( "Percentage of total comments to generate to be top level comments.", "demopress" ), Type::ABSINT, 50 )->args( array(
 									'label_unit' => '%',
 									'min'        => 0,
 									'step'       => 5,
@@ -161,12 +168,12 @@ class Comments extends Generator {
 							)
 						);
 					} else {
-						$_sections[0]['settings'][] = EL::i( $this->name, $cpt . '-base-toplevel', '', '', Type::HIDDEN, 100 );
+						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-toplevel', '', '', Type::HIDDEN, 100 );
 					}
 
 					$this->settings[ $cpt ] = array(
 						'name'     => sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label ),
-						'sections' => $_sections,
+						'sections' => $this->pre_sections( $_sections, $_type ),
 						'args'     => array( 'class' => 'demopress-type-settings-hidden' )
 					);
 				}

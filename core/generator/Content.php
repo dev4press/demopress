@@ -21,6 +21,7 @@ abstract class Content extends Generator {
 		foreach ( $post_types as $cpt => $post_type ) {
 			$_sections = array(
 				array(
+					'key'      => 'status',
 					'label'    => '',
 					'name'     => '',
 					'class'    => '',
@@ -33,6 +34,7 @@ abstract class Content extends Generator {
 			);
 
 			$_sections[] = array(
+				'key'      => 'basic',
 				'label'    => __( "Basic", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -62,6 +64,7 @@ abstract class Content extends Generator {
 			}
 
 			$_sections[] = array(
+				'key'      => 'title',
 				'label'    => __( "Title", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -87,6 +90,7 @@ abstract class Content extends Generator {
 			}
 
 			$_sections[] = array(
+				'key'      => 'content',
 				'label'    => __( "Content", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -100,6 +104,7 @@ abstract class Content extends Generator {
 			);
 
 			$_sections[] = array(
+				'key'      => 'published',
 				'label'    => __( "Published", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -133,6 +138,7 @@ abstract class Content extends Generator {
 				}
 
 				$_sections[] = array(
+					'key'      => 'excerpt',
 					'label'    => __( "Excerpt", "demopress" ),
 					'name'     => '',
 					'class'    => 'demopress-type-section-hidden',
@@ -169,6 +175,7 @@ abstract class Content extends Generator {
 				}
 
 				$_sections[] = array(
+					'key'      => 'featured-image',
 					'label'    => __( "Featured Image", "demopress" ),
 					'name'     => '',
 					'class'    => '',
@@ -206,6 +213,7 @@ abstract class Content extends Generator {
 				);
 
 				$_sections[] = array(
+					'key'      => 'taxonomy-' . $tax,
 					'label'    => sprintf( __( "Assign terms for '%s'", "demopress" ), $taxonomy->labels->name ),
 					'name'     => '',
 					'class'    => '',
@@ -215,6 +223,7 @@ abstract class Content extends Generator {
 
 			if ( is_post_type_hierarchical( $cpt ) ) {
 				$_sections[] = array(
+					'key'      => 'hierarchy',
 					'label'    => __( "Hierarchy", "demopress" ),
 					'name'     => '',
 					'class'    => '',
@@ -238,10 +247,6 @@ abstract class Content extends Generator {
 				'args'     => array( 'class' => 'demopress-type-settings-hidden' )
 			);
 		}
-	}
-
-	protected function pre_sections( $sections, $cpt ) {
-		return $sections;
 	}
 
 	protected function _get_terms( $type ) {

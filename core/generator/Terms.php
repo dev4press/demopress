@@ -38,6 +38,7 @@ class Terms extends Generator {
 		foreach ( $taxonomies as $tax => $taxonomy ) {
 			$_sections = array(
 				array(
+					'key'      => 'status',
 					'label'    => '',
 					'name'     => '',
 					'class'    => '',
@@ -50,6 +51,7 @@ class Terms extends Generator {
 			);
 
 			$_sections[] = array(
+				'key'      => 'basic',
 				'label'    => __( "Basic", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -79,6 +81,7 @@ class Terms extends Generator {
 			}
 
 			$_sections[] = array(
+				'key'      => 'name',
 				'label'    => __( "Name", "demopress" ),
 				'name'     => '',
 				'class'    => '',
@@ -111,6 +114,7 @@ class Terms extends Generator {
 			}
 
 			$_sections[] = array(
+				'key'      => 'description',
 				'label'    => __( "Description", "demopress" ),
 				'name'     => '',
 				'class'    => 'demopress-type-section-hidden',
@@ -119,6 +123,7 @@ class Terms extends Generator {
 
 			if ( is_taxonomy_hierarchical( $tax ) ) {
 				$_sections[] = array(
+					'key'      => 'hierarchy',
 					'label'    => __( "Hierarchy", "demopress" ),
 					'name'     => '',
 					'class'    => '',
@@ -136,7 +141,7 @@ class Terms extends Generator {
 
 			$this->settings[ $tax ] = array(
 				'name'     => $taxonomy->label,
-				'sections' => $_sections,
+				'sections' => $this->pre_sections( $_sections, $tax ),
 				'args'     => array( 'class' => 'demopress-type-settings-hidden' )
 			);
 		}

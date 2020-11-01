@@ -361,6 +361,10 @@ abstract class Generator {
 		}
 	}
 
+	protected function pre_sections( $sections, $type ) {
+		return $sections;
+	}
+
 	protected function generate_thread_finished( $type ) {
 
 	}

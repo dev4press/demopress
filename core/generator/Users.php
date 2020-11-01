@@ -46,6 +46,7 @@ class Users extends Generator {
 		}
 
 		$_sections[] = array(
+			'key'      => 'name',
 			'label'    => __( "Name", "demopress" ),
 			'name'     => '',
 			'class'    => '',
@@ -72,6 +73,7 @@ class Users extends Generator {
 		}
 
 		$_sections[] = array(
+			'key'      => 'about',
 			'label'    => __( "About", "demopress" ),
 			'name'     => '',
 			'class'    => '',
@@ -83,6 +85,7 @@ class Users extends Generator {
 				'name'     => __( "Users to generate", "demopress" ),
 				'sections' => array(
 					array(
+						'key'      => 'basic',
 						'label'    => '',
 						'name'     => '',
 						'class'    => '',
@@ -97,6 +100,7 @@ class Users extends Generator {
 				'name'     => __( "Data for users", "demopress" ),
 				'sections' => array(
 					array(
+						'key'      => 'roles',
 						'label'    => __( "Roles", "demopress" ),
 						'name'     => '',
 						'class'    => '',
@@ -105,6 +109,7 @@ class Users extends Generator {
 						)
 					),
 					array(
+						'key'      => 'email',
 						'label'    => __( "Email", "demopress" ),
 						'name'     => '',
 						'class'    => '',
@@ -113,6 +118,7 @@ class Users extends Generator {
 						)
 					),
 					array(
+						'key'      => 'password',
 						'label'    => __( "Password", "demopress" ),
 						'name'     => '',
 						'class'    => '',
@@ -124,7 +130,7 @@ class Users extends Generator {
 			),
 			'build' => array(
 				'name'     => __( "Generated data for users", "demopress" ),
-				'sections' => $_sections
+				'sections' => $this->pre_sections( $_sections, 'users' )
 			)
 		);
 	}
