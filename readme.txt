@@ -16,13 +16,13 @@ Easy to use plugin for generating demo content for newly created websites used d
 == Installation ==
 = General Requirements =
 * PHP: 7.0 or newer
-* WordPress: 4.9 or newer
+* WordPress: 5.0 or newer
 
 = PHP Notice =
 * The plugin doesn't work with PHP 5.6 or older versions.
 
 = WordPress Notice =
-* The plugin doesn't work with WordPress 4.8 or older versions.
+* The plugin doesn't work with WordPress 4.9 or older versions.
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `demopress`.

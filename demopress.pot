@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 11/01/2020 10:16:55 AM\n"
+"POT-Creation-Date: 11/01/2020 05:39:44 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgid "Overview"
 msgstr ""
 
 #: core/admin/Plugin.php:46
-#: core/generator/Users.php:74
+#: core/generator/Users.php:76
 msgid "About"
 msgstr ""
 
@@ -80,12 +80,12 @@ msgid "Remote Builders"
 msgstr ""
 
 #: core/admin/Settings.php:28
-#: core/generator/bbPress.php:37
+#: core/generator/bbPress.php:40
 #: core/generator/Content.php:115
 #: core/generator/Content.php:152
 #: core/generator/Content.php:198
-#: core/generator/Terms.php:88
-#: core/generator/Users.php:55
+#: core/generator/Terms.php:91
+#: core/generator/Users.php:56
 #: forms/sidebar-dashboard.php:53
 msgid "Status"
 msgstr ""
@@ -142,7 +142,7 @@ msgid "Editor"
 msgstr ""
 
 #: core/base/Generator.php:156
-#: core/generator/bbPress.php:82
+#: core/generator/bbPress.php:85
 #: core/generator/Content.php:102
 msgid "Author"
 msgstr ""
@@ -622,184 +622,196 @@ msgstr ""
 msgid "Number of words: To"
 msgstr ""
 
-#: core/generator/bbPress.php:37
+#: core/generator/bbPress.php:40
 msgid "Title is not normally used for replies. You can still generate it, if you want."
 msgstr ""
 
-#: core/generator/bbPress.php:38
+#: core/generator/bbPress.php:41
 #: core/generator/Content.php:116
 #: core/generator/Content.php:153
 #: core/generator/Content.php:199
-#: core/generator/Terms.php:89
+#: core/generator/Terms.php:92
 msgid "Enabled"
 msgstr ""
 
-#: core/generator/bbPress.php:39
+#: core/generator/bbPress.php:42
 #: core/generator/Content.php:117
 #: core/generator/Content.php:154
 #: core/generator/Content.php:200
-#: core/generator/Terms.php:90
+#: core/generator/Terms.php:93
 msgid "Disabled"
 msgstr ""
 
-#: core/generator/bbPress.php:41
-#: core/generator/Comments.php:47
+#: core/generator/bbPress.php:44
+#: core/generator/Comments.php:48
 #: core/generator/Content.php:28
 #: core/generator/Content.php:119
 #: core/generator/Content.php:156
 #: core/generator/Content.php:202
-#: core/generator/Terms.php:44
-#: core/generator/Terms.php:92
+#: core/generator/Terms.php:45
+#: core/generator/Terms.php:95
 #: forms/content-dashboard.php:42
 msgid "Generate"
 msgstr ""
 
-#: core/generator/bbPress.php:44
-#: core/generator/Comments.php:72
-#: core/generator/Comments.php:112
+#: core/generator/bbPress.php:47
+#: core/generator/Comments.php:74
+#: core/generator/Comments.php:116
 #: core/generator/Content.php:48
 #: core/generator/Content.php:74
 #: core/generator/Content.php:122
 #: core/generator/Content.php:159
-#: core/generator/Terms.php:63
-#: core/generator/Terms.php:95
+#: core/generator/Terms.php:65
+#: core/generator/Terms.php:98
 #: core/generator/Users.php:30
-#: core/generator/Users.php:56
+#: core/generator/Users.php:57
 msgid "Generate with"
 msgstr ""
 
-#: core/generator/bbPress.php:63
+#: core/generator/bbPress.php:66
 #: core/generator/Content.php:67
 msgid "Title"
 msgstr ""
 
-#: core/generator/bbPress.php:78
+#: core/generator/bbPress.php:81
 #: core/generator/Content.php:107
 msgid "Published"
 msgstr ""
 
-#: core/generator/bbPress.php:82
+#: core/generator/bbPress.php:85
 #: core/generator/Content.php:102
 msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
 msgstr ""
 
-#: core/generator/bbPress.php:97
+#: core/generator/bbPress.php:100
 msgid "Topics can be added to any of the existing forums at random, or you can select which forums to limit the process to."
 msgstr ""
 
-#: core/generator/bbPress.php:99
+#: core/generator/bbPress.php:102
 msgid "Replies can be added to topics of any of the existing forums at random, or you can select which forums to limit the process to."
 msgstr ""
 
-#: core/generator/bbPress.php:102
+#: core/generator/bbPress.php:105
 msgid "Add to Forums"
 msgstr ""
 
-#: core/generator/bbPress.php:106
+#: core/generator/bbPress.php:109
 msgid "Method"
 msgstr ""
 
-#: core/generator/bbPress.php:107
+#: core/generator/bbPress.php:110
 msgid "Any of the exisiting forums"
 msgstr ""
 
-#: core/generator/bbPress.php:108
+#: core/generator/bbPress.php:111
 msgid "Selected forums only"
 msgstr ""
 
-#: core/generator/bbPress.php:113
+#: core/generator/bbPress.php:116
 msgid "Selected forums"
 msgstr ""
 
-#: core/generator/bbPress.php:171
-#: core/generator/bbPress.php:209
+#: core/generator/bbPress.php:174
+#: core/generator/bbPress.php:212
 #: core/generator/Posts.php:92
 msgid "Added Post - ID: %s, Name: '%s'"
 msgstr ""
 
-#: core/generator/bbPress.php:177
-#: core/generator/bbPress.php:213
+#: core/generator/bbPress.php:180
+#: core/generator/bbPress.php:216
 #: core/generator/Posts.php:115
 msgid "Failed creating the post. Name: '%s'"
 msgstr ""
 
-#: core/generator/bbPress.php:217
-#: core/generator/bbPress.php:236
+#: core/generator/bbPress.php:220
+#: core/generator/bbPress.php:271
 msgid "No forums found."
 msgstr ""
 
-#: core/generator/Comments.php:47
+#: core/generator/bbPress.php:262
+msgid "Added Post - ID: %s"
+msgstr ""
+
+#: core/generator/bbPress.php:265
+msgid "Failed creating the post."
+msgstr ""
+
+#: core/generator/bbPress.php:268
+msgid "No topics found."
+msgstr ""
+
+#: core/generator/Comments.php:48
 msgid "Enable this option to generate the posts for this post type and comment type, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Comments.php:55
+#: core/generator/Comments.php:57
 #: core/generator/Content.php:37
-#: core/generator/Terms.php:52
+#: core/generator/Terms.php:54
 msgid "Basic"
 msgstr ""
 
-#: core/generator/Comments.php:59
+#: core/generator/Comments.php:61
 msgid "Comments per post"
 msgstr ""
 
-#: core/generator/Comments.php:59
+#: core/generator/Comments.php:61
 msgid "This is number of comments to be generated for each post in this post type."
 msgstr ""
 
-#: core/generator/Comments.php:62
+#: core/generator/Comments.php:64
 msgid "For how many posts"
 msgstr ""
 
-#: core/generator/Comments.php:62
+#: core/generator/Comments.php:64
 msgid "Percentage of total posts to take into account for generating comments."
 msgstr ""
 
-#: core/generator/Comments.php:90
+#: core/generator/Comments.php:93
 #: core/generator/Content.php:93
 msgid "Content"
 msgstr ""
 
-#: core/generator/Comments.php:98
+#: core/generator/Comments.php:102
 msgid "Authors"
 msgstr ""
 
-#: core/generator/Comments.php:102
+#: core/generator/Comments.php:106
 msgid "Registered users"
 msgstr ""
 
-#: core/generator/Comments.php:102
+#: core/generator/Comments.php:106
 msgid "Percentage of total comments to be authored by the registered users."
 msgstr ""
 
-#: core/generator/Comments.php:130
+#: core/generator/Comments.php:135
 msgid "Visitors as comment authors"
 msgstr ""
 
-#: core/generator/Comments.php:141
-#: core/generator/Users.php:111
+#: core/generator/Comments.php:147
+#: core/generator/Users.php:116
 msgid "Email Domains"
 msgstr ""
 
-#: core/generator/Comments.php:141
-#: core/generator/Users.php:111
+#: core/generator/Comments.php:147
+#: core/generator/Users.php:116
 msgid "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random."
 msgstr ""
 
-#: core/generator/Comments.php:150
+#: core/generator/Comments.php:157
 #: core/generator/Content.php:226
-#: core/generator/Terms.php:121
+#: core/generator/Terms.php:126
 msgid "Hierarchy"
 msgstr ""
 
-#: core/generator/Comments.php:154
+#: core/generator/Comments.php:161
 msgid "Top level comments"
 msgstr ""
 
-#: core/generator/Comments.php:154
+#: core/generator/Comments.php:161
 msgid "Percentage of total comments to generate to be top level comments."
 msgstr ""
 
-#: core/generator/Comments.php:167
+#: core/generator/Comments.php:174
 msgid "%s for %s"
 msgstr ""
 
@@ -860,7 +872,7 @@ msgid "Assign terms for '%s'"
 msgstr ""
 
 #: core/generator/Content.php:230
-#: core/generator/Terms.php:125
+#: core/generator/Terms.php:130
 msgid "Parent"
 msgstr ""
 
@@ -876,7 +888,7 @@ msgstr ""
 msgid "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent."
 msgstr ""
 
-#: core/generator/Content.php:352
+#: core/generator/Content.php:348
 msgid "Image is not found at temp location."
 msgstr ""
 
@@ -884,88 +896,88 @@ msgstr ""
 msgid "Failed attaching the image."
 msgstr ""
 
-#: core/generator/Terms.php:44
+#: core/generator/Terms.php:45
 msgid "Enable this option to generate the terms for this taxonomy, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Terms.php:56
+#: core/generator/Terms.php:58
 msgid "Number of Terms"
 msgstr ""
 
-#: core/generator/Terms.php:81
-#: core/generator/Users.php:48
+#: core/generator/Terms.php:84
+#: core/generator/Users.php:49
 msgid "Name"
 msgstr ""
 
-#: core/generator/Terms.php:113
+#: core/generator/Terms.php:117
 msgid "Description"
 msgstr ""
 
-#: core/generator/Terms.php:125
+#: core/generator/Terms.php:130
 msgid "If you select the parent, all generated terms in this task will be children of the selected parent."
 msgstr ""
 
-#: core/generator/Terms.php:126
+#: core/generator/Terms.php:131
 msgid "Top level terms"
 msgstr ""
 
-#: core/generator/Terms.php:126
+#: core/generator/Terms.php:131
 msgid "Percentage of total terms to generate to be top level terms."
 msgstr ""
 
-#: core/generator/Terms.php:185
+#: core/generator/Terms.php:190
 msgid "Added Term - ID: %s, Term: '%s'"
 msgstr ""
 
-#: core/generator/Users.php:82
+#: core/generator/Users.php:84
 msgid "Users to generate"
 msgstr ""
 
-#: core/generator/Users.php:90
+#: core/generator/Users.php:93
 msgid "Number of Users"
 msgstr ""
 
-#: core/generator/Users.php:96
+#: core/generator/Users.php:99
 msgid "Data for users"
 msgstr ""
 
-#: core/generator/Users.php:99
+#: core/generator/Users.php:103
 msgid "Roles"
 msgstr ""
 
-#: core/generator/Users.php:103
+#: core/generator/Users.php:107
 msgid "Roles for Users"
 msgstr ""
 
-#: core/generator/Users.php:103
+#: core/generator/Users.php:107
 msgid "Roles will be randomly assigned using the checked roles. If no roles are enabled, all users will be assigned 'Subscriber' role."
 msgstr ""
 
-#: core/generator/Users.php:107
+#: core/generator/Users.php:112
 msgid "Email"
 msgstr ""
 
-#: core/generator/Users.php:115
+#: core/generator/Users.php:121
 msgid "Password"
 msgstr ""
 
-#: core/generator/Users.php:119
+#: core/generator/Users.php:125
 msgid "Default Password"
 msgstr ""
 
-#: core/generator/Users.php:119
+#: core/generator/Users.php:125
 msgid "All users will be created with the same password. If this field is empty, each user will get random password."
 msgstr ""
 
-#: core/generator/Users.php:125
+#: core/generator/Users.php:131
 msgid "Generated data for users"
 msgstr ""
 
-#: core/generator/Users.php:171
+#: core/generator/Users.php:177
 msgid "Added User - ID: %s, Username: '%s'"
 msgstr ""
 
-#: core/generator/Users.php:174
+#: core/generator/Users.php:180
 msgid "Email: '%s', Name: '%s'"
 msgstr ""
 
@@ -976,6 +988,14 @@ msgstr ""
 
 #: core/functions.php:18
 msgid "Comment"
+msgstr ""
+
+#: forms/generators/bbpress.php:1
+msgid "bbPress Generator"
+msgstr ""
+
+#: forms/generators/bbpress.php:3
+msgid "Make sure you have Forums already created when running Topics generator. And, make sure you have Topics created when running Replies generator."
 msgstr ""
 
 #: forms/generators/comments.php:1
@@ -991,7 +1011,7 @@ msgid "Posts Generator"
 msgstr ""
 
 #: forms/generators/posts.php:3
-msgid "Each post type can be configured individually. Terms assignment options for each post type will be displayed for taxonomies assigned to post types and only if these taxonomies have at least one available term. If you are generating data for everything, it is best to first run terms generator and create terms before running posts generator."
+msgid "Each post type can be configured individually. Only public post types, with enabled interface are eligible for this process! Terms assignment options for each post type will be displayed for taxonomies assigned to post types and only if these taxonomies have at least one available term. If you are generating data for everything, it is best to first run terms generator and create terms before running posts generator."
 msgstr ""
 
 #: forms/generators/terms.php:1
@@ -999,7 +1019,7 @@ msgid "Terms Generator"
 msgstr ""
 
 #: forms/generators/terms.php:3
-msgid "X"
+msgid "Each taxonomy can be configured individually. Only public taxonomies, with enabled interface are eligible for this process!"
 msgstr ""
 
 #: forms/generators/users.php:1

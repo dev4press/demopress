@@ -10,7 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class DB extends DBLite {
 	public function get_topics_for_forums( $forums ) {
-		$sql = $this->prepare( "SELECT p.ID, p.post_date FROM " . $this->wpdb()->posts . " p WHERE p.post_status = 'publish' AND p.post_type = %s", bbp_get_topic_post_type() );
+		$_forums = join( ',', $forums );
+
+		$sql = $this->prepare( "SELECT p.ID, p.post_parent, p.post_date FROM " . $this->wpdb()->posts . " p WHERE p.post_status = 'publish' AND p.post_type = %s", bbp_get_topic_post_type() );
+		$sql.= ' AND p.post_parent IN ('.$_forums.')';
+
+		return $this->get_results( $sql );
 	}
 
 	public function get_posts_for_post_type( $post_type ) {
