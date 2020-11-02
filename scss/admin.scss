@@ -84,3 +84,12 @@
         }
     }
 }
+
+@media screen and (max-width: 1080px) {
+    .d4p-generators-list {
+        .d4p-options-panel {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+}

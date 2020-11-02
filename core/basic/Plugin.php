@@ -11,8 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Plugin extends Core {
-	public $svg_icon = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMC4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHdpZHRoPSIzMDBweCIgaGVpZ2h0PSIzMDBweCIgdmlld0JveD0iMCAwIDMwMCAzMDAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMwMCAzMDA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+DQoJLnN0MHtmaWxsOiM5RUEzQTg7fQ0KPC9zdHlsZT4NCjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0yNTkuMywxMS40SDQyLjVjLTE3LjEsMC0zMSwxMy45LTMxLDMxdjIxNi44YzAsMTcuMSwxMy45LDMxLDMxLDMxaDIxNi44YzE3LjEsMCwzMS0xMy45LDMxLTMxVjQyLjQNCglDMjkwLjMsMjUuMywyNzYuNCwxMS40LDI1OS4zLDExLjR6IE0xMDEuMywyNDcuNkg2Mi42VjExMi4xaDM4LjdWMjQ3LjZ6IE0xNzAuMywyNDcuNmgtMzguN1Y1NGgzOC43VjI0Ny42eiBNMjM5LjIsMjQ2LjhoLTM4LjcNCgl2LTc3LjRoMzguN1YyNDYuOHoiLz4NCjwvc3ZnPg0K';
-
 	public $plugin = 'demopress';
 
 	private $_datetime = null;
@@ -344,11 +342,6 @@ class Plugin extends Core {
 			false, array( 'local' => true )
 		);
 
-		$this->register_builder_image( 'PicsumPhotos', 'Picsum.photos',
-			__( "Build image tags linking to the Picsum.photos website.", "demopress" ),
-			true, array( 'local' => true, 'remote' => true )
-		);
-
 		$_api_key = demopress_settings()->get( 'pixabay_api_key' );
 		if ( ! empty( $_api_key ) ) {
 			$this->register_builder_image( 'PixabayCom', 'Pixabay.com',
@@ -380,7 +373,7 @@ class Plugin extends Core {
 		}
 
 		$this->register_generator( 'Users', __( "Users", "demopress" ),
-			__( "Generate users with various user roles", "demopress" ),
+			__( "Generate users with various user roles, one or more domains to use for random emails, preset or random password, generated name and about information.", "demopress" ),
 			array(
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-users',
@@ -388,15 +381,15 @@ class Plugin extends Core {
 				'image' => false
 			) );
 		$this->register_generator( 'Terms', __( "Terms", "demopress" ),
-			__( "Generate terms for default and custom taxonomies.", "demopress" ),
+			__( "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and term description.", "demopress" ),
 			array(
 				'group' => 'core',
-				'icon'  => 'd4p-icon d4p-ui-terms',
+				'icon'  => 'd4p-icon d4p-ui-tags',
 				'text'  => 'plain',
 				'image' => false
 			) );
 		$this->register_generator( 'Posts', __( "Posts", "demopress" ),
-			__( "Generate posts for default and custom post types.", "demopress" ),
+			__( "Generate posts for default and custom post types, with hierarchy support and ability to get a random featured image and generate all other post data.", "demopress" ),
 			array(
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-paste',
@@ -404,7 +397,7 @@ class Plugin extends Core {
 				'image' => true
 			) );
 		$this->register_generator( 'Comments', __( "Comments", "demopress" ),
-			__( "Generate comments for post types supporting comments.", "demopress" ),
+			__( "Generate comments for post types supporting comments, including support for threaded comments and ability to generate random comment authors information.", "demopress" ),
 			array(
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-comments',
@@ -414,7 +407,7 @@ class Plugin extends Core {
 
 		if ( d4p_has_bbpress() ) {
 			$this->register_generator( 'bbPress', __( "bbPress Forums", "demopress" ),
-				__( "Generate forums, topics and replies for bbPress powered forums.", "demopress" ),
+				__( "Generate forums, topics and replies for bbPress powered forums, with support for generating different data and conforming to the bbPress content specs.", "demopress" ),
 				array(
 					'group' => 'plugins',
 					'icon'  => 'd4p-icon d4p-logo-bbpress',
