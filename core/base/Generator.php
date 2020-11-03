@@ -361,6 +361,10 @@ abstract class Generator {
 		}
 	}
 
+	protected function el_wrapper_class( $class, $name, $hidden = false ) {
+		return $class . '-switch ' . $class . '-data-' . $name . ( $hidden ? ' demopress-is-hidden' : '' );
+	}
+
 	protected function pre_sections( $sections, $type ) {
 		return $sections;
 	}

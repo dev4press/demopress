@@ -251,10 +251,10 @@ class bbPress extends Content {
 				$post['post_date']   = $this->_get_reply_publish_date( $topic_date );
 				$post['post_parent'] = $topic_id;
 
-				$post_id = bbp_insert_reply($post, array(
+				$post_id = bbp_insert_reply( $post, array(
 					'forum_id' => $forum_id,
 					'topic_id' => $topic_id
-				));
+				) );
 
 				if ( ! is_wp_error( $post_id ) && $post_id !== false ) {
 					update_post_meta( $post_id, '_demopress_generated_content', '1' );
@@ -317,9 +317,5 @@ class bbPress extends Content {
 			bbp_admin_repair_user_reply_count();
 			bbp_admin_repair_forum_reply_count();
 		}
-	}
-
-	protected function el_wrapper_class( $class, $name, $hidden = false ) {
-		return $class . '-switch ' . $class . '-data-' . $name . ( $hidden ? ' demopress-is-hidden' : '' );
 	}
 }

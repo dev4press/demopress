@@ -13,6 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Comments extends Generator {
 	public $name = 'comments';
 
+	private $_list_posts = array();
+	private $_list_comments = array();
+
 	public function get_list_of_types( $return = 'objects' ) {
 		$comment_types = demopress_get_comment_types();
 
@@ -37,7 +40,8 @@ class Comments extends Generator {
 		foreach ( $post_types as $cpt => $post_type ) {
 			foreach ( $comment_types as $cmm => $comment_type ) {
 				if ( demopress_post_type_support_comment_type( $cpt, $cmm ) ) {
-					$_type = $cpt . '::' . $cmm;
+					$_type            = $cpt . '::' . $cmm;
+					$_type_for_switch = $cpt . '-' . $cmm;
 
 					$_sections = array(
 						array(
@@ -59,28 +63,51 @@ class Comments extends Generator {
 						'name'     => '',
 						'class'    => '',
 						'settings' => array(
-							EL::i( $this->name, $_type . '-base-count', __( "Comments per post", "demopress" ), __( "This is number of comments to be generated for each post in this post type.", "demopress" ), Type::RANGE_ABSINT, '1=>10' )->args( array(
+							EL::i( $this->name, $_type . '-base-count', __( "Number of Comments", "demopress" ), __( "This is number of comments to be generated for each post in this post type.", "demopress" ), Type::ABSINT, 50 )->args( array(
 								'min' => 1
+							) )
+						)
+					);
+
+					$_sections  [] = array(
+						'label'    => __( "Select posts", "demopress" ),
+						'name'     => '',
+						'class'    => '',
+						'settings' => array(
+							EL::i( $this->name, $_type . '-base-method', __( "Method", "demopress" ), '', Type::SELECT, 'rnd' )->data( 'array', array(
+								'rnd' => __( "Random published posts", "demopress" ),
+								'inc' => __( "Only listed posts", "demopress" ),
+								'exc' => __( "All except listed posts", "demopress" )
+							) )->args( array(
+								'data'          => array( 'switch' => 'demopress-builders-method-' . $_type_for_switch ),
+								'wrapper_class' => 'demopress-builder-switch'
 							) ),
-							EL::i( $this->name, $_type . '-base-affected', __( "For how many posts", "demopress" ), __( "Percentage of total posts to take into account for generating comments.", "demopress" ), Type::ABSINT, 100 )->args( array(
-								'label_unit' => '%',
-								'min'        => 0,
-								'step'       => 5,
-								'max'        => 100
+							EL::i( $this->name, $_type . '-base-random', __( "Random published posts", "demopress" ), __( "Percentage of total posts to take into account for generating comments.", "demopress" ), Type::ABSINT, 100 )->args( array(
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'rnd', false ),
+								'label_unit'    => '%',
+								'min'           => 0,
+								'step'          => 5,
+								'max'           => 100
+							) ),
+							EL::i( $this->name, $_type . '-base-include', __( "Only listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT, '' )->args( array(
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'inc', true )
+							) ),
+							EL::i( $this->name, $_type . '-base-exclude', __( "All except listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT, '' )->args( array(
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'exc', true )
 							) )
 						)
 					);
 
 					$_settings = array(
 						EL::i( $this->name, $_type . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['content']['list'] ) )->args( array(
-							'data'          => array( 'switch' => 'demopress-builders-content-' . $_type ),
+							'data'          => array( 'switch' => 'demopress-builders-content-' . $_type_for_switch ),
 							'wrapper_class' => 'demopress-builder-switch'
 						) )
 					);
 
 					$_hidden = false;
 					foreach ( $this->objects['content'] as $obj ) {
-						$settings = $obj->settings( $this->name, $_type, 'content', 'demopress-builders-content-' . $_type, $_hidden );
+						$settings = $obj->settings( $this->name, $_type, 'content', 'demopress-builders-content-' . $_type_for_switch, $_hidden );
 
 						if ( ! empty( $settings ) ) {
 							$_settings = array_merge( $_settings, $settings );
@@ -115,14 +142,14 @@ class Comments extends Generator {
 
 						$_settings = array(
 							EL::i( $this->name, $_type . '-builder-authors-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
-								'data'          => array( 'switch' => 'demopress-builders-name' . $_type ),
+								'data'          => array( 'switch' => 'demopress-builders-name' . $_type_for_switch ),
 								'wrapper_class' => 'demopress-builder-switch'
 							) )
 						);
 
 						$_hidden = false;
-						foreach ( $this->objects['name'] as $obj ) {
-							$settings = $obj->settings( $this->name, $_type, 'authors-name', 'demopress-builders-name' . $_type, $_hidden );
+						foreach ( $this->objects['author'] as $obj ) {
+							$settings = $obj->settings( $this->name, $_type, 'authors-name', 'demopress-builders-name' . $_type_for_switch, $_hidden );
 
 							if ( ! empty( $settings ) ) {
 								$_settings = array_merge( $_settings, $settings );
@@ -188,5 +215,63 @@ class Comments extends Generator {
 	protected function generate_item( $type ) {
 		list( $cpt, $cmm ) = explode( '::', $type );
 
+		$this->_valid_posts( $cpt, $cmm );
+
+		if ( empty( $this->_list_posts[ $cpt ] ) ) {
+			$post_key = array_rand( $this->_list_posts[ $cpt ] );
+			$post     = $this->_list_posts[ $post_key ];
+			$post_id  = $post->ID;
+
+			$this->_valid_comments( $post_id );
+
+			$comment = array(
+				'comment_post_ID' => $post_id
+			);
+		} else {
+			$this->add_log_entry( __( "No posts found.", "demopress" ) );
+		}
+
+		$this->item_done();
+	}
+
+	private function _valid_comments( $post_id ) {
+		if ( ! isset( $this->_list_comments[ $post_id ] ) ) {
+			$this->_list_comments = demopress_db()->get_comments_for_post( $post_id );
+		}
+	}
+
+	private function _valid_posts( $cpt, $cmm ) {
+		if ( ! isset( $this->_list_posts[ $cpt ] ) ) {
+			$method = $this->get_from_base( $cpt . '::' . $cmm, 'method' );
+
+			if ( $method == 'inc' ) {
+				$ids               = explode( ',', $this->get_from_base( $cpt . '::' . $cmm, 'include' ) );
+				$this->_list_posts = d4p_clean_ids_list( $ids );
+			} else {
+				$exclude = array();
+
+				if ( $method == 'inc' ) {
+					$ids     = explode( ',', $this->get_from_base( $cpt . '::' . $cmm, 'exclude' ) );
+					$exclude = d4p_clean_ids_list( $ids );
+				}
+
+				$raw = demopress_db()->get_posts_for_comments( $cpt, $exclude );
+				$all = wp_list_pluck( $raw, 'ID' );
+
+				if ( $method == 'rnd' ) {
+					shuffle( $all );
+
+					$assign  = $this->get_from_base( $cpt . '::' . $cmm, 'random' );
+					$to_pick = ( $assign / 100 ) * count( $all );
+					$picked  = array_rand( $all, $to_pick );
+
+					foreach ( $picked as $id ) {
+						$this->_list_posts[] = $all[ $id ];
+					}
+				} else {
+					$this->_list_posts = $all;
+				}
+			}
+		}
 	}
 }
