@@ -32,7 +32,7 @@ abstract class Base extends Term {
 
 		$max = $settings['words'];
 		if ( $settings['random_words_number'] ) {
-			$max = rand( 1, $settings['words'] );
+			$max = mt_rand( 1, $settings['words'] );
 		}
 
 		$words = $this->data( $max );

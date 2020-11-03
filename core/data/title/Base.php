@@ -34,7 +34,7 @@ abstract class Base extends Title {
 
 		$settings = wp_parse_args( $settings, $defaults );
 
-		$words = rand( $settings['min'], $settings['max'] );
+		$words = mt_rand( $settings['min'], $settings['max'] );
 
 		return ucwords( $this->data( $words ) );
 	}
