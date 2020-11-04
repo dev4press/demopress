@@ -52,7 +52,7 @@ abstract class Generator {
 	public function get_cleanup_types() {
 		$types = $this->get_list_of_types();
 
-		return wp_list_pluck($types, 'label', 'name');
+		return wp_list_pluck( $types, 'label', 'name' );
 	}
 
 	public function get_cleanup_notice() {

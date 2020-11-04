@@ -25,7 +25,7 @@ class Comments extends Generator {
 		foreach ( $post_types as $cpt => $post_type ) {
 			foreach ( $comment_types as $cmm => $comment_type ) {
 				if ( demopress_post_type_support_comment_type( $cpt, $cmm ) ) {
-					$list[$cpt . '::' . $cmm] = sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label );
+					$list[ $cpt . '::' . $cmm ] = sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label );
 				}
 			}
 		}

@@ -16,7 +16,7 @@ function demopress_post_type_support_comment_type( $post_type, $comment_type ) {
 function demopress_get_comment_types() {
 	return apply_filters( 'demopress_get_comment_types', array(
 			'comment' => (object) array(
-				'name' => 'comment',
+				'name'  => 'comment',
 				'label' => __( "Comments", "demopress" )
 			)
 		)
