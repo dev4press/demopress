@@ -16,6 +16,23 @@ class Comments extends Generator {
 	private $_list_posts = array();
 	private $_list_comments = array();
 
+	public function get_cleanup_types() {
+		$list = array();
+
+		$comment_types = $this->get_list_of_types();
+		$post_types    = demopress_get_post_types();
+
+		foreach ( $post_types as $cpt => $post_type ) {
+			foreach ( $comment_types as $cmm => $comment_type ) {
+				if ( demopress_post_type_support_comment_type( $cpt, $cmm ) ) {
+					$list[$cpt . '::' . $cmm] = sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label );
+				}
+			}
+		}
+
+		return $list;
+	}
+
 	public function get_list_of_types( $return = 'objects' ) {
 		$comment_types = demopress_get_comment_types();
 

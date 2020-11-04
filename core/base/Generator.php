@@ -49,6 +49,20 @@ abstract class Generator {
 		return $instance[ $class ];
 	}
 
+	public function get_cleanup_types() {
+		$types = $this->get_list_of_types();
+
+		return wp_list_pluck($types, 'label', 'name');
+	}
+
+	public function get_cleanup_notice() {
+		return '';
+	}
+
+	public function add_log_entry( $log, $item_mark = false ) {
+		demopress_gen()->add_log_entry( $log, $item_mark, $this->_last );
+	}
+
 	public function settings_for_processing() {
 		$list = array();
 
@@ -97,57 +111,6 @@ abstract class Generator {
 		if ( ! $this->has_more_to_do() ) {
 			demopress_gen()->change_status( 'finished' );
 		}
-	}
-
-	protected function generate() {
-		while ( $this->can_continue() && $this->has_more_to_do() ) {
-			$this->add_log_entry(
-				sprintf( __( "Item %s of %s for '%s'.", "demopress" ),
-					$this->current_item(), $this->current_type_total_item(), $this->current_type() ), true );
-
-			try {
-				$this->generate_item( $this->current_type() );
-			} catch ( Builder $e ) {
-				$this->add_log_entry(
-					sprintf( __( "Generator failed! Builder %s for %s error with message '%s'.", "demopress" ),
-						$e->getBuilder(), ucfirst( $e->getType() ), $e->getMessage() ) );
-
-				demopress_gen()->change_status( 'error' );
-
-				break;
-			}
-		}
-
-		$this->generate_thread_finished( $this->current_type() );
-	}
-
-	protected function has_more_to_do() {
-		if ( empty( $this->_progress['current'] ) ) {
-			$this->_progress['current'] = $this->_types[0];
-		}
-
-		$more = $this->_progress['count'] < $this->_settings[ $this->current_type() ]['base']['count'];
-
-		if ( ! $more ) {
-			$this->_progress['types'][] = $this->_progress['current'];
-
-			foreach ( $this->_types as $type ) {
-				if ( ! in_array( $type, $this->_progress['types'] ) ) {
-					$this->_progress['current'] = $type;
-					$this->_progress['count']   = 0;
-
-					$more = true;
-
-					break;
-				}
-			}
-		}
-
-		return $more;
-	}
-
-	public function add_log_entry( $log, $item_mark = false ) {
-		demopress_gen()->add_log_entry( $log, $item_mark, $this->_last );
 	}
 
 	public function get_user_roles() {
@@ -233,6 +196,53 @@ abstract class Generator {
 		}
 
 		return $types;
+	}
+
+	protected function generate() {
+		while ( $this->can_continue() && $this->has_more_to_do() ) {
+			$this->add_log_entry(
+				sprintf( __( "Item %s of %s for '%s'.", "demopress" ),
+					$this->current_item(), $this->current_type_total_item(), $this->current_type() ), true );
+
+			try {
+				$this->generate_item( $this->current_type() );
+			} catch ( Builder $e ) {
+				$this->add_log_entry(
+					sprintf( __( "Generator failed! Builder %s for %s error with message '%s'.", "demopress" ),
+						$e->getBuilder(), ucfirst( $e->getType() ), $e->getMessage() ) );
+
+				demopress_gen()->change_status( 'error' );
+
+				break;
+			}
+		}
+
+		$this->generate_thread_finished( $this->current_type() );
+	}
+
+	protected function has_more_to_do() {
+		if ( empty( $this->_progress['current'] ) ) {
+			$this->_progress['current'] = $this->_types[0];
+		}
+
+		$more = $this->_progress['count'] < $this->_settings[ $this->current_type() ]['base']['count'];
+
+		if ( ! $more ) {
+			$this->_progress['types'][] = $this->_progress['current'];
+
+			foreach ( $this->_types as $type ) {
+				if ( ! in_array( $type, $this->_progress['types'] ) ) {
+					$this->_progress['current'] = $type;
+					$this->_progress['count']   = 0;
+
+					$more = true;
+
+					break;
+				}
+			}
+		}
+
+		return $more;
 	}
 
 	protected function current_type() {

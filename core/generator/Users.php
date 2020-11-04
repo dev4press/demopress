@@ -13,6 +13,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Users extends Generator {
 	public $name = 'users';
 
+	public function get_cleanup_types() {
+		return array(
+			'users' => __( "Users", "demopress" )
+		);
+	}
+
+	public function get_list_of_types( $return = 'objects' ) {
+		return array();
+	}
+
 	protected function init_builders() {
 		$this->builders['name']  = array(
 			'type' => 'name',
@@ -216,9 +226,5 @@ class Users extends Generator {
 		$user_from_mail = email_exists( $user['email'] );
 
 		return $user_from_mail === false && $user_from_name === false;
-	}
-
-	public function get_list_of_types( $return = 'objects' ) {
-		return array();
 	}
 }
