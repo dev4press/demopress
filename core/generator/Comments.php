@@ -225,25 +225,78 @@ class Comments extends Generator {
 		}
 	}
 
-	private function _default_domain() {
-		return parse_url( site_url(), PHP_URL_HOST );
-	}
-
 	protected function generate_item( $type ) {
 		list( $cpt, $cmm ) = explode( '::', $type );
 
+		$this->_cache_users();
 		$this->_valid_posts( $cpt, $cmm );
 
 		if ( empty( $this->_list_posts[ $cpt ] ) ) {
-			$post_key = array_rand( $this->_list_posts[ $cpt ] );
-			$post     = $this->_list_posts[ $post_key ];
-			$post_id  = $post->ID;
+			$post_key   = array_rand( $this->_list_posts[ $cpt ] );
+			$post       = $this->_list_posts[ $post_key ];
+			$post_id    = $post->ID;
+			$date_start = $post->post_date;
 
 			$this->_valid_comments( $post_id );
 
 			$comment = array(
-				'comment_post_ID' => $post_id
+				'comment_post_ID' => $post_id,
+				'comment_content' => $this->get_from_builder( $type, 'content' )
 			);
+
+			if ( count( $this->_list_comments[ $post_id ] ) > 0 ) {
+				$_last_comment = end( $this->_list_comments[ $post_id ] );
+				$date_start    = $_last_comment->comment_date;
+
+				if ( $this->get_from_base( $type, 'toplevel' ) < 100 ) {
+					$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
+
+					if ( $toplevel >= $this->current_item() + 1 ) {
+						$parent                 = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
+						$post['comment_parent'] = $parent->comment_ID;
+						$date_start             = $parent->comment_date;
+					}
+				}
+			}
+
+			$for_user = true;
+			$reg_part = $this->get_from_base( $type, 'authors', 'registered' );
+
+			if ( $reg_part < 100 ) {
+				if ( mt_rand( 0, 100 ) > $reg_part ) {
+					$for_user    = false;
+					$author_name = $this->get_from_builder( $type, 'name' );
+					$name        = explode( ' ', $author_name );
+
+					$comment['comment_author']       = $author_name;
+					$comment['comment_author_email'] = $this->_generate_email( $type, strtolower( $name[0] . '.' . $name[1] ) );
+				}
+			}
+
+			if ( $for_user ) {
+				$user_id = $this->_users_cache[ array_rand( $this->_users_cache ) ];
+				$user_id = absint( $user_id );
+				$user    = get_user_by( 'id', $user_id );
+
+				$comment['comment_author']       = $user->display_name;
+				$comment['comment_author_email'] = $user->user_email;
+				$comment['comment_author_url']   = $user->user_url;
+				$comment['user_id']              = $user_id;
+			}
+
+			$post['comment_date'] = $this->_get_random_publish_date_from( $date_start );
+
+			$comment_id = wp_insert_comment( $comment );
+
+			if ( ! is_wp_error( $comment_id ) && $comment_id !== false ) {
+				update_comment_meta( $comment_id, '_demopress_generated_content', '1' );
+
+				$this->add_log_entry(
+					sprintf( __( "Added Comment - ID: %s", "demopress" ),
+						$comment_id ) );
+			} else {
+				$this->add_log_entry( __( "Failed creating the comment.", "demopress" ) );
+			}
 		} else {
 			$this->add_log_entry( __( "No posts found.", "demopress" ) );
 		}
@@ -290,5 +343,17 @@ class Comments extends Generator {
 				}
 			}
 		}
+	}
+
+	private function _generate_email( $type, $slug ) {
+		$domains = $this->get_from_base( $type, 'authors', 'domains' );
+
+		if ( empty( $domains ) ) {
+			$domains = array( $this->_default_domain() );
+		}
+
+		$domain = $domains[ array_rand( $domains ) ];
+
+		return $slug . '@' . $domain;
 	}
 }

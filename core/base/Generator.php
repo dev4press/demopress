@@ -327,13 +327,28 @@ abstract class Generator {
 		return $result;
 	}
 
+	protected function _get_random_publish_date_from( $from ) {
+		$from_date = DateTime::createFromFormat( 'Y-m-d H:i:s', $from );
+
+		$random      = mt_rand( $from_date->getTimestamp(), time() );
+		$random_date = new DateTime();
+		$random_date->setTimestamp( $random );
+
+		return $random_date->format( 'Y-m-d H:i:s' );
+	}
+
 	protected function _cache_users( $roles = array() ) {
 		if ( empty( $this->_users_cache ) ) {
-			$query = new WP_User_Query( array(
-				'role__in' => $roles,
-				'fields'   => 'ID',
-				'number'   => - 1
-			) );
+			$args = array(
+				'fields' => 'ID',
+				'number' => - 1
+			);
+
+			if ( ! empty( $roles ) ) {
+				$args['role__in'] = $roles;
+			}
+
+			$query = new WP_User_Query( $args );
 
 			$this->_users_cache = $query->get_results();
 		}
@@ -369,6 +384,10 @@ abstract class Generator {
 
 			$this->_terms_cache[ $tax ] = get_terms( 'category', $args );
 		}
+	}
+
+	protected function _default_domain() {
+		return parse_url( site_url(), PHP_URL_HOST );
 	}
 
 	protected function el_wrapper_class( $class, $name, $hidden = false ) {

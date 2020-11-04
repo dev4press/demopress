@@ -2,7 +2,6 @@
 
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
-use DateTime;
 use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Core\Options\Type;
 
@@ -252,7 +251,7 @@ class bbPress extends Content {
 				$forum_id   = $topic->post_parent;
 				$topic_date = $topic->post_date;
 
-				$post['post_date']   = $this->_get_reply_publish_date( $topic_date );
+				$post['post_date']   = $this->_get_random_publish_date_from( $topic_date );
 				$post['post_parent'] = $topic_id;
 
 				$post_id = bbp_insert_reply( $post, array(
@@ -293,16 +292,6 @@ class bbPress extends Content {
 
 	private function _cache_topics() {
 		$this->_list_topics = demopress_db()->get_topics_for_forums( $this->_list_forums );
-	}
-
-	protected function _get_reply_publish_date( $from ) {
-		$from_date = DateTime::createFromFormat( 'Y-m-d H:i:s', $from );
-
-		$random      = mt_rand( $from_date->getTimestamp(), time() );
-		$random_date = new DateTime();
-		$random_date->setTimestamp( $random );
-
-		return $random_date->format( 'Y-m-d H:i:s' );
 	}
 
 	protected function generate_thread_finished( $type ) {

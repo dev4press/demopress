@@ -195,10 +195,6 @@ class Users extends Generator {
 		}
 	}
 
-	private function _default_domain() {
-		return parse_url( site_url(), PHP_URL_HOST );
-	}
-
 	private function _generate_email( $slug ) {
 		$domains = $this->get_from_base( 'users', 'domains' );
 
