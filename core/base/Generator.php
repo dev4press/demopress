@@ -6,6 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use DateTime;
 use Dev4Press\Plugin\DemoPress\Exception\Builder;
 use WP_User_Query;
 

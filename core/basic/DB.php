@@ -22,10 +22,12 @@ class DB extends DBLite {
 		return $this->get_results( $sql );
 	}
 
-	public function get_posts_for_comments( $post_type, $exclude = array() ) {
+	public function get_posts_for_comments( $post_type, $include = array(), $exclude = array() ) {
 		$sql = $this->prepare( "SELECT p.ID, p.post_date FROM " . $this->wpdb()->posts . " p WHERE p.post_status = 'publish' AND p.post_type = %s", $post_type );
 
-		if ( ! empty( $exclude ) ) {
+		if ( ! empty( $include ) ) {
+			$sql .= ' AND p.ID IN (' . join( ',', $include ) . ')';
+		} else if ( ! empty( $exclude ) ) {
 			$sql .= ' AND p.ID NOT IN (' . join( ',', $exclude ) . ')';
 		}
 

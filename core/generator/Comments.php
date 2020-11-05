@@ -158,7 +158,7 @@ class Comments extends Generator {
 						);
 
 						$_settings = array(
-							EL::i( $this->name, $_type . '-builder-authors-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
+							EL::i( $this->name, $_type . '-builder-author', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
 								'data'          => array( 'switch' => 'demopress-builders-name' . $_type_for_switch ),
 								'wrapper_class' => 'demopress-builder-switch'
 							) )
@@ -166,7 +166,7 @@ class Comments extends Generator {
 
 						$_hidden = false;
 						foreach ( $this->objects['author'] as $obj ) {
-							$settings = $obj->settings( $this->name, $_type, 'authors-name', 'demopress-builders-name' . $_type_for_switch, $_hidden );
+							$settings = $obj->settings( $this->name, $_type, 'author', 'demopress-builders-name' . $_type_for_switch, $_hidden );
 
 							if ( ! empty( $settings ) ) {
 								$_settings = array_merge( $_settings, $settings );
@@ -229,11 +229,11 @@ class Comments extends Generator {
 		list( $cpt, $cmm ) = explode( '::', $type );
 
 		$this->_cache_users();
-		$this->_valid_posts( $cpt, $cmm );
+		$this->_valid_posts( $type, $cpt, $cmm );
 
-		if ( empty( $this->_list_posts[ $cpt ] ) ) {
+		if ( !empty( $this->_list_posts[ $cpt ] ) ) {
 			$post_key   = array_rand( $this->_list_posts[ $cpt ] );
-			$post       = $this->_list_posts[ $post_key ];
+			$post       = $this->_list_posts[ $cpt ][ $post_key ];
 			$post_id    = $post->ID;
 			$date_start = $post->post_date;
 
@@ -265,7 +265,7 @@ class Comments extends Generator {
 			if ( $reg_part < 100 ) {
 				if ( mt_rand( 0, 100 ) > $reg_part ) {
 					$for_user    = false;
-					$author_name = $this->get_from_builder( $type, 'name' );
+					$author_name = $this->get_from_builder( $type, 'author' );
 					$name        = explode( ' ', $author_name );
 
 					$comment['comment_author']       = $author_name;
@@ -284,11 +284,13 @@ class Comments extends Generator {
 				$comment['user_id']              = $user_id;
 			}
 
-			$post['comment_date'] = $this->_get_random_publish_date_from( $date_start );
+			$comment['comment_date'] = $this->_get_random_publish_date_from( $date_start );
 
 			$comment_id = wp_insert_comment( $comment );
 
 			if ( ! is_wp_error( $comment_id ) && $comment_id !== false ) {
+				$this->_list_comments[ $post_id ][] = (object)array('comment_ID' => $comment_id, 'comment_date' => $comment['comment_date']);
+
 				update_comment_meta( $comment_id, '_demopress_generated_content', '1' );
 
 				$this->add_log_entry(
@@ -306,41 +308,41 @@ class Comments extends Generator {
 
 	private function _valid_comments( $post_id ) {
 		if ( ! isset( $this->_list_comments[ $post_id ] ) ) {
-			$this->_list_comments = demopress_db()->get_comments_for_post( $post_id );
+			$this->_list_comments[ $post_id ] = demopress_db()->get_comments_for_post( $post_id );
 		}
 	}
 
-	private function _valid_posts( $cpt, $cmm ) {
+	private function _valid_posts($type, $cpt, $cmm ) {
 		if ( ! isset( $this->_list_posts[ $cpt ] ) ) {
-			$method = $this->get_from_base( $cpt . '::' . $cmm, 'method' );
+			$method = $this->get_from_base( $type, 'method' );
+
+			$this->_list_posts[ $cpt ] = array();
+
+			$exclude = array();
+			$include = array();
 
 			if ( $method == 'inc' ) {
-				$ids               = explode( ',', $this->get_from_base( $cpt . '::' . $cmm, 'include' ) );
-				$this->_list_posts = d4p_clean_ids_list( $ids );
+				$ids               = explode( ',', $this->get_from_base( $type, 'include' ) );
+				$include = d4p_clean_ids_list( $ids );
+			} else if ( $method == 'exc' ) {
+				$ids               = explode( ',', $this->get_from_base( $type, 'exclude' ) );
+				$exclude = d4p_clean_ids_list( $ids );
+			}
+
+			$all = demopress_db()->get_posts_for_comments( $cpt, $include, $exclude );
+
+			if ( $method == 'rnd' ) {
+				shuffle( $all );
+
+				$assign  = $this->get_from_base( $type, 'random' );
+				$to_pick = ( $assign / 100 ) * count( $all );
+				$picked  = array_rand( $all, $to_pick );
+
+				foreach ( $picked as $id ) {
+					$this->_list_posts[ $cpt ][] = $all[ $id ];
+				}
 			} else {
-				$exclude = array();
-
-				if ( $method == 'inc' ) {
-					$ids     = explode( ',', $this->get_from_base( $cpt . '::' . $cmm, 'exclude' ) );
-					$exclude = d4p_clean_ids_list( $ids );
-				}
-
-				$raw = demopress_db()->get_posts_for_comments( $cpt, $exclude );
-				$all = wp_list_pluck( $raw, 'ID' );
-
-				if ( $method == 'rnd' ) {
-					shuffle( $all );
-
-					$assign  = $this->get_from_base( $cpt . '::' . $cmm, 'random' );
-					$to_pick = ( $assign / 100 ) * count( $all );
-					$picked  = array_rand( $all, $to_pick );
-
-					foreach ( $picked as $id ) {
-						$this->_list_posts[] = $all[ $id ];
-					}
-				} else {
-					$this->_list_posts = $all;
-				}
+				$this->_list_posts[ $cpt ] = $all;
 			}
 		}
 	}
