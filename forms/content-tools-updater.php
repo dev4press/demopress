@@ -3,7 +3,7 @@
         <h3><?php _e( "Update status", "demopress" ); ?></h3>
         <div class="d4p-group-inner">
             <div>
-		        <?php _e( "There is nothing available for update.", "demopress" ); ?>
+				<?php _e( "There is nothing available for update.", "demopress" ); ?>
             </div>
         </div>
     </div>

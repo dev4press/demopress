@@ -22,6 +22,43 @@ class PostBack extends BasePostBack {
 		do_action( 'demopress_admin_postback_handler', $this->p() );
 	}
 
+	protected function tools() {
+		parent::tools();
+
+		if ( $this->a()->subpanel == 'cleanup' ) {
+			$this->cleanup();
+		}
+	}
+
+	protected function cleanup() {
+		$data = $_POST['demopresstools'];
+
+		$cleanup = isset( $data['cleanup'] ) ? (array) $data['cleanup'] : array();
+		$message = 'nothing-removed';
+
+		if ( ! empty( $cleanup ) ) {
+			$done = array();
+
+			foreach ( $cleanup as $gen => $types ) {
+				$generator = demopress()->get_generator( $gen );
+
+				if ( is_wp_error( $generator ) ) {
+					$done[ $gen ] = 'missing';
+				} else {
+					$done[ $gen ] = array();
+					foreach ( array_keys( $types ) as $type ) {
+						$done[ $gen ][ $type ] = $generator->run_cleanup( $type );
+					}
+				}
+			}
+
+			$message = 'cleanup-completed&results=' . urlencode( json_encode( $done ) );
+		}
+
+		wp_redirect( $this->a()->current_url() . '&message=' . $message );
+		exit;
+	}
+
 	protected function generator() {
 		check_admin_referer( 'demopress-generator-options' );
 

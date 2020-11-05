@@ -13,6 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Terms extends Generator {
 	public $name = 'terms';
 
+	public function get_cleanup_count( $type = '' ) {
+		return demopress_db()->get_terms_for_cleanup( $type, true );
+	}
+
+	public function run_cleanup( $type ) {
+		$ids = demopress_db()->get_terms_for_cleanup( $type );
+
+		if ( ! empty( $ids ) ) {
+			// demopress_db()->run_terms_cleanup($ids);
+		}
+
+		return count( $ids );
+	}
+
 	public function get_list_of_types( $return = 'objects' ) {
 		$taxonomies = demopress_get_taxonomies();
 

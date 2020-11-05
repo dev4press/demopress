@@ -15,6 +15,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Content extends Generator {
+	public function get_cleanup_count( $type = '' ) {
+		return 0;
+	}
+
+	public function run_cleanup( $type ) {
+		return 5;
+	}
+
 	protected function init_settings() {
 		$post_types = $this->get_list_of_types();
 
@@ -327,9 +335,14 @@ abstract class Content extends Generator {
 		$url  = $image['url'];
 		$data = $image['data'];
 
-		$uploader = new RemoteImage( $url, $data );
+		$uploader      = new RemoteImage( $url, $data );
+		$attachment_id = $uploader->download( $post_id, true );
 
-		return $uploader->download( $post_id, true );
+		if ( ! is_wp_error( $attachment_id ) ) {
+			update_post_meta( $attachment_id, '_demopress_generated_content', '1' );
+		}
+
+		return $attachment_id;
 	}
 
 	protected function _attach_featured_image_local( $image, $post_id = 1 ) {
@@ -339,6 +352,10 @@ abstract class Content extends Generator {
 		if ( file_exists( $path ) ) {
 			$uploader      = new LocalImage( $path, $data );
 			$attachment_id = $uploader->upload( $post_id, true );
+
+			if ( ! is_wp_error( $attachment_id ) ) {
+				update_post_meta( $attachment_id, '_demopress_generated_content', '1' );
+			}
 
 			if ( file_exists( $path ) ) {
 				unlink( $path );

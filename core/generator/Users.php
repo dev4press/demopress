@@ -13,6 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Users extends Generator {
 	public $name = 'users';
 
+	public function get_cleanup_count( $type = '' ) {
+		return demopress_db()->get_users_for_cleanup( true );
+	}
+
+	public function run_cleanup( $type ) {
+		$ids = demopress_db()->get_users_for_cleanup();
+
+		if ( ! empty( $ids ) ) {
+			// demopress_db()->run_users_cleanup($ids);
+		}
+
+		return count( $ids );
+	}
+
 	public function get_cleanup_types() {
 		return array(
 			'users' => __( "Users", "demopress" )
@@ -174,14 +188,15 @@ class Users extends Generator {
 				$u->set_role( $this->_generate_role() );
 
 				wp_update_user( array(
-					'ID'                           => $user_id,
-					'description'                  => $user['about'],
-					'nickname'                     => $user['firstname'],
-					'first_name'                   => $user['firstname'],
-					'last_name'                    => $user['lastname'],
-					'display_name'                 => $user['name'],
-					'_demopress_generated_content' => '1'
+					'ID'           => $user_id,
+					'description'  => $user['about'],
+					'nickname'     => $user['firstname'],
+					'first_name'   => $user['firstname'],
+					'last_name'    => $user['lastname'],
+					'display_name' => $user['name']
 				) );
+
+				update_user_meta( $user_id, '_demopress_generated_content', '1' );
 			}
 
 			$this->add_log_entry(

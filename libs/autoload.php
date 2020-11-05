@@ -8,7 +8,7 @@ function d4p_plugin_demopress_libs_autoload( $class ) {
 	$base = dirname( __FILE__ ) . '/';
 
 	$list = array(
-		'Dev4Press\\Generator\\Name\\Random' => 'random-names-generator/Random.php',
+		'Dev4Press\\Generator\\Name\\Random'       => 'random-names-generator/Random.php',
 		'Dev4Press\\Generator\\Image\\Placeholder' => 'placeholder-image-generator/Placeholder.php'
 	);
 

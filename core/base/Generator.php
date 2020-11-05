@@ -410,4 +410,8 @@ abstract class Generator {
 	abstract protected function init_settings();
 
 	abstract protected function generate_item( $type );
+
+	abstract public function get_cleanup_count( $type = '' );
+
+	abstract public function run_cleanup( $type );
 }

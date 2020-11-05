@@ -39,6 +39,24 @@ class Comments extends Generator {
 		return $return == 'keys' ? array_keys( $comment_types ) : $comment_types;
 	}
 
+	public function get_cleanup_count( $type = '' ) {
+		list( $cpt, $cmm ) = explode( '::', $type );
+
+		return demopress_db()->get_comments_for_cleanup( $cpt, $cmm, true );
+	}
+
+	public function run_cleanup( $type ) {
+		list( $cpt, $cmm ) = explode( '::', $type );
+
+		$ids = demopress_db()->get_comments_for_cleanup( $cpt, $cmm );
+
+		if ( ! empty( $ids ) ) {
+			// demopress_db()->run_comments_cleanup($ids);
+		}
+
+		return count( $ids );
+	}
+
 	protected function init_builders() {
 		$this->builders['content'] = array(
 			'type' => 'text',
@@ -148,7 +166,7 @@ class Comments extends Generator {
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( $this->name, $cpt . '-base-authors-registered', __( "Registered users", "demopress" ), __( "Percentage of total comments to be authored by the registered users.", "demopress" ), Type::ABSINT, 40 )->args( array(
+								EL::i( $this->name, $_type . '-base-registered', __( "Registered users", "demopress" ), __( "Percentage of total comments to be authored by the registered users.", "demopress" ), Type::ABSINT, 40 )->args( array(
 									'label_unit' => '%',
 									'min'        => 0,
 									'step'       => 5,
@@ -189,11 +207,11 @@ class Comments extends Generator {
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( $this->name, $_type . '-builder-authors-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
+								EL::i( $this->name, $_type . '-base-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
 							)
 						);
 					} else {
-						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-authors-registered', '', '', Type::HIDDEN, 100 );
+						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-registered', '', '', Type::HIDDEN, 100 );
 					}
 
 					if ( get_option( 'thread_comments' ) == 1 ) {
@@ -231,7 +249,7 @@ class Comments extends Generator {
 		$this->_cache_users();
 		$this->_valid_posts( $type, $cpt, $cmm );
 
-		if ( !empty( $this->_list_posts[ $cpt ] ) ) {
+		if ( ! empty( $this->_list_posts[ $cpt ] ) ) {
 			$post_key   = array_rand( $this->_list_posts[ $cpt ] );
 			$post       = $this->_list_posts[ $cpt ][ $post_key ];
 			$post_id    = $post->ID;
@@ -252,15 +270,15 @@ class Comments extends Generator {
 					$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
 
 					if ( $toplevel >= $this->current_item() + 1 ) {
-						$parent                 = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
-						$post['comment_parent'] = $parent->comment_ID;
-						$date_start             = $parent->comment_date;
+						$parent                    = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
+						$comment['comment_parent'] = $parent->comment_ID;
+						$date_start                = $parent->comment_date;
 					}
 				}
 			}
 
 			$for_user = true;
-			$reg_part = $this->get_from_base( $type, 'authors', 'registered' );
+			$reg_part = $this->get_from_base( $type, 'registered' );
 
 			if ( $reg_part < 100 ) {
 				if ( mt_rand( 0, 100 ) > $reg_part ) {
@@ -289,7 +307,10 @@ class Comments extends Generator {
 			$comment_id = wp_insert_comment( $comment );
 
 			if ( ! is_wp_error( $comment_id ) && $comment_id !== false ) {
-				$this->_list_comments[ $post_id ][] = (object)array('comment_ID' => $comment_id, 'comment_date' => $comment['comment_date']);
+				$this->_list_comments[ $post_id ][] = (object) array(
+					'comment_ID'   => $comment_id,
+					'comment_date' => $comment['comment_date']
+				);
 
 				update_comment_meta( $comment_id, '_demopress_generated_content', '1' );
 
@@ -312,7 +333,7 @@ class Comments extends Generator {
 		}
 	}
 
-	private function _valid_posts($type, $cpt, $cmm ) {
+	private function _valid_posts( $type, $cpt, $cmm ) {
 		if ( ! isset( $this->_list_posts[ $cpt ] ) ) {
 			$method = $this->get_from_base( $type, 'method' );
 
@@ -322,10 +343,10 @@ class Comments extends Generator {
 			$include = array();
 
 			if ( $method == 'inc' ) {
-				$ids               = explode( ',', $this->get_from_base( $type, 'include' ) );
+				$ids     = explode( ',', $this->get_from_base( $type, 'include' ) );
 				$include = d4p_clean_ids_list( $ids );
 			} else if ( $method == 'exc' ) {
-				$ids               = explode( ',', $this->get_from_base( $type, 'exclude' ) );
+				$ids     = explode( ',', $this->get_from_base( $type, 'exclude' ) );
 				$exclude = d4p_clean_ids_list( $ids );
 			}
 
@@ -348,7 +369,7 @@ class Comments extends Generator {
 	}
 
 	private function _generate_email( $type, $slug ) {
-		$domains = $this->get_from_base( $type, 'authors', 'domains' );
+		$domains = $this->get_from_base( $type, 'domains' );
 
 		if ( empty( $domains ) ) {
 			$domains = array( $this->_default_domain() );
