@@ -20,7 +20,7 @@ Easy to use plugin for generating demo content for newly created websites used d
 * **Users**: randomize from select roles, domains for emails, password; generate name and about; use name for email and login.
 * **Terms**: support for default and custom taxonomies; support for hierarchy; generate name and description.
 * **Posts**: support for default and custom post types; support for hierarchy; generate, title, content, excerpt, publication date and author, featured image; assign terms.
-* **Comments**: support for threaded comments; generate content, comment authors information.
+* **Comments**: support for threaded comments; limit posts to get comments; generate content, comment authors information.
 
 = bbPress Generators =
 * **Forums**: support for forums hierarchy; generate forum title, content, publication date and author.

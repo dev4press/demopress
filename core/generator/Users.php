@@ -21,7 +21,7 @@ class Users extends Generator {
 		$ids = demopress_db()->get_users_for_cleanup();
 
 		if ( ! empty( $ids ) ) {
-			// demopress_db()->run_users_cleanup($ids);
+			demopress_db()->run_users_cleanup($ids);
 		}
 
 		return count( $ids );

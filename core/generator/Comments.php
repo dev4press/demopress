@@ -51,10 +51,14 @@ class Comments extends Generator {
 		$ids = demopress_db()->get_comments_for_cleanup( $cpt, $cmm );
 
 		if ( ! empty( $ids ) ) {
-			// demopress_db()->run_comments_cleanup($ids);
+			demopress_db()->run_comments_cleanup($ids);
 		}
 
 		return count( $ids );
+	}
+
+	public function get_cleanup_notice() {
+		return __( "Make sure to remove comments before posts these comments belong too. Comments are always removed based on the link to posts. If you remove posts before comments, you will see unlinked comments in the Comments panel.", "demopress" );
 	}
 
 	protected function init_builders() {

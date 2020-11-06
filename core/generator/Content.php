@@ -23,7 +23,7 @@ abstract class Content extends Generator {
 		$ids = demopress_db()->get_posts_for_cleanup( $type );
 
 		if ( ! empty( $ids ) ) {
-			// demopress_db()->run_posts_cleanup($ids);
+			demopress_db()->run_posts_cleanup($ids);
 		}
 
 		return count( $ids );

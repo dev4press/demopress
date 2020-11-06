@@ -21,7 +21,7 @@
 						$gen_label = demopress()->get_generator_label( $gen );
 
 						foreach ( $data as $type => $value ) {
-							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s." ), absint( $value ), d4p_sanitize_basic( $type ) );
+							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), absint( $value ), d4p_sanitize_basic( $type ) );
 						}
 					}
 
@@ -72,7 +72,7 @@
 					<?php foreach ( $types as $name => $label ) {
 						$count = $obj->get_cleanup_count( $name ); ?>
                         <label>
-                            <input<?php echo $count == 0 ? ' disabled="disabled"' : ''; ?> type="checkbox" class="widefat" name="demopresstools[cleanup][<?php echo $obj->name; ?>][<?php echo $name; ?>]" value="on"/> <?php echo $label . ' (' . sprintf( _n( "%s item", "%s items", $count ) . ')', '<strong>' . $count . '</strong>' ); ?>
+                            <input<?php echo $count == 0 ? ' disabled="disabled"' : ''; ?> type="checkbox" class="widefat" name="demopresstools[cleanup][<?php echo $obj->name; ?>][<?php echo $name; ?>]" value="on"/> <?php echo $label . ' (' . sprintf( _n( "%s item", "%s items", $count, "demopress" ) . ')', '<strong>' . $count . '</strong>' ); ?>
                         </label>
 					<?php } ?>
                 </div>
