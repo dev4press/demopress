@@ -16,11 +16,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Content extends Generator {
 	public function get_cleanup_count( $type = '' ) {
-		return 0;
+		return demopress_db()->get_posts_for_cleanup( $type, true );
 	}
 
 	public function run_cleanup( $type ) {
-		return 5;
+		$ids = demopress_db()->get_posts_for_cleanup( $type );
+
+		if ( ! empty( $ids ) ) {
+			// demopress_db()->run_posts_cleanup($ids);
+		}
+
+		return count( $ids );
 	}
 
 	protected function init_settings() {

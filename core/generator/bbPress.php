@@ -15,6 +15,14 @@ class bbPress extends Content {
 	private $_list_forums = array();
 	private $_list_topics = array();
 
+	public function run_cleanup( $type ) {
+		$ids = parent::run_cleanup( $type );
+
+		$this->generate_thread_finished( $type );
+
+		return $ids;
+	}
+
 	public function get_cleanup_notice() {
 		return __( "If you choose to delete forums only, the remaining topics and replies will no longer be visible, because they are linked to forums. If you delete topics only, the remaining replies will not longer be visible, because they are linked to topics.", "demopress" );
 	}

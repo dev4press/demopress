@@ -9,6 +9,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DB extends DBLite {
+	public function get_posts_for_cleanup( $post_type, $return_counts = false ) {
+		$ret = $return_counts ? 'COUNT(*)' : 'DISTINCT(m.post_id)';
+
+		$sql = $this->prepare( "SELECT " . $ret . " FROM " . $this->wpdb()->postmeta . " m INNER JOIN " . $this->wpdb()->posts . " p ON p.ID = m.post_id WHERE p.post_type = %s AND m.meta_key = '_demopress_generated_content'", $post_type );
+
+		if ( $return_counts ) {
+			return $this->get_var( $sql );
+		} else {
+			$raw = $this->get_results( $sql );
+
+			return wp_list_pluck( $raw, 'post_id' );
+		}
+	}
+
+	public function run_posts_cleanup( $ids ) {
+		$sql = "DELETE m, p FROM " . $this->wpdb()->posts . " p INNER JOIN " . $this->wpdb()->postmeta . " m ON p.ID = m.post_id WHERE p.ID IN (" . join( ',', $ids ) . ")";
+
+		$this->query( $sql );
+	}
+
 	public function get_terms_for_cleanup( $taxonomy, $return_counts = false ) {
 		$ret = $return_counts ? 'COUNT(*)' : 'DISTINCT(m.term_id)';
 

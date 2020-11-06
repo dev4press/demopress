@@ -17,6 +17,17 @@ class Dashboard extends PanelDashboard {
 	public function __construct( $admin ) {
 		parent::__construct( $admin );
 
+		$this->sidebar_links = array(
+			                       'top' => array(
+				                       'cleanup' => array(
+					                       'icon'  => 'ui-trash',
+					                       'class' => 'button-primary',
+					                       'url'   => $this->a()->panel_url( 'tools', 'cleanup' ),
+					                       'label' => __( "Remove Generated Data", "d4plib" )
+				                       )
+			                       )
+		                       ) + $this->sidebar_links;
+
 		$this->subpanels = array(
 			'index' => array(
 				'title' => __( "Generators", "demopress" ),
