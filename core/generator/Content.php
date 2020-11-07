@@ -15,6 +15,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 abstract class Content extends Generator {
+	public $attached_images = true;
+
+	public function get_attached_images_count( $type ) {
+		return demopress_db()->get_attachments_for_cleanup( $type, true );
+	}
+
+	public function run_attached_images_cleanup( $type ) {
+		$ids = demopress_db()->get_attachments_for_cleanup( $type );
+
+		if ( ! empty( $ids ) ) {
+			foreach ( $ids as $id ) {
+				wp_delete_attachment( $id, true );
+			}
+		}
+
+		return count( $ids );
+	}
+
 	public function get_cleanup_count( $type = '' ) {
 		return demopress_db()->get_posts_for_cleanup( $type, true );
 	}
@@ -23,7 +41,7 @@ abstract class Content extends Generator {
 		$ids = demopress_db()->get_posts_for_cleanup( $type );
 
 		if ( ! empty( $ids ) ) {
-			demopress_db()->run_posts_cleanup($ids);
+			demopress_db()->run_posts_cleanup( $ids );
 		}
 
 		return count( $ids );
@@ -281,16 +299,20 @@ abstract class Content extends Generator {
 						$range = explode( '=>', $settings['terms'] );
 						$range = array_map( 'absint', $range );
 
-						$count = mt_rand( $range[0], $range[1] );
+						if ( $range[0] <= $range[1] ) {
+							$count = mt_rand( $range[0], $range[1] );
 
-						if ( $count >= count( $this->_terms_cache[ $tax ] ) ) {
-							$pick = array_keys( $this->_terms_cache[ $tax ] );
-						} else {
-							$pick = (array) array_rand( $this->_terms_cache[ $tax ], $count );
-						}
+							if ( $count > 0 ) {
+								if ( $count >= count( $this->_terms_cache[ $tax ] ) ) {
+									$pick = array_keys( $this->_terms_cache[ $tax ] );
+								} else {
+									$pick = (array) array_rand( $this->_terms_cache[ $tax ], $count );
+								}
 
-						foreach ( $pick as $key ) {
-							$terms[ $tax ][] = absint( $this->_terms_cache[ $tax ][ $key ] );
+								foreach ( $pick as $key ) {
+									$terms[ $tax ][] = absint( $this->_terms_cache[ $tax ][ $key ] );
+								}
+							}
 						}
 					}
 				}

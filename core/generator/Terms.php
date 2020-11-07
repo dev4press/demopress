@@ -21,7 +21,7 @@ class Terms extends Generator {
 		$ids = demopress_db()->get_terms_for_cleanup( $type );
 
 		if ( ! empty( $ids ) ) {
-			demopress_db()->run_terms_cleanup($ids);
+			demopress_db()->run_terms_cleanup( $ids );
 		}
 
 		return count( $ids );

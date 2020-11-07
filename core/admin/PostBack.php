@@ -31,7 +31,7 @@ class PostBack extends BasePostBack {
 	}
 
 	protected function cleanup() {
-		$data = $_POST['demopresstools'];
+		$data = isset( $_POST['demopresstools'] ) ? $_POST['demopresstools'] : array();
 
 		$cleanup = isset( $data['cleanup'] ) ? (array) $data['cleanup'] : array();
 		$message = 'nothing-removed';
@@ -46,7 +46,22 @@ class PostBack extends BasePostBack {
 					$done[ $gen ] = 'missing';
 				} else {
 					$done[ $gen ] = array();
+
+					if ( $generator->attached_images ) {
+						foreach ( array_keys( $types ) as $type ) {
+							if ( substr( $type, 0, 17 ) == 'attached-images::' ) {
+								$_type = substr( $type, 17 );
+
+								$done[ $gen ][ $type ] = $generator->run_attached_images_cleanup( $_type );
+							}
+						}
+					}
+
 					foreach ( array_keys( $types ) as $type ) {
+						if ( substr( $type, 0, 17 ) == 'attached-images::' ) {
+							continue;
+						}
+
 						$done[ $gen ][ $type ] = $generator->run_cleanup( $type );
 					}
 				}

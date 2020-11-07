@@ -21,7 +21,7 @@
 						$gen_label = demopress()->get_generator_label( $gen );
 
 						foreach ( $data as $type => $value ) {
-							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), absint( $value ), d4p_sanitize_basic( $type ) );
+							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), '<strong>' . absint( $value ) . '</strong>', '<strong>' . str_replace( '::', ' / ', d4p_sanitize_basic( $type ) ) . '</strong>' );
 						}
 					}
 
@@ -60,21 +60,46 @@
 
 			?>
 
-            <div class="d4p-group d4p-group-tools">
+            <div class="d4p-group d4p-group-tools demopress-group-cleanup">
                 <h3>
                     <i style="float: left; margin-right: 10px;" aria-hidden="true" class="<?php echo $generator['settings']['icon']; ?> d4p-icon-fw"></i><?php echo $generator['label']; ?>
                 </h3>
                 <div class="d4p-group-inner">
 					<?php if ( ! empty( $notice ) ) { ?>
-                        <p><?php echo $notice; ?></p>
+                        <p><?php echo join( '</p><p>', $notice ); ?></p>
 					<?php } ?>
 
-					<?php foreach ( $types as $name => $label ) {
-						$count = $obj->get_cleanup_count( $name ); ?>
+					<?php
+
+					foreach ( $types as $name => $label ) {
+						$count = $obj->get_cleanup_count( $name );
+
+						?>
+
                         <label>
                             <input<?php echo $count == 0 ? ' disabled="disabled"' : ''; ?> type="checkbox" class="widefat" name="demopresstools[cleanup][<?php echo $obj->name; ?>][<?php echo $name; ?>]" value="on"/> <?php echo $label . ' (' . sprintf( _n( "%s item", "%s items", $count, "demopress" ) . ')', '<strong>' . $count . '</strong>' ); ?>
                         </label>
-					<?php } ?>
+
+						<?php
+
+						if ( $obj->attached_images ) {
+							$images = $obj->get_attached_images_count( $name );
+
+							if ( $images ) {
+
+								?>
+
+                                <label style="margin-left: 25px">
+                                    <input type="checkbox" class="widefat" name="demopresstools[cleanup][<?php echo $obj->name; ?>][attached-images::<?php echo $name; ?>]" value="on"/> <?php echo __( "Attached Images", "demopress" ) . ' (' . sprintf( _n( "%s item", "%s items", $images, "demopress" ) . ')', '<strong>' . $images . '</strong>' ); ?>
+                                </label>
+
+								<?php
+
+							}
+						}
+					}
+
+					?>
                 </div>
             </div>
 

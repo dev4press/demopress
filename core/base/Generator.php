@@ -21,6 +21,7 @@ abstract class Generator {
 	protected $_last = 0;
 
 	public $name = '';
+	public $attached_images = false;
 	public $objects = array();
 	public $builders = array();
 	public $settings = array();
@@ -57,7 +58,7 @@ abstract class Generator {
 	}
 
 	public function get_cleanup_notice() {
-		return '';
+		return array();
 	}
 
 	public function add_log_entry( $log, $item_mark = false ) {
@@ -377,13 +378,17 @@ abstract class Generator {
 
 	protected function _cache_terms( $tax, $child_of = 0 ) {
 		if ( empty( $this->_terms_cache[ $tax ] ) ) {
-			$args = array( 'fields' => 'ids' );
+			$args = array(
+				'fields'     => 'ids',
+				'hide_empty' => false,
+				'taxonomy'   => $tax
+			);
 
 			if ( is_taxonomy_hierarchical( $tax ) && $child_of > 0 ) {
 				$args['child_of'] = $child_of;
 			}
 
-			$this->_terms_cache[ $tax ] = get_terms( 'category', $args );
+			$this->_terms_cache[ $tax ] = get_terms( $args );
 		}
 	}
 
@@ -403,15 +408,23 @@ abstract class Generator {
 
 	}
 
+	public function get_attached_images_count( $type ) {
+		return 0;
+	}
+
+	public function run_attached_images_cleanup( $type ) {
+
+	}
+
 	abstract public function get_list_of_types( $return = 'objects' );
+
+	abstract public function get_cleanup_count( $type = '' );
+
+	abstract public function run_cleanup( $type );
 
 	abstract protected function init_builders();
 
 	abstract protected function init_settings();
 
 	abstract protected function generate_item( $type );
-
-	abstract public function get_cleanup_count( $type = '' );
-
-	abstract public function run_cleanup( $type );
 }

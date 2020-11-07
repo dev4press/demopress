@@ -9,6 +9,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class DB extends DBLite {
+	public function get_attachments_for_cleanup( $post_type, $return_counts = false ) {
+		$ret = $return_counts ? 'COUNT(*)' : 'DISTINCT(m.post_id)';
+
+		$sql = $this->prepare( "SELECT " . $ret . " FROM " . $this->wpdb()->postmeta . " m
+			INNER JOIN " . $this->wpdb()->posts . " a ON a.ID = m.post_id AND a.post_type = 'attachment'
+			INNER JOIN " . $this->wpdb()->posts . " p ON p.ID = a.post_parent AND p.post_type = %s
+			WHERE m.meta_key = '_demopress_generated_content'", $post_type );
+
+		if ( $return_counts ) {
+			return $this->get_var( $sql );
+		} else {
+			$raw = $this->get_results( $sql );
+
+			return wp_list_pluck( $raw, 'post_id' );
+		}
+	}
+
 	public function get_posts_for_cleanup( $post_type, $return_counts = false ) {
 		$ret = $return_counts ? 'COUNT(*)' : 'DISTINCT(m.post_id)';
 

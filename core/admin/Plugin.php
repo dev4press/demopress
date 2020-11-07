@@ -75,11 +75,21 @@ class Plugin extends BasePlugin {
 
 	public function message_process( $code, $msg ) {
 		switch ( $code ) {
+			case 'cleanup-completed':
+				$msg['message'] = __( "The data removal has been completed.", "demopress" );
+				break;
 			case 'gen-stopped':
-				$msg['message'] = __( "Poll votes are all removed.", "demopress" );
+				$msg['message'] = __( "The Generator process has been stopped.", "demopress" );
+				break;
+			case 'gen-added':
+				$msg['message'] = __( "New Generator process has been added.", "demopress" );
 				break;
 			case 'gen-removed':
-				$msg['message'] = __( "Votes deletion completed.", "demopress" );
+				$msg['message'] = __( "The Generator process has been reset.", "demopress" );
+				break;
+			case 'gen-error':
+				$msg['message'] = __( "The Generator process has stopped due to an error.", "demopress" );
+				$msg['color']   = 'error';
 				break;
 		}
 

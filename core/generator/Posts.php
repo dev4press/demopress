@@ -69,7 +69,7 @@ class Posts extends Content {
 		}
 
 		if ( ! empty( $terms ) ) {
-			$post['tax_input'] = '';
+			$post['tax_input'] = $terms;
 		}
 
 		if ( is_post_type_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {

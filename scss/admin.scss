@@ -1,3 +1,10 @@
+.demopress-group-cleanup {
+    p:last-of-type {
+        border-bottom: 1px solid #DDD;
+        padding-bottom: 10px;
+    }
+}
+
 .d4p-generators-list {
     .d4p-options-panel {
         width: calc(50% - 15px);

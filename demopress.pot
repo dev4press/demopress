@@ -3,14 +3,15 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 11/06/2020 10:44:49 PM\n"
+"POT-Creation-Date: 11/07/2020 04:19:12 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: GD i18n 2.5; www.dev4press.com\n"
 
-#: forms/content-tools-cleanup.php:74
+#: forms/content-tools-cleanup.php:79
+#: forms/content-tools-cleanup.php:92
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] ""
@@ -91,11 +92,23 @@ msgid "Tools"
 msgstr ""
 
 #: core/admin/Plugin.php:78
-msgid "Poll votes are all removed."
+msgid "The data removal has been completed."
 msgstr ""
 
 #: core/admin/Plugin.php:81
-msgid "Votes deletion completed."
+msgid "The Generator process has been stopped."
+msgstr ""
+
+#: core/admin/Plugin.php:84
+msgid "New Generator process has been added."
+msgstr ""
+
+#: core/admin/Plugin.php:87
+msgid "The Generator process has been reset."
+msgstr ""
+
+#: core/admin/Plugin.php:90
+msgid "The Generator process has stopped due to an error."
 msgstr ""
 
 #: core/admin/Settings.php:21
@@ -104,9 +117,9 @@ msgstr ""
 
 #: core/admin/Settings.php:28
 #: core/generator/bbPress.php:51
-#: core/generator/Content.php:129
-#: core/generator/Content.php:166
-#: core/generator/Content.php:212
+#: core/generator/Content.php:147
+#: core/generator/Content.php:184
+#: core/generator/Content.php:230
 #: core/generator/Terms.php:105
 #: core/generator/Users.php:80
 #: forms/sidebar-dashboard.php:55
@@ -148,37 +161,37 @@ msgstr ""
 msgid "Pexels.com"
 msgstr ""
 
-#: core/base/Generator.php:118
+#: core/base/Generator.php:119
 msgid "Administrator"
 msgstr ""
 
-#: core/base/Generator.php:119
+#: core/base/Generator.php:120
 msgid "Editor"
 msgstr ""
 
-#: core/base/Generator.php:120
+#: core/base/Generator.php:121
 #: core/generator/bbPress.php:96
-#: core/generator/Content.php:116
+#: core/generator/Content.php:134
 msgid "Author"
 msgstr ""
 
-#: core/base/Generator.php:121
+#: core/base/Generator.php:122
 msgid "Contributor"
 msgstr ""
 
-#: core/base/Generator.php:122
+#: core/base/Generator.php:123
 msgid "Subscriber"
 msgstr ""
 
-#: core/base/Generator.php:204
+#: core/base/Generator.php:205
 msgid "Item %s of %s for '%s'."
 msgstr ""
 
-#: core/base/Generator.php:211
+#: core/base/Generator.php:212
 msgid "Generator failed! Builder %s for %s error with message '%s'."
 msgstr ""
 
-#: core/base/Generator.php:308
+#: core/base/Generator.php:309
 #: core/basic/Plugin.php:123
 msgid "Requested builder not found."
 msgstr ""
@@ -641,27 +654,27 @@ msgid "Title is not normally used for replies. You can still generate it, if you
 msgstr ""
 
 #: core/generator/bbPress.php:52
-#: core/generator/Content.php:130
-#: core/generator/Content.php:167
-#: core/generator/Content.php:213
+#: core/generator/Content.php:148
+#: core/generator/Content.php:185
+#: core/generator/Content.php:231
 #: core/generator/Terms.php:106
 msgid "Enabled"
 msgstr ""
 
 #: core/generator/bbPress.php:53
-#: core/generator/Content.php:131
-#: core/generator/Content.php:168
-#: core/generator/Content.php:214
+#: core/generator/Content.php:149
+#: core/generator/Content.php:186
+#: core/generator/Content.php:232
 #: core/generator/Terms.php:107
 msgid "Disabled"
 msgstr ""
 
 #: core/generator/bbPress.php:55
 #: core/generator/Comments.php:91
-#: core/generator/Content.php:42
-#: core/generator/Content.php:133
-#: core/generator/Content.php:170
-#: core/generator/Content.php:216
+#: core/generator/Content.php:60
+#: core/generator/Content.php:151
+#: core/generator/Content.php:188
+#: core/generator/Content.php:234
 #: core/generator/Terms.php:59
 #: core/generator/Terms.php:109
 #: forms/content-dashboard.php:42
@@ -671,10 +684,10 @@ msgstr ""
 #: core/generator/bbPress.php:58
 #: core/generator/Comments.php:140
 #: core/generator/Comments.php:182
-#: core/generator/Content.php:62
-#: core/generator/Content.php:88
-#: core/generator/Content.php:136
-#: core/generator/Content.php:173
+#: core/generator/Content.php:80
+#: core/generator/Content.php:106
+#: core/generator/Content.php:154
+#: core/generator/Content.php:191
 #: core/generator/Terms.php:79
 #: core/generator/Terms.php:112
 #: core/generator/Users.php:54
@@ -683,17 +696,17 @@ msgid "Generate with"
 msgstr ""
 
 #: core/generator/bbPress.php:77
-#: core/generator/Content.php:81
+#: core/generator/Content.php:99
 msgid "Title"
 msgstr ""
 
 #: core/generator/bbPress.php:92
-#: core/generator/Content.php:121
+#: core/generator/Content.php:139
 msgid "Published"
 msgstr ""
 
 #: core/generator/bbPress.php:96
-#: core/generator/Content.php:116
+#: core/generator/Content.php:134
 msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up."
 msgstr ""
 
@@ -728,13 +741,13 @@ msgstr ""
 
 #: core/generator/bbPress.php:185
 #: core/generator/bbPress.php:223
-#: core/generator/Posts.php:92
+#: core/generator/Posts.php:89
 msgid "Added Post - ID: %s, Name: '%s'"
 msgstr ""
 
 #: core/generator/bbPress.php:191
 #: core/generator/bbPress.php:227
-#: core/generator/Posts.php:115
+#: core/generator/Posts.php:112
 msgid "Failed creating the post. Name: '%s'"
 msgstr ""
 
@@ -769,7 +782,7 @@ msgid "Enable this option to generate the posts for this post type and comment t
 msgstr ""
 
 #: core/generator/Comments.php:100
-#: core/generator/Content.php:51
+#: core/generator/Content.php:69
 #: core/generator/Terms.php:68
 msgid "Basic"
 msgstr ""
@@ -811,7 +824,7 @@ msgid "Comma separated list of post ID's."
 msgstr ""
 
 #: core/generator/Comments.php:159
-#: core/generator/Content.php:107
+#: core/generator/Content.php:125
 msgid "Content"
 msgstr ""
 
@@ -842,7 +855,7 @@ msgid "Names of one or more email domains to use for emails of generated users. 
 msgstr ""
 
 #: core/generator/Comments.php:223
-#: core/generator/Content.php:240
+#: core/generator/Content.php:258
 #: core/generator/Terms.php:140
 msgid "Hierarchy"
 msgstr ""
@@ -867,84 +880,84 @@ msgstr ""
 msgid "No posts found."
 msgstr ""
 
-#: core/generator/Content.php:42
+#: core/generator/Content.php:60
 msgid "Enable this option to generate the posts for this post type, and show options for the generator controls."
 msgstr ""
 
-#: core/generator/Content.php:55
+#: core/generator/Content.php:73
 msgid "Number of Posts"
 msgstr ""
 
-#: core/generator/Content.php:114
+#: core/generator/Content.php:132
 msgid "From"
 msgstr ""
 
-#: core/generator/Content.php:115
+#: core/generator/Content.php:133
 msgid "To"
 msgstr ""
 
-#: core/generator/Content.php:129
+#: core/generator/Content.php:147
 msgid "Excerpt is optional."
 msgstr ""
 
-#: core/generator/Content.php:155
+#: core/generator/Content.php:173
 msgid "Excerpt"
 msgstr ""
 
-#: core/generator/Content.php:166
+#: core/generator/Content.php:184
 msgid "Featured image is optional. But, it has to be downloaded, it can't be a link to external image."
 msgstr ""
 
-#: core/generator/Content.php:192
+#: core/generator/Content.php:210
 msgid "Featured Image"
 msgstr ""
 
-#: core/generator/Content.php:212
+#: core/generator/Content.php:230
 msgid "Assigning terms is optional."
 msgstr ""
 
-#: core/generator/Content.php:219
+#: core/generator/Content.php:237
 msgid "Assign to posts"
 msgstr ""
 
-#: core/generator/Content.php:219
+#: core/generator/Content.php:237
 msgid "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts."
 msgstr ""
 
-#: core/generator/Content.php:225
+#: core/generator/Content.php:243
 msgid "Terms to assign"
 msgstr ""
 
-#: core/generator/Content.php:225
+#: core/generator/Content.php:243
 msgid "Number of terms to assign inside the specified range, at random."
 msgstr ""
 
-#: core/generator/Content.php:230
+#: core/generator/Content.php:248
 msgid "Assign terms for '%s'"
 msgstr ""
 
-#: core/generator/Content.php:244
+#: core/generator/Content.php:262
 #: core/generator/Terms.php:144
 msgid "Parent"
 msgstr ""
 
-#: core/generator/Content.php:244
+#: core/generator/Content.php:262
 msgid "If you select the parent, all generated posts in this task will be children of the selected parent."
 msgstr ""
 
-#: core/generator/Content.php:245
+#: core/generator/Content.php:263
 msgid "Top level posts"
 msgstr ""
 
-#: core/generator/Content.php:245
+#: core/generator/Content.php:263
 msgid "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent."
 msgstr ""
 
-#: core/generator/Content.php:371
+#: core/generator/Content.php:393
 msgid "Image is not found at temp location."
 msgstr ""
 
-#: core/generator/Posts.php:107
+#: core/generator/Posts.php:104
 msgid "Failed attaching the image."
 msgstr ""
 
@@ -1258,6 +1271,10 @@ msgstr ""
 
 #: forms/content-tools-cleanup.php:23
 msgid "Removed %s items for %s."
+msgstr ""
+
+#: forms/content-tools-cleanup.php:92
+msgid "Attached Images"
 msgstr ""
 
 #: forms/content-tools-export.php:4

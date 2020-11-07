@@ -1,16 +1,21 @@
 <?php
 
 /*
-Plugin Name: DemoPress
-Plugin URI: https://plugins.dev4press.com/demopress/
-Description: Easy to use plugin to generate demo content for WordPress, with support for various other third party plugins.
-Version: 1.0
-Author: Milan Petrovic
-Author URI: https://www.dev4press.com/
-Text Domain: demopress
+Plugin Name:       DemoPress
+Plugin URI:        https://plugins.dev4press.com/demopress/
+Description:       Easy to use plugin to generate demo content for WordPress, with support for various other third party plugins.
+Author:            Milan Petrovic
+Author URI:        https://www.dev4press.com/
+Text Domain:       demopress
+Version:           1.0
+Requires at least: 5.0
+Tested up to:      5.6
+Requires PHP:      7.0
+License:           GPLv3 or later
+License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 == Copyright ==
-Copyright 2008 - 2021 Milan Petrovic (email: milan@gdragon.info)
+Copyright 2008 - 2020 Milan Petrovic (email: milan@gdragon.info)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

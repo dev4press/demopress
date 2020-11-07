@@ -2,8 +2,7 @@
 Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
-Version: 1.0
-Stable tag: trunk
+Stable tag: 1.0
 Requires at least: 5.0
 Tested up to: 5.6
 Requires PHP: 7.0
@@ -35,9 +34,12 @@ Easy to use plugin for generating demo content for newly created websites used d
 * **Term**: generate term names. Includes local 'LoremIpsum' and 'Randomizer' builders.
 * **Image**: generate or retrieve images. Includes local 'Placeholder' and remote 'Pexels.com' and 'Pixabay.com' builders (both require API keys to access).
 
+= Additional Tools =
+The plugin has tools to export and import plugin settings (not data, just settings). And, it has a tool to remove all the generated data, with options to choose data by type. When removing posts, it can also remove attached images.
+
 = Home and GitHub =
 * Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
-* Contribute to plugin development: [DebugPress on GitHub](https://github.com/demopress)
+* Contribute to plugin development: [DemoPress on GitHub](https://github.com/dev4press/demopress)
 
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
@@ -62,7 +64,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.0 (2020.09.15) =
+= 1.0 (2020.11.10) =
 * First official release
 
 == Upgrade Notice ==
