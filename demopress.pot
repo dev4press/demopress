@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 11/07/2020 04:19:12 PM\n"
+"POT-Creation-Date: 11/08/2020 09:49:17 AM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -741,13 +741,13 @@ msgstr ""
 
 #: core/generator/bbPress.php:185
 #: core/generator/bbPress.php:223
-#: core/generator/Posts.php:89
+#: core/generator/Posts.php:92
 msgid "Added Post - ID: %s, Name: '%s'"
 msgstr ""
 
 #: core/generator/bbPress.php:191
 #: core/generator/bbPress.php:227
-#: core/generator/Posts.php:112
+#: core/generator/Posts.php:115
 msgid "Failed creating the post. Name: '%s'"
 msgstr ""
 
@@ -957,7 +957,7 @@ msgstr ""
 msgid "Image is not found at temp location."
 msgstr ""
 
-#: core/generator/Posts.php:104
+#: core/generator/Posts.php:107
 msgid "Failed attaching the image."
 msgstr ""
 
