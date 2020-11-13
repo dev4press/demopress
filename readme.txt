@@ -64,7 +64,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.0 (2020.11.10) =
+= 1.0 (2020.11.16) =
 * First official release
 
 == Upgrade Notice ==
@@ -73,3 +73,11 @@ First official release
 
 == Screenshots ==
 * Main generators panel
+* Generator: Users
+* Generator: Terms
+* Generator: Posts
+* Generator: Comments
+* Generator: bbPress
+* Generator progress
+* Plugin settings
+* Data removal tool
