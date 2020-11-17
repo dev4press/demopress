@@ -3,7 +3,7 @@
 /*
 Plugin Name:       DemoPress
 Plugin URI:        https://plugins.dev4press.com/demopress/
-Description:       Easy to use plugin to generate demo content for WordPress, with support for various other third party plugins.
+Description:       Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       demopress

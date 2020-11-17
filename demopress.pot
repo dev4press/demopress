@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 11/17/2020 10:32:08 AM\n"
+"POT-Creation-Date: 11/17/2020 07:53:41 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -302,7 +302,7 @@ msgid "Terms"
 msgstr ""
 
 #: core/basic/Plugin.php:383
-msgid "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and term description."
+msgid "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and optional term description."
 msgstr ""
 
 #: core/basic/Plugin.php:390

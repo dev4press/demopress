@@ -381,7 +381,7 @@ class Plugin extends Core {
 				'image' => false
 			) );
 		$this->register_generator( 'Terms', __( "Terms", "demopress" ),
-			__( "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and term description.", "demopress" ),
+			__( "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and optional term description.", "demopress" ),
 			array(
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-tags',

@@ -15,6 +15,13 @@ Easy to use plugin for generating demo content for newly created websites used d
 
 Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
 
+= Home and GitHub =
+* Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
+* Contribute to plugin development: [DemoPress on GitHub](https://github.com/dev4press/demopress)
+
+= Quick Overview Video =
+https://www.youtube.com/watch?v=Eazmk93cO34
+
 = WordPress default Generators =
 * **Users**: randomize from select roles, domains for emails, password; generate name and about; use name for email and login.
 * **Terms**: support for default and custom taxonomies; support for hierarchy; generate name and description.
@@ -36,10 +43,6 @@ Easy to use plugin for generating demo content for newly created websites used d
 
 = Additional Tools =
 The plugin has tools to export and import plugin settings (not data, just settings). And, it has a tool to remove all the generated data, with options to choose data by type. When removing posts, it can also remove attached images.
-
-= Home and GitHub =
-* Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
-* Contribute to plugin development: [DemoPress on GitHub](https://github.com/dev4press/demopress)
 
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
