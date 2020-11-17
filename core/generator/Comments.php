@@ -263,7 +263,8 @@ class Comments extends Generator {
 
 			$comment = array(
 				'comment_post_ID' => $post_id,
-				'comment_content' => $this->get_from_builder( $type, 'content' )
+				'comment_content' => $this->get_from_builder( $type, 'content' ),
+				'comment_author_IP' => $this->get_random_ip()
 			);
 
 			if ( count( $this->_list_comments[ $post_id ] ) > 0 ) {

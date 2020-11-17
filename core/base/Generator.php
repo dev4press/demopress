@@ -329,6 +329,10 @@ abstract class Generator {
 		return $result;
 	}
 
+	protected function get_random_ip() {
+		return long2ip((mt_rand()*mt_rand(1,2))+mt_rand(0, 1));
+	}
+
 	protected function _get_random_publish_date_from( $from ) {
 		$from_date = DateTime::createFromFormat( 'Y-m-d H:i:s', $from );
 
