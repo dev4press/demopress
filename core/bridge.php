@@ -21,7 +21,7 @@ function demopress_settings() {
 	return Settings::instance();
 }
 
-/** @return \Dev4Press\Core\Plugins\DB|\Dev4Press\Plugin\DemoPress\Basic\DB */
+/** @return \Dev4Press\Core\Plugins\DB|\Dev4Press\Core\Plugins\DBLite|\Dev4Press\Plugin\DemoPress\Basic\DB */
 function demopress_db() {
 	return DB::instance();
 }
@@ -36,7 +36,7 @@ function demopress_ajax() {
 	return AJAX::instance();
 }
 
-/** @return \Dev4Press\Plugin\DemoPress\Admin\Plugin */
+/** @return \Dev4Press\Core\Admin\Menu\Plugin|\Dev4Press\Core\Admin\Plugin|\Dev4Press\Core\Admin\Submenu\Plugin|\Dev4Press\Plugin\DemoPress\Admin\Plugin */
 function demopress_admin() {
 	return AdminPlugin::instance();
 }

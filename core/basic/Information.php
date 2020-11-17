@@ -13,10 +13,10 @@ class Information extends BaseInformation {
 
 	public $version = '1.0';
 	public $build = 10;
-	public $updated = '2020.11.09';
+	public $updated = '2020.11.17';
 	public $status = 'stable';
 	public $edition = 'pro';
-	public $released = '2020.11.09';
+	public $released = '2020.11.17';
 
 	public $php = '7.0';
 }

@@ -64,7 +64,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.0 (2020.11.16) =
+= 1.0 (2020.11.17) =
 * First official release
 
 == Upgrade Notice ==

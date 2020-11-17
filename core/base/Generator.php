@@ -330,7 +330,7 @@ abstract class Generator {
 	}
 
 	protected function get_random_ip() {
-		return long2ip((mt_rand()*mt_rand(1,2))+mt_rand(0, 1));
+		return long2ip( ( mt_rand() * mt_rand( 1, 2 ) ) + mt_rand( 0, 1 ) );
 	}
 
 	protected function _get_random_publish_date_from( $from ) {

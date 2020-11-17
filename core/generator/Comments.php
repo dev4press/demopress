@@ -262,8 +262,8 @@ class Comments extends Generator {
 			$this->_valid_comments( $post_id );
 
 			$comment = array(
-				'comment_post_ID' => $post_id,
-				'comment_content' => $this->get_from_builder( $type, 'content' ),
+				'comment_post_ID'   => $post_id,
+				'comment_content'   => $this->get_from_builder( $type, 'content' ),
 				'comment_author_IP' => $this->get_random_ip()
 			);
 
