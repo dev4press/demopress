@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
-Stable tag: 1.0
+Stable tag: 1.1
 Requires at least: 5.0
 Tested up to: 5.6
 Requires PHP: 7.0
@@ -67,12 +67,19 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 1.1 (2020.11.25) =
+* New: title builder: Listed - get titles from predefined list of titles
+* New: image builder: LocalStorage - get images from predefined storage location
+* Edit: various improvements to the core generator classes
+* Fix: posts generator breaks when post type has no taxonomies
+* Fix: few minor issues with the builder run methods default value
+
 = 1.0 (2020.11.17) =
 * First official release
 
 == Upgrade Notice ==
-= 1.0 =
-First official release
+= 1.1 =
+New builders. Various improvements to generators. Few fixes.
 
 == Screenshots ==
 * Main generators panel

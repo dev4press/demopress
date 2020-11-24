@@ -247,11 +247,11 @@ abstract class Generator {
 		return $more;
 	}
 
-	protected function current_type() {
+	public function current_type() {
 		return $this->_progress['current'];
 	}
 
-	protected function current_item() {
+	public function current_item() {
 		return $this->_progress['count'] + 1;
 	}
 
@@ -278,6 +278,14 @@ abstract class Generator {
 		usleep( 5000 );
 	}
 
+	/**
+	 * @param string $type
+	 * @param string $name
+	 * @param false  $sub
+	 * @param mixed  $default
+	 *
+	 * @return mixed|string
+	 */
 	protected function get_from_base( $type, $name, $sub = false, $default = '' ) {
 		if ( isset( $this->_settings[ $type ]['base'][ $name ] ) ) {
 			if ( $sub === false ) {
@@ -287,7 +295,7 @@ abstract class Generator {
 			}
 		}
 
-		return '';
+		return $default;
 	}
 
 	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder */
@@ -320,7 +328,7 @@ abstract class Generator {
 		$builder  = $this->get_the_builder( $type, $name );
 		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
 
-		$result = $builder->run( $settings );
+		$result = $builder->run( $settings, $this );
 
 		if ( is_wp_error( $result ) ) {
 			throw new Builder( 'builder-failed', $result->get_message(), $type, $name );

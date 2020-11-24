@@ -30,7 +30,13 @@ class LoremIpsum extends Base {
 		}
 	}
 
-	public function run( $settings = array() ) {
+	/**
+	 * @param array                                      $settings
+	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 *
+	 * @return mixed
+	 */
+	public function run( $settings = array(), $generator = null ) {
 		$defaults = array(
 			'paragraphs' => 2,
 			'block'      => false,

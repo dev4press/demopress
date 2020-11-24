@@ -36,6 +36,9 @@ class Generator {
 		return $_demopress_gen;
 	}
 
+	/**
+	 * @return \Dev4Press\Plugin\DemoPress\Base\Generator|null
+	 */
 	public function generator() {
 		return $this->_generator;
 	}

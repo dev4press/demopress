@@ -26,7 +26,13 @@ class PexelsCom extends Base {
 		);
 	}
 
-	public function run( $settings = array() ) {
+	/**
+	 * @param array                                      $settings
+	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 *
+	 * @return mixed
+	 */
+	public function run( $settings = array(), $generator = null ) {
 		$args = array(
 			'query'  => isset( $settings['query'] ) ? $settings['query'] : '',
 			'width'  => 1280,

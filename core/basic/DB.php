@@ -147,8 +147,21 @@ class DB extends DBLite {
 		return $this->get_results( $sql );
 	}
 
+	public function get_titles_for_post_types( $post_type ) {
+		$sql = $this->prepare( "SELECT post_title FROM " . $this->wpdb()->posts . " WHERE post_type = %s AND post_status = 'publish'", $post_type );
+		$raw = $this->get_results( $sql );
+
+		return wp_list_pluck( $raw, 'post_title' );
+	}
+
 	public function check_if_image_exists( $name ) {
 		$sql = $this->prepare( "SELECT count(*) FROM " . $this->wpdb()->posts . " WHERE post_name = %s", $name );
+
+		return $this->get_var( $sql ) > 0;
+	}
+
+	public function check_if_title_exists( $post_type, $title ) {
+		$sql = $this->prepare( "SELECT count(*) FROM " . $this->wpdb()->posts . " WHERE post_title = %s AND post_type = %s AND post_status = 'publish'", $title, $post_type );
 
 		return $this->get_var( $sql ) > 0;
 	}

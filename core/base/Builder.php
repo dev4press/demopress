@@ -38,5 +38,11 @@ abstract class Builder {
 		return $type . '-builder-' . $name . '-' . $this->name . '-' . $option;
 	}
 
-	abstract public function run( $settings = array() );
+	/**
+	 * @param array                                      $settings
+	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 *
+	 * @return mixed
+	 */
+	abstract public function run( $settings = array(), $generator = null );
 }

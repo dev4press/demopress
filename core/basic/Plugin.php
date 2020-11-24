@@ -337,8 +337,17 @@ class Plugin extends Core {
 			__( "Generate titles using PHP Randomizer generator.", "demopress" )
 		);
 
+		$this->register_builder_title( 'Listed', 'Listed Titles',
+			__( "Provide the list of titles to use.", "demopress" )
+		);
+
 		$this->register_builder_image( 'Placeholder', 'Placeholder',
 			__( "Build placeholder image with random colors and basic text.", "demopress" ),
+			false, array( 'local' => true )
+		);
+
+		$this->register_builder_image( 'LocalStorage', 'Local Storage',
+			__( "Get images from the local storage directory.", "demopress" ),
 			false, array( 'local' => true )
 		);
 

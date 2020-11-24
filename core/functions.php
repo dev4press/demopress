@@ -74,3 +74,11 @@ function demopress_get_bbpress_forums_list() {
 
 	return $forums;
 }
+
+function demopress_get_active_generator() {
+	if ( demopress_gen()->is_running() ) {
+		return demopress_gen()->generator();
+	}
+
+	return null;
+}

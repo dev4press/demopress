@@ -11,7 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 abstract class Base extends Name {
 	public $scope = 'local';
 
-	public function run( $settings = array() ) {
+	/**
+	 * @param array                                      $settings
+	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 *
+	 * @return mixed
+	 */
+	public function run( $settings = array(), $generator = null ) {
 		return ucwords( $this->data() );
 	}
 

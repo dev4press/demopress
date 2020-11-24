@@ -283,34 +283,36 @@ abstract class Content extends Generator {
 
 	protected function _get_terms( $type ) {
 		$terms      = array();
-		$taxonomies = $this->get_from_base( $type, 'taxonomy' );
+		$taxonomies = $this->get_from_base( $type, 'taxonomy', false, array() );
 
-		foreach ( $taxonomies as $tax => $settings ) {
-			if ( $settings['generate'] == 'on' ) {
-				$this->_cache_terms( $tax );
+		if ( ! empty( $taxonomies ) ) {
+			foreach ( $taxonomies as $tax => $settings ) {
+				if ( $settings['generate'] == 'on' ) {
+					$this->_cache_terms( $tax );
 
-				if ( ! empty( $this->_terms_cache[ $tax ] ) ) {
-					$assign = true;
-					if ( $settings['assign'] < 100 ) {
-						$assign = $settings['assign'] > mt_rand( 1, 100 );
-					}
+					if ( ! empty( $this->_terms_cache[ $tax ] ) ) {
+						$assign = true;
+						if ( $settings['assign'] < 100 ) {
+							$assign = $settings['assign'] > mt_rand( 1, 100 );
+						}
 
-					if ( $assign ) {
-						$range = explode( '=>', $settings['terms'] );
-						$range = array_map( 'absint', $range );
+						if ( $assign ) {
+							$range = explode( '=>', $settings['terms'] );
+							$range = array_map( 'absint', $range );
 
-						if ( $range[0] <= $range[1] ) {
-							$count = mt_rand( $range[0], $range[1] );
+							if ( $range[0] <= $range[1] ) {
+								$count = mt_rand( $range[0], $range[1] );
 
-							if ( $count > 0 ) {
-								if ( $count >= count( $this->_terms_cache[ $tax ] ) ) {
-									$pick = array_keys( $this->_terms_cache[ $tax ] );
-								} else {
-									$pick = (array) array_rand( $this->_terms_cache[ $tax ], $count );
-								}
+								if ( $count > 0 ) {
+									if ( $count >= count( $this->_terms_cache[ $tax ] ) ) {
+										$pick = array_keys( $this->_terms_cache[ $tax ] );
+									} else {
+										$pick = (array) array_rand( $this->_terms_cache[ $tax ], $count );
+									}
 
-								foreach ( $pick as $key ) {
-									$terms[ $tax ][] = absint( $this->_terms_cache[ $tax ][ $key ] );
+									foreach ( $pick as $key ) {
+										$terms[ $tax ][] = absint( $this->_terms_cache[ $tax ][ $key ] );
+									}
 								}
 							}
 						}
