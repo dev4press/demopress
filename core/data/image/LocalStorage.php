@@ -15,10 +15,10 @@ class LocalStorage extends Image {
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
-			EL::info( __( "Storage Path" ), sprintf( __( "Images must be inside this directory: %s" ), '<br/><code>' . $this->directory_path( $type ) . '</code>' ) )->args( array(
+			EL::info( __( "Storage Path", "demopress" ), sprintf( __( "Images must be inside this directory: %s", "demopress" ), '<br/><code>' . $this->directory_path( $type ) . '</code>' ) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) ),
-			EL::info( __( "Available Images" ), sprintf( __( "Plugin has found %s images. If you set the generator to more posts than images available, not every post will have a featured image. Images will be assigned in the order they are found in the directory." ), '<strong>' . $this->get_images( $type, 'counts' ) . '</strong>' ) . '<br/><strong>' . __( "Whenever images are used, the plugin will move images from the storage directory to final destination in the media library!" ) . '</strong>' )->args( array(
+			EL::info( __( "Available Images", "demopress" ), sprintf( __( "Plugin has found %s images. If you set the generator to more posts than images available, not every post will have a featured image. Images will be assigned in the order they are found in the directory.", "demopress" ), '<strong>' . $this->get_images( $type, 'counts' ) . '</strong>' ) . '<br/><strong>' . __( "Whenever images are used, the plugin will move images from the storage directory to final destination in the media library!", "demopress" ) . '</strong>' )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) )
 		);

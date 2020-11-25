@@ -38,7 +38,7 @@ class Listed extends Title {
 		$settings = wp_parse_args( $settings, $defaults );
 
 		if ( empty( $settings['list'] ) ) {
-			return new WP_Error( 'title-list-empty', __( "Titles list is empty." ) );
+			return new WP_Error( 'title-list-empty', __( "Titles list is empty.", "demopress" ) );
 		}
 
 		if ( $this->cached === false ) {
@@ -63,7 +63,7 @@ class Listed extends Title {
 		}
 
 		if ( $found === false ) {
-			$found = new WP_Error( 'title-list-no-more', __( "No more titles are available in the list." ) );
+			$found = new WP_Error( 'title-list-no-more', __( "No more titles are available in the list.", "demopress" ) );
 		}
 
 		return $found;

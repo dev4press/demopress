@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 11/17/2020 07:53:41 PM\n"
+"POT-Creation-Date: 11/25/2020 09:26:04 AM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -191,20 +191,20 @@ msgstr ""
 msgid "Generator failed! Builder %s for %s error with message '%s'."
 msgstr ""
 
-#: core/base/Generator.php:309
+#: core/base/Generator.php:317
 #: core/basic/Plugin.php:123
 msgid "Requested builder not found."
 msgstr ""
 
-#: core/basic/Generator.php:100
+#: core/basic/Generator.php:103
 msgid "New generator task is added."
 msgstr ""
 
-#: core/basic/Generator.php:129
+#: core/basic/Generator.php:132
 msgid "Generator has stalled, trying to recover it..."
 msgstr ""
 
-#: core/basic/Generator.php:142
+#: core/basic/Generator.php:145
 msgid "The generator task has finished."
 msgstr ""
 
@@ -269,64 +269,72 @@ msgid "Generate titles using PHP Randomizer generator."
 msgstr ""
 
 #: core/basic/Plugin.php:340
+msgid "Provide the list of titles to use."
+msgstr ""
+
+#: core/basic/Plugin.php:344
 msgid "Build placeholder image with random colors and basic text."
 msgstr ""
 
-#: core/basic/Plugin.php:347
-msgid "Download and use images from Pixabay.com website."
+#: core/basic/Plugin.php:349
+msgid "Get images from the local storage directory."
 msgstr ""
 
 #: core/basic/Plugin.php:356
+msgid "Download and use images from Pixabay.com website."
+msgstr ""
+
+#: core/basic/Plugin.php:365
 msgid "Build video tags embedding Vimeo videos from Pixabay.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:364
+#: core/basic/Plugin.php:373
 msgid "Download and use images from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:369
+#: core/basic/Plugin.php:378
 msgid "Build video tags embedding Vimeo videos from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:374
+#: core/basic/Plugin.php:383
 #: core/generator/Users.php:31
 msgid "Users"
 msgstr ""
 
-#: core/basic/Plugin.php:375
+#: core/basic/Plugin.php:384
 msgid "Generate users with various user roles, one or more domains to use for random emails, preset or random password, generated name and about information."
 msgstr ""
 
-#: core/basic/Plugin.php:382
+#: core/basic/Plugin.php:391
 msgid "Terms"
 msgstr ""
 
-#: core/basic/Plugin.php:383
+#: core/basic/Plugin.php:392
 msgid "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and optional term description."
 msgstr ""
 
-#: core/basic/Plugin.php:390
+#: core/basic/Plugin.php:399
 msgid "Posts"
 msgstr ""
 
-#: core/basic/Plugin.php:391
+#: core/basic/Plugin.php:400
 msgid "Generate posts for default and custom post types, with hierarchy support and ability to get a random featured image and generate all other post data."
 msgstr ""
 
-#: core/basic/Plugin.php:398
+#: core/basic/Plugin.php:407
 #: core/functions.php:19
 msgid "Comments"
 msgstr ""
 
-#: core/basic/Plugin.php:399
+#: core/basic/Plugin.php:408
 msgid "Generate comments for post types supporting comments, including support for threaded comments and ability to generate random comment authors information."
 msgstr ""
 
-#: core/basic/Plugin.php:408
+#: core/basic/Plugin.php:417
 msgid "bbPress Forums"
 msgstr ""
 
-#: core/basic/Plugin.php:409
+#: core/basic/Plugin.php:418
 msgid "Generate forums, topics and replies for bbPress powered forums, with support for generating different data and conforming to the bbPress content specs."
 msgstr ""
 
@@ -420,9 +428,29 @@ msgstr ""
 msgid "Prude"
 msgstr ""
 
-#: core/data/html/LorIpsumNet.php:55
-#: core/data/text/LorIpsumNet.php:52
+#: core/data/html/LorIpsumNet.php:61
+#: core/data/text/LorIpsumNet.php:58
 msgid "No response received."
+msgstr ""
+
+#: core/data/image/LocalStorage.php:17
+msgid "Storage Path"
+msgstr ""
+
+#: core/data/image/LocalStorage.php:17
+msgid "Images must be inside this directory: %s"
+msgstr ""
+
+#: core/data/image/LocalStorage.php:20
+msgid "Available Images"
+msgstr ""
+
+#: core/data/image/LocalStorage.php:20
+msgid "Plugin has found %s images. If you set the generator to more posts than images available, not every post will have a featured image. Images will be assigned in the order they are found in the directory."
+msgstr ""
+
+#: core/data/image/LocalStorage.php:20
+msgid "Whenever images are used, the plugin will move images from the storage directory to final destination in the media library!"
 msgstr ""
 
 #: core/data/image/PexelsCom.php:17
@@ -643,6 +671,22 @@ msgstr ""
 
 #: core/data/title/Base.php:21
 msgid "Number of words: To"
+msgstr ""
+
+#: core/data/title/Listed.php:20
+msgid "List of Titles"
+msgstr ""
+
+#: core/data/title/Listed.php:20
+msgid "Provide the list of titles to use for the posts you want created. The number of posts generated must much the number of titles listed here. If you request more posts than titles provided, plugin will generate posts that have a title, and stop. Each line must contain one title!"
+msgstr ""
+
+#: core/data/title/Listed.php:40
+msgid "Titles list is empty."
+msgstr ""
+
+#: core/data/title/Listed.php:65
+msgid "No more titles are available in the list."
 msgstr ""
 
 #: core/generator/bbPress.php:26
@@ -953,7 +997,7 @@ msgstr ""
 msgid "Percentage of total posts to generate to be top level posts. Of the parent is selected, this option will assume that top level is the children level to selected parent."
 msgstr ""
 
-#: core/generator/Content.php:393
+#: core/generator/Content.php:395
 msgid "Image is not found at temp location."
 msgstr ""
 

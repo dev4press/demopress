@@ -37,9 +37,9 @@ https://www.youtube.com/watch?v=Eazmk93cO34
 * **HTML**: generate HTML content. Includes local 'LoremIpsum' and remote 'LorIpsum.net' builders. Local builder can build content with basic block editor blocks.
 * **Plain Text**: generate plain text content. Includes local 'LoremIpsum' and remote 'LorIpsum.net' builders.
 * **Name**: generate names. Includes local 'LoremIpsum', 'Randomizer', and 'RandomNames' builders.
-* **Title**: generate titles. Includes local 'LoremIpsum' and 'Randomizer' builders.
+* **Title**: generate titles. Includes local 'LoremIpsum', 'Randomizer', and 'Listed' builders.
 * **Term**: generate term names. Includes local 'LoremIpsum' and 'Randomizer' builders.
-* **Image**: generate or retrieve images. Includes local 'Placeholder' and remote 'Pexels.com' and 'Pixabay.com' builders (both require API keys to access).
+* **Image**: generate or retrieve images. Includes local 'Placeholder', and 'LocalStorage'; with remote 'Pexels.com' and 'Pixabay.com' builders (both require API keys to access).
 
 = Additional Tools =
 The plugin has tools to export and import plugin settings (not data, just settings). And, it has a tool to remove all the generated data, with options to choose data by type. When removing posts, it can also remove attached images.
