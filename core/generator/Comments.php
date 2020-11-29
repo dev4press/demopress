@@ -272,12 +272,18 @@ class Comments extends Generator {
 				$date_start    = $_last_comment->comment_date;
 
 				if ( $this->get_from_base( $type, 'toplevel' ) < 100 ) {
-					$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
+					$req_parent = $this->get_from_base( $type, 'toplevel' ) == 0;
 
-					if ( $toplevel >= $this->current_item() + 1 ) {
+					if ( !$req_parent ) {
+						$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
+						$req_parent = $toplevel >= $this->current_item() + 1;
+					}
+
+					if ( $req_parent ) {
 						$parent                    = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
-						$comment['comment_parent'] = $parent->comment_ID;
 						$date_start                = $parent->comment_date;
+
+						$comment['comment_parent'] = $parent->comment_ID;
 					}
 				}
 			}
