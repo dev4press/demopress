@@ -4,7 +4,7 @@ Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
 Stable tag: 1.2
 Requires at least: 5.0
-Tested up to: 5.6
+Tested up to: 5.7
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
