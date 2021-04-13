@@ -94,7 +94,7 @@ class bbPress extends Content {
 				'name'     => '',
 				'class'    => '',
 				'settings' => array(
-					EL::i( $this->name, $type . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
+					EL::i( $this->name, $type . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from roles allowed to post to the forums.", "demopress" ), Type::TEXT, '' )
 				)
 			);
 
@@ -160,7 +160,7 @@ class bbPress extends Content {
 			'post_title'   => $this->get_from_builder( $type, 'title' ),
 			'post_content' => $this->get_from_builder( $type, 'content' ),
 			'post_date'    => $this->_get_publish_date( $type ),
-			'post_author'  => $this->_get_author( $type ),
+			'post_author'  => $this->_get_author( $type, array( bbp_get_keymaster_role() ) ),
 			'post_status'  => 'publish',
 			'post_type'    => $type
 		);
@@ -207,7 +207,11 @@ class bbPress extends Content {
 				'post_title'   => $this->get_from_builder( $type, 'title' ),
 				'post_content' => $this->get_from_builder( $type, 'content' ),
 				'post_date'    => $this->_get_publish_date( $type ),
-				'post_author'  => $this->_get_author( $type ),
+				'post_author'  => $this->_get_author( $type, array(
+					bbp_get_keymaster_role(),
+					bbp_get_moderator_role(),
+					bbp_get_participant_role()
+				) ),
 				'post_status'  => 'publish',
 				'post_type'    => $type,
 				'post_parent'  => $forum_id
@@ -244,7 +248,11 @@ class bbPress extends Content {
 			if ( ! empty( $this->_list_topics ) ) {
 				$post = array(
 					'post_content' => $this->get_from_builder( $type, 'content' ),
-					'post_author'  => $this->_get_author( $type ),
+					'post_author'  => $this->_get_author( $type, array(
+						bbp_get_keymaster_role(),
+						bbp_get_moderator_role(),
+						bbp_get_participant_role()
+					) ),
 					'post_status'  => 'publish',
 					'post_type'    => $type
 				);

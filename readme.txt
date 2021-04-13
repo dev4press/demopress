@@ -67,8 +67,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.2 (2020.12.02) =
+= 1.2 (2021.04.15) =
 * Edit: comments: improved handling top level option with value 0
+* Edit: author caching method accepts the list of roles to cache
+* Fix: bbpress: forum roles for authors not taken into account
 * Fix: query to get comments was not using approved flag value
 
 = 1.1 (2020.11.25) =

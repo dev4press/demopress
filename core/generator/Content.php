@@ -324,7 +324,7 @@ abstract class Content extends Generator {
 		return $terms;
 	}
 
-	protected function _get_author( $type ) {
+	protected function _get_author( $type, $roles = array() ) {
 		$authors = $this->get_from_base( $type, 'published', 'author' );
 
 		if ( ! empty( $authors ) ) {
@@ -338,7 +338,8 @@ abstract class Content extends Generator {
 		}
 
 		if ( empty( $authors ) ) {
-			$this->_cache_users( array( 'administrator', 'editor', 'author' ) );
+			$roles = empty( $roles ) ? array( 'administrator', 'editor', 'author' ) : array();
+			$this->_cache_users( $roles );
 
 			$authors = $this->_users_cache;
 		}
