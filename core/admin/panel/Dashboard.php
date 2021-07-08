@@ -23,7 +23,7 @@ class Dashboard extends PanelDashboard {
 					                       'icon'  => 'ui-trash',
 					                       'class' => 'button-primary',
 					                       'url'   => $this->a()->panel_url( 'tools', 'cleanup' ),
-					                       'label' => __( "Remove Generated Data", "d4plib" )
+					                       'label' => __( "Remove Generated Data", "demopress" )
 				                       )
 			                       )
 		                       ) + $this->sidebar_links;
