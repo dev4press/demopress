@@ -2,13 +2,23 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\Core\Plugins\DBLite;
+use Dev4Press\v35\Core\Plugins\DBLite;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class DB extends DBLite {
+	public static function instance() : DB {
+		static $instance = null;
+
+		if ( ! isset( $instance ) ) {
+			$instance = new DB();
+		}
+
+		return $instance;
+	}
+
 	public function get_attachments_for_cleanup( $post_type, $return_counts = false ) {
 		$ret = $return_counts ? 'COUNT(*)' : 'DISTINCT(m.post_id)';
 

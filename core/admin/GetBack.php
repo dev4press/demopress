@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\Core\Admin\GetBack as BaseGetBack;
+use Dev4Press\v35\Core\Admin\GetBack as BaseGetBack;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

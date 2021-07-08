@@ -2,6 +2,8 @@
 
 	<?php
 
+	use function Dev4Press\v35\Functions\sanitize_basic;
+
 	if ( isset( $_GET['results'] ) ) {
 		$results = urldecode( $_GET['results'] );
 		$results = stripslashes( $results );
@@ -21,7 +23,7 @@
 						$gen_label = demopress()->get_generator_label( $gen );
 
 						foreach ( $data as $type => $value ) {
-							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), '<strong>' . absint( $value ) . '</strong>', '<strong>' . str_replace( '::', ' / ', d4p_sanitize_basic( $type ) ) . '</strong>' );
+							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), '<strong>' . absint( $value ) . '</strong>', '<strong>' . str_replace( '::', ' / ', sanitize_basic( $type ) ) . '</strong>' );
 						}
 					}
 

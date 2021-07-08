@@ -2,7 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v35\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v35\Core\Options\Settings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,6 +18,16 @@ class Plugin extends BasePlugin {
 	public function constructor() {
 		$this->url  = DEMOPRESS_URL;
 		$this->path = DEMOPRESS_PATH;
+	}
+
+	public static function instance() : Plugin {
+		static $instance = null;
+
+		if ( ! isset( $instance ) ) {
+			$instance = new Plugin();
+		}
+
+		return $instance;
 	}
 
 	public function after_setup_theme() {
@@ -61,7 +72,7 @@ class Plugin extends BasePlugin {
 		);
 	}
 
-	public function svg_icon() {
+	public function svg_icon() : string {
 		return demopress()->svg_icon;
 	}
 

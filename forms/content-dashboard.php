@@ -1,6 +1,7 @@
 <?php
 
-use Dev4Press\Core\Options\Render;
+use Dev4Press\v35\Core\Options\Render;
+use function Dev4Press\v35\Functions\panel;
 
 ?>
 
@@ -68,7 +69,7 @@ use Dev4Press\Core\Options\Render;
 
 				$generator->show();
 
-				Render::instance( d4p_panel()->a()->n(), d4p_panel()->a()->plugin_prefix )->prepare( demopress_admin()->subpanel, $generator->settings )->render();
+				Render::instance( panel()->a()->n(), panel()->a()->plugin_prefix )->prepare( demopress_admin()->subpanel, $generator->settings )->render();
 
 				?></div><?php
 			}

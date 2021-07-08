@@ -2,8 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\Core\Admin\PostBack as BasePostBack;
-use Dev4Press\Core\Options\Process;
+use Dev4Press\v35\Core\Admin\PostBack as BasePostBack;
+use Dev4Press\v35\Core\Options\Process;
+use function Dev4Press\v35\Functions\sanitize_key_expanded;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -85,7 +86,7 @@ class PostBack extends BasePostBack {
 		$input = isset( $_POST['demopress_value'] ) ? (array) $_POST['demopress_value'] : array();
 
 		if ( ! empty( $input ) ) {
-			$gen_input = isset( $input['demo-generator-type'] ) ? d4p_sanitize_key_expanded( $input['demo-generator-type'] ) : '';
+			$gen_input = isset( $input['demo-generator-type'] ) ? sanitize_key_expanded( $input['demo-generator-type'] ) : '';
 			$generator = demopress()->get_generator( $gen_input );
 
 			if ( ! is_wp_error( $generator ) ) {

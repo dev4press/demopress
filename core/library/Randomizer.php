@@ -2,8 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Library;
 
-use Dev4Press\Generator\Text\Randomizer as BaseRandomizer;
 use Dev4Press\Plugin\DemoPress\Base\Library;
+use Dev4Press\v35\Generator\Text\Randomizer as BaseRandomizer;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

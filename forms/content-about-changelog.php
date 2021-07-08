@@ -1,11 +1,12 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
-        <h4>Version: 1.2 / april 15 2021</h4>
+        <h4>Version: 1.2 / july 8 2021</h4>
         <ul>
             <li><strong>edit</strong> comments: improved handling top level option with value 0</li>
             <li><strong>edit</strong> author caching method accepts the list of roles to cache</li>
-            <li><strong>edit</strong> Dev4Press Library 3.4.1</li>
+            <li><strong>edit</strong> removed some unused files from the forms directory</li>
+            <li><strong>edit</strong> Dev4Press Library 3.5.3</li>
             <li><strong>fix</strong> bbpress: forum roles for authors not taken into account</li>
             <li><strong>fix</strong> query to get comments was not using approved flag value</li>
         </ul>

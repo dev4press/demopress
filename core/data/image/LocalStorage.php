@@ -2,8 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
-use Dev4Press\Core\Options\Element as EL;
 use Dev4Press\Plugin\DemoPress\Builder\Image;
+use Dev4Press\v35\Core\Options\Element as EL;
+use function Dev4Press\v35\Functions\scan_dir;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,7 +34,7 @@ class LocalStorage extends Image {
 
 	private function get_images( $type, $return = 'files' ) {
 		$path  = ABSPATH . $this->directory_path( $type );
-		$files = d4p_scan_dir( $path, 'file', array( 'png', 'jpg', 'jpeg', 'webp', 'gif' ) );
+		$files = scan_dir( $path, 'file', array( 'png', 'jpg', 'jpeg', 'webp', 'gif' ) );
 
 		return $return == 'counts' ? count( $files ) : $files;
 	}

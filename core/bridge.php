@@ -11,32 +11,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** @return \Dev4Press\Core\Plugins\Core|\Dev4Press\Plugin\DemoPress\Basic\Plugin */
-function demopress() {
+function demopress() : Plugin {
 	return Plugin::instance();
 }
 
-/** @return \Dev4Press\Core\Plugins\Settings|\Dev4Press\Plugin\DemoPress\Basic\Settings */
-function demopress_settings() {
+function demopress_settings() : Settings {
 	return Settings::instance();
 }
 
-/** @return \Dev4Press\Core\Plugins\DB|\Dev4Press\Core\Plugins\DBLite|\Dev4Press\Plugin\DemoPress\Basic\DB */
-function demopress_db() {
+function demopress_db() : DB {
 	return DB::instance();
 }
 
-/** @return \Dev4Press\Plugin\DemoPress\Basic\Generator */
-function demopress_gen() {
+function demopress_gen() : Generator {
 	return Generator::instance();
 }
 
-/** @return \Dev4Press\Plugin\DemoPress\Admin\AJAX */
-function demopress_ajax() {
+function demopress_ajax() : AJAX {
 	return AJAX::instance();
 }
 
-/** @return \Dev4Press\Core\Admin\Menu\Plugin|\Dev4Press\Core\Admin\Plugin|\Dev4Press\Core\Admin\Submenu\Plugin|\Dev4Press\Plugin\DemoPress\Admin\Plugin */
-function demopress_admin() {
+function demopress_admin() : AdminPlugin {
 	return AdminPlugin::instance();
 }

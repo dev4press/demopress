@@ -23,7 +23,7 @@ class AJAX {
 	}
 
 	public function get_status() {
-		d4p_check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
+		\Dev4Press\v35\Functions\WP\check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
 
 		demopress_gen()->check_health();
 

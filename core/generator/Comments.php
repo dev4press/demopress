@@ -2,9 +2,10 @@
 
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
-use Dev4Press\Core\Options\Element as EL;
-use Dev4Press\Core\Options\Type;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
+use Dev4Press\v35\Core\Options\Element as EL;
+use Dev4Press\v35\Core\Options\Type;
+use function Dev4Press\v35\Functions\sanitize_ids_list;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -274,14 +275,14 @@ class Comments extends Generator {
 				if ( $this->get_from_base( $type, 'toplevel' ) < 100 ) {
 					$req_parent = $this->get_from_base( $type, 'toplevel' ) == 0;
 
-					if ( !$req_parent ) {
-						$toplevel = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
+					if ( ! $req_parent ) {
+						$toplevel   = ceil( $this->get_from_base( $type, 'toplevel' ) * ( $this->get_from_base( $type, 'count' ) / 100 ) );
 						$req_parent = $toplevel >= $this->current_item() + 1;
 					}
 
 					if ( $req_parent ) {
-						$parent                    = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
-						$date_start                = $parent->comment_date;
+						$parent     = $this->_list_comments[ $post_id ][ array_rand( $this->_list_comments[ $post_id ] ) ];
+						$date_start = $parent->comment_date;
 
 						$comment['comment_parent'] = $parent->comment_ID;
 					}
@@ -355,10 +356,10 @@ class Comments extends Generator {
 
 			if ( $method == 'inc' ) {
 				$ids     = explode( ',', $this->get_from_base( $type, 'include' ) );
-				$include = d4p_clean_ids_list( $ids );
+				sanitize_ids_list( $ids );
 			} else if ( $method == 'exc' ) {
 				$ids     = explode( ',', $this->get_from_base( $type, 'exclude' ) );
-				$exclude = d4p_clean_ids_list( $ids );
+				$exclude = sanitize_ids_list( $ids );
 			}
 
 			$all = demopress_db()->get_posts_for_comments( $cpt, $include, $exclude );

@@ -3,8 +3,8 @@ Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
 Stable tag: 1.2
-Requires at least: 5.0
-Tested up to: 5.7
+Requires at least: 5.1
+Tested up to: 5.8
 Requires PHP: 7.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -67,10 +67,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.2 (2021.04.15) =
+= 1.2 (2021.07.08) =
 * Edit: comments: improved handling top level option with value 0
 * Edit: author caching method accepts the list of roles to cache
-* Edit: Dev4Press Library 3.4.1
+* Edit: removed some unused files from the forms directory
+* Edit: Dev4Press Library 3.5.3
 * Fix: bbpress: forum roles for authors not taken into account
 * Fix: query to get comments was not using approved flag value
 

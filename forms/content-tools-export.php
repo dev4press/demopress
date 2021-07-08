@@ -1,3 +1,8 @@
+<?php
+
+use function Dev4Press\v35\Functions\panel;
+
+?>
 <div class="d4p-content">
     <div class="d4p-group d4p-group-information d4p-group-export">
         <h3><?php _e( "Important Information", "demopress" ); ?></h3>
@@ -7,5 +12,5 @@
         </div>
     </div>
 
-	<?php d4p_panel()->include_accessibility_control(); ?>
+	<?php panel()->include_accessibility_control(); ?>
 </div>

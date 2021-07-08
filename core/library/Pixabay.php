@@ -3,7 +3,7 @@
 namespace Dev4Press\Plugin\DemoPress\Library;
 
 use Dev4Press\Plugin\DemoPress\Base\Library;
-use Dev4Press\Service\Media\Pixabay\Query;
+use Dev4Press\v35\Service\Media\Pixabay\Query;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
