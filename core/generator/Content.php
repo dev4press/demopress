@@ -78,7 +78,7 @@ abstract class Content extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( $this->name, $cpt . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
+				EL::i( $this->name, $cpt . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-title-' . $cpt ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -104,7 +104,7 @@ abstract class Content extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( $this->name, $cpt . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'html', $this->builders['content']['list'] ) )->args( array(
+				EL::i( $this->name, $cpt . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'html', $this->builders['content']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-content-' . $cpt ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -132,7 +132,7 @@ abstract class Content extends Generator {
 			$_settings = array(
 				EL::i( $this->name, $cpt . '-base-published-from', __( "From", "demopress" ), '', Type::DATE, date( 'Y-m-d', time() - YEAR_IN_SECONDS ) ),
 				EL::i( $this->name, $cpt . '-base-published-to', __( "To", "demopress" ), '', Type::DATE, date( 'Y-m-d' ) ),
-				EL::i( $this->name, $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT, '' )
+				EL::i( $this->name, $cpt . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from role author and up.", "demopress" ), Type::TEXT )
 			);
 
 			$_sections[] = array(
@@ -152,7 +152,7 @@ abstract class Content extends Generator {
 						'label'         => __( "Generate", "demopress" ),
 						'wrapper_class' => 'demopress-builder-status'
 					) ),
-					EL::i( $this->name, $cpt . '-builder-excerpt', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['excerpt']['list'] ) )->args( array(
+					EL::i( $this->name, $cpt . '-builder-excerpt', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'text', $this->builders['excerpt']['list'] ) )->args( array(
 						'data'          => array( 'switch' => 'demopress-builders-excerpt-' . $cpt ),
 						'wrapper_class' => 'demopress-builder-switch'
 					) )
@@ -189,7 +189,7 @@ abstract class Content extends Generator {
 						'label'         => __( "Generate", "demopress" ),
 						'wrapper_class' => 'demopress-builder-status'
 					) ),
-					EL::i( $this->name, $cpt . '-builder-featured', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
+					EL::i( $this->name, $cpt . '-builder-featured', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'image', $this->builders['featured']['list'] ) )->args( array(
 						'data'          => array( 'switch' => 'demopress-builders-featured-' . $cpt ),
 						'wrapper_class' => 'demopress-builder-switch'
 					) )

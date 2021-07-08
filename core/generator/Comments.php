@@ -129,17 +129,17 @@ class Comments extends Generator {
 								'step'          => 5,
 								'max'           => 100
 							) ),
-							EL::i( $this->name, $_type . '-base-include', __( "Only listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT, '' )->args( array(
+							EL::i( $this->name, $_type . '-base-include', __( "Only listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT )->args( array(
 								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'inc', true )
 							) ),
-							EL::i( $this->name, $_type . '-base-exclude', __( "All except listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT, '' )->args( array(
+							EL::i( $this->name, $_type . '-base-exclude', __( "All except listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT )->args( array(
 								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'exc', true )
 							) )
 						)
 					);
 
 					$_settings = array(
-						EL::i( $this->name, $_type . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['content']['list'] ) )->args( array(
+						EL::i( $this->name, $_type . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'text', $this->builders['content']['list'] ) )->args( array(
 							'data'          => array( 'switch' => 'demopress-builders-content-' . $_type_for_switch ),
 							'wrapper_class' => 'demopress-builder-switch'
 						) )
@@ -181,7 +181,7 @@ class Comments extends Generator {
 						);
 
 						$_settings = array(
-							EL::i( $this->name, $_type . '-builder-author', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
+							EL::i( $this->name, $_type . '-builder-author', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
 								'data'          => array( 'switch' => 'demopress-builders-name' . $_type_for_switch ),
 								'wrapper_class' => 'demopress-builder-switch'
 							) )

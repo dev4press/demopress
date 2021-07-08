@@ -56,7 +56,7 @@ class bbPress extends Content {
 					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
-				EL::i( $this->name, $type . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
+				EL::i( $this->name, $type . '-builder-title', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'title', $this->builders['title']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-title-' . $type ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -94,7 +94,7 @@ class bbPress extends Content {
 				'name'     => '',
 				'class'    => '',
 				'settings' => array(
-					EL::i( $this->name, $type . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from roles allowed to post to the forums.", "demopress" ), Type::TEXT, '' )
+					EL::i( $this->name, $type . '-base-published-author', __( "Author", "demopress" ), __( "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from roles allowed to post to the forums.", "demopress" ), Type::TEXT )
 				)
 			);
 

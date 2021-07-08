@@ -6,6 +6,7 @@
             <li><strong>edit</strong> comments: improved handling top level option with value 0</li>
             <li><strong>edit</strong> author caching method accepts the list of roles to cache</li>
             <li><strong>edit</strong> removed some unused files from the forms directory</li>
+            <li><strong>edit</strong> Various PHP related improvements</li>
             <li><strong>edit</strong> Dev4Press Library 3.5.3</li>
             <li><strong>fix</strong> bbpress: forum roles for authors not taken into account</li>
             <li><strong>fix</strong> query to get comments was not using approved flag value</li>

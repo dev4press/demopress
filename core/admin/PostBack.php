@@ -32,7 +32,7 @@ class PostBack extends BasePostBack {
 	}
 
 	protected function cleanup() {
-		$data = isset( $_POST['demopresstools'] ) ? $_POST['demopresstools'] : array();
+		$data = $_POST['demopresstools'] ?? array();
 
 		$cleanup = isset( $data['cleanup'] ) ? (array) $data['cleanup'] : array();
 		$message = 'nothing-removed';

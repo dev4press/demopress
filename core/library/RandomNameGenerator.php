@@ -17,7 +17,7 @@ class RandomNameGenerator extends Library {
 	}
 
 	public function get_name() {
-		$list = $this->_object->generate_names( 1 );
+		$list = $this->_object->generate_names();
 
 		return $list[0];
 	}

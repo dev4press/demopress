@@ -28,6 +28,6 @@ class LoremIpsum extends Base {
 
 		LibLoremIpsum::instance()->change_length( $settings['length'] );
 
-		return LibLoremIpsum::instance()->paragraphs( $settings['paragraphs'], false, false );
+		return LibLoremIpsum::instance()->paragraphs( $settings['paragraphs'] );
 	}
 }

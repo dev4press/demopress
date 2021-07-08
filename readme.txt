@@ -71,6 +71,7 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * Edit: comments: improved handling top level option with value 0
 * Edit: author caching method accepts the list of roles to cache
 * Edit: removed some unused files from the forms directory
+* Edit: Various PHP related improvements
 * Edit: Dev4Press Library 3.5.3
 * Fix: bbpress: forum roles for authors not taken into account
 * Fix: query to get comments was not using approved flag value

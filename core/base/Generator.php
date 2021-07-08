@@ -298,7 +298,9 @@ abstract class Generator {
 		return $default;
 	}
 
-	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder */
+	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder
+	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 */
 	protected function get_the_builder( $type, $name ) {
 		$builder = $this->_settings[ $type ]['builder'][ $name ]['value'];
 

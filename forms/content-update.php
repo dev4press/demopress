@@ -25,5 +25,5 @@ use function Dev4Press\v35\Functions\panel;
             <a class="button-primary" href="<?php echo panel()->a()->panel_url( 'about' ) ?>&update"><?php _e( "Click here to continue", "demopress" ); ?></a>
         </div>
     </div>
-	<?php echo demopress()->recommend( 'update' ); ?>
+	<?php echo demopress()->recommend(); ?>
 </div>

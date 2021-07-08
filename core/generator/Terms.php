@@ -77,7 +77,7 @@ class Terms extends Generator {
 			);
 
 			$_settings = array(
-				EL::i( $this->name, $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array(
+				EL::i( $this->name, $tax . '-builder-term', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'term', $this->builders['term']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-term-' . $tax ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )
@@ -110,7 +110,7 @@ class Terms extends Generator {
 					'label'         => __( "Generate", "demopress" ),
 					'wrapper_class' => 'demopress-builder-status'
 				) ),
-				EL::i( $this->name, $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
+				EL::i( $this->name, $tax . '-builder-description', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'text', $this->builders['description']['list'] ) )->args( array(
 					'data'          => array( 'switch' => 'demopress-builders-description-' . $tax ),
 					'wrapper_class' => 'demopress-builder-switch'
 				) )

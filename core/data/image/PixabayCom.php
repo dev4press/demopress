@@ -15,7 +15,7 @@ class PixabayCom extends Base {
 
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
-			EL::i( $base, $this->el_option_name( $type, $name, 'category' ), __( "Category", "demopress" ), '', Type::SELECT, '' )->data( 'array', array(
+			EL::i( $base, $this->el_option_name( $type, $name, 'category' ), __( "Category", "demopress" ), '', Type::SELECT )->data( 'array', array(
 				''               => __( "All", "demopress" ),
 				'backgrounds'    => __( "Backgrounds", "demopress" ),
 				'fashion'        => __( "Fashion", "demopress" ),
@@ -93,8 +93,8 @@ class PixabayCom extends Base {
 	public function run( $settings = array(), $generator = null ) {
 		$args = array(
 			'image_type' => 'photo',
-			'q'          => isset( $settings['query'] ) ? $settings['query'] : '',
-			'size'       => isset( $settings['size'] ) ? $settings['size'] : 'large'
+			'q'          => $settings['query'] ?? '',
+			'size'       => $settings['size'] ?? 'large'
 		);
 
 		if ( isset( $settings['orientation'] ) && $settings['orientation'] != 'all' ) {

@@ -34,7 +34,7 @@ class PexelsCom extends Base {
 	 */
 	public function run( $settings = array(), $generator = null ) {
 		$args = array(
-			'query'  => isset( $settings['query'] ) ? $settings['query'] : '',
+			'query'  => $settings['query'] ?? '',
 			'width'  => 1280,
 			'height' => 720
 		);

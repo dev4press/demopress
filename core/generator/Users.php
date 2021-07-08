@@ -52,7 +52,7 @@ class Users extends Generator {
 		$_sections = array();
 
 		$_settings = array(
-			EL::i( $this->name, 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array(
+			EL::i( $this->name, 'users-builder-name', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'name', $this->builders['name']['list'] ) )->args( array(
 				'data'          => array( 'switch' => 'demopress-builders-name' ),
 				'wrapper_class' => 'demopress-builder-switch'
 			) )
@@ -79,7 +79,7 @@ class Users extends Generator {
 
 		$_settings = array(
 			EL::i( $this->name, 'users-base-about', __( "Status", "demopress" ), '', Type::BOOLEAN, true ),
-			EL::i( $this->name, 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT, '' )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array(
+			EL::i( $this->name, 'users-builder-about', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'text', $this->builders['about']['list'] ) )->args( array(
 				'data'          => array( 'switch' => 'demopress-builders-about' ),
 				'wrapper_class' => 'demopress-builder-switch'
 			) )
