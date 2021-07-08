@@ -33,6 +33,8 @@ class Plugin extends Core {
 
 		parent::__construct();
 
+		add_action( 'after_setup_theme', array( $this, 'prepare' ), 100000 );
+
 		demopress_gen();
 	}
 
@@ -63,11 +65,11 @@ class Plugin extends Core {
 		return $this->_datetime;
 	}
 
-	public function after_setup_theme() {
+	public function prepare() {
 		$this->_registration();
 	}
 
-	public function has_generators_for_group( $group ) {
+	public function has_generators_for_group( $group ) : bool {
 		foreach ( $this->generators as $generator ) {
 			if ( $generator['settings']['group'] == $group ) {
 				return true;
@@ -77,13 +79,13 @@ class Plugin extends Core {
 		return false;
 	}
 
-	public function is_generator_group_valid( $group ) {
+	public function is_generator_group_valid( $group ) : bool {
 		$groups = $this->get_generator_groups();
 
 		return isset( $groups[ $group ] );
 	}
 
-	public function get_generator_groups() {
+	public function get_generator_groups() : array {
 		return array(
 			'core'    => array(
 				'label' => __( "WordPress Core", "demopress" ),
@@ -135,7 +137,7 @@ class Plugin extends Core {
 	}
 
 	/** @return array */
-	public function find_builders( $type, $settings = array() ) {
+	public function find_builders( $type, $settings = array() ) : array {
 		$found = array();
 
 		foreach ( $this->builders[ $type ] as $code => $builder ) {
@@ -160,7 +162,7 @@ class Plugin extends Core {
 	}
 
 	/** @return array */
-	public function list_builders( $type, $builders = array() ) {
+	public function list_builders( $type, $builders = array() ) : array {
 		$list = array();
 
 		foreach ( $this->builders[ $type ] as $code => $builder ) {
@@ -183,7 +185,7 @@ class Plugin extends Core {
 		$settings = wp_parse_args( $settings, $defaults );
 
 		if ( ! $this->is_generator_group_valid( $settings['group'] ) ) {
-			$settings['group'] = 'plugin';
+			$settings['group'] = 'plugins';
 		}
 
 		$this->generators[ $name ] = array(
