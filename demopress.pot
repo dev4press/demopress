@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 07/08/2021 03:59:25 PM\n"
+"POT-Creation-Date: 07/08/2021 04:07:21 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,7 +127,7 @@ msgid "Status"
 msgstr ""
 
 #: core/admin/Settings.php:38
-msgid "If you want to use only generators that don't depend on the remote third party serivces to generate content or images, disable this option."
+msgid "If you want to use only generators that don't depend on the remote third party services to generate content or images, disable this option."
 msgstr ""
 
 #: core/admin/Settings.php:46
@@ -505,7 +505,7 @@ msgid "Health"
 msgstr ""
 
 #: core/data/image/PixabayCom.php:26
-msgid "Poeple"
+msgid "People"
 msgstr ""
 
 #: core/data/image/PixabayCom.php:27
@@ -521,7 +521,7 @@ msgid "Animals"
 msgstr ""
 
 #: core/data/image/PixabayCom.php:30
-msgid "Indistry"
+msgid "Industry"
 msgstr ""
 
 #: core/data/image/PixabayCom.php:31
@@ -771,7 +771,7 @@ msgid "Method"
 msgstr ""
 
 #: core/generator/bbPress.php:121
-msgid "Any of the exisiting forums"
+msgid "Any of the existing forums"
 msgstr ""
 
 #: core/generator/bbPress.php:122
@@ -1209,7 +1209,7 @@ msgid "Ended"
 msgstr ""
 
 #: forms/content-dashboard.php:113
-msgid "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt autorecovery."
+msgid "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt auto-recovery."
 msgstr ""
 
 #: forms/content-dashboard.php:116
@@ -1322,7 +1322,7 @@ msgid "Return to top"
 msgstr ""
 
 #: forms/sidebar-dashboard.php:61
-msgid "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immidiate, it can take up to 15 seconds for the running process to get the stop message."
+msgid "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immediate, it can take up to 15 seconds for the running process to get the stop message."
 msgstr ""
 
 #: forms/sidebar-dashboard.php:64

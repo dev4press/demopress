@@ -111,7 +111,7 @@ use function Dev4Press\v35\Functions\panel;
                     <pre><?php echo join( D4P_EOL, demopress_gen()->format_log_list() ); ?></pre>
                 </div>
                 <p>
-					<?php _e( "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt autorecovery.", "demopress" ); ?>
+					<?php _e( "This page automatically checks for the generator status every 5 seconds. If the process gets broken on the server side, the plugin will attempt auto-recovery.", "demopress" ); ?>
                 </p>
                 <div class="demopress-gen-loader">
                     <i class="d4p-icon d4p-ui-spinner d4p-icon-spin"></i> <?php _e( "Checking progress...", "demopress" ); ?>

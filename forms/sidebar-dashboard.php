@@ -59,7 +59,7 @@ $_subpanels = panel()->subpanels();
             </div>
 			<?php if ( demopress_gen()->is_running() ) { ?>
                 <div class="d4p-panel-info">
-					<?php _e( "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immidiate, it can take up to 15 seconds for the running process to get the stop message.", "demopress" ) ?>
+					<?php _e( "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immediate, it can take up to 15 seconds for the running process to get the stop message.", "demopress" ) ?>
                 </div>
                 <div class="d4p-panel-buttons">
                     <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=stoptask' ), 'demopress-task-stop' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Stop Generator", "demopress" ); ?></a>

@@ -36,7 +36,7 @@ class Settings extends BaseSettings {
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( 'settings', 'remote_enabled', __( "Status", "demopress" ), __( "If you want to use only generators that don't depend on the remote third party serivces to generate content or images, disable this option.", "demopress" ), Type::BOOLEAN, $this->value( 'remote_enabled' ) )
+								EL::i( 'settings', 'remote_enabled', __( "Status", "demopress" ), __( "If you want to use only generators that don't depend on the remote third party services to generate content or images, disable this option.", "demopress" ), Type::BOOLEAN, $this->value( 'remote_enabled' ) )
 							)
 						)
 					)

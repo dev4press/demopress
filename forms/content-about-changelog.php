@@ -10,6 +10,7 @@
             <li><strong>edit</strong> Dev4Press Library 3.5.3</li>
             <li><strong>fix</strong> bbpress: forum roles for authors not taken into account</li>
             <li><strong>fix</strong> query to get comments was not using approved flag value</li>
+            <li><strong>fix</strong> various typos and wrongly spelled words</li>
         </ul>
 
         <h4>Version: 1.1 / november 25 2020</h4>

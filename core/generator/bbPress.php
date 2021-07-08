@@ -119,7 +119,7 @@ class bbPress extends Content {
 				'class'    => '',
 				'settings' => array(
 					EL::i( $this->name, $type . '-base-forum-method', __( "Method", "demopress" ), $_info, Type::SELECT, 'any' )->data( 'array', array(
-						'any' => __( "Any of the exisiting forums", "demopress" ),
+						'any' => __( "Any of the existing forums", "demopress" ),
 						'sel' => __( "Selected forums only", "demopress" )
 					) )->args( array(
 						'data'          => array( 'switch' => 'demopress-builders-forum-method-' . $type ),

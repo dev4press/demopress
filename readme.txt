@@ -75,6 +75,7 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * Edit: Dev4Press Library 3.5.3
 * Fix: bbpress: forum roles for authors not taken into account
 * Fix: query to get comments was not using approved flag value
+* Fix: various typos and wrongly spelled words
 
 = 1.1 (2020.11.25) =
 * New: title builder: Listed - get titles from predefined list of titles
