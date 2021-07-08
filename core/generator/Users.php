@@ -33,7 +33,7 @@ class Users extends Generator {
 		);
 	}
 
-	public function get_list_of_types( $return = 'objects' ) {
+	public function get_list_of_types( $return = 'objects' ) : array {
 		return array();
 	}
 

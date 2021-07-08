@@ -281,7 +281,7 @@ abstract class Content extends Generator {
 		}
 	}
 
-	protected function _get_terms( $type ) {
+	protected function _get_terms( $type ) : array {
 		$terms      = array();
 		$taxonomies = $this->get_from_base( $type, 'taxonomy', false, array() );
 
@@ -324,7 +324,7 @@ abstract class Content extends Generator {
 		return $terms;
 	}
 
-	protected function _get_author( $type, $roles = array() ) {
+	protected function _get_author( $type, $roles = array() ) : int {
 		$authors = $this->get_from_base( $type, 'published', 'author' );
 
 		if ( ! empty( $authors ) ) {
@@ -349,7 +349,7 @@ abstract class Content extends Generator {
 		return $authors[ $key ];
 	}
 
-	protected function _get_publish_date( $type ) {
+	protected function _get_publish_date( $type ) : string {
 		$range = $this->get_from_base( $type, 'published' );
 
 		$from_date = DateTime::createFromFormat( '!Y-m-d', $range['from'] );
@@ -428,10 +428,6 @@ abstract class Content extends Generator {
 			}
 		}
 
-		if ( ! empty( $terms ) ) {
-			$post['tax_input'] = $terms;
-		}
-
 		if ( is_post_type_hierarchical( $type ) && $this->get_from_base( $type, 'toplevel' ) < 100 ) {
 			$post['post_parent'] = $parent;
 
@@ -446,6 +442,12 @@ abstract class Content extends Generator {
 
 		if ( ! is_wp_error( $post_id ) ) {
 			$this->_posts_cache[ $type ][] = $post_id;
+
+			if ( ! empty( $terms ) ) {
+				foreach ( $terms as $_taxonomy => $_tags ) {
+					wp_set_post_terms( $post_id, $_tags, $_taxonomy );
+				}
+			}
 
 			update_post_meta( $post_id, '_demopress_generated_content', '1' );
 

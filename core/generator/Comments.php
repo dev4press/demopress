@@ -34,7 +34,7 @@ class Comments extends Generator {
 		return $list;
 	}
 
-	public function get_list_of_types( $return = 'objects' ) {
+	public function get_list_of_types( $return = 'objects' ) : array {
 		$comment_types = demopress_get_comment_types();
 
 		return $return == 'keys' ? array_keys( $comment_types ) : $comment_types;

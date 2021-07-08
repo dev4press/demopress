@@ -222,7 +222,7 @@ abstract class Generator {
 		$this->generate_thread_finished( $this->current_type() );
 	}
 
-	protected function has_more_to_do() {
+	protected function has_more_to_do() : bool {
 		if ( empty( $this->_progress['current'] ) ) {
 			$this->_progress['current'] = $this->_types[0];
 		}
@@ -259,7 +259,7 @@ abstract class Generator {
 		return $this->_settings[ $this->current_type() ]['base']['count'];
 	}
 
-	protected function can_continue() {
+	protected function can_continue() : bool {
 		$time = microtime( true ) - $this->_last;
 
 		if ( $time >= demopress_gen()->timeout() ) {
@@ -320,12 +320,18 @@ abstract class Generator {
 		throw new Builder( 'builder-missing', __( "Requested builder not found.", "demopress" ), $type, $name );
 	}
 
-	protected function get_builder_scope( $type, $name ) {
+	/**
+	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 */
+	protected function get_builder_scope( $type, $name ) : string {
 		$builder = $this->get_the_builder( $type, $name );
 
 		return $builder->scope;
 	}
 
+	/**
+	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 */
 	protected function get_from_builder( $type, $name ) {
 		$builder  = $this->get_the_builder( $type, $name );
 		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
@@ -343,7 +349,7 @@ abstract class Generator {
 		return long2ip( ( mt_rand() * mt_rand( 1, 2 ) ) + mt_rand( 0, 1 ) );
 	}
 
-	protected function _get_random_publish_date_from( $from ) {
+	protected function _get_random_publish_date_from( $from ) : string {
 		$from_date = DateTime::createFromFormat( 'Y-m-d H:i:s', $from );
 
 		$random      = mt_rand( $from_date->getTimestamp(), time() );
@@ -430,7 +436,7 @@ abstract class Generator {
 
 	}
 
-	abstract public function get_list_of_types( $return = 'objects' );
+	abstract public function get_list_of_types( $return = 'objects' ) : array;
 
 	abstract public function get_cleanup_count( $type = '' );
 

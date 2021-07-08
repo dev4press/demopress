@@ -70,6 +70,8 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 = 1.3 (2021.07.10) =
 * Edit: changed default priority for the main registration entry point
 * Edit: various improvements to the base generators
+* Edit: improved method for assigning custom taxonomy terms
+* Fix: in some cases custom taxonomy terms not assigned
 * Fix: minor issue in the generator registration method
 * Fix: regression in the bbPress generator for topics
 

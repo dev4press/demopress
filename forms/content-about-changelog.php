@@ -5,6 +5,8 @@
         <ul>
             <li><strong>edit</strong> changed default priority for the main registration entry point</li>
             <li><strong>edit</strong> various improvements to the base generators</li>
+            <li><strong>edit</strong> improved method for assigning custom taxonomy terms</li>
+            <li><strong>fix</strong> in some cases custom taxonomy terms not assigned</li>
             <li><strong>fix</strong> minor issue in the generator registration method</li>
             <li><strong>fix</strong> regression in the bbPress generator for topics</li>
         </ul>

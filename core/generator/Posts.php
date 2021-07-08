@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Posts extends Content {
 	public $name = 'posts';
 
-	public function get_list_of_types( $return = 'objects' ) {
+	public function get_list_of_types( $return = 'objects' ) : array {
 		$post_types = demopress_get_post_types();
 
 		return $return == 'keys' ? array_keys( $post_types ) : $post_types;
