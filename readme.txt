@@ -67,10 +67,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.3 (2021.07.20) =
+= 1.3 (2021.07.10) =
 * Edit: changed default priority for the main registration entry point
 * Edit: various improvements to the base generators
 * Fix: minor issue in the generator registration method
+* Fix: regression in the bbPress generator for topics
 
 = 1.2 (2021.07.08) =
 * Edit: comments: improved handling top level option with value 0

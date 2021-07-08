@@ -1,11 +1,12 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
-        <h4>Version: 1.3 / july 20 2021</h4>
+        <h4>Version: 1.3 / july 10 2021</h4>
         <ul>
             <li><strong>edit</strong> changed default priority for the main registration entry point</li>
             <li><strong>edit</strong> various improvements to the base generators</li>
             <li><strong>fix</strong> minor issue in the generator registration method</li>
+            <li><strong>fix</strong> regression in the bbPress generator for topics</li>
         </ul>
 
         <h4>Version: 1.2 / july 8 2021</h4>
