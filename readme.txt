@@ -68,6 +68,7 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
 = 1.3 (2021.07.10) =
+* New: images placeholder generator: lighter and darker background color
 * Edit: changed default priority for the main registration entry point
 * Edit: various improvements to the base generators
 * Edit: improved method for assigning custom taxonomy terms

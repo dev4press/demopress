@@ -3,6 +3,7 @@
     <div class="d4p-group-inner">
         <h4>Version: 1.3 / july 10 2021</h4>
         <ul>
+            <li><strong>new</strong> images placeholder generator: lighter and darker background color</li>
             <li><strong>edit</strong> changed default priority for the main registration entry point</li>
             <li><strong>edit</strong> various improvements to the base generators</li>
             <li><strong>edit</strong> improved method for assigning custom taxonomy terms</li>

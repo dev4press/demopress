@@ -22,13 +22,14 @@ class Placeholder extends Library {
 		$defaults = array(
 			'width'  => 1280,
 			'height' => 720,
+			'colors' => 'dark-random',
 			'name'   => false,
 			'path'   => false
 		);
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$this->_object->size( $args['width'], $args['height'] );
+		$this->_object->size( $args['width'], $args['height'] )->colors( $args['colors'] );
 
 		try {
 			$file = $this->_object->generate( $args['name'], $args['path'] );

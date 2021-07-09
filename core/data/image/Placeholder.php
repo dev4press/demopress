@@ -19,6 +19,13 @@ class Placeholder extends Base {
 			EL::i( $base, $this->el_option_name( $type, $name, 'dimensions' ), __( "Dimensions", "demopress" ), __( "Do not set this to dimensions over 3000 by 2000 pixels.", "demopress" ), Type::X_BY_Y, '1280x720' )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 				'min'           => 1
+			) ),
+			EL::i( $base, $this->el_option_name( $type, $name, 'colors' ), __( "Colors", "demopress" ), '', Type::SELECT, 'dark-random' )->data( 'array', array(
+				'dark-random'  => __( "Random Darker Background", "demopress" ),
+				'light-random' => __( "Random Lighter Background", "demopress" )
+			) )->args( array(
+				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
+				'min'           => 1
 			) )
 		);
 	}
@@ -31,7 +38,8 @@ class Placeholder extends Base {
 	 */
 	public function run( $settings = array(), $generator = null ) {
 		$args = array(
-			'path' => $this->get_temp_dir()
+			'path' => $this->get_temp_dir(),
+			'colors' => $settings['colors'] ?? 'dark-random'
 		);
 
 		$dim = isset( $settings['dimensions'] ) ? explode( 'x', $settings['dimensions'] ) : false;
