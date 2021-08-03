@@ -330,11 +330,17 @@ abstract class Generator {
 	}
 
 	/**
+	 * @param array $args *
+	 *
 	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
 	 */
-	protected function get_from_builder( $type, $name ) {
+	protected function get_from_builder( $type, $name, array $args = array() ) {
 		$builder  = $this->get_the_builder( $type, $name );
 		$settings = $this->_settings[ $type ]['builder'][ $name ]['settings'];
+
+		if ( ! empty( $args ) ) {
+			$settings = wp_parse_args( $args, $settings );
+		}
 
 		$result = $builder->run( $settings, $this );
 

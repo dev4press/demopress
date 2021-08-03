@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
-Stable tag: 1.3
+Stable tag: 1.4
 Requires at least: 5.1
 Tested up to: 5.8
 Requires PHP: 7.0
@@ -67,6 +67,13 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 1.4 (2021.08.03) =
+* New: images placeholder generator: include rectangles
+* New: images placeholder generator: use post name or image size
+
+= 1.3.1 (2021.07.30) =
+* Fix: some library files have wrong name case
+
 = 1.3 (2021.07.10) =
 * New: images placeholder generator: lighter and darker background color
 * Edit: changed default priority for the main registration entry point
@@ -97,6 +104,12 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 1.4 =
+Images placeholder generator improvements.
+
+= 1.3 =
+Various improvements and fixes.
+
 = 1.2 =
 Various improvements and fixes.
 

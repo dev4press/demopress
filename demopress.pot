@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural - Forms: nplurals = INTEGER; plural = EXPRESSION;\n"
 "Project-Id-Version: DemoPress\n"
-"POT-Creation-Date: 07/08/2021 04:07:21 PM\n"
+"POT-Creation-Date: 08/03/2021 01:46:56 PM\n"
 "Language-Team: Milan Petrovic <support@dev4press.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -116,7 +116,7 @@ msgid "Remote Builders"
 msgstr ""
 
 #: core/admin/Settings.php:38
-#: core/generator/bbPress.php:51
+#: core/generator/bbPress.php:52
 #: core/generator/Content.php:147
 #: core/generator/Content.php:184
 #: core/generator/Content.php:230
@@ -170,7 +170,7 @@ msgid "Editor"
 msgstr ""
 
 #: core/base/Generator.php:121
-#: core/generator/bbPress.php:96
+#: core/generator/bbPress.php:97
 #: core/generator/Content.php:134
 msgid "Author"
 msgstr ""
@@ -192,7 +192,7 @@ msgid "Generator failed! Builder %s for %s error with message '%s'."
 msgstr ""
 
 #: core/base/Generator.php:319
-#: core/basic/Plugin.php:133
+#: core/basic/Plugin.php:135
 msgid "Requested builder not found."
 msgstr ""
 
@@ -208,133 +208,133 @@ msgstr ""
 msgid "The generator task has finished."
 msgstr ""
 
-#: core/basic/Plugin.php:88
+#: core/basic/Plugin.php:90
 msgid "WordPress Core"
 msgstr ""
 
-#: core/basic/Plugin.php:92
+#: core/basic/Plugin.php:94
 msgid "Third Party Plugins"
 msgstr ""
 
-#: core/basic/Plugin.php:109
+#: core/basic/Plugin.php:111
 msgid "Unspecified"
 msgstr ""
 
-#: core/basic/Plugin.php:122
+#: core/basic/Plugin.php:124
 msgid "Requested generator not found."
 msgstr ""
 
-#: core/basic/Plugin.php:304
+#: core/basic/Plugin.php:306
 msgid "Generate HTML content using PHP Lorem Ipsum class."
 msgstr ""
 
-#: core/basic/Plugin.php:308
+#: core/basic/Plugin.php:310
 msgid "Generate HTML content using Loripsum.net website."
 msgstr ""
 
-#: core/basic/Plugin.php:313
+#: core/basic/Plugin.php:315
 msgid "Generate plaintext content using PHP Lorem Ipsum class."
 msgstr ""
 
-#: core/basic/Plugin.php:317
+#: core/basic/Plugin.php:319
 msgid "Generate plaintext content using Loripsum.net website."
 msgstr ""
 
-#: core/basic/Plugin.php:322
+#: core/basic/Plugin.php:324
 msgid "Generate terms using PHP Lorem Ipsum generator."
 msgstr ""
 
-#: core/basic/Plugin.php:326
+#: core/basic/Plugin.php:328
 msgid "Generate terms using PHP Randomizer generator."
 msgstr ""
 
-#: core/basic/Plugin.php:330
+#: core/basic/Plugin.php:332
 msgid "Generate names using PHP Random Names generator."
 msgstr ""
 
-#: core/basic/Plugin.php:334
+#: core/basic/Plugin.php:336
 msgid "Generate names using PHP Lorem Ipsum generator."
 msgstr ""
 
-#: core/basic/Plugin.php:338
+#: core/basic/Plugin.php:340
 msgid "Generate names using PHP Randomizer generator."
 msgstr ""
 
-#: core/basic/Plugin.php:342
+#: core/basic/Plugin.php:344
 msgid "Generate titles using PHP Lorem Ipsum generator."
 msgstr ""
 
-#: core/basic/Plugin.php:346
+#: core/basic/Plugin.php:348
 msgid "Generate titles using PHP Randomizer generator."
 msgstr ""
 
-#: core/basic/Plugin.php:350
+#: core/basic/Plugin.php:352
 msgid "Provide the list of titles to use."
 msgstr ""
 
-#: core/basic/Plugin.php:354
+#: core/basic/Plugin.php:356
 msgid "Build placeholder image with random colors and basic text."
 msgstr ""
 
-#: core/basic/Plugin.php:359
+#: core/basic/Plugin.php:361
 msgid "Get images from the local storage directory."
 msgstr ""
 
-#: core/basic/Plugin.php:366
+#: core/basic/Plugin.php:368
 msgid "Download and use images from Pixabay.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:375
+#: core/basic/Plugin.php:377
 msgid "Build video tags embedding Vimeo videos from Pixabay.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:383
+#: core/basic/Plugin.php:385
 msgid "Download and use images from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:388
+#: core/basic/Plugin.php:390
 msgid "Build video tags embedding Vimeo videos from Pexels.com website."
 msgstr ""
 
-#: core/basic/Plugin.php:393
+#: core/basic/Plugin.php:395
 #: core/generator/Users.php:31
 msgid "Users"
 msgstr ""
 
-#: core/basic/Plugin.php:394
+#: core/basic/Plugin.php:396
 msgid "Generate users with various user roles, one or more domains to use for random emails, preset or random password, generated name and about information."
 msgstr ""
 
-#: core/basic/Plugin.php:401
+#: core/basic/Plugin.php:403
 msgid "Terms"
 msgstr ""
 
-#: core/basic/Plugin.php:402
+#: core/basic/Plugin.php:404
 msgid "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and optional term description."
 msgstr ""
 
-#: core/basic/Plugin.php:409
+#: core/basic/Plugin.php:411
 msgid "Posts"
 msgstr ""
 
-#: core/basic/Plugin.php:410
+#: core/basic/Plugin.php:412
 msgid "Generate posts for default and custom post types, with hierarchy support and ability to get a random featured image and generate all other post data."
 msgstr ""
 
-#: core/basic/Plugin.php:417
+#: core/basic/Plugin.php:419
 #: core/functions.php:21
 msgid "Comments"
 msgstr ""
 
-#: core/basic/Plugin.php:418
+#: core/basic/Plugin.php:420
 msgid "Generate comments for post types supporting comments, including support for threaded comments and ability to generate random comment authors information."
 msgstr ""
 
-#: core/basic/Plugin.php:427
+#: core/basic/Plugin.php:429
 msgid "bbPress Forums"
 msgstr ""
 
-#: core/basic/Plugin.php:428
+#: core/basic/Plugin.php:430
 msgid "Generate forums, topics and replies for bbPress powered forums, with support for generating different data and conforming to the bbPress content specs."
 msgstr ""
 
@@ -557,6 +557,7 @@ msgid "Music"
 msgstr ""
 
 #: core/data/image/PixabayCom.php:43
+#: core/data/image/Placeholder.php:21
 msgid "Colors"
 msgstr ""
 
@@ -656,6 +657,34 @@ msgstr ""
 msgid "Original"
 msgstr ""
 
+#: core/data/image/Placeholder.php:22
+msgid "Random Darker Background"
+msgstr ""
+
+#: core/data/image/Placeholder.php:23
+msgid "Random Lighter Background"
+msgstr ""
+
+#: core/data/image/Placeholder.php:27
+msgid "Rectangles"
+msgstr ""
+
+#: core/data/image/Placeholder.php:30
+msgid "Text"
+msgstr ""
+
+#: core/data/image/Placeholder.php:31
+msgid "Image Size"
+msgstr ""
+
+#: core/data/image/Placeholder.php:32
+msgid "Post Content"
+msgstr ""
+
+#: core/data/image/Placeholder.php:33
+msgid "No Text"
+msgstr ""
+
 #: core/data/term/Base.php:17
 msgid "Limit number of words"
 msgstr ""
@@ -689,15 +718,15 @@ msgstr ""
 msgid "No more titles are available in the list."
 msgstr ""
 
-#: core/generator/bbPress.php:26
+#: core/generator/bbPress.php:27
 msgid "If you choose to delete forums only, the remaining topics and replies will no longer be visible, because they are linked to forums. If you delete topics only, the remaining replies will not longer be visible, because they are linked to topics."
 msgstr ""
 
-#: core/generator/bbPress.php:51
+#: core/generator/bbPress.php:52
 msgid "Title is not normally used for replies. You can still generate it, if you want."
 msgstr ""
 
-#: core/generator/bbPress.php:52
+#: core/generator/bbPress.php:53
 #: core/generator/Content.php:148
 #: core/generator/Content.php:185
 #: core/generator/Content.php:231
@@ -705,7 +734,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: core/generator/bbPress.php:53
+#: core/generator/bbPress.php:54
 #: core/generator/Content.php:149
 #: core/generator/Content.php:186
 #: core/generator/Content.php:232
@@ -713,7 +742,7 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: core/generator/bbPress.php:55
+#: core/generator/bbPress.php:56
 #: core/generator/Comments.php:92
 #: core/generator/Content.php:60
 #: core/generator/Content.php:151
@@ -725,7 +754,7 @@ msgstr ""
 msgid "Generate"
 msgstr ""
 
-#: core/generator/bbPress.php:58
+#: core/generator/bbPress.php:59
 #: core/generator/Comments.php:141
 #: core/generator/Comments.php:183
 #: core/generator/Content.php:80
@@ -739,75 +768,75 @@ msgstr ""
 msgid "Generate with"
 msgstr ""
 
-#: core/generator/bbPress.php:77
+#: core/generator/bbPress.php:78
 #: core/generator/Content.php:99
 msgid "Title"
 msgstr ""
 
-#: core/generator/bbPress.php:92
+#: core/generator/bbPress.php:93
 #: core/generator/Content.php:139
 msgid "Published"
 msgstr ""
 
-#: core/generator/bbPress.php:96
+#: core/generator/bbPress.php:97
 msgid "Comma separated list of user ID's to use on random. If empty, plugin will choose random users from roles allowed to post to the forums."
 msgstr ""
 
-#: core/generator/bbPress.php:111
+#: core/generator/bbPress.php:112
 msgid "Topics can be added to any of the existing forums at random, or you can select which forums to limit the process to."
 msgstr ""
 
-#: core/generator/bbPress.php:113
+#: core/generator/bbPress.php:114
 msgid "Replies can be added to topics of any of the existing forums at random, or you can select which forums to limit the process to."
 msgstr ""
 
-#: core/generator/bbPress.php:116
+#: core/generator/bbPress.php:117
 msgid "Add to Forums"
 msgstr ""
 
-#: core/generator/bbPress.php:120
+#: core/generator/bbPress.php:121
 #: core/generator/Comments.php:116
 msgid "Method"
 msgstr ""
 
-#: core/generator/bbPress.php:121
+#: core/generator/bbPress.php:122
 msgid "Any of the existing forums"
 msgstr ""
 
-#: core/generator/bbPress.php:122
+#: core/generator/bbPress.php:123
 msgid "Selected forums only"
 msgstr ""
 
-#: core/generator/bbPress.php:127
+#: core/generator/bbPress.php:128
 msgid "Selected forums"
 msgstr ""
 
-#: core/generator/bbPress.php:185
-#: core/generator/bbPress.php:227
-#: core/generator/Posts.php:92
+#: core/generator/bbPress.php:186
+#: core/generator/bbPress.php:228
+#: core/generator/Content.php:454
 msgid "Added Post - ID: %s, Name: '%s'"
 msgstr ""
 
-#: core/generator/bbPress.php:191
-#: core/generator/bbPress.php:231
-#: core/generator/Posts.php:115
+#: core/generator/bbPress.php:192
+#: core/generator/bbPress.php:232
+#: core/generator/Content.php:477
 msgid "Failed creating the post. Name: '%s'"
 msgstr ""
 
-#: core/generator/bbPress.php:235
-#: core/generator/bbPress.php:290
+#: core/generator/bbPress.php:236
+#: core/generator/bbPress.php:291
 msgid "No forums found."
 msgstr ""
 
-#: core/generator/bbPress.php:281
+#: core/generator/bbPress.php:282
 msgid "Added Post - ID: %s"
 msgstr ""
 
-#: core/generator/bbPress.php:284
+#: core/generator/bbPress.php:285
 msgid "Failed creating the post."
 msgstr ""
 
-#: core/generator/bbPress.php:287
+#: core/generator/bbPress.php:288
 msgid "No topics found."
 msgstr ""
 
@@ -1004,7 +1033,7 @@ msgstr ""
 msgid "Image is not found at temp location."
 msgstr ""
 
-#: core/generator/Posts.php:107
+#: core/generator/Content.php:469
 msgid "Failed attaching the image."
 msgstr ""
 
@@ -1183,6 +1212,8 @@ msgstr ""
 #: forms/content-about-changelog.php:1
 #: forms/content-about-minor.php:3
 #: forms/content-about-minor.php:7
+#: forms/content-about-minor.php:11
+#: forms/content-about-minor.php:15
 msgid "Version"
 msgstr ""
 
@@ -1190,7 +1221,7 @@ msgstr ""
 msgid "Maintenance and Security Releases"
 msgstr ""
 
-#: forms/content-about-minor.php:11
+#: forms/content-about-minor.php:19
 msgid "For more information, see <a href='%s'>the changelog</a>."
 msgstr ""
 

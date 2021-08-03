@@ -20,16 +20,23 @@ class Placeholder extends Library {
 
 	public function image( $args = array() ) {
 		$defaults = array(
-			'width'  => 1280,
-			'height' => 720,
-			'colors' => 'dark-random',
-			'name'   => false,
-			'path'   => false
+			'width'      => 1280,
+			'height'     => 720,
+			'colors'     => 'dark-random',
+			'text'       => 'size',
+			'rectangles' => 0,
+			'name'       => false,
+			'path'       => false,
+			'post_title' => ''
 		);
 
 		$args = wp_parse_args( $args, $defaults );
 
-		$this->_object->size( $args['width'], $args['height'] )->colors( $args['colors'] );
+		$this->_object->size( $args['width'], $args['height'] )
+		              ->colors( $args['colors'] )
+		              ->rectangles( $args['rectangles'], 'big', $args['colors'] )
+		              ->render( $args['text'], $args['post_title'] )
+		              ->font( false, false, 48 );
 
 		try {
 			$file = $this->_object->generate( $args['name'], $args['path'] );

@@ -1,6 +1,17 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
+        <h4>Version: 1.4 / august 3 2021</h4>
+        <ul>
+            <li><strong>new</strong> images placeholder generator: include rectangles</li>
+            <li><strong>new</strong> images placeholder generator: use post name or image size</li>
+		</ul>
+
+        <h4>Version: 1.3.1 / july 30 2021</h4>
+        <ul>
+            <li><strong>fix</strong> some of the library files have wrong name case</li>
+        </ul>
+
         <h4>Version: 1.3 / july 10 2021</h4>
         <ul>
             <li><strong>new</strong> images placeholder generator: lighter and darker background color</li>

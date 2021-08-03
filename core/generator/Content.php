@@ -456,7 +456,7 @@ abstract class Content extends Generator {
 					$post_id, $post['post_title'] ) );
 
 			if ( $this->get_from_base( $type, 'featured' ) == 'on' ) {
-				$image = $this->get_from_builder( $type, 'featured' );
+				$image = $this->get_from_builder( $type, 'featured', array( 'post_title' => $post['post_title'] ) );
 
 				if ( ! is_wp_error( $image ) && is_array( $image ) && ! empty( $image ) ) {
 					if ( $this->get_builder_scope( $type, 'featured' ) == 'remote' ) {
