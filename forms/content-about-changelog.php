@@ -1,6 +1,13 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
+        <h4>Version: 1.5 / september 13 2021</h4>
+        <ul>
+            <li><strong>new</strong> generator: generate WooCommerce products</li>
+            <li><strong>edit</strong> for content generator show notice for taxonomies with no terms</li>
+            <li><strong>edit</strong> for content generator show only public taxonomies</li>
+        </ul>
+
         <h4>Version: 1.4 / august 3 2021</h4>
         <ul>
             <li><strong>new</strong> images placeholder generator: include rectangles</li>

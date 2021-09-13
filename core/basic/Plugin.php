@@ -437,6 +437,17 @@ class Plugin extends Core {
 				) );
 		}
 
+		if ( demopress_is_woocommerce_active() ) {
+			$this->register_generator( 'WooCommerce', __( "WooCommerce", "demopress" ),
+				__( "Generator for Simple products in WooCommerce with many supported basic settings, including price, download, stock and more.", "demopress" ),
+				array(
+					'group' => 'plugins',
+					'icon'  => 'd4p-icon d4p-logo-woo',
+					'text'  => true,
+					'image' => true
+				) );
+		}
+
 		do_action( 'demopress_register_generators_and_builders' );
 	}
 }

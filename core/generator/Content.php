@@ -223,26 +223,32 @@ abstract class Content extends Generator {
 				$taxonomy = get_taxonomy( $tax );
 				$terms    = wp_count_terms( $tax, array( 'hide_empty' => false ) );
 
-				if ( $terms == 0 ) {
+				if ( ! $taxonomy->public ) {
 					continue;
 				}
 
-				$_settings = array(
-					EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-generate', __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data( 'array', array(
-						'on'  => __( "Enabled", "demopress" ),
-						'off' => __( "Disabled", "demopress" )
-					) )->args( array(
-						'label'         => __( "Generate", "demopress" ),
-						'wrapper_class' => 'demopress-builder-status'
-					) ),
-					EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-assign', __( "Assign to posts", "demopress" ), __( "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts.", "demopress" ), Type::ABSINT, 100 )->args( array(
-						'label_unit' => '%',
-						'min'        => 0,
-						'step'       => 5,
-						'max'        => 100
-					) ),
-					EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-terms', __( "Terms to assign", "demopress" ), __( "Number of terms to assign inside the specified range, at random.", "demopress" ), Type::RANGE_ABSINT, '1=>3' )
-				);
+				if ( $terms == 0 ) {
+					$_settings = array(
+						EL::info( __( "No Terms", "demopress" ), __( "This taxonomy has no terms. If you want to assign terms for this taxonomy, generate or create terms first.", "demopress" ) )
+					);
+				} else {
+					$_settings = array(
+						EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-generate', __( "Status", "demopress" ), __( "Assigning terms is optional.", "demopress" ), Type::SELECT, 'on' )->data( 'array', array(
+							'on'  => __( "Enabled", "demopress" ),
+							'off' => __( "Disabled", "demopress" )
+						) )->args( array(
+							'label'         => __( "Generate", "demopress" ),
+							'wrapper_class' => 'demopress-builder-status'
+						) ),
+						EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-assign', __( "Assign to posts", "demopress" ), __( "Percentage of random generated posts that will get terms assigned. Set to 100% to assign terms to all posts.", "demopress" ), Type::ABSINT, 100 )->args( array(
+							'label_unit' => '%',
+							'min'        => 0,
+							'step'       => 5,
+							'max'        => 100
+						) ),
+						EL::i( $this->name, $cpt . '-base-taxonomy-' . $tax . '-terms', __( "Terms to assign", "demopress" ), __( "Number of terms to assign inside the specified range, at random.", "demopress" ), Type::RANGE_ABSINT, '1=>3' )
+					);
+				}
 
 				$_sections[] = array(
 					'key'      => 'taxonomy-' . $tax,

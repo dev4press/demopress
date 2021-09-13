@@ -2,6 +2,14 @@
     <h3><?php _e( "Maintenance and Security Releases", "demopress" ); ?></h3>
     <p>
         <strong><?php _e( "Version", "demopress" ); ?> <span>1.3.1</span></strong> &minus;
+        Support for WooCommerce products.
+    </p>
+    <p>
+        <strong><?php _e( "Version", "demopress" ); ?> <span>1.4</span></strong> &minus;
+        Improvements for image generators.
+    </p>
+    <p>
+        <strong><?php _e( "Version", "demopress" ); ?> <span>1.3.1</span></strong> &minus;
         Few fixes.
     </p>
     <p>

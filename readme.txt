@@ -2,7 +2,7 @@
 Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, demo data, dummy data, dummy content, lorem ipsum, generator, builder, random
-Stable tag: 1.4
+Stable tag: 1.5
 Requires at least: 5.1
 Tested up to: 5.8
 Requires PHP: 7.0
@@ -32,6 +32,9 @@ https://www.youtube.com/watch?v=Eazmk93cO34
 * **Forums**: support for forums hierarchy; generate forum title, content, publication date and author.
 * **Topics**: generate title, content, publication date and author; assign topic tags; select forums for generated topics.
 * **Replies**: generate title, content, author; date based on topic date; for topics from selected forums.
+
+= More Generators =
+* **WooCommerce Products**: support for generating products with basic additional settings
 
 = Included Builders =
 * **HTML**: generate HTML content. Includes local 'LoremIpsum' and remote 'LorIpsum.net' builders. Local builder can build content with basic block editor blocks.
@@ -67,6 +70,11 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 1.5 (2021.09.13) =
+* New: generator: generate WooCommerce products
+* Edit: for content generator show notice for taxonomies with no terms
+* Edit: for content generator show only public taxonomies
+
 = 1.4 (2021.08.03) =
 * New: images placeholder generator: include rectangles
 * New: images placeholder generator: use post name or image size
@@ -104,6 +112,9 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 1.5 =
+WooCommerce Products generator.
+
 = 1.4 =
 Images placeholder generator improvements.
 
