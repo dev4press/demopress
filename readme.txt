@@ -70,7 +70,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.5 (2021.09.13) =
+= 1.5 (2021.10.06) =
 * New: generator: generate WooCommerce products
 * Edit: for content generator show notice for taxonomies with no terms
 * Edit: for content generator show only public taxonomies
