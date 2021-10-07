@@ -13,7 +13,7 @@ class Information extends BaseInformation {
 
 	public $version = '1.5';
 	public $build = 50;
-	public $updated = '2021.09.13';
+	public $updated = '2021.10.07';
 	public $status = 'stable';
 	public $edition = 'pro';
 	public $released = '2020.11.17';

@@ -9,7 +9,7 @@ Author URI:        https://www.dev4press.com/
 Text Domain:       demopress
 Version:           1.5
 Requires at least: 5.1
-Tested up to:      5.8
+Tested up to:      5.9
 Requires PHP:      7.0
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
