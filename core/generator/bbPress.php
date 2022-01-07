@@ -152,8 +152,22 @@ class bbPress extends Content {
 		}
 	}
 
+	protected function _get_post_statuses( $type ) : array {
+		switch ( $type ) {
+			case bbp_get_forum_post_type():
+				return bbp_get_forum_visibilities();
+			case bbp_get_topic_post_type():
+				return bbp_get_topic_statuses();
+			case bbp_get_reply_post_type():
+				return bbp_get_reply_statuses();
+		}
+
+		return parent::_get_post_statuses( $type );
+	}
+
 	private function _item_forum( $type ) {
 		$parent = $this->get_from_base( $type, 'parent', false, 0 );
+		$status = $this->get_from_base( $type, 'status', false, 'publish' );
 
 		$this->_cache_posts( $type, $parent );
 
@@ -162,7 +176,7 @@ class bbPress extends Content {
 			'post_content' => $this->get_from_builder( $type, 'content' ),
 			'post_date'    => $this->_get_publish_date( $type ),
 			'post_author'  => $this->_get_author( $type, array( bbp_get_keymaster_role() ) ),
-			'post_status'  => 'publish',
+			'post_status'  => $status,
 			'post_type'    => $type
 		);
 
@@ -204,6 +218,8 @@ class bbPress extends Content {
 			$forum_key = array_rand( $this->_list_forums );
 			$forum_id  = $this->_list_forums[ $forum_key ];
 
+			$status = $this->get_from_base( $type, 'status', false, 'publish' );
+
 			$post = array(
 				'post_title'   => $this->get_from_builder( $type, 'title' ),
 				'post_content' => $this->get_from_builder( $type, 'content' ),
@@ -213,7 +229,7 @@ class bbPress extends Content {
 					bbp_get_moderator_role(),
 					bbp_get_participant_role()
 				) ),
-				'post_status'  => 'publish',
+				'post_status'  => $status,
 				'post_type'    => $type,
 				'post_parent'  => $forum_id
 			);
@@ -247,6 +263,8 @@ class bbPress extends Content {
 			$this->_cache_topics();
 
 			if ( ! empty( $this->_list_topics ) ) {
+				$status = $this->get_from_base( $type, 'status', false, 'publish' );
+
 				$post = array(
 					'post_content' => $this->get_from_builder( $type, 'content' ),
 					'post_author'  => $this->_get_author( $type, array(
@@ -254,7 +272,7 @@ class bbPress extends Content {
 						bbp_get_moderator_role(),
 						bbp_get_participant_role()
 					) ),
-					'post_status'  => 'publish',
+					'post_status'  => $status,
 					'post_type'    => $type
 				);
 

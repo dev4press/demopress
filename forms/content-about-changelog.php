@@ -1,6 +1,12 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
+        <h4>Version: 1.6 / january 11 2022</h4>
+        <ul>
+            <li><strong>new</strong> posts generators: support for the post status</li>
+            <li><strong>new</strong> bbpress generators: support for the post status</li>
+        </ul>
+
         <h4>Version: 1.5 / october 7 2021</h4>
         <ul>
             <li><strong>new</strong> generator: generate WooCommerce products</li>

@@ -73,7 +73,8 @@ abstract class Content extends Generator {
 				'settings' => array(
 					EL::i( $this->name, $cpt . '-base-count', __( "Number of Posts", "demopress" ), '', Type::ABSINT, 5 )->args( array(
 						'min' => 1
-					) )
+					) ),
+					EL::i( $this->name, $cpt . '-base-status', __( "Post Status", "demopress" ), '', Type::SELECT, 'publish' )->data( 'array', $this->_get_post_statuses( $post_type ) )
 				)
 			);
 
@@ -287,6 +288,16 @@ abstract class Content extends Generator {
 		}
 	}
 
+	protected function _get_post_statuses( $type ) : array {
+		return array(
+			'publish' => __( "Published" ),
+			'draft'   => __( "Draft" ),
+			'pending' => __( "Pending" ),
+			'trash'   => __( "Trash" ),
+			'private' => __( "Private" )
+		);
+	}
+
 	protected function _get_terms( $type ) : array {
 		$terms      = array();
 		$taxonomies = $this->get_from_base( $type, 'taxonomy', false, array() );
@@ -404,8 +415,12 @@ abstract class Content extends Generator {
 		}
 	}
 
+	/**
+	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 */
 	protected function _item_post( $type ) {
 		$parent = $this->get_from_base( $type, 'parent', false, 0 );
+		$status = $this->get_from_base( $type, 'status', false, 'publish' );
 
 		$this->_cache_posts( $type, $parent );
 
@@ -414,7 +429,7 @@ abstract class Content extends Generator {
 			'post_content' => $this->get_from_builder( $type, 'content' ),
 			'post_date'    => $this->_get_publish_date( $type ),
 			'post_author'  => $this->_get_author( $type ),
-			'post_status'  => 'publish',
+			'post_status'  => $status,
 			'post_type'    => $type
 		);
 

@@ -2,10 +2,10 @@
 Contributors: GDragoN
 Donate link: https://plugins.dev4press.com/demopress/
 Tags: dev4press, woocommerce, demo data, dummy data, dummy content, lorem ipsum, generator, bbpress, builder, random
-Stable tag: 1.5
-Requires at least: 5.1
+Stable tag: 1.6
+Requires at least: 5.3
 Tested up to: 5.9
-Requires PHP: 7.0
+Requires PHP: 7.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,6 +70,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 1.6 (2022.01.11) =
+* New: posts generators: support for the post status
+* New: bbpress generators: support for the post status
+
 = 1.5 (2021.10.07) =
 * New: generator: generate WooCommerce products
 * Edit: for content generator show notice for taxonomies with no terms

@@ -1,7 +1,11 @@
 <div class="d4p-about-minor">
     <h3><?php _e( "Maintenance and Security Releases", "demopress" ); ?></h3>
     <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.3.1</span></strong> &minus;
+        <strong><?php _e( "Version", "demopress" ); ?> <span>1.6</span></strong> &minus;
+        Support for post statuses.
+    </p>
+    <p>
+        <strong><?php _e( "Version", "demopress" ); ?> <span>1.5</span></strong> &minus;
         Support for WooCommerce products.
     </p>
     <p>
