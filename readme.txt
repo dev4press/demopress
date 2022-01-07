@@ -55,10 +55,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 7.0 or newer
+* PHP: 7.2 or newer
 
 = WordPress Requirements =
-* WordPress: 5.0 or newer
+* WordPress: 5.3 or newer
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `demopress`.

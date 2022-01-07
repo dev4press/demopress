@@ -11,14 +11,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Information extends BaseInformation {
 	public $code = 'demopress';
 
-	public $version = '1.5';
-	public $build = 50;
-	public $updated = '2021.10.07';
+	public $version = '1.6';
+	public $build = 60;
+	public $updated = '2022.01.11';
 	public $status = 'stable';
 	public $edition = 'pro';
 	public $released = '2020.11.17';
 
-	public $php = '7.0';
+	public $php = '7.2';
 
 	public static function instance() : Information {
 		static $instance = null;
