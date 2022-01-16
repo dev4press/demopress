@@ -70,7 +70,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.6 (2022.01.11) =
+= 1.6 (2022.01.17) =
 * New: posts generators: support for the post status
 * New: bbpress generators: support for the post status
 
