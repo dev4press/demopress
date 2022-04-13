@@ -70,7 +70,7 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
-= 1.6 (2022.01.17) =
+= 1.6 (2022.04.13) =
 * New: posts generators: support for the post status
 * New: bbpress generators: support for the post status
 
@@ -116,6 +116,9 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 1.6 =
+Support for post statuses.
+
 = 1.5 =
 WooCommerce Products generator.
 
