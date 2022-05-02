@@ -7,3 +7,6 @@
 [submodule "libs/placeholder-image-generator"]
 	path = libs/placeholder-image-generator
 	url = https://github.com/dev4press/placeholder-image-generator.git
+[submodule "libs/random-titles-generator"]
+	path = libs/random-titles-generator
+	url = https://github.com/dev4press/random-titles-generator.git
