@@ -7,9 +7,9 @@ Description:       Easy to use plugin for generating demo content for newly crea
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       demopress
-Version:           1.6
+Version:           1.6.1
 Requires at least: 5.3
-Tested up to:      5.9
+Tested up to:      6.0
 Requires PHP:      7.2
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html

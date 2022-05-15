@@ -11,9 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Information extends BaseInformation {
 	public $code = 'demopress';
 
-	public $version = '1.6';
-	public $build = 60;
-	public $updated = '2022.04.13';
+	public $version = '1.6.1';
+	public $build = 61;
+	public $updated = '2022.05.15';
 	public $status = 'stable';
 	public $edition = 'pro';
 	public $released = '2020.11.17';

@@ -1,6 +1,11 @@
 <div class="d4p-info-block d4p-info-block-changelog">
     <h3><?php _e( "Version", "demopress" ); ?> 1</h3>
     <div class="d4p-group-inner">
+        <h4>Version: 1.6.1 / may 15 2022</h4>
+        <ul>
+            <li><strong>new</strong> tested with the WordPress 6.0</li>
+        </ul>
+
         <h4>Version: 1.6 / april 13 2022</h4>
         <ul>
             <li><strong>new</strong> posts generators: support for the post status</li>
