@@ -11,8 +11,7 @@ class AJAX {
 		add_action( 'wp_ajax_demopress_get_generator_status', array( $this, 'get_status' ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DemoPress\Admin\AJAX */
-	public static function instance() {
+	public static function instance() : AJAX {
 		static $_store_admin_ajax = null;
 
 		if ( ! isset( $_store_admin_ajax ) ) {
@@ -23,7 +22,7 @@ class AJAX {
 	}
 
 	public function get_status() {
-		\Dev4Press\v39\Functions\WP\check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
+		\Dev4Press\v41\Functions\WP\check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
 
 		demopress_gen()->check_health();
 

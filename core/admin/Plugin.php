@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v39\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v41\Core\Admin\Submenu\Plugin as BasePlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -112,5 +112,9 @@ class Plugin extends BasePlugin {
 
 	public function settings_definitions() {
 		return Settings::instance();
+	}
+
+	public function plugin() {
+		return demopress();
 	}
 }

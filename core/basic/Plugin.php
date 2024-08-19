@@ -2,9 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v39\Core\DateTime;
-use Dev4Press\v39\Core\Plugins\Core;
-use Dev4Press\v39\Core\Quick\BBP;
+use Dev4Press\v41\Core\DateTime;
+use Dev4Press\v41\Core\Plugins\Core;
+use Dev4Press\v41\Core\Quick\BBP;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -36,16 +36,6 @@ class Plugin extends Core {
 		add_action( 'after_setup_theme', array( $this, 'prepare' ), 100000 );
 
 		demopress_gen();
-	}
-
-	public static function instance() : Plugin {
-		static $instance = null;
-
-		if ( ! isset( $instance ) ) {
-			$instance = new Plugin();
-		}
-
-		return $instance;
 	}
 
 	public function run() {
@@ -445,5 +435,9 @@ class Plugin extends Core {
 		}
 
 		do_action( 'demopress_register_generators_and_builders' );
+	}
+
+	public function f() {
+		return null;
 	}
 }

@@ -2,8 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Text;
 
-use Dev4Press\v39\Core\Options\Element as EL;
-use Dev4Press\v39\Core\Options\Type;
+use Dev4Press\v41\Core\Options\Element as EL;
+use Dev4Press\v41\Core\Options\Type;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {

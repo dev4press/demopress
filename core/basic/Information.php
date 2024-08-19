@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v39\Core\Plugins\Information as BaseInformation;
+use Dev4Press\v41\Core\Plugins\Information as BaseInformation;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -11,22 +11,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Information extends BaseInformation {
 	public $code = 'demopress';
 
-	public $version = '1.6.1';
-	public $build = 61;
-	public $updated = '2022.05.15';
+	public $version = '2.0';
+	public $build = 200;
+	public $updated = '2024.08.20';
 	public $status = 'stable';
 	public $edition = 'pro';
 	public $released = '2020.11.17';
-
-	public $php = '7.2';
-
-	public static function instance() : Information {
-		static $instance = null;
-
-		if ( ! isset( $instance ) ) {
-			$instance = new Information();
-		}
-
-		return $instance;
-	}
 }

@@ -31,7 +31,7 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-use Dev4Press\v39\WordPress;
+use Dev4Press\v41\WordPress;
 
 $demopress_dirname_basic = dirname( __FILE__ ) . '/';
 $demopress_urlname_basic = plugins_url( '/demopress/' );

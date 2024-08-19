@@ -3,8 +3,8 @@
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Plugin\DemoPress\Library\Placeholder as LibPlaceholder;
-use Dev4Press\v39\Core\Options\Element as EL;
-use Dev4Press\v39\Core\Options\Type;
+use Dev4Press\v41\Core\Options\Element as EL;
+use Dev4Press\v41\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

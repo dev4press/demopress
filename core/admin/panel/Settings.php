@@ -2,8 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\Plugin\DemoPress\Traits\Panel as TraitPanel;
-use Dev4Press\v39\Core\UI\Admin\PanelSettings;
+use Dev4Press\v41\Core\UI\Admin\PanelSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
