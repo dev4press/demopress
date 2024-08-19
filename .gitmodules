@@ -1,5 +1,5 @@
-[submodule "d4plib"]
-	path = d4plib
+[submodule "library"]
+	path = library
 	url = https://github.com/dev4press/library.git
 [submodule "libs/random-names-generator"]
 	path = libs/random-names-generator
