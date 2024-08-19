@@ -1,12 +1,12 @@
 [submodule "library"]
 	path = library
 	url = https://github.com/dev4press/library.git
-[submodule "libs/random-names-generator"]
-	path = libs/random-names-generator
+[submodule "vendor/random-names-generator"]
+	path = vendor/random-names-generator
 	url = https://github.com/dev4press/random-names-generator
-[submodule "libs/placeholder-image-generator"]
-	path = libs/placeholder-image-generator
+[submodule "vendor/placeholder-image-generator"]
+	path = vendor/placeholder-image-generator
 	url = https://github.com/dev4press/placeholder-image-generator.git
-[submodule "libs/random-titles-generator"]
-	path = libs/random-titles-generator
+[submodule "vendor/random-titles-generator"]
+	path = vendor/random-titles-generator
 	url = https://github.com/dev4press/random-titles-generator.git
