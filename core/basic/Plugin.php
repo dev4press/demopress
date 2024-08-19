@@ -2,8 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v49\Core\Plugins\Core;
-use Dev4Press\v49\Core\Quick\BBP;
+use Dev4Press\v50\Core\Plugins\Core;
+use Dev4Press\v50\Core\Quick\BBP;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {

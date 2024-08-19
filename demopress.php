@@ -31,19 +31,18 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-use Dev4Press\v49\WordPress;
+use Dev4Press\v50\WordPress;
 
 $demopress_dirname_basic = dirname( __FILE__ ) . '/';
 $demopress_urlname_basic = plugins_url( '/demopress/' );
 
 define( 'DEMOPRESS_PATH', $demopress_dirname_basic );
 define( 'DEMOPRESS_URL', $demopress_urlname_basic );
-define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'd4plib/' );
-define( 'DEMOPRESS_D4PLIB_URL', $demopress_urlname_basic . 'd4plib/' );
+define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'library/' );
 
 require_once( DEMOPRESS_D4PLIB_PATH . 'core.php' );
 
-require_once( DEMOPRESS_PATH . 'libs/autoload.php' );
+require_once( DEMOPRESS_PATH . 'vendor/autoload.php' );
 require_once( DEMOPRESS_PATH . 'core/autoload.php' );
 require_once( DEMOPRESS_PATH . 'core/bridge.php' );
 require_once( DEMOPRESS_PATH . 'core/functions.php' );

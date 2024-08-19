@@ -2,9 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v49\Core\Admin\PostBack as BasePostBack;
-use Dev4Press\v49\Core\Options\Process;
-use function Dev4Press\v49\Functions\sanitize_key_expanded;
+use Dev4Press\v50\Core\Admin\PostBack as BasePostBack;
+use Dev4Press\v50\Core\Options\Process;
+use function Dev4Press\v50\Functions\sanitize_key_expanded;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

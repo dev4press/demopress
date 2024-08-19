@@ -4,6 +4,11 @@
 
 ### Version: 2.0 / august 20 2024
 
+* **new** tested with WordPress up to 6.6
+* **new** tested with PHP up to 8.3
+* **new** plugin system requirements
+* **edit** Dev4Press Library 5.0.1
+
 ### Version: 1.6.1 / may 15 2022
 
 * **new** tested with the WordPress 6.0

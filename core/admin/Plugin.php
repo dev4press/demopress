@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v49\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v50\Core\Admin\Submenu\Plugin as BasePlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -4,10 +4,10 @@ namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use DateTime;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
-use Dev4Press\v49\Core\Options\Element as EL;
-use Dev4Press\v49\Core\Options\Type;
-use Dev4Press\v49\WordPress\Media\ToLibrary\LocalImage;
-use Dev4Press\v49\WordPress\Media\ToLibrary\RemoteImage;
+use Dev4Press\v50\Core\Options\Element as EL;
+use Dev4Press\v50\Core\Options\Type;
+use Dev4Press\v50\WordPress\Media\ToLibrary\LocalImage;
+use Dev4Press\v50\WordPress\Media\ToLibrary\RemoteImage;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {

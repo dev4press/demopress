@@ -1,6 +1,6 @@
 <?php
 
-use Dev4Press\v49\Core\Quick\BBP;
+use Dev4Press\v50\Core\Quick\BBP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

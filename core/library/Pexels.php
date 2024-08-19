@@ -3,7 +3,7 @@
 namespace Dev4Press\Plugin\DemoPress\Library;
 
 use Dev4Press\Plugin\DemoPress\Base\Library;
-use Dev4Press\v49\Service\Media\Pexels\Query;
+use Dev4Press\v50\Service\Media\Pexels\Query;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {

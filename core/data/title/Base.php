@@ -3,8 +3,8 @@
 namespace Dev4Press\Plugin\DemoPress\Data\Title;
 
 use Dev4Press\Plugin\DemoPress\Builder\Title;
-use Dev4Press\v49\Core\Options\Element as EL;
-use Dev4Press\v49\Core\Options\Type;
+use Dev4Press\v50\Core\Options\Element as EL;
+use Dev4Press\v50\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
