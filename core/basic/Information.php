@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v35\Core\Plugins\Information as BaseInformation;
+use Dev4Press\v39\Core\Plugins\Information as BaseInformation;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

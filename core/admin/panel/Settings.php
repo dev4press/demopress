@@ -3,15 +3,13 @@
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
 use Dev4Press\Plugin\DemoPress\Traits\Panel as TraitPanel;
-use Dev4Press\v35\Core\UI\Admin\PanelSettings;
+use Dev4Press\v39\Core\UI\Admin\PanelSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Settings extends PanelSettings {
-	use TraitPanel;
-
 	public $settings_class = '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Settings';
 
 	public function __construct( $admin ) {
@@ -31,9 +29,5 @@ class Settings extends PanelSettings {
 					'info'  => __( "From this panel you can control API keys needed by some data builders.", "demopress" )
 				)
 			);
-	}
-
-	public function enqueue_scripts() {
-		$this->local_enqueue_scripts( $this->a() );
 	}
 }

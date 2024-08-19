@@ -1,0 +1,18 @@
+# DemoPress
+
+## Changelog
+
+### Version: 1.6.1 / may 15 2022
+
+* **new** tested with the WordPress 6.0
+
+### Version: 1.6 / april 13 2022
+
+* **new** posts generators: support for the post status
+* **new** bbpress generators: support for the post status
+
+### Version: 1.5 / october 7 2021
+
+* **new** generator: generate WooCommerce products
+* **edit** for content generator show notice for taxonomies with no terms
+* **edit** for content generator show only public taxonomies

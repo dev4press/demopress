@@ -3,7 +3,7 @@
 namespace Dev4Press\Plugin\DemoPress\Library;
 
 use Dev4Press\Plugin\DemoPress\Base\Library;
-use Dev4Press\v35\Generator\Text\LoremIpsum as BaseLoremIpsum;
+use Dev4Press\v39\Generator\Text\LoremIpsum as BaseLoremIpsum;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

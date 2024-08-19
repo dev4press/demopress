@@ -1,6 +1,6 @@
 <?php
 
-use function Dev4Press\v35\Functions\bbPress\is_active;
+use Dev4Press\v39\Core\Quick\BBP;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -48,7 +48,7 @@ function demopress_get_post_types() {
 		unset( $post_types['attachment'] );
 	}
 
-	if ( is_active() ) {
+	if ( BBP::is_active() ) {
 		unset( $post_types[ bbp_get_forum_post_type() ] );
 		unset( $post_types[ bbp_get_topic_post_type() ] );
 		unset( $post_types[ bbp_get_reply_post_type() ] );

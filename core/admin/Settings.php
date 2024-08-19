@@ -2,9 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v35\Core\Options\Element as EL;
-use Dev4Press\v35\Core\Options\Settings as BaseSettings;
-use Dev4Press\v35\Core\Options\Type;
+use Dev4Press\v39\Core\Options\Element as EL;
+use Dev4Press\v39\Core\Options\Settings as BaseSettings;
+use Dev4Press\v39\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

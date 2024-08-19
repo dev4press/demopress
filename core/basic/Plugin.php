@@ -2,10 +2,10 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v35\Core\DateTime;
-use Dev4Press\v35\Core\Plugins\Core;
+use Dev4Press\v39\Core\DateTime;
+use Dev4Press\v39\Core\Plugins\Core;
+use Dev4Press\v39\Core\Quick\BBP;
 use WP_Error;
-use function Dev4Press\v35\Functions\bbPress\is_active;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -49,10 +49,6 @@ class Plugin extends Core {
 	}
 
 	public function run() {
-		define( 'DEMOPRESS_WPV', intval( $this->wp_version ) );
-		define( 'DEMOPRESS_WPV_MAJOR', substr( $this->cms_version, 0, 3 ) );
-		define( 'DEMOPRESS_WP_VERSION', $this->cms_version );
-
 		do_action( 'demopress_load_settings' );
 		do_action( 'demopress_plugin_init' );
 	}
@@ -426,7 +422,7 @@ class Plugin extends Core {
 				'image' => true
 			) );
 
-		if ( is_active() ) {
+		if ( BBP::is_active() ) {
 			$this->register_generator( 'bbPress', __( "bbPress Forums", "demopress" ),
 				__( "Generate forums, topics and replies for bbPress powered forums, with support for generating different data and conforming to the bbPress content specs.", "demopress" ),
 				array(

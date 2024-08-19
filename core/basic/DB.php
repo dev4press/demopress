@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v35\Core\Plugins\DBLite;
+use Dev4Press\v39\Core\Plugins\DBLite;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

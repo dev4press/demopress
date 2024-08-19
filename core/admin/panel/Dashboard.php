@@ -3,15 +3,13 @@
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
 use Dev4Press\Plugin\DemoPress\Traits\Panel as TraitPanel;
-use Dev4Press\v35\Core\UI\Admin\PanelDashboard;
+use Dev4Press\v39\Core\UI\Admin\PanelDashboard;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Dashboard extends PanelDashboard {
-	use TraitPanel;
-
 	protected $form = true;
 
 	public function __construct( $admin ) {
@@ -61,11 +59,7 @@ class Dashboard extends PanelDashboard {
 		}
 	}
 
-	public function enqueue_scripts() {
-		$this->local_enqueue_scripts( $this->a() );
-	}
-
-	public function form_tag_open() {
+	public function form_tag_open() : string {
 		return '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
 	}
 }

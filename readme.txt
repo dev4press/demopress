@@ -1,19 +1,19 @@
 === DemoPress ===
 Contributors: GDragoN
-Donate link: https://plugins.dev4press.com/demopress/
+Donate link: https://buymeacoffee.com/millan
 Tags: dev4press, woocommerce, demo data, dummy data, dummy content, lorem ipsum, generator, bbpress, builder, random
-Stable tag: 1.6.1
-Requires at least: 5.3
-Tested up to: 6.0
-Requires PHP: 7.2
+Stable tag: 2.0
+Requires at least: 5.8
+Tested up to: 6.6
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
+Generate demo content for newly created websites used during the website development and testing, before real content is created and added.
 
 == Description ==
 
-Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
+And easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
 
 = Home and GitHub =
 * Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
@@ -25,11 +25,11 @@ https://www.youtube.com/watch?v=Eazmk93cO34
 = WordPress default Generators =
 * **Users**: randomize from select roles, domains for emails, password; generate name and about; use name for email and login.
 * **Terms**: support for default and custom taxonomies; support for hierarchy; generate name and description.
-* **Posts**: support for default and custom post types; support for hierarchy; generate, title, content, excerpt, publication date and author, featured image; assign terms.
+* **Posts**: support for default and custom post-types; support for hierarchy; generate, title, content, excerpt, publication date and author, featured image; assign terms.
 * **Comments**: support for threaded comments; limit posts to get comments; generate content, comment authors information.
 
 = bbPress Generators =
-* **Forums**: support for forums hierarchy; generate forum title, content, publication date and author.
+* **Forums**: support for forum hierarchy; generate forum title, content, publication date and author.
 * **Topics**: generate title, content, publication date and author; assign topic tags; select forums for generated topics.
 * **Replies**: generate title, content, author; date based on topic date; for topics from selected forums.
 

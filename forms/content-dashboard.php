@@ -1,7 +1,7 @@
 <?php
 
-use Dev4Press\v35\Core\Options\Render;
-use function Dev4Press\v35\Functions\panel;
+use Dev4Press\v39\Core\Options\Render;
+use function Dev4Press\v39\Functions\panel;
 
 ?>
 
