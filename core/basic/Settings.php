@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v41\Core\Plugins\Settings as BaseSettings;
+use Dev4Press\v49\Core\Plugins\Settings as BaseSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -52,7 +52,7 @@ class Settings extends BaseSettings {
 		add_action( 'demopress_load_settings', array( $this, 'init' ) );
 	}
 
-	protected function _name( $name ) : string {
+	protected function _name( $name, $force_scope = '' ) : string {
 		return 'dev4press_' . $this->info->code . '_' . $name;
 	}
 }

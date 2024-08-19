@@ -3,8 +3,8 @@
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Plugin\DemoPress\Builder\Image;
-use Dev4Press\v41\Core\Options\Element as EL;
-use function Dev4Press\v41\Functions\scan_dir;
+use Dev4Press\v49\Core\Options\Element as EL;
+use function Dev4Press\v49\Functions\scan_dir;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

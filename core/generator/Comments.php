@@ -3,9 +3,9 @@
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use Dev4Press\Plugin\DemoPress\Base\Generator;
-use Dev4Press\v41\Core\Options\Element as EL;
-use Dev4Press\v41\Core\Options\Type;
-use function Dev4Press\v41\Functions\sanitize_ids_list;
+use Dev4Press\v49\Core\Options\Element as EL;
+use Dev4Press\v49\Core\Options\Type;
+use function Dev4Press\v49\Functions\sanitize_ids_list;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

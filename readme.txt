@@ -1,7 +1,7 @@
 === DemoPress ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
-Tags: dev4press, woocommerce, demo data, dummy data, dummy content, lorem ipsum, generator, bbpress, builder, random
+Tags: dev4press, demo data, demo content, lorem ipsum, generator
 Stable tag: 2.0
 Requires at least: 5.8
 Tested up to: 6.6
@@ -13,10 +13,10 @@ Generate demo content for newly created websites used during the website develop
 
 == Description ==
 
-And easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
+An easy-to-use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
 
 = Home and GitHub =
-* Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
+* Learn more about the plugin: [DemoPress on Dev4Press](https://www.dev4press.com/plugins/demopress/)
 * Contribute to plugin development: [DemoPress on GitHub](https://github.com/dev4press/demopress)
 
 = Quick Overview Video =
@@ -50,7 +50,7 @@ The plugin has tools to export and import plugin settings (not data, just settin
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
 
-* Plugin Documentation: [Dev4Press Knowledge Base](https://support.dev4press.com/kb/plugin/demopress/)
+* Plugin Documentation: [Dev4Press Knowledge Base](https://www.dev4press.com/kb/plugin/demopress/)
 * Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/demopress/)
 
 == Installation ==

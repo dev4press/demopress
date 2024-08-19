@@ -2,9 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v41\Core\DateTime;
-use Dev4Press\v41\Core\Plugins\Core;
-use Dev4Press\v41\Core\Quick\BBP;
+use Dev4Press\v49\Core\Plugins\Core;
+use Dev4Press\v49\Core\Quick\BBP;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -14,8 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Plugin extends Core {
 	public $plugin = 'demopress';
 
-	private $_datetime = null;
-
 	public $generators = array();
 	public $builders = array(
 		'html'  => array(),
@@ -24,12 +21,12 @@ class Plugin extends Core {
 		'title' => array(),
 		'name'  => array(),
 		'image' => array(),
-		'video' => array()
+		'video' => array(),
 	);
 
 	public function __construct() {
-		$this->url       = DEMOPRESS_URL;
-		$this->_datetime = new DateTime();
+		$this->url  = DEMOPRESS_URL;
+		$this->path = DEMOPRESS_PATH;
 
 		parent::__construct();
 
@@ -47,8 +44,16 @@ class Plugin extends Core {
 		return demopress_settings();
 	}
 
-	public function datetime() : DateTime {
-		return $this->_datetime;
+	public function f() {
+		return null;
+	}
+
+	public function b() {
+		return null;
+	}
+
+	public function l() {
+		return null;
 	}
 
 	public function prepare() {
@@ -75,12 +80,12 @@ class Plugin extends Core {
 		return array(
 			'core'    => array(
 				'label' => __( "WordPress Core", "demopress" ),
-				'icon'  => 'brand-wordpress'
+				'icon'  => 'brand-wordpress',
 			),
 			'plugins' => array(
 				'label' => __( "Third Party Plugins", "demopress" ),
-				'icon'  => 'ui-puzzle'
-			)
+				'icon'  => 'ui-puzzle',
+			),
 		);
 	}
 
@@ -165,7 +170,7 @@ class Plugin extends Core {
 			'group' => '',
 			'icon'  => '',
 			'text'  => array( 'html', 'plain' ),
-			'image' => array( 'remote', 'local' )
+			'image' => array( 'remote', 'local' ),
 		);
 
 		$settings = wp_parse_args( $settings, $defaults );
@@ -180,7 +185,7 @@ class Plugin extends Core {
 			'label'       => $label,
 			'description' => $description,
 			'settings'    => $settings,
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Generator\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Generator\\' . $name : $class,
 		);
 	}
 
@@ -194,7 +199,7 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Text\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Text\\' . $name : $class,
 		);
 	}
 
@@ -208,7 +213,7 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\HTML\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\HTML\\' . $name : $class,
 		);
 	}
 
@@ -222,7 +227,7 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Name\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Name\\' . $name : $class,
 		);
 	}
 
@@ -236,7 +241,7 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Term\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Term\\' . $name : $class,
 		);
 	}
 
@@ -250,14 +255,14 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Title\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Title\\' . $name : $class,
 		);
 	}
 
 	public function register_builder_image( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array(
 			'remote' => false,
-			'local'  => false
+			'local'  => false,
 		);
 
 		$this->builders['image'][ $name ] = array(
@@ -267,14 +272,14 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Image\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Image\\' . $name : $class,
 		);
 	}
 
 	public function register_builder_video( $name, $label, $description, $remote = false, $settings = array(), $class = '' ) {
 		$defaults = array(
 			'remote' => false,
-			'local'  => false
+			'local'  => false,
 		);
 
 		$this->builders['video'][ $name ] = array(
@@ -284,7 +289,7 @@ class Plugin extends Core {
 			'remote'      => $remote,
 			'description' => $description,
 			'settings'    => wp_parse_args( $settings, $defaults ),
-			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Video\\' . $name : $class
+			'class'       => empty( $class ) ? 'Dev4Press\\Plugin\\DemoPress\\Data\\Video\\' . $name : $class,
 		);
 	}
 
@@ -356,7 +361,7 @@ class Plugin extends Core {
 				true, array(
 					'local'       => true,
 					'api_key'     => $_api_key,
-					'full_access' => demopress_settings()->get( 'pixabay_full_access' )
+					'full_access' => demopress_settings()->get( 'pixabay_full_access' ),
 				)
 			);
 
@@ -385,7 +390,7 @@ class Plugin extends Core {
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-users',
 				'text'  => 'plain',
-				'image' => false
+				'image' => false,
 			) );
 		$this->register_generator( 'Terms', __( "Terms", "demopress" ),
 			__( "Generate terms for default and custom taxonomies, with terms hierarchy support and ability to generate random term name and optional term description.", "demopress" ),
@@ -393,7 +398,7 @@ class Plugin extends Core {
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-tags',
 				'text'  => 'plain',
-				'image' => false
+				'image' => false,
 			) );
 		$this->register_generator( 'Posts', __( "Posts", "demopress" ),
 			__( "Generate posts for default and custom post types, with hierarchy support and ability to get a random featured image and generate all other post data.", "demopress" ),
@@ -401,7 +406,7 @@ class Plugin extends Core {
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-paste',
 				'text'  => true,
-				'image' => true
+				'image' => true,
 			) );
 		$this->register_generator( 'Comments', __( "Comments", "demopress" ),
 			__( "Generate comments for post types supporting comments, including support for threaded comments and ability to generate random comment authors information.", "demopress" ),
@@ -409,7 +414,7 @@ class Plugin extends Core {
 				'group' => 'core',
 				'icon'  => 'd4p-icon d4p-ui-comments',
 				'text'  => true,
-				'image' => true
+				'image' => true,
 			) );
 
 		if ( BBP::is_active() ) {
@@ -419,7 +424,7 @@ class Plugin extends Core {
 					'group' => 'plugins',
 					'icon'  => 'd4p-icon d4p-logo-bbpress',
 					'text'  => true,
-					'image' => true
+					'image' => true,
 				) );
 		}
 
@@ -430,14 +435,10 @@ class Plugin extends Core {
 					'group' => 'plugins',
 					'icon'  => 'd4p-icon d4p-logo-woo',
 					'text'  => true,
-					'image' => true
+					'image' => true,
 				) );
 		}
 
 		do_action( 'demopress_register_generators_and_builders' );
-	}
-
-	public function f() {
-		return null;
 	}
 }

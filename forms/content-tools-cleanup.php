@@ -2,7 +2,7 @@
 
 	<?php
 
-	use function Dev4Press\v41\Functions\sanitize_basic;
+	use function Dev4Press\v49\Functions\sanitize_basic;
 
 	if ( isset( $_GET['results'] ) ) {
 		$results = urldecode( $_GET['results'] );

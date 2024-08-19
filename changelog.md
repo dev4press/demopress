@@ -2,6 +2,8 @@
 
 ## Changelog
 
+### Version: 2.0 / august 20 2024
+
 ### Version: 1.6.1 / may 15 2022
 
 * **new** tested with the WordPress 6.0

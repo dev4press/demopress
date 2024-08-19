@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\v41\Core\UI\Admin\PanelDashboard;
+use Dev4Press\v49\Core\UI\Admin\PanelDashboard;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

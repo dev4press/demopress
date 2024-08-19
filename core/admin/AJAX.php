@@ -2,6 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
+use Dev4Press\v49\Core\Quick\WPR;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -22,7 +24,7 @@ class AJAX {
 	}
 
 	public function get_status() {
-		\Dev4Press\v41\Functions\WP\check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
+		WPR::check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
 
 		demopress_gen()->check_health();
 
