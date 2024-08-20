@@ -1,9 +1,9 @@
-=== DemoPress ===
+=== DemoPress: Demo Content Generator ===
 Contributors: GDragoN
 Donate link: https://buymeacoffee.com/millan
-Tags: dev4press, demo data, demo content, lorem ipsum, generator
+Tags: dev4press, demo data, lorem ipsum, bbpress, woocommerce
 Stable tag: 2.0
-Requires at least: 5.8
+Requires at least: 5.9
 Tested up to: 6.6
 Requires PHP: 7.4
 License: GPLv3 or later
@@ -55,10 +55,10 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 
 == Installation ==
 = General Requirements =
-* PHP: 7.2 or newer
+* PHP: 7.4 or newer
 
 = WordPress Requirements =
-* WordPress: 5.3 or newer
+* WordPress: 5.8 or newer
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `demopress`.
@@ -77,6 +77,8 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * New: plugin interface aligned with the shared library
 * Edit: various small tweaks and changes to the interface
 * Edit: many tweaks and updates to the generators
+* Edit: many updates related to the code syntax
+* Edit: updated plugin screenshots on WordPress.org
 * Edit: Dev4Press Library 5.0.1
 * Del: removed a lot of the outdated styling
 * Del: removed several unused and outdated files
@@ -133,7 +135,7 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Upgrade Notice ==
 = 2.0 =
-Big update with new interface, tweaks and fixes.
+Big update with new interface, tweaks, and fixes.
 
 = 1.6 =
 Support for post statuses.
@@ -151,6 +153,7 @@ Images placeholder generator improvements.
 * Generator: Posts
 * Generator: Comments
 * Generator: bbPress
+* Generator: WooCommerce
 * Generator progress
 * Plugin settings
 * Data removal tool

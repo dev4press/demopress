@@ -81,7 +81,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <br/><?php _e( "Started", "demopress" ); ?>:
                     <strong><?php echo date( 'c', absint( demopress_gen()->started ) ); ?></strong>
 					<?php if ( ! demopress_gen()->is_running() ) { ?><br/><?php _e( "Ended", "demopress" ); ?>:
-                        <strong><?php echo date( "c", demopress_gen()->ended ); ?></strong><?php } ?>
+                        <strong><?php echo date( 'c', absint( demopress_gen()->ended ) ); ?></strong><?php } ?>
                 </div>
                 <div class="demopress-gen-status">
                     <pre><?php echo join( PHP_EOL, demopress_gen()->format_log_list() ); ?></pre>

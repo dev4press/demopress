@@ -1,14 +1,14 @@
 <?php
 
 /*
-Plugin Name:       DemoPress
+Plugin Name:       DemoPress: Demo Content Generator
 Plugin URI:        https://www.dev4press.com/plugins/demopress/
 Description:       Generate demo content for newly created websites used during the website development and testing, before real content is created and added.
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       demopress
 Version:           2.0
-Requires at least: 5.8
+Requires at least: 5.9
 Tested up to:      6.6
 Requires PHP:      7.4
 License:           GPLv3 or later
