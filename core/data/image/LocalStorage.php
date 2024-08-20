@@ -4,7 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Plugin\DemoPress\Builder\Image;
 use Dev4Press\v50\Core\Options\Element as EL;
-use function Dev4Press\v50\Functions\scan_dir;
+use Dev4Press\v50\Core\Quick\File;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,11 +17,11 @@ class LocalStorage extends Image {
 	public function settings( $base, $type, $name, $class, $hidden = false ) {
 		return array(
 			EL::info( __( "Storage Path", "demopress" ), sprintf( __( "Images must be inside this directory: %s", "demopress" ), '<br/><code>' . $this->directory_path( $type ) . '</code>' ) )->args( array(
-				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
+				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
 			) ),
 			EL::info( __( "Available Images", "demopress" ), sprintf( __( "Plugin has found %s images. If you set the generator to more posts than images available, not every post will have a featured image. Images will be assigned in the order they are found in the directory.", "demopress" ), '<strong>' . $this->get_images( $type, 'counts' ) . '</strong>' ) . '<br/><strong>' . __( "Whenever images are used, the plugin will move images from the storage directory to final destination in the media library!", "demopress" ) . '</strong>' )->args( array(
-				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
-			) )
+				'wrapper_class' => $this->el_wrapper_class( $class, $hidden ),
+			) ),
 		);
 	}
 
@@ -34,7 +34,7 @@ class LocalStorage extends Image {
 
 	private function get_images( $type, $return = 'files' ) {
 		$path  = ABSPATH . $this->directory_path( $type );
-		$files = scan_dir( $path, 'file', array( 'png', 'jpg', 'jpeg', 'webp', 'gif' ) );
+		$files = File::scan_dir( $path, 'file', array( 'png', 'jpg', 'jpeg', 'webp', 'gif' ) );
 
 		return $return == 'counts' ? count( $files ) : $files;
 	}
@@ -53,7 +53,7 @@ class LocalStorage extends Image {
 		if ( ! empty( $files ) ) {
 			return array(
 				'path' => $root . $files[0],
-				'data' => array()
+				'data' => array(),
 			);
 		}
 

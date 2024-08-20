@@ -2,6 +2,10 @@
 
 use function Dev4Press\v50\Functions\panel;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 <div class="d4p-content">
     <div class="d4p-group d4p-group-information d4p-group-export">

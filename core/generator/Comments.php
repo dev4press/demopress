@@ -5,7 +5,7 @@ namespace Dev4Press\Plugin\DemoPress\Generator;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\v50\Core\Options\Element as EL;
 use Dev4Press\v50\Core\Options\Type;
-use function Dev4Press\v50\Functions\sanitize_ids_list;
+use Dev4Press\v50\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -65,11 +65,11 @@ class Comments extends Generator {
 	protected function init_builders() {
 		$this->builders['content'] = array(
 			'type' => 'text',
-			'list' => demopress()->find_builders( 'text' )
+			'list' => demopress()->find_builders( 'text' ),
 		);
 		$this->builders['author']  = array(
 			'type' => 'name',
-			'list' => demopress()->find_builders( 'name' )
+			'list' => demopress()->find_builders( 'name' ),
 		);
 	}
 
@@ -91,10 +91,10 @@ class Comments extends Generator {
 							'class'    => '',
 							'settings' => array(
 								EL::i( $this->name, 'type-' . $_type, __( "Generate", "demopress" ), __( "Enable this option to generate the posts for this post type and comment type, and show options for the generator controls.", "demopress" ), Type::BOOLEAN, false )->args( array(
-									'class' => 'demopress-type-settings-ctrl'
-								) )
-							)
-						)
+									'class' => 'demopress-type-settings-ctrl',
+								) ),
+							),
+						),
 					);
 
 					$_sections[] = array(
@@ -104,9 +104,9 @@ class Comments extends Generator {
 						'class'    => '',
 						'settings' => array(
 							EL::i( $this->name, $_type . '-base-count', __( "Number of Comments", "demopress" ), __( "This is number of comments to be generated for each post in this post type.", "demopress" ), Type::ABSINT, 50 )->args( array(
-								'min' => 1
-							) )
-						)
+								'min' => 1,
+							) ),
+						),
 					);
 
 					$_sections  [] = array(
@@ -117,32 +117,32 @@ class Comments extends Generator {
 							EL::i( $this->name, $_type . '-base-method', __( "Method", "demopress" ), '', Type::SELECT, 'rnd' )->data( 'array', array(
 								'rnd' => __( "Random published posts", "demopress" ),
 								'inc' => __( "Only listed posts", "demopress" ),
-								'exc' => __( "All except listed posts", "demopress" )
+								'exc' => __( "All except listed posts", "demopress" ),
 							) )->args( array(
 								'data'          => array( 'switch' => 'demopress-builders-method-' . $_type_for_switch ),
-								'wrapper_class' => 'demopress-builder-switch'
+								'wrapper_class' => 'demopress-builder-switch',
 							) ),
 							EL::i( $this->name, $_type . '-base-random', __( "Random published posts", "demopress" ), __( "Percentage of total posts to take into account for generating comments.", "demopress" ), Type::ABSINT, 100 )->args( array(
 								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'rnd', false ),
 								'label_unit'    => '%',
 								'min'           => 0,
 								'step'          => 5,
-								'max'           => 100
+								'max'           => 100,
 							) ),
 							EL::i( $this->name, $_type . '-base-include', __( "Only listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT )->args( array(
-								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'inc', true )
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'inc', true ),
 							) ),
 							EL::i( $this->name, $_type . '-base-exclude', __( "All except listed posts", "demopress" ), __( "Comma separated list of post ID's.", "demopress" ), Type::TEXT )->args( array(
-								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'exc', true )
-							) )
-						)
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'exc', true ),
+							) ),
+						),
 					);
 
 					$_settings = array(
 						EL::i( $this->name, $_type . '-builder-content', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'text', $this->builders['content']['list'] ) )->args( array(
 							'data'          => array( 'switch' => 'demopress-builders-content-' . $_type_for_switch ),
-							'wrapper_class' => 'demopress-builder-switch'
-						) )
+							'wrapper_class' => 'demopress-builder-switch',
+						) ),
 					);
 
 					$_hidden = false;
@@ -161,7 +161,7 @@ class Comments extends Generator {
 						'label'    => __( "Content", "demopress" ),
 						'name'     => '',
 						'class'    => '',
-						'settings' => $_settings
+						'settings' => $_settings,
 					);
 
 					if ( get_option( 'comment_registration' ) == 0 ) {
@@ -175,16 +175,16 @@ class Comments extends Generator {
 									'label_unit' => '%',
 									'min'        => 0,
 									'step'       => 5,
-									'max'        => 100
-								) )
-							)
+									'max'        => 100,
+								) ),
+							),
 						);
 
 						$_settings = array(
 							EL::i( $this->name, $_type . '-builder-author', __( "Generate with", "demopress" ), '', Type::SELECT )->data( 'array', demopress()->list_builders( 'name', $this->builders['author']['list'] ) )->args( array(
 								'data'          => array( 'switch' => 'demopress-builders-name' . $_type_for_switch ),
-								'wrapper_class' => 'demopress-builder-switch'
-							) )
+								'wrapper_class' => 'demopress-builder-switch',
+							) ),
 						);
 
 						$_hidden = false;
@@ -203,7 +203,7 @@ class Comments extends Generator {
 							'label'    => __( "Visitors as comment authors", "demopress" ),
 							'name'     => '',
 							'class'    => '',
-							'settings' => $_settings
+							'settings' => $_settings,
 						);
 
 						$_sections[] = array(
@@ -212,8 +212,8 @@ class Comments extends Generator {
 							'name'     => '',
 							'class'    => '',
 							'settings' => array(
-								EL::i( $this->name, $_type . '-base-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) )
-							)
+								EL::i( $this->name, $_type . '-base-domains', __( "Email Domains", "demopress" ), __( "Names of one or more email domains to use for emails of generated users. If more than one domain is provided, they will be used at random.", "demopress" ), Type::EXPANDABLE_TEXT, array( $this->_default_domain() ) ),
+							),
 						);
 					} else {
 						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-registered', '', '', Type::HIDDEN, 100 );
@@ -230,9 +230,9 @@ class Comments extends Generator {
 									'label_unit' => '%',
 									'min'        => 0,
 									'step'       => 5,
-									'max'        => 100
-								) )
-							)
+									'max'        => 100,
+								) ),
+							),
 						);
 					} else {
 						$_sections[0]['settings'][] = EL::i( $this->name, $_type . '-base-toplevel', '', '', Type::HIDDEN, 100 );
@@ -241,7 +241,7 @@ class Comments extends Generator {
 					$this->settings[ $cpt ] = array(
 						'name'     => sprintf( __( "%s for %s", "demopress" ), $comment_type->label, $post_type->label ),
 						'sections' => $this->pre_sections( $_sections, $_type ),
-						'args'     => array( 'class' => 'demopress-type-settings-hidden' )
+						'args'     => array( 'class' => 'demopress-type-settings-hidden' ),
 					);
 				}
 			}
@@ -265,7 +265,7 @@ class Comments extends Generator {
 			$comment = array(
 				'comment_post_ID'   => $post_id,
 				'comment_content'   => $this->get_from_builder( $type, 'content' ),
-				'comment_author_IP' => $this->get_random_ip()
+				'comment_author_IP' => $this->get_random_ip(),
 			);
 
 			if ( count( $this->_list_comments[ $post_id ] ) > 0 ) {
@@ -321,7 +321,7 @@ class Comments extends Generator {
 			if ( ! is_wp_error( $comment_id ) && $comment_id !== false ) {
 				$this->_list_comments[ $post_id ][] = (object) array(
 					'comment_ID'   => $comment_id,
-					'comment_date' => $comment['comment_date']
+					'comment_date' => $comment['comment_date'],
 				);
 
 				update_comment_meta( $comment_id, '_demopress_generated_content', '1' );
@@ -356,10 +356,10 @@ class Comments extends Generator {
 
 			if ( $method == 'inc' ) {
 				$ids     = explode( ',', $this->get_from_base( $type, 'include' ) );
-				sanitize_ids_list( $ids );
+				$include = Sanitize::ids_list( $ids );
 			} else if ( $method == 'exc' ) {
 				$ids     = explode( ',', $this->get_from_base( $type, 'exclude' ) );
-				$exclude = sanitize_ids_list( $ids );
+				$exclude = Sanitize::ids_list( $ids );
 			}
 
 			$all = demopress_db()->get_posts_for_comments( $cpt, $include, $exclude );

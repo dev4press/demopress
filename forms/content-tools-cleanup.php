@@ -1,8 +1,15 @@
+<?php
+
+use Dev4Press\v50\Core\Quick\Sanitize;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+?>
 <div class="d4p-content">
 
 	<?php
-
-	use function Dev4Press\v50\Functions\sanitize_basic;
 
 	if ( isset( $_GET['results'] ) ) {
 		$results = urldecode( $_GET['results'] );
@@ -23,7 +30,7 @@
 						$gen_label = demopress()->get_generator_label( $gen );
 
 						foreach ( $data as $type => $value ) {
-							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), '<strong>' . absint( $value ) . '</strong>', '<strong>' . str_replace( '::', ' / ', sanitize_basic( $type ) ) . '</strong>' );
+							$list[] = '<strong>' . $gen_label . '</strong>: ' . sprintf( __( "Removed %s items for %s.", "demopress" ), '<strong>' . absint( $value ) . '</strong>', '<strong>' . str_replace( '::', ' / ', Sanitize::text( $type ) ) . '</strong>' );
 						}
 					}
 

@@ -8,6 +8,7 @@
 * **new** tested with PHP up to 8.3
 * **new** plugin system requirements
 * **edit** Dev4Press Library 5.0.1
+* **fix** some assignment issues with Posts generator
 
 ### Version: 1.6.1 / may 15 2022
 

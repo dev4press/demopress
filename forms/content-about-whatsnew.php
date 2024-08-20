@@ -1,4 +1,12 @@
-<?php // include( DEMOPRESS_PATH . 'forms/content-about-minor.php' ); ?>
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// include( DEMOPRESS_PATH . 'forms/content-about-minor.php' );
+
+?>
 
 <div class="d4p-about-whatsnew">
     <div class="d4p-whatsnew-section d4p-whatsnew-heading">

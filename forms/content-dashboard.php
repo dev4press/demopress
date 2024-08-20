@@ -3,6 +3,10 @@
 use Dev4Press\v50\Core\Options\Render;
 use function Dev4Press\v50\Functions\panel;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 ?>
 
 <div class="d4p-content">

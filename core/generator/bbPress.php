@@ -4,7 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use Dev4Press\v50\Core\Options\Element as EL;
 use Dev4Press\v50\Core\Options\Type;
-use function Dev4Press\v50\Functions\sanitize_ids_list;
+use Dev4Press\v50\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -321,7 +321,7 @@ class bbPress extends Content {
 
 			$this->_list_forums = wp_list_pluck( $raw, 'ID' );
 		} else {
-			$this->_list_forums = sanitize_ids_list( $this->get_from_base( $type, 'forum', 'list' ) );
+			$this->_list_forums = Sanitize::ids_list( $this->get_from_base( $type, 'forum', 'list' ) );
 		}
 	}
 

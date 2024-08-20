@@ -15,6 +15,9 @@ class Information extends BaseInformation {
 	public $build = 200;
 	public $updated = '2024.08.20';
 	public $status = 'stable';
-	public $edition = 'pro';
+	public $edition = 'free';
 	public $released = '2020.11.17';
+
+	public $github_url = 'https://github.com/dev4press/demopress';
+	public $wp_org_url = 'https://wordpress.org/plugins/demopress';
 }

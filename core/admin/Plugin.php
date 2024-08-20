@@ -13,13 +13,16 @@ class Plugin extends BasePlugin {
 	public $plugin_prefix = 'demopress';
 	public $plugin_menu = 'DemoPress';
 	public $plugin_title = 'DemoPress';
+	public $buy_me_a_coffee = true;
+
+	public $auto_mod_interface_colors = true;
 
 	public function constructor() {
 		$this->url  = DEMOPRESS_URL;
 		$this->path = DEMOPRESS_PATH;
 	}
 
-	public function after_setup_theme() {
+	public function admin_menu_items() {
 		$this->setup_items = array(
 			'install' => array(
 				'title' => __( "Install", "demopress" ),
@@ -59,6 +62,37 @@ class Plugin extends BasePlugin {
 				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools'
 			)
 		);
+	}
+
+	public function register_scripts_and_styles() {
+		$this->enqueue->register( 'css', 'demopress-admin',
+			array(
+				'path' => 'css/',
+				'file' => 'admin',
+				'ext'  => 'css',
+				'min'  => true,
+				'ver'  => demopress_settings()->file_version(),
+				'src'  => 'plugin',
+				'int'  => array(),
+			) )->register( 'js', 'demopress-admin',
+			array(
+				'path' => 'js/',
+				'file' => 'admin',
+				'ext'  => 'js',
+				'min'  => true,
+				'ver'  => demopress_settings()->file_version(),
+				'src'  => 'plugin',
+				'int'  => array(),
+			) );
+	}
+
+	public function enqueue() {
+		$this->e()->css( 'demopress-admin' );
+		$this->e()->js( 'demopress-admin' );
+	}
+
+	protected function extra_enqueue_scripts_plugin() {
+		$this->enqueue();
 	}
 
 	public function svg_icon() : string {
