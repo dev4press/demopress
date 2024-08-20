@@ -123,7 +123,7 @@ class Comments extends Generator {
 								'wrapper_class' => 'demopress-builder-switch',
 							) ),
 							EL::i( $this->name, $_type . '-base-random', __( "Random published posts", "demopress" ), __( "Percentage of total posts to take into account for generating comments.", "demopress" ), Type::ABSINT, 100 )->args( array(
-								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'rnd', false ),
+								'wrapper_class' => $this->el_wrapper_class( 'demopress-builders-method-' . $_type_for_switch, 'rnd' ),
 								'label_unit'    => '%',
 								'min'           => 0,
 								'step'          => 5,

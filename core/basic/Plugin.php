@@ -127,7 +127,6 @@ class Plugin extends Core {
 		return new WP_Error( 'builder_missing', __( "Requested builder not found.", "demopress" ) );
 	}
 
-	/** @return array */
 	public function find_builders( $type, $settings = array() ) : array {
 		$found = array();
 
@@ -152,7 +151,6 @@ class Plugin extends Core {
 		return $found;
 	}
 
-	/** @return array */
 	public function list_builders( $type, $builders = array() ) : array {
 		$list = array();
 

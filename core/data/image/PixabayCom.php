@@ -101,11 +101,11 @@ class PixabayCom extends Base {
 			$args['orientation'] = $settings['orientation'];
 		}
 
-		if ( isset( $settings['colors'] ) && ! empty( $settings['colors'] ) ) {
+		if ( ! empty( $settings['colors'] ) ) {
 			$args['colors'] = join( ',', (array) $settings['colors'] );
 		}
 
-		if ( isset( $settings['category'] ) && ! empty( $settings['category'] ) ) {
+		if ( ! empty( $settings['category'] ) ) {
 			$args['category'] = $settings['category'];
 		}
 

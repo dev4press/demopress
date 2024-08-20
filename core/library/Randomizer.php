@@ -17,10 +17,10 @@ class Randomizer extends Library {
 	}
 
 	public function words( $count ) {
-		return $this->_object->words( $count, false, false );
+		return $this->_object->words( $count );
 	}
 
 	public function paragraphs( $count ) {
-		return $this->_object->paragraphs( $count, false, false );
+		return $this->_object->paragraphs( $count );
 	}
 }

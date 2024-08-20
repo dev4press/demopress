@@ -30,7 +30,7 @@ class GetBack extends BaseGetBack {
 			demopress_gen()->stop_task();
 		}
 
-		$url = $this->a()->current_url( true ) . '&message=gen-stopped';
+		$url = $this->a()->current_url() . '&message=gen-stopped';
 
 		wp_redirect( $url );
 		exit;
@@ -43,7 +43,7 @@ class GetBack extends BaseGetBack {
 			demopress_gen()->reset_task();
 		}
 
-		$url = $this->a()->current_url( true ) . '&message=gen-removed';
+		$url = $this->a()->current_url() . '&message=gen-removed';
 
 		wp_redirect( $url );
 		exit;

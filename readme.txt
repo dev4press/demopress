@@ -13,7 +13,7 @@ Generate demo content for newly created websites used during the website develop
 
 == Description ==
 
-An easy-to-use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
+An easy-to-use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images, and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are written in PHP and can generate text, images, names and more. Most of the operations are based on randomization.
 
 = Home and GitHub =
 * Learn more about the plugin: [DemoPress on Dev4Press](https://www.dev4press.com/plugins/demopress/)
@@ -70,12 +70,25 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 2.0 (2024.08.20) =
+* New: tested with WordPress up to 6.6
+* New: tested with PHP up to 8.3
+* New: plugin system requirements
+* New: plugin interface aligned with the shared library
+* Edit: various small tweaks and changes to the interface
+* Edit: many tweaks and updates to the generators
+* Edit: Dev4Press Library 5.0.1
+* Del: removed a lot of the outdated styling
+* Del: removed several unused and outdated files
+* Fix: some assignment issues with Posts generator
+* Fix: woocommerce products had invalid discount meta value
+
 = 1.6.1 (2022.05.15) =
 * New: tested with the WordPress 6.0
 
 = 1.6 (2022.04.13) =
-* New: posts generators: support for the post status
-* New: bbpress generators: support for the post status
+* New: posts generators: support for the post-status
+* New: bbpress generators: support for the post-status
 
 = 1.5 (2021.10.07) =
 * New: generator: generate WooCommerce products
@@ -119,6 +132,9 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 2.0 =
+Big update with new interface, tweaks and fixes.
+
 = 1.6 =
 Support for post statuses.
 
@@ -127,15 +143,6 @@ WooCommerce Products generator.
 
 = 1.4 =
 Images placeholder generator improvements.
-
-= 1.3 =
-Various improvements and fixes.
-
-= 1.2 =
-Various improvements and fixes.
-
-= 1.1 =
-New builders. Various improvements to generators. Few fixes.
 
 == Screenshots ==
 * Main generators panel

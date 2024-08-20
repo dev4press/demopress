@@ -15,7 +15,7 @@ class WooCommerce extends Content {
 	private $stock_status = array(
 		'instock',
 		'outofstock',
-		'onbackorder'
+		'onbackorder',
 	);
 
 	public function get_list_of_types( $return = 'objects' ) : array {
@@ -27,19 +27,19 @@ class WooCommerce extends Content {
 	protected function init_builders() {
 		$this->builders['title']    = array(
 			'type' => 'title',
-			'list' => demopress()->find_builders( 'title' )
+			'list' => demopress()->find_builders( 'title' ),
 		);
 		$this->builders['content']  = array(
 			'type' => 'html',
-			'list' => demopress()->find_builders( 'html' )
+			'list' => demopress()->find_builders( 'html' ),
 		);
 		$this->builders['excerpt']  = array(
 			'type' => 'text',
-			'list' => demopress()->find_builders( 'text' )
+			'list' => demopress()->find_builders( 'text' ),
 		);
 		$this->builders['featured'] = array(
 			'type' => 'image',
-			'list' => demopress()->find_builders( 'image', array( 'local' ) )
+			'list' => demopress()->find_builders( 'image', array( 'local' ) ),
 		);
 	}
 
@@ -53,19 +53,19 @@ class WooCommerce extends Content {
 					'physical'          => __( "Physical", "demopress" ),
 					'physical_download' => __( "Physical with Download", "demopress" ),
 					'virtual'           => __( "Virtual", "demopress" ),
-					'virtual_download'  => __( "Virtual with Download", "demopress" )
+					'virtual_download'  => __( "Virtual with Download", "demopress" ),
 				) ),
 				EL::i( $this->name, $type . '-base-woocommerce-stock', __( "Stock", "demopress" ), '', Type::SELECT, 'instock' )->data( 'array', array(
 					'RND'         => __( "Random", "demopress" ),
 					'instock'     => __( "In Stock", "demopress" ),
 					'outofstock'  => __( "Out Of Stock", "demopress" ),
-					'onbackorder' => __( "On Backorder", "demopress" )
+					'onbackorder' => __( "On Backorder", "demopress" ),
 				) ),
 				EL::i( $this->name, $type . '-base-woocommerce-sku', __( "SKU Number", "demopress" ), '', Type::SELECT, 'ean' )->data( 'array', array(
 					'none' => __( "No", "demopress" ),
-					'ean'  => __( "Random EAN", "demopress" )
-				) )
-			)
+					'ean'  => __( "Random EAN", "demopress" ),
+				) ),
+			),
 		);
 
 		$sections[] = array(
@@ -76,9 +76,9 @@ class WooCommerce extends Content {
 				EL::i( $this->name, $type . '-base-woocommerce-price', __( "Range", "demopress" ), __( "Random price in the specified range. Value of 0 will represent free products.", "demopress" ), Type::RANGE_ABSINT, '0=>60' ),
 				EL::i( $this->name, $type . '-base-woocommerce-discount', __( "Discount", "demopress" ), '', Type::SELECT, 'no' )->data( 'array', array(
 					'none' => __( "No", "demopress" ),
-					'yes'  => __( "Yes", "demopress" )
-				) )
-			)
+					'yes'  => __( "Yes", "demopress" ),
+				) ),
+			),
 		);
 
 		return $sections;
@@ -111,7 +111,7 @@ class WooCommerce extends Content {
 				'_manage_stock'      => 'no',
 				'_tax_status'        => 'taxable',
 				'_tax_class'         => '',
-				'total_sales'        => 0
+				'total_sales'        => 0,
 			);
 
 			switch ( $type ) {
@@ -139,8 +139,8 @@ class WooCommerce extends Content {
 						$_uuid => array(
 							'id'   => $_uuid,
 							'name' => 'Image',
-							'file' => $_image
-						)
+							'file' => $_image,
+						),
 					);
 				}
 			}
@@ -163,13 +163,15 @@ class WooCommerce extends Content {
 			}
 
 			if ( $_meta['_regular_price'] > 0 && $discount == 'yes' ) {
-				$discount = rand( 10, 50 );
-				$factor   = ( 100 - $discount ) / 100;
+				$percent = rand( 10, 50 );
+				$factor  = ( 100 - $percent ) / 100;
 
 				$_meta['_price']      = absint( $_meta['_regular_price'] * $factor );
 				$_meta['_sale_price'] = $_meta['_price'];
 			} else {
 				$_meta['_price'] = $_meta['_regular_price'];
+
+				unset( $_meta['_sale_price'] );
 			}
 
 			foreach ( $_meta as $key => $value ) {

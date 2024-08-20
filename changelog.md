@@ -9,20 +9,10 @@
 * **new** plugin system requirements
 * **new** plugin interface aligned with the shared library
 * **edit** various small tweaks and changes to the interface
+* **edit** many tweaks and updates to the generators
+* **edit** many updates related to the code syntax
 * **edit** Dev4Press Library 5.0.1
+* **del** removed a lot of the outdated styling
+* **del** removed several unused and outdated files
 * **fix** some assignment issues with Posts generator
-
-### Version: 1.6.1 / may 15 2022
-
-* **new** tested with the WordPress 6.0
-
-### Version: 1.6 / april 13 2022
-
-* **new** posts generators: support for the post status
-* **new** bbpress generators: support for the post status
-
-### Version: 1.5 / october 7 2021
-
-* **new** generator: generate WooCommerce products
-* **edit** for content generator show notice for taxonomies with no terms
-* **edit** for content generator show only public taxonomies
+* **fix** woocommerce products had invalid discount meta value

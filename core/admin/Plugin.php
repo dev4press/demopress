@@ -29,38 +29,38 @@ class Plugin extends BasePlugin {
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin installation was successful.", "demopress" ),
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install',
 			),
 			'update'  => array(
 				'title' => __( "Update", "demopress" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin was successfully updated.", "demopress" ),
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update'
-			)
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update',
+			),
 		);
 
 		$this->menu_items = array(
 			'dashboard' => array(
 				'title' => __( "Overview", "demopress" ),
 				'icon'  => 'ui-home',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard',
 			),
 			'about'     => array(
 				'title' => __( "About", "demopress" ),
 				'icon'  => 'ui-info',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About',
 			),
 			'settings'  => array(
 				'title' => __( "Settings", "demopress" ),
 				'icon'  => 'ui-cog',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings',
 			),
 			'tools'     => array(
 				'title' => __( "Tools", "demopress" ),
 				'icon'  => 'ui-wrench',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools'
-			)
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools',
+			),
 		);
 	}
 
@@ -89,6 +89,10 @@ class Plugin extends BasePlugin {
 	public function enqueue() {
 		$this->e()->css( 'demopress-admin' );
 		$this->e()->js( 'demopress-admin' );
+
+		wp_localize_script( $this->e()->prefix() . 'demopress-admin', 'demopress_data', array(
+			'nonce' => wp_create_nonce( 'demopress_get_generator_status' ),
+		) );
 	}
 
 	protected function extra_enqueue_scripts_plugin() {

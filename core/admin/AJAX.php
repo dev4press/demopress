@@ -28,7 +28,7 @@ class AJAX {
 
 		demopress_gen()->check_health();
 
-		$render = '<pre>' . join( D4P_EOL, demopress_gen()->format_log_list() ) . '</pre>';
+		$render = '<pre>' . join( PHP_EOL, demopress_gen()->format_log_list() ) . '</pre>';
 
 		die( $render );
 	}
