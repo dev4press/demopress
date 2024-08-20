@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Dashboard extends PanelDashboard {
 	protected $form = true;
+	protected $cards = false;
 
 	public function __construct( $admin ) {
 		parent::__construct( $admin );
@@ -58,7 +59,11 @@ class Dashboard extends PanelDashboard {
 		}
 	}
 
-	public function form_tag_open() : string {
-		return '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
+	public function has_form() : bool {
+		return $this->a()->subpanel == 'index' ? false : $this->form;
+	}
+
+	public function form_tag_open() {
+		echo '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
 	}
 }

@@ -15,44 +15,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 	if ( demopress_gen()->is_idle() ) {
 		if ( demopress_admin()->subpanel == 'index' ) {
 			?>
-            <div class="d4p-generators-list"><?php
 
-			foreach ( demopress()->get_generator_groups() as $group => $obj ) {
-				if ( demopress()->has_generators_for_group( $group ) ) {
+            <div class="d4p-features-wrapper">
+			<?php
 
-					?>
+			panel()->include_generic( 'element', 'subpanels', 'blocks', array( 'class' => '_is-settings' ) );
 
-                    <div style="clear: both"></div>
-                    <div class="d4p-panel-break d4p-clearfix">
-                        <h1>
-                            <i class="d4p-icon d4p-<?php echo $obj['icon']; ?> d4p-icon-fw"></i> <?php echo $obj['label']; ?>
-                        </h1>
-                    </div>
-                    <div style="clear: both"></div>
+			?>
+            </div>
 
-					<?php
-
-					foreach ( demopress()->generators as $code => $generator ) {
-						if ( $generator['settings']['group'] != $group ) {
-							continue;
-						}
-
-						$url = admin_url( 'options-general.php?page=demopress&panel=dashboard&subpanel=' . $generator['slug'] );
-
-						?>
-                        <div class="d4p-options-panel">
-                        <i aria-hidden="true" class="<?php echo $generator['settings']['icon']; ?> d4p-icon-fw"></i>
-                        <h5><?php echo $generator['label']; ?></h5>
-                        <div>
-                            <em><?php echo $generator['description']; ?></em>
-                            <a class="button-primary" href="<?php echo $url; ?>"><?php _e( "Generate", "demopress" ); ?></a>
-                        </div>
-                        </div><?php
-					}
-				}
-			}
-
-			?></div><?php
+            <?php
 		} else {
 			$generator = demopress()->get_generator( demopress_admin()->subpanel );
 

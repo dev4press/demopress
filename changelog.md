@@ -7,6 +7,8 @@
 * **new** tested with WordPress up to 6.6
 * **new** tested with PHP up to 8.3
 * **new** plugin system requirements
+* **new** plugin interface aligned with the shared library
+* **edit** various small tweaks and changes to the interface
 * **edit** Dev4Press Library 5.0.1
 * **fix** some assignment issues with Posts generator
 
