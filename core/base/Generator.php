@@ -304,6 +304,11 @@ abstract class Generator {
 	protected function get_the_builder( $type, $name ) {
 		$builder = $this->_settings[ $type ]['builder'][ $name ]['value'];
 
+		// Saved tasks may still reference the removed remote text builder.
+		if ( $builder === 'loripsumnet' ) {
+			$builder = 'loremipsum';
+		}
+
 		$_real_name = '';
 
 		foreach ( $this->objects[ $name ] as $real => $obj ) {
@@ -345,7 +350,7 @@ abstract class Generator {
 		$result = $builder->run( $settings, $this );
 
 		if ( is_wp_error( $result ) ) {
-			throw new Builder( 'builder-failed', $result->get_message(), $type, $name );
+			throw new Builder( 'builder-failed', $result->get_error_message(), $type, $name );
 		}
 
 		return $result;

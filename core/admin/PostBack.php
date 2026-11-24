@@ -2,16 +2,16 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v50\Core\Admin\PostBack as BasePostBack;
-use Dev4Press\v50\Core\Options\Process;
-use Dev4Press\v50\Core\Quick\Sanitize;
+use Dev4Press\v56\Core\Admin\PostBack as BasePostBack;
+use Dev4Press\v56\Core\Options\Process;
+use Dev4Press\v56\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class PostBack extends BasePostBack {
-	protected function process() {
+	protected function process() : void {
 		parent::process();
 
 		if ( $this->p() == $this->get_page_name( 'generator' ) ) {
@@ -23,7 +23,7 @@ class PostBack extends BasePostBack {
 		do_action( 'demopress_admin_postback_handler', $this->p() );
 	}
 
-	protected function tools() {
+	protected function tools() : void {
 		parent::tools();
 
 		if ( $this->a()->subpanel == 'cleanup' ) {

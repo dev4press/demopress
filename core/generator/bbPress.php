@@ -2,9 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
-use Dev4Press\v50\Core\Options\Element as EL;
-use Dev4Press\v50\Core\Options\Type;
-use Dev4Press\v50\Core\Quick\Sanitize;
+use Dev4Press\v56\Core\Options\Element as EL;
+use Dev4Press\v56\Core\Options\Type;
+use Dev4Press\v56\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

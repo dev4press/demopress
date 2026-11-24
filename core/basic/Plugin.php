@@ -2,8 +2,8 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v50\Core\Plugins\Core;
-use Dev4Press\v50\Core\Quick\BBP;
+use Dev4Press\v56\Core\Plugins\Core;
+use Dev4Press\v56\Core\Quick\BBP;
 use WP_Error;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -11,7 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Plugin extends Core {
-	public $plugin = 'demopress';
+	public string $plugin = 'demopress';
+	public string $plugin_prefix = 'demopress';
 
 	public $generators = array();
 	public $builders = array(
@@ -296,18 +297,8 @@ class Plugin extends Core {
 			__( "Generate HTML content using PHP Lorem Ipsum class.", "demopress" )
 		);
 
-		$this->register_builder_html( 'LorIpsumNet', 'Loripsum.net',
-			__( "Generate HTML content using Loripsum.net website.", "demopress" ),
-			true
-		);
-
 		$this->register_builder_text( 'LoremIpsum', 'Lorem Ipsum',
 			__( "Generate plaintext content using PHP Lorem Ipsum class.", "demopress" )
-		);
-
-		$this->register_builder_text( 'LorIpsumNet', 'Loripsum.net',
-			__( "Generate plaintext content using Loripsum.net website.", "demopress" ),
-			true
 		);
 
 		$this->register_builder_term( 'LoremIpsum', 'Lorem Ipsum',

@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function demopress() : Plugin {
-	return Plugin::instance();
+	return Plugin::i();
 }
 
 function demopress_settings() : Settings {
@@ -20,7 +20,7 @@ function demopress_settings() : Settings {
 }
 
 function demopress_db() : DB {
-	return DB::instance();
+	return DB::i();
 }
 
 function demopress_gen() : Generator {
@@ -32,5 +32,5 @@ function demopress_ajax() : AJAX {
 }
 
 function demopress_admin() : AdminPlugin {
-	return AdminPlugin::instance();
+	return AdminPlugin::i();
 }

@@ -7,15 +7,15 @@ Description:       Generate demo content for newly created websites used during 
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       demopress
-Version:           2.0
-Requires at least: 5.9
-Tested up to:      6.6
-Requires PHP:      7.4
+Version:           3.0
+Requires at least: 6.2
+Tested up to:      7.2
+Requires PHP:      8.0
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 == Copyright ==
-Copyright 2008 - 2024 Milan Petrovic (email: support@dev4press.com)
+Copyright 2008 - 2026 Milan Petrovic (email: support@dev4press.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,29 +31,29 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
-use Dev4Press\v50\WordPress;
+use Dev4Press\v56\WordPress;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 $demopress_dirname_basic = dirname( __FILE__ ) . '/';
 $demopress_urlname_basic = plugins_url( '/demopress/' );
 
 define( 'DEMOPRESS_PATH', $demopress_dirname_basic );
 define( 'DEMOPRESS_URL', $demopress_urlname_basic );
-define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'library/' );
-
-require_once( DEMOPRESS_D4PLIB_PATH . 'core.php' );
 
 require_once( DEMOPRESS_PATH . 'vendor/autoload.php' );
-require_once( DEMOPRESS_PATH . 'core/autoload.php' );
 require_once( DEMOPRESS_PATH . 'core/bridge.php' );
 require_once( DEMOPRESS_PATH . 'core/functions.php' );
 
 demopress();
 demopress_settings();
 
-if ( WordPress::instance()->is_admin() ) {
+if ( WordPress::i()->is_admin() ) {
 	demopress_admin();
 
-	if ( WordPress::instance()->is_ajax() ) {
+	if ( WordPress::i()->is_ajax() ) {
 		demopress_ajax();
 	}
 }

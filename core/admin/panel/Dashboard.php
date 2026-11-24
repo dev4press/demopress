@@ -2,15 +2,15 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\v50\Core\UI\Admin\PanelDashboard;
+use Dev4Press\v56\Core\UI\Admin\PanelDashboard;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Dashboard extends PanelDashboard {
-	protected $form = true;
-	protected $cards = false;
+	protected bool $form = true;
+	protected bool $cards = false;
 
 	public function __construct( $admin ) {
 		parent::__construct( $admin );
@@ -59,11 +59,11 @@ class Dashboard extends PanelDashboard {
 		}
 	}
 
-	public function has_form() : bool {
+	public function has_form(): bool {
 		return $this->a()->subpanel == 'index' ? false : $this->form;
 	}
 
-	public function form_tag_open() {
+	public function form_tag_open(): void {
 		echo '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
 	}
 }

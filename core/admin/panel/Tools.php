@@ -2,14 +2,14 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\v50\Core\UI\Admin\PanelTools;
+use Dev4Press\v56\Core\UI\Admin\PanelTools;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Tools extends PanelTools {
-	protected function init_default_subpanels() {
+	protected function init_default_subpanels() : void {
 		parent::init_default_subpanels();
 
 		$this->subpanels = array_slice( $this->subpanels, 0, 1 ) +

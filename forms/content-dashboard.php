@@ -1,7 +1,7 @@
 <?php
 
-use Dev4Press\v50\Core\Options\Render;
-use function Dev4Press\v50\Functions\panel;
+use Dev4Press\v56\Core\Options\Render;
+use function Dev4Press\v56\Functions\panel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="d4p-features-wrapper">
 				<?php
 
-				panel()->include_generic( 'element', 'subpanels', 'blocks', array( 'class' => '_is-settings' ) );
+				panel()->include_element( 'dashboard', 'generators' );
 
 				?>
             </div>
@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				$generator->show();
 
-				Render::instance( panel()->a()->n(), panel()->a()->plugin_prefix )->prepare( demopress_admin()->subpanel, $generator->settings )->render();
+				Render::i( panel()->a()->n(), panel()->a()->plugin_prefix )->prepare( demopress_admin()->subpanel, $generator->settings )->render();
 
 				?></div><?php
 			}
@@ -93,14 +93,6 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <i class="d4p-icon d4p-ui-spinner d4p-icon-spin"></i> <?php _e( "Checking progress...", "demopress" ); ?>
                 </div>
             </div>
-
-            <script type="text/javascript">
-                jQuery(document).ready(function() {
-                    if (jQuery(".demopress-gen-status-running").length === 1) {
-                        window.wp.demopress.generator.log.init();
-                    }
-                });
-            </script>
         </div>
 
 		<?php

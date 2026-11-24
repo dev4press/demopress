@@ -1,0 +1,91 @@
+{
+  "name": "dev4press/demopress",
+  "description": "Generate demo content for WordPress websites.",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "repositories": [
+    {
+      "type": "package",
+      "package": [
+        {
+          "name": "dev4press/placeholder-image-generator",
+          "version": "dev-core",
+          "license": "MIT",
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/dev4press/placeholder-image-generator/zipball/762c47562386edb6a9e6bea638be6c4da74acfa4",
+            "reference": "762c47562386edb6a9e6bea638be6c4da74acfa4"
+          },
+          "autoload": {
+            "classmap": [
+              "Placeholder.php"
+            ]
+          }
+        },
+        {
+          "name": "dev4press/random-names-generator",
+          "version": "dev-core",
+          "license": "MIT",
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/dev4press/random-names-generator/zipball/3d39e30d98463dfc1cf917c35834f2dac5ba2f4f",
+            "reference": "3d39e30d98463dfc1cf917c35834f2dac5ba2f4f"
+          },
+          "autoload": {
+            "classmap": [
+              "Random.php"
+            ]
+          }
+        },
+        {
+          "name": "dev4press/random-titles-generator",
+          "version": "dev-core",
+          "license": "MIT",
+          "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/dev4press/random-titles-generator/zipball/75c28937f711db08b136d7322b89d33aba5c51e2",
+            "reference": "75c28937f711db08b136d7322b89d33aba5c51e2"
+          },
+          "autoload": {
+            "classmap": [
+              "Random.php"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "dev4press/library": "~5.6.5",
+    "dev4press/placeholder-image-generator": "dev-core",
+    "dev4press/random-names-generator": "dev-core",
+    "dev4press/random-titles-generator": "dev-core"
+  },
+  "autoload": {
+    "classmap": [
+      "core/"
+    ]
+  },
+  "scripts": {
+    "post-cleanup": [
+      "rm -rf vendor/bin",
+      "rm -rf vendor/erusev/parsedown/.github",
+      "rm -rf vendor/erusev/parsedown-extra/test",
+      "rm -rf vendor/erusev/parsedown-extra/.travis.yml",
+      "rm -rf vendor/erusev/parsedown-extra/phpunit.xml.dist",
+      "rm -rf vendor/dev4press/placeholder-image-generator/.github",
+      "rm -rf vendor/dev4press/placeholder-image-generator/.gitattributes",
+      "rm -rf vendor/dev4press/random-names-generator/.github",
+      "rm -rf vendor/dev4press/random-names-generator/.gitattributes",
+      "rm -rf vendor/dev4press/random-titles-generator/.github",
+      "rm -rf vendor/dev4press/random-titles-generator/.gitattributes"
+    ],
+    "post-install-cmd": [
+      "@post-cleanup"
+    ],
+    "post-update-cmd": [
+      "@post-cleanup"
+    ]
+  }
+}

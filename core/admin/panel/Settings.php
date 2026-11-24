@@ -2,14 +2,14 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\v50\Core\UI\Admin\PanelSettings;
+use Dev4Press\v56\Core\UI\Admin\PanelSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Settings extends PanelSettings {
-	public $settings_class = '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Settings';
+	public string $settings_class = '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Settings';
 
 	public function __construct( $admin ) {
 		parent::__construct( $admin );

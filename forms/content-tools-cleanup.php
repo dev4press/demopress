@@ -1,6 +1,6 @@
 <?php
 
-use Dev4Press\v50\Core\Quick\Sanitize;
+use Dev4Press\v56\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

@@ -228,16 +228,8 @@ msgstr ""
 msgid "Generate HTML content using PHP Lorem Ipsum class."
 msgstr ""
 
-#: core/basic/Plugin.php:310
-msgid "Generate HTML content using Loripsum.net website."
-msgstr ""
-
 #: core/basic/Plugin.php:315
 msgid "Generate plaintext content using PHP Lorem Ipsum class."
-msgstr ""
-
-#: core/basic/Plugin.php:319
-msgid "Generate plaintext content using Loripsum.net website."
 msgstr ""
 
 #: core/basic/Plugin.php:324
@@ -419,26 +411,6 @@ msgstr ""
 
 #: core/data/html/LoremIpsum.php:23
 msgid "Generated HTML will be formatted for the WordPress block editor. Currently, 'Description lists' are not supported for block formatted HTML."
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:18
-#: core/data/text/LorIpsumNet.php:18
-msgid "More Settings"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:19
-#: core/data/text/LorIpsumNet.php:19
-msgid "All caps"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:20
-#: core/data/text/LorIpsumNet.php:20
-msgid "Prude"
-msgstr ""
-
-#: core/data/html/LorIpsumNet.php:61
-#: core/data/text/LorIpsumNet.php:58
-msgid "No response received."
 msgstr ""
 
 #: core/data/image/LocalStorage.php:18
