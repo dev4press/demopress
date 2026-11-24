@@ -2,9 +2,9 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v35\Core\Admin\PostBack as BasePostBack;
-use Dev4Press\v35\Core\Options\Process;
-use function Dev4Press\v35\Functions\sanitize_key_expanded;
+use Dev4Press\v50\Core\Admin\PostBack as BasePostBack;
+use Dev4Press\v50\Core\Options\Process;
+use Dev4Press\v50\Core\Quick\Sanitize;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -86,11 +86,13 @@ class PostBack extends BasePostBack {
 		$input = isset( $_POST['demopress_value'] ) ? (array) $_POST['demopress_value'] : array();
 
 		if ( ! empty( $input ) ) {
-			$gen_input = isset( $input['demo-generator-type'] ) ? sanitize_key_expanded( $input['demo-generator-type'] ) : '';
+			$gen_input = isset( $input['demo-generator-type'] ) ? Sanitize::key( $input['demo-generator-type'] ) : '';
 			$generator = demopress()->get_generator( $gen_input );
 
 			if ( ! is_wp_error( $generator ) ) {
-				$process = Process::instance( $this->a()->n(), $this->a()->plugin_prefix )->prepare( $generator->settings_for_processing() )->process();
+				$request = isset( $_REQUEST[ $this->a()->n() ] ) ? Sanitize::deep( $_REQUEST[ $this->a()->n() ], 'html' ) : array();
+				$process = Process::instance( $this->a()->n(), $this->a()->plugin_prefix )->prepare( $generator->settings_for_processing() )->process( $request );
+
 				$request = $generator->process_request( $process[ $gen_input ] );
 
 				demopress_gen()->new_task( $gen_input, $request );

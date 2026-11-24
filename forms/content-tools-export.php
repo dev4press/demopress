@@ -1,6 +1,10 @@
 <?php
 
-use function Dev4Press\v35\Functions\panel;
+use function Dev4Press\v50\Functions\panel;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 ?>
 <div class="d4p-content">

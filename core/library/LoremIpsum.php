@@ -3,7 +3,7 @@
 namespace Dev4Press\Plugin\DemoPress\Library;
 
 use Dev4Press\Plugin\DemoPress\Base\Library;
-use Dev4Press\v35\Generator\Text\LoremIpsum as BaseLoremIpsum;
+use Dev4Press\v50\Generator\Text\LoremIpsum as BaseLoremIpsum;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +17,7 @@ class LoremIpsum extends Library {
 	}
 
 	public function words( $count ) {
-		return $this->_object->protected_first()->words( $count, false, false );
+		return $this->_object->protected_first()->words( $count );
 	}
 
 	public function change_length( $method ) {
@@ -25,10 +25,10 @@ class LoremIpsum extends Library {
 	}
 
 	public function paragraphs( $count ) {
-		return $this->_object->paragraphs( $count, false, false );
+		return $this->_object->paragraphs( $count );
 	}
 
 	public function html( $count, $settings = array(), $block_formatted = false ) {
-		return $this->_object->html( $count, $settings, $block_formatted, false );
+		return $this->_object->html( $count, $settings, $block_formatted );
 	}
 }

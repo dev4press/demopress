@@ -1,4 +1,12 @@
-<?php include( DEMOPRESS_PATH . 'forms/content-about-minor.php' ); ?>
+<?php
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+// include( DEMOPRESS_PATH . 'forms/content-about-minor.php' );
+
+?>
 
 <div class="d4p-about-whatsnew">
     <div class="d4p-whatsnew-section d4p-whatsnew-heading">
@@ -9,7 +17,9 @@
                     Quickly create WordPress demo data
                 </p>
                 <p>
-                    The plugin can generate demo data for WordPress for the purpose of setting up the new website during development or testing. This includes users, terms, posts, comments and bbPress forums content.
+                    The plugin can generate demo data for WordPress website that can help you during development or testing.
+                    This includes users, terms, posts, comments, bbPress forums content and WooCommerce products.
+                    The plugin supports several methods for generating or downloading images to add to the generated posts.
                 </p>
             </div>
         </div>

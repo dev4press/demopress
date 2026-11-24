@@ -1,38 +1,25 @@
+<?php
+
+use Dev4Press\v50\Core\Quick\KSES;
+use function Dev4Press\v50\Functions\panel;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+?>
 <div class="d4p-about-minor">
     <h3><?php _e( "Maintenance and Security Releases", "demopress" ); ?></h3>
     <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.6.1</span></strong> &minus;
-        Tested with WordPress 6.0.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.6</span></strong> &minus;
-        Support for post statuses.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.5</span></strong> &minus;
-        Support for WooCommerce products.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.4</span></strong> &minus;
-        Improvements for image generators.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.3.1</span></strong> &minus;
-        Few fixes.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.3</span></strong> &minus;
-        Various updates and few fixes.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.2</span></strong> &minus;
-        Various updates and few fixes.
-    </p>
-    <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>1.1</span></strong> &minus;
+        <strong><?php _e( "Version", "demopress" ); ?> <span>2.1</span></strong> &minus;
         New builders. Few fixes.
     </p>
     <p>
-		<?php printf( __( "For more information, see <a href='%s'>the changelog</a>.", "demopress" ), 'admin.php?page=demopress&panel=about&subpanel=changelog' ); ?>
+		<?php
+
+		/* translators: Changelog subpanel information. %s: Subpanel URL. */
+		echo KSES::standard( sprintf( __( 'For more information, see <a href=\'%s\'>the changelog</a>.', 'coreactivity' ), esc_url( panel()->a()->panel_url( 'about', 'changelog' ) ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+		?>
     </p>
 </div>

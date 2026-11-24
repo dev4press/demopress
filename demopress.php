@@ -1,21 +1,21 @@
 <?php
 
 /*
-Plugin Name:       DemoPress
-Plugin URI:        https://plugins.dev4press.com/demopress/
-Description:       Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
+Plugin Name:       DemoPress: Demo Content Generator
+Plugin URI:        https://www.dev4press.com/plugins/demopress/
+Description:       Generate demo content for newly created websites used during the website development and testing, before real content is created and added.
 Author:            Milan Petrovic
 Author URI:        https://www.dev4press.com/
 Text Domain:       demopress
-Version:           1.6.1
-Requires at least: 5.3
-Tested up to:      6.0
-Requires PHP:      7.2
+Version:           2.0
+Requires at least: 5.9
+Tested up to:      6.6
+Requires PHP:      7.4
 License:           GPLv3 or later
 License URI:       https://www.gnu.org/licenses/gpl-3.0.html
 
 == Copyright ==
-Copyright 2008 - 2022 Milan Petrovic (email: support@dev4press.com)
+Copyright 2008 - 2024 Milan Petrovic (email: support@dev4press.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -31,17 +31,18 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>
 */
 
+use Dev4Press\v50\WordPress;
+
 $demopress_dirname_basic = dirname( __FILE__ ) . '/';
 $demopress_urlname_basic = plugins_url( '/demopress/' );
 
 define( 'DEMOPRESS_PATH', $demopress_dirname_basic );
 define( 'DEMOPRESS_URL', $demopress_urlname_basic );
-define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'd4plib/' );
-define( 'DEMOPRESS_D4PLIB_URL', $demopress_urlname_basic . 'd4plib/' );
+define( 'DEMOPRESS_D4PLIB_PATH', $demopress_dirname_basic . 'library/' );
 
 require_once( DEMOPRESS_D4PLIB_PATH . 'core.php' );
 
-require_once( DEMOPRESS_PATH . 'libs/autoload.php' );
+require_once( DEMOPRESS_PATH . 'vendor/autoload.php' );
 require_once( DEMOPRESS_PATH . 'core/autoload.php' );
 require_once( DEMOPRESS_PATH . 'core/bridge.php' );
 require_once( DEMOPRESS_PATH . 'core/functions.php' );
@@ -49,10 +50,10 @@ require_once( DEMOPRESS_PATH . 'core/functions.php' );
 demopress();
 demopress_settings();
 
-if ( D4P_ADMIN ) {
+if ( WordPress::instance()->is_admin() ) {
 	demopress_admin();
 
-	if ( D4P_AJAX ) {
+	if ( WordPress::instance()->is_ajax() ) {
 		demopress_ajax();
 	}
 }

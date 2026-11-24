@@ -3,8 +3,8 @@
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
 use Dev4Press\Plugin\DemoPress\Library\Pixabay;
-use Dev4Press\v35\Core\Options\Element as EL;
-use Dev4Press\v35\Core\Options\Type;
+use Dev4Press\v50\Core\Options\Element as EL;
+use Dev4Press\v50\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -101,11 +101,11 @@ class PixabayCom extends Base {
 			$args['orientation'] = $settings['orientation'];
 		}
 
-		if ( isset( $settings['colors'] ) && ! empty( $settings['colors'] ) ) {
+		if ( ! empty( $settings['colors'] ) ) {
 			$args['colors'] = join( ',', (array) $settings['colors'] );
 		}
 
-		if ( isset( $settings['category'] ) && ! empty( $settings['category'] ) ) {
+		if ( ! empty( $settings['category'] ) ) {
 			$args['category'] = $settings['category'];
 		}
 

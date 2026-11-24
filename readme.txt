@@ -1,22 +1,22 @@
-=== DemoPress ===
+=== DemoPress: Demo Content Generator ===
 Contributors: GDragoN
-Donate link: https://plugins.dev4press.com/demopress/
-Tags: dev4press, woocommerce, demo data, dummy data, dummy content, lorem ipsum, generator, bbpress, builder, random
-Stable tag: 1.6.1
-Requires at least: 5.3
-Tested up to: 6.0
-Requires PHP: 7.2
+Donate link: https://buymeacoffee.com/millan
+Tags: dev4press, demo data, lorem ipsum, bbpress, woocommerce
+Stable tag: 2.0
+Requires at least: 5.9
+Tested up to: 6.6
+Requires PHP: 7.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added.
+Generate demo content for newly created websites used during the website development and testing, before real content is created and added.
 
 == Description ==
 
-Easy to use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are PHP code based and can generate text, images, names and more. Most of the operations are based on the randomization.
+An easy-to-use plugin for generating demo content for newly created websites used during the website development and testing, before real content is created and added. The plugin includes several generators and many builders that can create text, names, images, and more. Plugin has 'local' and 'remote' builders. Remote builders depend on the online services to generate text or images. Local builders are written in PHP and can generate text, images, names and more. Most of the operations are based on randomization.
 
 = Home and GitHub =
-* Learn more about the plugin: [DemoPress on Dev4Press](https://plugins.dev4press.com/demopress/)
+* Learn more about the plugin: [DemoPress on Dev4Press](https://www.dev4press.com/plugins/demopress/)
 * Contribute to plugin development: [DemoPress on GitHub](https://github.com/dev4press/demopress)
 
 = Quick Overview Video =
@@ -25,11 +25,11 @@ https://www.youtube.com/watch?v=Eazmk93cO34
 = WordPress default Generators =
 * **Users**: randomize from select roles, domains for emails, password; generate name and about; use name for email and login.
 * **Terms**: support for default and custom taxonomies; support for hierarchy; generate name and description.
-* **Posts**: support for default and custom post types; support for hierarchy; generate, title, content, excerpt, publication date and author, featured image; assign terms.
+* **Posts**: support for default and custom post-types; support for hierarchy; generate, title, content, excerpt, publication date and author, featured image; assign terms.
 * **Comments**: support for threaded comments; limit posts to get comments; generate content, comment authors information.
 
 = bbPress Generators =
-* **Forums**: support for forums hierarchy; generate forum title, content, publication date and author.
+* **Forums**: support for forum hierarchy; generate forum title, content, publication date and author.
 * **Topics**: generate title, content, publication date and author; assign topic tags; select forums for generated topics.
 * **Replies**: generate title, content, author; date based on topic date; for topics from selected forums.
 
@@ -50,15 +50,15 @@ The plugin has tools to export and import plugin settings (not data, just settin
 = Documentation and Support =
 To get help with the plugin, you can use WordPress.org support forums, or you can use Dev4Press.com support forums.
 
-* Plugin Documentation: [Dev4Press Knowledge Base](https://support.dev4press.com/kb/plugin/demopress/)
+* Plugin Documentation: [Dev4Press Knowledge Base](https://www.dev4press.com/kb/plugin/demopress/)
 * Support Forum: [Dev4Press Support](https://support.dev4press.com/forums/forum/plugins-free/demopress/)
 
 == Installation ==
 = General Requirements =
-* PHP: 7.2 or newer
+* PHP: 7.4 or newer
 
 = WordPress Requirements =
-* WordPress: 5.3 or newer
+* WordPress: 5.8 or newer
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `demopress`.
@@ -70,12 +70,27 @@ To get help with the plugin, you can use WordPress.org support forums, or you ca
 Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 
 == Changelog ==
+= 2.0 (2024.08.20) =
+* New: tested with WordPress up to 6.6
+* New: tested with PHP up to 8.3
+* New: plugin system requirements
+* New: plugin interface aligned with the shared library
+* Edit: various small tweaks and changes to the interface
+* Edit: many tweaks and updates to the generators
+* Edit: many updates related to the code syntax
+* Edit: updated plugin screenshots on WordPress.org
+* Edit: Dev4Press Library 5.0.1
+* Del: removed a lot of the outdated styling
+* Del: removed several unused and outdated files
+* Fix: some assignment issues with Posts generator
+* Fix: woocommerce products had invalid discount meta value
+
 = 1.6.1 (2022.05.15) =
 * New: tested with the WordPress 6.0
 
 = 1.6 (2022.04.13) =
-* New: posts generators: support for the post status
-* New: bbpress generators: support for the post status
+* New: posts generators: support for the post-status
+* New: bbpress generators: support for the post-status
 
 = 1.5 (2021.10.07) =
 * New: generator: generate WooCommerce products
@@ -119,6 +134,9 @@ Open the WordPress 'Settings' menu, there you will find 'DemoPress' panel.
 * First official release
 
 == Upgrade Notice ==
+= 2.0 =
+Big update with new interface, tweaks, and fixes.
+
 = 1.6 =
 Support for post statuses.
 
@@ -128,15 +146,6 @@ WooCommerce Products generator.
 = 1.4 =
 Images placeholder generator improvements.
 
-= 1.3 =
-Various improvements and fixes.
-
-= 1.2 =
-Various improvements and fixes.
-
-= 1.1 =
-New builders. Various improvements to generators. Few fixes.
-
 == Screenshots ==
 * Main generators panel
 * Generator: Users
@@ -144,6 +153,7 @@ New builders. Various improvements to generators. Few fixes.
 * Generator: Posts
 * Generator: Comments
 * Generator: bbPress
+* Generator: WooCommerce
 * Generator progress
 * Plugin settings
 * Data removal tool

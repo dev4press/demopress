@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v35\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v50\Core\Admin\Submenu\Plugin as BasePlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -13,62 +13,90 @@ class Plugin extends BasePlugin {
 	public $plugin_prefix = 'demopress';
 	public $plugin_menu = 'DemoPress';
 	public $plugin_title = 'DemoPress';
+	public $buy_me_a_coffee = true;
+
+	public $auto_mod_interface_colors = true;
 
 	public function constructor() {
 		$this->url  = DEMOPRESS_URL;
 		$this->path = DEMOPRESS_PATH;
 	}
 
-	public static function instance() : Plugin {
-		static $instance = null;
-
-		if ( ! isset( $instance ) ) {
-			$instance = new Plugin();
-		}
-
-		return $instance;
-	}
-
-	public function after_setup_theme() {
+	public function admin_menu_items() {
 		$this->setup_items = array(
 			'install' => array(
 				'title' => __( "Install", "demopress" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin installation was successful.", "demopress" ),
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Install',
 			),
 			'update'  => array(
 				'title' => __( "Update", "demopress" ),
 				'icon'  => 'ui-traffic',
 				'type'  => 'setup',
 				'info'  => __( "Before you continue, make sure plugin was successfully updated.", "demopress" ),
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update'
-			)
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Update',
+			),
 		);
 
 		$this->menu_items = array(
 			'dashboard' => array(
 				'title' => __( "Overview", "demopress" ),
 				'icon'  => 'ui-home',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Dashboard',
 			),
 			'about'     => array(
 				'title' => __( "About", "demopress" ),
 				'icon'  => 'ui-info',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\About',
 			),
 			'settings'  => array(
 				'title' => __( "Settings", "demopress" ),
 				'icon'  => 'ui-cog',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings'
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Settings',
 			),
 			'tools'     => array(
 				'title' => __( "Tools", "demopress" ),
 				'icon'  => 'ui-wrench',
-				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools'
-			)
+				'class' => '\\Dev4Press\\Plugin\\DemoPress\\Admin\\Panel\\Tools',
+			),
 		);
+	}
+
+	public function register_scripts_and_styles() {
+		$this->enqueue->register( 'css', 'demopress-admin',
+			array(
+				'path' => 'css/',
+				'file' => 'admin',
+				'ext'  => 'css',
+				'min'  => true,
+				'ver'  => demopress_settings()->file_version(),
+				'src'  => 'plugin',
+				'int'  => array(),
+			) )->register( 'js', 'demopress-admin',
+			array(
+				'path' => 'js/',
+				'file' => 'admin',
+				'ext'  => 'js',
+				'min'  => true,
+				'ver'  => demopress_settings()->file_version(),
+				'src'  => 'plugin',
+				'int'  => array(),
+			) );
+	}
+
+	public function enqueue() {
+		$this->e()->css( 'demopress-admin' );
+		$this->e()->js( 'demopress-admin' );
+
+		wp_localize_script( $this->e()->prefix() . 'demopress-admin', 'demopress_data', array(
+			'nonce' => wp_create_nonce( 'demopress_get_generator_status' ),
+		) );
+	}
+
+	protected function extra_enqueue_scripts_plugin() {
+		$this->enqueue();
 	}
 
 	public function svg_icon() : string {
@@ -112,5 +140,13 @@ class Plugin extends BasePlugin {
 
 	public function settings_definitions() {
 		return Settings::instance();
+	}
+
+	public function plugin() {
+		return demopress();
+	}
+
+	public function wizard() {
+		return null;
 	}
 }

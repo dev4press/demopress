@@ -2,7 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v35\Core\Admin\GetBack as BaseGetBack;
+use Dev4Press\v50\Core\Admin\GetBack as BaseGetBack;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -30,7 +30,7 @@ class GetBack extends BaseGetBack {
 			demopress_gen()->stop_task();
 		}
 
-		$url = $this->a()->current_url( true ) . '&message=gen-stopped';
+		$url = $this->a()->current_url() . '&message=gen-stopped';
 
 		wp_redirect( $url );
 		exit;
@@ -43,7 +43,7 @@ class GetBack extends BaseGetBack {
 			demopress_gen()->reset_task();
 		}
 
-		$url = $this->a()->current_url( true ) . '&message=gen-removed';
+		$url = $this->a()->current_url() . '&message=gen-removed';
 
 		wp_redirect( $url );
 		exit;
