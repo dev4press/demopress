@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Term;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Builder\Term;
 use Dev4Press\v56\Core\Options\Element as EL;
 use Dev4Press\v56\Core\Options\Type;
@@ -23,8 +24,8 @@ abstract class Base extends Term {
 	}
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

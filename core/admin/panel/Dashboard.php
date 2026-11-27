@@ -42,10 +42,11 @@ class Dashboard extends PanelDashboard {
 				}
 
 				$slug = $generator['slug'];
+				$icon = preg_replace( '/^(?:d4p-icon\s+)?d4p-/', '', $generator['settings']['icon'] );
 
 				$this->subpanels[ $slug ] = array(
 					'title' => $generator['label'],
-					'icon'  => $generator['settings']['icon'],
+					'icon'  => $icon,
 					'info'  => $generator['description']
 				);
 
@@ -64,6 +65,6 @@ class Dashboard extends PanelDashboard {
 	}
 
 	public function form_tag_open(): void {
-		echo '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
+		echo '<form method="post" action="" id="' . esc_attr( $this->a()->plugin_prefix . '-form-generator' ) . '" enctype="multipart/form-data" autocomplete="off">';
 	}
 }

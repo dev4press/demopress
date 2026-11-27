@@ -21,7 +21,7 @@ class LoremIpsum extends Library {
 				$max = mt_getrandmax();
 				$x   = wp_rand( 1, $max ) / $max;
 				$y   = wp_rand( 0, $max ) / $max;
-				$z   = sqrt( -2 * log( $x ) ) * cos( 2 * pi() * $y );
+				$z   = sqrt( - 2 * log( $x ) ) * cos( 2 * pi() * $y );
 
 				return max( 1.0, $z * $std_dev + $mean );
 			}
@@ -82,10 +82,10 @@ class LoremIpsum extends Library {
 	private function wrap_block_children( string $html, string $tag, string $block_name ): string {
 		// The Lorem Ipsum generator produces flat lists and single-paragraph quotes.
 		return preg_replace_callback(
-			'~<' . $tag . '>.*?</' . $tag . '>~s',
-			static fn( array $match ) => get_comment_delimited_block_content( $block_name, array(), $match[0] ),
-			$html
-		) ?? $html;
+			       '~<' . $tag . '>.*?</' . $tag . '>~s',
+			       static fn( array $match ) => get_comment_delimited_block_content( $block_name, array(), $match[0] ),
+			       $html
+		       ) ?? $html;
 	}
 
 	private function add_block_class( string $html, string $name, string $class ): string {

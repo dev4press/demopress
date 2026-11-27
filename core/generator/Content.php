@@ -4,6 +4,7 @@ namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use DateTime;
 use Dev4Press\Plugin\DemoPress\Base\Generator;
+use Dev4Press\Plugin\DemoPress\Exception\Builder;
 use Dev4Press\v56\Core\Options\Element as EL;
 use Dev4Press\v56\Core\Options\Type;
 use Dev4Press\v56\WordPress\Media\ToLibrary\LocalImage;
@@ -288,7 +289,7 @@ abstract class Content extends Generator {
 		}
 	}
 
-	protected function _get_post_statuses( $type ) : array {
+	protected function _get_post_statuses( $type ): array {
 		return array(
 			'publish' => __( "Published" ),
 			'draft'   => __( "Draft" ),
@@ -298,7 +299,7 @@ abstract class Content extends Generator {
 		);
 	}
 
-	protected function _get_terms( $type ) : array {
+	protected function _get_terms( $type ): array {
 		$terms      = array();
 		$taxonomies = $this->get_from_base( $type, 'taxonomy', false, array() );
 
@@ -341,7 +342,7 @@ abstract class Content extends Generator {
 		return $terms;
 	}
 
-	protected function _get_author( $type, $roles = array() ) : int {
+	protected function _get_author( $type, $roles = array() ): int {
 		$authors = $this->get_from_base( $type, 'published', 'author' );
 
 		if ( ! empty( $authors ) ) {
@@ -366,7 +367,7 @@ abstract class Content extends Generator {
 		return $authors[ $key ];
 	}
 
-	protected function _get_publish_date( $type ) : string {
+	protected function _get_publish_date( $type ): string {
 		$range = $this->get_from_base( $type, 'published' );
 
 		$from_date = DateTime::createFromFormat( '!Y-m-d', $range['from'] );
@@ -416,7 +417,7 @@ abstract class Content extends Generator {
 	}
 
 	/**
-	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 * @throws Builder
 	 */
 	protected function _item_post( $type ) {
 		$parent = $this->get_from_base( $type, 'parent', false, 0 );

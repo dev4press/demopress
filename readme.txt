@@ -80,16 +80,21 @@ Open **DemoPress → Tools → Remove Generated Data** and select the content ty
 
 == Changelog ==
 
-= 3.0 (2026.12.01) =
+= 3.0 (2026.11.28) =
 * New: require PHP 8.0 and WordPress 6.2 or newer
 * New: load dependencies with Composer
 * New: build TypeScript and SCSS with Vite
 * Edit: remove jQuery from the DemoPress admin script
 * Edit: update the three generator libraries
 * Edit: Dev4Press Library 5.6.5
+* Edit: return generator status as JSON
 * Remove: Loripsum.net builders (website is gone)
 * Fix: restore generator cards on the overview
 * Fix: generated block markup and empty text
+* Fix: render generator logs as plain text
+* Fix: require dashboard permissions for generator status requests
+* Fix: validate cleanup results before displaying them
+* Fix: escape dynamic output in admin templates
 
 = 2.0 (2024.08.20) =
 * New: tested with WordPress up to 6.6
@@ -106,53 +111,7 @@ Open **DemoPress → Tools → Remove Generated Data** and select the content ty
 * Fix: some assignment issues with Posts generator
 * Fix: woocommerce products had invalid discount meta value
 
-= 1.6.1 (2022.05.15) =
-* New: tested with the WordPress 6.0
-
-= 1.6 (2022.04.13) =
-* New: posts generators: support for the post-status
-* New: bbpress generators: support for the post-status
-
-= 1.5 (2021.10.07) =
-* New: generator: generate WooCommerce products
-* Edit: for content generator show notice for taxonomies with no terms
-* Edit: for content generator show only public taxonomies
-
-= 1.4 (2021.08.03) =
-* New: images placeholder generator: include rectangles
-* New: images placeholder generator: use post name or image size
-
-= 1.3.1 (2021.07.30) =
-* Fix: some library files have wrong name case
-
-= 1.3 (2021.07.10) =
-* New: images placeholder generator: lighter and darker background color
-* Edit: changed default priority for the main registration entry point
-* Edit: various improvements to the base generators
-* Edit: improved method for assigning custom taxonomy terms
-* Fix: in some cases custom taxonomy terms not assigned
-* Fix: minor issue in the generator registration method
-* Fix: regression in the bbPress generator for topics
-
-= 1.2 (2021.07.08) =
-* Edit: comments: improved handling top level option with value 0
-* Edit: author caching method accepts the list of roles to cache
-* Edit: removed some unused files from the forms directory
-* Edit: various PHP related improvements
-* Edit: Dev4Press Library 3.5.3
-* Fix: bbpress: forum roles for authors not taken into account
-* Fix: query to get comments was not using approved flag value
-* Fix: various typos and wrongly spelled words
-
-= 1.1 (2020.11.25) =
-* New: title builder: Listed - get titles from predefined list of titles
-* New: image builder: LocalStorage - get images from predefined storage location
-* Edit: various improvements to the core generator classes
-* Fix: posts generator breaks when post type has no taxonomies
-* Fix: few minor issues with the builder run methods default value
-
-= 1.0 (2020.11.17) =
-* First official release
+Full changelog: [DemoPress Changelog](https://www.dev4press.com/plugins/demopress/changelog/)
 
 == Upgrade Notice ==
 = 3.0 =

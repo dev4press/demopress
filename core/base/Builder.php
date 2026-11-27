@@ -39,8 +39,8 @@ abstract class Builder {
 	}
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

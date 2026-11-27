@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Settings extends BaseSettings {
-	protected function admin() : Plugin {
+	protected function admin(): Plugin {
 		return demopress_admin();
 	}
 

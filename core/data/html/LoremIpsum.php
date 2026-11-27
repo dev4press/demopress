@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\HTML;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Library\LoremIpsum as LibLoremIpsum;
 use Dev4Press\v56\Core\Options\Element as EL;
 use Dev4Press\v56\Core\Options\Type;
@@ -31,8 +32,8 @@ class LoremIpsum extends Base {
 	}
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

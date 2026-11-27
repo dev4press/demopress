@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class Tools extends PanelTools {
-	protected function init_default_subpanels() : void {
+	protected function init_default_subpanels(): void {
 		parent::init_default_subpanels();
 
 		$this->subpanels = array_slice( $this->subpanels, 0, 1 ) +

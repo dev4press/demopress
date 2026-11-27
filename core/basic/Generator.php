@@ -25,7 +25,7 @@ class Generator {
 		add_action( 'demopress_run_generator', array( $this, 'run' ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DemoPress\Basic\Generator */
+	/** @return Generator */
 	public static function instance() {
 		static $_demopress_gen = false;
 

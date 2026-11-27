@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
+use Dev4Press\Plugin\DemoPress\Base\Builder;
 use Dev4Press\v56\Core\Plugins\Core;
 use Dev4Press\v56\Core\Quick\BBP;
 use WP_Error;
@@ -61,7 +62,7 @@ class Plugin extends Core {
 		$this->_registration();
 	}
 
-	public function has_generators_for_group( $group ) : bool {
+	public function has_generators_for_group( $group ): bool {
 		foreach ( $this->generators as $generator ) {
 			if ( $generator['settings']['group'] == $group ) {
 				return true;
@@ -71,13 +72,13 @@ class Plugin extends Core {
 		return false;
 	}
 
-	public function is_generator_group_valid( $group ) : bool {
+	public function is_generator_group_valid( $group ): bool {
 		$groups = $this->get_generator_groups();
 
 		return isset( $groups[ $group ] );
 	}
 
-	public function get_generator_groups() : array {
+	public function get_generator_groups(): array {
 		return array(
 			'core'    => array(
 				'label' => __( "WordPress Core", "demopress" ),
@@ -104,7 +105,7 @@ class Plugin extends Core {
 		return __( "Unspecified", "demopress" );
 	}
 
-	/** @return \Dev4Press\Plugin\DemoPress\Base\Generator|\WP_Error */
+	/** @return \Dev4Press\Plugin\DemoPress\Base\Generator|WP_Error */
 	public function get_generator( $name ) {
 		foreach ( $this->generators as $code => $obj ) {
 			if ( $name === $code || $obj['slug'] === $name ) {
@@ -117,7 +118,7 @@ class Plugin extends Core {
 		return new WP_Error( 'generator_missing', __( "Requested generator not found.", "demopress" ) );
 	}
 
-	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder|\WP_Error */
+	/** @return Builder|WP_Error */
 	public function get_builder( $type, $name ) {
 		if ( isset( $this->builders[ $type ][ $name ] ) ) {
 			$class = $this->builders[ $type ][ $name ]['class'];
@@ -128,7 +129,7 @@ class Plugin extends Core {
 		return new WP_Error( 'builder_missing', __( "Requested builder not found.", "demopress" ) );
 	}
 
-	public function find_builders( $type, $settings = array() ) : array {
+	public function find_builders( $type, $settings = array() ): array {
 		$found = array();
 
 		foreach ( $this->builders[ $type ] as $code => $builder ) {
@@ -152,7 +153,7 @@ class Plugin extends Core {
 		return $found;
 	}
 
-	public function list_builders( $type, $builders = array() ) : array {
+	public function list_builders( $type, $builders = array() ): array {
 		$list = array();
 
 		foreach ( $this->builders[ $type ] as $code => $builder ) {

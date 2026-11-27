@@ -17,12 +17,12 @@ class Plugin extends BasePlugin {
 
 	public bool $auto_mod_interface_colors = true;
 
-	public function constructor() : void {
+	public function constructor(): void {
 		$this->url  = DEMOPRESS_URL;
 		$this->path = DEMOPRESS_PATH;
 	}
 
-	public function admin_menu_items() : void {
+	public function admin_menu_items(): void {
 		$this->setup_items = array(
 			'install' => array(
 				'title' => __( "Install", "demopress" ),
@@ -64,8 +64,8 @@ class Plugin extends BasePlugin {
 		);
 	}
 
-	public function register_scripts_and_styles() : void {
-		$script_path = $this->path . 'build/admin.js';
+	public function register_scripts_and_styles(): void {
+		$script_path    = $this->path . 'build/admin.js';
 		$script_version = is_file( $script_path ) ? (string) filemtime( $script_path ) : demopress_settings()->file_version();
 
 		$this->enqueue->register( 'css', 'demopress-admin',
@@ -94,19 +94,19 @@ class Plugin extends BasePlugin {
 		) );
 	}
 
-	protected function extra_enqueue_scripts_plugin() : void {
+	protected function extra_enqueue_scripts_plugin(): void {
 		$this->enqueue();
 	}
 
-	public function svg_icon() : string {
+	public function svg_icon(): string {
 		return demopress()->svg_icon;
 	}
 
-	public function run_getback() : void {
+	public function run_getback(): void {
 		new GetBack( $this );
 	}
 
-	public function run_postback() : void {
+	public function run_postback(): void {
 		new PostBack( $this );
 	}
 

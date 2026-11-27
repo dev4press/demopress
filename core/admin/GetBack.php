@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class GetBack extends BaseGetBack {
-	protected function process() : void {
+	protected function process(): void {
 		parent::process();
 
 		if ( $this->a()->page ) {

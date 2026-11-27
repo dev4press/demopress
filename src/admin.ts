@@ -10,8 +10,9 @@ const pollingElements: {
 
 async function checkGeneratorStatus(): Promise<void> {
     const { loader, content } = pollingElements;
+    const log = content?.querySelector("pre");
 
-    if (loader === null || content === null) {
+    if (loader === null || !log) {
         return;
     }
 
@@ -30,10 +31,11 @@ async function checkGeneratorStatus(): Promise<void> {
         });
 
         if (response.ok) {
-            content.innerHTML = await response.text();
-            const log = content.querySelector("pre");
+            const result: { success?: boolean; data?: unknown } | null =
+                await response.json();
 
-            if (log !== null) {
+            if (result?.success === true && typeof result.data === "string") {
+                log.textContent = result.data;
                 log.scrollTop = log.scrollHeight;
             }
         }

@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Library\Pexels;
 use Dev4Press\v56\Core\Options\Element as EL;
 use Dev4Press\v56\Core\Options\Type;
@@ -27,8 +28,8 @@ class PexelsCom extends Base {
 	}
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

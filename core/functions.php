@@ -15,8 +15,8 @@ function demopress_post_type_support_comment_type( $post_type, $comment_type ) {
 	}
 }
 
-function demopress_get_comment_types() : array {
-	return (array)apply_filters( 'demopress_get_comment_types', array(
+function demopress_get_comment_types(): array {
+	return (array) apply_filters( 'demopress_get_comment_types', array(
 			'comment' => (object) array(
 				'name'  => 'comment',
 				'label' => __( "Comments", "demopress" )
@@ -25,20 +25,20 @@ function demopress_get_comment_types() : array {
 	);
 }
 
-function demopress_get_taxonomies() : array {
+function demopress_get_taxonomies(): array {
 	$taxonomies = get_taxonomies( array( 'public' => true, 'show_ui' => true ), 'objects' );
 
-	return (array)apply_filters( 'demopress_get_taxonomies', $taxonomies );
+	return (array) apply_filters( 'demopress_get_taxonomies', $taxonomies );
 }
 
-function demopress_get_bbpress_post_types() : array {
+function demopress_get_bbpress_post_types(): array {
 	$post_types = array(
 		bbp_get_forum_post_type() => get_post_type_object( bbp_get_forum_post_type() ),
 		bbp_get_topic_post_type() => get_post_type_object( bbp_get_topic_post_type() ),
 		bbp_get_reply_post_type() => get_post_type_object( bbp_get_reply_post_type() )
 	);
 
-	return (array)apply_filters( 'demopress_get_bbpress_post_types', $post_types );
+	return (array) apply_filters( 'demopress_get_bbpress_post_types', $post_types );
 }
 
 function demopress_get_post_types() {
@@ -54,14 +54,14 @@ function demopress_get_post_types() {
 		unset( $post_types[ bbp_get_reply_post_type() ] );
 	}
 
-	if (demopress_is_woocommerce_active()) {
-		unset($post_types['product']);
+	if ( demopress_is_woocommerce_active() ) {
+		unset( $post_types['product'] );
 	}
 
 	return apply_filters( 'demopress_get_post_types', $post_types );
 }
 
-function demopress_get_bbpress_forums_list() : array {
+function demopress_get_bbpress_forums_list(): array {
 	$_base_forums = get_posts( array(
 		'post_type'   => bbp_get_forum_post_type(),
 		'numberposts' => - 1,
@@ -89,14 +89,14 @@ function demopress_get_active_generator() {
 	return null;
 }
 
-function demopress_is_woocommerce_active() : bool {
-	return class_exists( 'WooCommerce' ) && function_exists('WC');
+function demopress_is_woocommerce_active(): bool {
+	return class_exists( 'WooCommerce' ) && function_exists( 'WC' );
 }
 
-function demopress_get_woocommerce_post_types() : array {
+function demopress_get_woocommerce_post_types(): array {
 	$post_types = array(
 		'product' => get_post_type_object( 'product' )
 	);
 
-	return (array)apply_filters( 'demopress_get_woocommerce_post_types', $post_types );
+	return (array) apply_filters( 'demopress_get_woocommerce_post_types', $post_types );
 }

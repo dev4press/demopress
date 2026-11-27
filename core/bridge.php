@@ -11,26 +11,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-function demopress() : Plugin {
+function demopress(): Plugin {
 	return Plugin::i();
 }
 
-function demopress_settings() : Settings {
+function demopress_settings(): Settings {
 	return Settings::instance();
 }
 
-function demopress_db() : DB {
+function demopress_db(): DB {
 	return DB::i();
 }
 
-function demopress_gen() : Generator {
+function demopress_gen(): Generator {
 	return Generator::instance();
 }
 
-function demopress_ajax() : AJAX {
+function demopress_ajax(): AJAX {
 	return AJAX::instance();
 }
 
-function demopress_admin() : AdminPlugin {
+function demopress_admin(): AdminPlugin {
 	return AdminPlugin::i();
 }

@@ -28,7 +28,7 @@ class bbPress extends Content {
 		return array( __( "If you choose to delete forums only, the remaining topics and replies will no longer be visible, because they are linked to forums. If you delete topics only, the remaining replies will not longer be visible, because they are linked to topics.", "demopress" ) );
 	}
 
-	public function get_list_of_types( $return = 'objects' ) : array {
+	public function get_list_of_types( $return = 'objects' ): array {
 		$post_types = demopress_get_bbpress_post_types();
 
 		return $return == 'keys' ? array_keys( $post_types ) : $post_types;
@@ -152,7 +152,7 @@ class bbPress extends Content {
 		}
 	}
 
-	protected function _get_post_statuses( $type ) : array {
+	protected function _get_post_statuses( $type ): array {
 		switch ( $type ) {
 			case bbp_get_forum_post_type():
 				return bbp_get_forum_visibilities();

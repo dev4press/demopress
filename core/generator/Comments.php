@@ -34,7 +34,7 @@ class Comments extends Generator {
 		return $list;
 	}
 
-	public function get_list_of_types( $return = 'objects' ) : array {
+	public function get_list_of_types( $return = 'objects' ): array {
 		$comment_types = demopress_get_comment_types();
 
 		return $return == 'keys' ? array_keys( $comment_types ) : $comment_types;
@@ -59,7 +59,7 @@ class Comments extends Generator {
 	}
 
 	public function get_cleanup_notice() {
-		return array( __( "Make sure to remove comments before posts these comments belong too. Comments are always removed based on the link to posts. If you remove posts before comments, you will see unlinked comments in the Comments panel.", "demopress" ) );
+		return array( __( "When removing comments and their posts together, DemoPress removes comments first. If you remove posts without selecting comments, unlinked comments may remain in the Comments panel because comment cleanup relies on the link to posts.", "demopress" ) );
 	}
 
 	protected function init_builders() {

@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Image;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Library\Placeholder as LibPlaceholder;
 use Dev4Press\v56\Core\Options\Element as EL;
 use Dev4Press\v56\Core\Options\Type;
@@ -30,8 +31,8 @@ class Placeholder extends Base {
 			) ),
 			EL::i( $base, $this->el_option_name( $type, $name, 'text' ), __( "Text", "demopress" ), '', Type::SELECT, 'size' )->data( 'array', array(
 				'size'  => __( "Image Size", "demopress" ),
-				'text' => __( "Post Content", "demopress" ),
-				'empty'  => __( "No Text", "demopress" )
+				'text'  => __( "Post Content", "demopress" ),
+				'empty' => __( "No Text", "demopress" )
 			) )->args( array(
 				'wrapper_class' => $this->el_wrapper_class( $class, $hidden )
 			) )
@@ -39,8 +40,8 @@ class Placeholder extends Base {
 	}
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

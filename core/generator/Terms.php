@@ -27,7 +27,7 @@ class Terms extends Generator {
 		return count( $ids );
 	}
 
-	public function get_list_of_types( $return = 'objects' ) : array {
+	public function get_list_of_types( $return = 'objects' ): array {
 		$taxonomies = demopress_get_taxonomies();
 
 		return $return == 'keys' ? array_keys( $taxonomies ) : $taxonomies;

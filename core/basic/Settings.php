@@ -42,7 +42,7 @@ class Settings extends BaseSettings {
 		add_action( 'demopress_load_settings', array( $this, 'init' ) );
 	}
 
-	protected function _name( string $name, string $force_scope = '' ) : string {
+	protected function _name( string $name, string $force_scope = '' ): string {
 		return 'dev4press_' . $this->info->code . '_' . $name;
 	}
 }

@@ -18,7 +18,7 @@ class WooCommerce extends Content {
 		'onbackorder',
 	);
 
-	public function get_list_of_types( $return = 'objects' ) : array {
+	public function get_list_of_types( $return = 'objects' ): array {
 		$post_types = demopress_get_woocommerce_post_types();
 
 		return $return == 'keys' ? array_keys( $post_types ) : $post_types;
@@ -180,7 +180,7 @@ class WooCommerce extends Content {
 		}
 	}
 
-	public function generate_sku_code() : string {
+	public function generate_sku_code(): string {
 		$time = time();
 
 		$code   = '20' . str_pad( $time, 10, '0' );

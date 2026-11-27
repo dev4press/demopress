@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class PostBack extends BasePostBack {
-	protected function process() : void {
+	protected function process(): void {
 		parent::process();
 
 		if ( $this->p() == $this->get_page_name( 'generator' ) ) {
@@ -23,7 +23,7 @@ class PostBack extends BasePostBack {
 		do_action( 'demopress_admin_postback_handler', $this->p() );
 	}
 
-	protected function tools() : void {
+	protected function tools(): void {
 		parent::tools();
 
 		if ( $this->a()->subpanel == 'cleanup' ) {
@@ -38,7 +38,22 @@ class PostBack extends BasePostBack {
 		$message = 'nothing-removed';
 
 		if ( ! empty( $cleanup ) ) {
-			$done = array();
+			$ordered_cleanup = array();
+
+			foreach ( $cleanup as $gen => $types ) {
+				if ( strtolower( $gen ) == 'comments' ) {
+					$ordered_cleanup[ $gen ] = $types;
+				}
+			}
+
+			foreach ( $cleanup as $gen => $types ) {
+				if ( strtolower( $gen ) != 'comments' ) {
+					$ordered_cleanup[ $gen ] = $types;
+				}
+			}
+
+			$cleanup = $ordered_cleanup;
+			$done    = array();
 
 			foreach ( $cleanup as $gen => $types ) {
 				$generator = demopress()->get_generator( $gen );
@@ -50,7 +65,7 @@ class PostBack extends BasePostBack {
 
 					if ( $generator->attached_images ) {
 						foreach ( array_keys( $types ) as $type ) {
-							if ( substr( $type, 0, 17 ) == 'attached-images::' ) {
+							if ( str_starts_with( $type, 'attached-images::' ) ) {
 								$_type = substr( $type, 17 );
 
 								$done[ $gen ][ $type ] = $generator->run_attached_images_cleanup( $_type );
@@ -59,7 +74,7 @@ class PostBack extends BasePostBack {
 					}
 
 					foreach ( array_keys( $types ) as $type ) {
-						if ( substr( $type, 0, 17 ) == 'attached-images::' ) {
+						if ( str_starts_with( $type, 'attached-images::' ) ) {
 							continue;
 						}
 
@@ -91,7 +106,7 @@ class PostBack extends BasePostBack {
 
 			if ( ! is_wp_error( $generator ) ) {
 				$request = isset( $_REQUEST[ $this->a()->n() ] ) ? Sanitize::deep( $_REQUEST[ $this->a()->n() ], 'html' ) : array();
-				$process = Process::instance( $this->a()->n(), $this->a()->plugin_prefix )->prepare( $generator->settings_for_processing() )->process( $request );
+				$process = Process::i( $this->a()->n(), $this->a()->plugin_prefix )->prepare( $generator->settings_for_processing() )->process( $request );
 
 				$request = $generator->process_request( $process[ $gen_input ] );
 
