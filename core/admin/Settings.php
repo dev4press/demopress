@@ -2,15 +2,19 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v50\Core\Options\Element as EL;
-use Dev4Press\v50\Core\Options\Settings as BaseSettings;
-use Dev4Press\v50\Core\Options\Type;
+use Dev4Press\v56\Core\Options\Element as EL;
+use Dev4Press\v56\Core\Options\Settings as BaseSettings;
+use Dev4Press\v56\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Settings extends BaseSettings {
+	protected function admin(): Plugin {
+		return demopress_admin();
+	}
+
 	protected function value( $name, $group = 'settings', $default = null ) {
 		return demopress_settings()->get( $name, $group, $default );
 	}

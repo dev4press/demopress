@@ -1,6 +1,6 @@
 <?php
 
-use function Dev4Press\v50\Functions\panel;
+use function Dev4Press\v56\Functions\panel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -19,15 +19,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
             <div class="d4p-install-block">
                 <h4>
-					<?php _e( "All Done", "demopress" ); ?>
+					<?php esc_html_e( "All Done", "demopress" ); ?>
                 </h4>
                 <div>
-					<?php _e( "Update completed.", "demopress" ); ?>
+					<?php esc_html_e( "Update completed.", "demopress" ); ?>
                 </div>
             </div>
 
             <div class="d4p-install-confirm">
-                <a class="button-primary" href="<?php echo esc_url( panel()->a()->panel_url( 'about' ) ); ?>&update"><?php esc_html_e( 'Click here to continue', 'demopress' ); ?></a>
+                <a class="button-primary" href="<?php echo esc_url( panel()->a()->panel_url( 'about' ) . '&update' ); ?>"><?php esc_html_e( 'Click here to continue', 'demopress' ); ?></a>
             </div>
         </div>
     </div>

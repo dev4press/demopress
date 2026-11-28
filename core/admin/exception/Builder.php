@@ -9,7 +9,10 @@ class Builder extends Exception {
 	protected $builder;
 
 	public function __construct( $code, $message, $type, $builder ) {
-		parent::__construct( $message, $code );
+		parent::__construct( $message );
+
+		// Builder errors use symbolic codes.
+		$this->code = $code;
 
 		$this->type    = $type;
 		$this->builder = $builder;

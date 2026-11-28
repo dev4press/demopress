@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Name;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Builder\Name;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,8 +13,8 @@ abstract class Base extends Name {
 	public $scope = 'local';
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */

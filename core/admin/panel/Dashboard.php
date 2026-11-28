@@ -2,15 +2,15 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin\Panel;
 
-use Dev4Press\v50\Core\UI\Admin\PanelDashboard;
+use Dev4Press\v56\Core\UI\Admin\PanelDashboard;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Dashboard extends PanelDashboard {
-	protected $form = true;
-	protected $cards = false;
+	protected bool $form = true;
+	protected bool $cards = false;
 
 	public function __construct( $admin ) {
 		parent::__construct( $admin );
@@ -42,10 +42,11 @@ class Dashboard extends PanelDashboard {
 				}
 
 				$slug = $generator['slug'];
+				$icon = preg_replace( '/^(?:d4p-icon\s+)?d4p-/', '', $generator['settings']['icon'] );
 
 				$this->subpanels[ $slug ] = array(
 					'title' => $generator['label'],
-					'icon'  => $generator['settings']['icon'],
+					'icon'  => $icon,
 					'info'  => $generator['description']
 				);
 
@@ -59,11 +60,11 @@ class Dashboard extends PanelDashboard {
 		}
 	}
 
-	public function has_form() : bool {
+	public function has_form(): bool {
 		return $this->a()->subpanel == 'index' ? false : $this->form;
 	}
 
-	public function form_tag_open() {
-		echo '<form method="post" action="" id="' . $this->a()->plugin_prefix . '-form-generator" enctype="multipart/form-data" autocomplete="off">';
+	public function form_tag_open(): void {
+		echo '<form method="post" action="" id="' . esc_attr( $this->a()->plugin_prefix . '-form-generator' ) . '" enctype="multipart/form-data" autocomplete="off">';
 	}
 }

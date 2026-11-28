@@ -3,8 +3,8 @@
 namespace Dev4Press\Plugin\DemoPress\Generator;
 
 use Dev4Press\Plugin\DemoPress\Base\Generator;
-use Dev4Press\v50\Core\Options\Element as EL;
-use Dev4Press\v50\Core\Options\Type;
+use Dev4Press\v56\Core\Options\Element as EL;
+use Dev4Press\v56\Core\Options\Type;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -27,7 +27,7 @@ class Terms extends Generator {
 		return count( $ids );
 	}
 
-	public function get_list_of_types( $return = 'objects' ) : array {
+	public function get_list_of_types( $return = 'objects' ): array {
 		$taxonomies = demopress_get_taxonomies();
 
 		return $return == 'keys' ? array_keys( $taxonomies ) : $taxonomies;

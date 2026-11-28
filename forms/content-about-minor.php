@@ -1,7 +1,7 @@
 <?php
 
-use Dev4Press\v50\Core\Quick\KSES;
-use function Dev4Press\v50\Functions\panel;
+use Dev4Press\v56\Core\Quick\KSES;
+use function Dev4Press\v56\Functions\panel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -9,9 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="d4p-about-minor">
-    <h3><?php _e( "Maintenance and Security Releases", "demopress" ); ?></h3>
+    <h3><?php esc_html_e( "Maintenance and Security Releases", "demopress" ); ?></h3>
     <p>
-        <strong><?php _e( "Version", "demopress" ); ?> <span>2.1</span></strong> &minus;
+        <strong><?php esc_html_e( "Version", "demopress" ); ?> <span>2.1</span></strong> &minus;
         New builders. Few fixes.
     </p>
     <p>

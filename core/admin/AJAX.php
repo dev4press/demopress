@@ -2,8 +2,6 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v50\Core\Quick\WPR;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -13,7 +11,7 @@ class AJAX {
 		add_action( 'wp_ajax_demopress_get_generator_status', array( $this, 'get_status' ) );
 	}
 
-	public static function instance() : AJAX {
+	public static function instance(): AJAX {
 		static $_store_admin_ajax = null;
 
 		if ( ! isset( $_store_admin_ajax ) ) {
@@ -24,14 +22,14 @@ class AJAX {
 	}
 
 	public function get_status() {
-		WPR::check_ajax_referer( 'demopress_get_generator_status', $_REQUEST['nonce'] );
+		if ( ! current_user_can( demopress_admin()->get_panel_cap( 'dashboard' ) )
+		     || ! is_string( $_REQUEST['nonce'] ?? null )
+		     || ! check_ajax_referer( 'demopress_get_generator_status', 'nonce', false ) ) {
+			wp_send_json_error( null, 403 );
+		}
 
 		demopress_gen()->check_health();
 
-		$render = '<pre>' . join( PHP_EOL, demopress_gen()->format_log_list() ) . '</pre>';
-
-		die( $render );
+		wp_send_json_success( implode( PHP_EOL, demopress_gen()->format_log_list() ) );
 	}
 }
-
-

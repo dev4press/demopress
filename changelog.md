@@ -2,6 +2,23 @@
 
 ## Changelog
 
+### Version: 3.0 / november 28 2026
+
+* **new** require PHP 8.0 and WordPress 6.2 or newer
+* **new** load dependencies with Composer
+* **new** build TypeScript and SCSS with Vite
+* **edit** remove jQuery from the DemoPress admin script
+* **edit** update the three generator libraries
+* **edit** Dev4Press Library 5.6.5
+* **edit** return generator status as JSON
+* **remove** loripsum.net builders (website is gone)
+* **fix** restore generator cards on the overview
+* **fix** generated block markup and empty text
+* **fix** render generator logs as plain text
+* **fix** require dashboard permissions for generator status requests
+* **fix** validate cleanup results before displaying them
+* **fix** escape dynamic output in admin templates
+
 ### Version: 2.0 / august 20 2024
 
 * **new** tested with `WordPress` up to 6.6

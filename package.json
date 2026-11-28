@@ -1,0 +1,33 @@
+{
+    "name": "demopress",
+    "private": true,
+    "type": "module",
+    "engines": {
+        "node": "^20.19.0 || ^22.13.0 || >=24"
+    },
+    "scripts": {
+        "build": "npm run typecheck && vite build",
+        "check": "npm run format:check && npm run lint && npm run typecheck",
+        "format": "prettier --write src package.json tsconfig.json vite.config.ts eslint.config.mjs stylelint.config.mjs",
+        "format:check": "prettier --check src package.json tsconfig.json vite.config.ts eslint.config.mjs stylelint.config.mjs",
+        "lint": "npm run lint:ts && npm run lint:scss",
+        "lint:ts": "eslint src vite.config.ts --max-warnings 0",
+        "lint:scss": "stylelint \"src/**/*.scss\" --max-warnings 0",
+        "typecheck": "tsc --noEmit"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "endOfLine": "lf"
+    },
+    "devDependencies": {
+        "@eslint/js": "^10.0.1",
+        "eslint": "^10.16.0",
+        "prettier": "^3.10.1",
+        "sass": "^1.108.2",
+        "stylelint": "^17.16.0",
+        "stylelint-config-standard-scss": "^17.0.0",
+        "typescript": "~6.0.3",
+        "typescript-eslint": "^8.74.0",
+        "vite": "^8.4.0"
+    }
+}

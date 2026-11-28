@@ -222,7 +222,7 @@ abstract class Generator {
 		$this->generate_thread_finished( $this->current_type() );
 	}
 
-	protected function has_more_to_do() : bool {
+	protected function has_more_to_do(): bool {
 		if ( empty( $this->_progress['current'] ) ) {
 			$this->_progress['current'] = $this->_types[0];
 		}
@@ -259,7 +259,7 @@ abstract class Generator {
 		return $this->_settings[ $this->current_type() ]['base']['count'];
 	}
 
-	protected function can_continue() : bool {
+	protected function can_continue(): bool {
 		$time = microtime( true ) - $this->_last;
 
 		if ( $time >= demopress_gen()->timeout() ) {
@@ -281,8 +281,8 @@ abstract class Generator {
 	/**
 	 * @param string $type
 	 * @param string $name
-	 * @param false  $sub
-	 * @param mixed  $default
+	 * @param false $sub
+	 * @param mixed $default
 	 *
 	 * @return mixed|string
 	 */
@@ -299,10 +299,15 @@ abstract class Generator {
 	}
 
 	/** @return \Dev4Press\Plugin\DemoPress\Base\Builder
-	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 * @throws Builder
 	 */
 	protected function get_the_builder( $type, $name ) {
 		$builder = $this->_settings[ $type ]['builder'][ $name ]['value'];
+
+		// Saved tasks may still reference the removed remote text builder.
+		if ( $builder === 'loripsumnet' ) {
+			$builder = 'loremipsum';
+		}
 
 		$_real_name = '';
 
@@ -321,9 +326,9 @@ abstract class Generator {
 	}
 
 	/**
-	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 * @throws Builder
 	 */
-	protected function get_builder_scope( $type, $name ) : string {
+	protected function get_builder_scope( $type, $name ): string {
 		$builder = $this->get_the_builder( $type, $name );
 
 		return $builder->scope;
@@ -332,7 +337,7 @@ abstract class Generator {
 	/**
 	 * @param array $args *
 	 *
-	 * @throws \Dev4Press\Plugin\DemoPress\Exception\Builder
+	 * @throws Builder
 	 */
 	protected function get_from_builder( $type, $name, array $args = array() ) {
 		$builder  = $this->get_the_builder( $type, $name );
@@ -345,7 +350,7 @@ abstract class Generator {
 		$result = $builder->run( $settings, $this );
 
 		if ( is_wp_error( $result ) ) {
-			throw new Builder( 'builder-failed', $result->get_message(), $type, $name );
+			throw new Builder( 'builder-failed', $result->get_error_message(), $type, $name );
 		}
 
 		return $result;
@@ -355,7 +360,7 @@ abstract class Generator {
 		return long2ip( ( mt_rand() * mt_rand( 1, 2 ) ) + mt_rand( 0, 1 ) );
 	}
 
-	protected function _get_random_publish_date_from( $from ) : string {
+	protected function _get_random_publish_date_from( $from ): string {
 		$from_date = DateTime::createFromFormat( 'Y-m-d H:i:s', $from );
 
 		$random      = mt_rand( $from_date->getTimestamp(), time() );
@@ -442,7 +447,7 @@ abstract class Generator {
 
 	}
 
-	abstract public function get_list_of_types( $return = 'objects' ) : array;
+	abstract public function get_list_of_types( $return = 'objects' ): array;
 
 	abstract public function get_cleanup_count( $type = '' );
 

@@ -1,8 +1,8 @@
 <?php
 
-use Dev4Press\v50\Core\Quick\KSES;
-use Dev4Press\v50\Library;
-use function Dev4Press\v50\Functions\panel;
+use Dev4Press\v56\Core\Quick\KSES;
+use Dev4Press\v56\Library;
+use function Dev4Press\v56\Functions\panel;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ $_subpanels = panel()->subpanels();
 ?>
 <div class="d4p-sidebar">
 	<?php if ( demopress_admin()->subpanel == 'index' && demopress_gen()->is_idle() ) { ?>
-        <div class="d4p-dashboard-badge" style="background-color: <?php echo esc_attr( panel()->a()->settings()->i()->color() ); ?>;">
+        <div class="d4p-dashboard-badge" style="background-color: <?php echo esc_attr( sanitize_hex_color( panel()->a()->settings()->i()->color() ) ?? '' ); ?>;">
             <div class="_icon">
 				<?php echo KSES::strong( panel()->r()->icon( 'plugin-' . panel()->a()->plugin, '9x' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
             </div>
@@ -54,7 +54,7 @@ $_subpanels = panel()->subpanels();
 				echo '<div class="d4p-links-group">';
 
 				foreach ( $group as $_link ) {
-					echo '<a class="' . esc_attr( $_link['class'] ) . '" href="' . esc_url( $_link['url'] ) . '">' . KSES::strong( panel()->r()->icon( $_link['icon'] ) ) . '<span>' . $_link['label'] . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<a class="' . esc_attr( $_link['class'] ) . '" href="' . esc_url( $_link['url'] ) . '">' . KSES::strong( panel()->r()->icon( $_link['icon'] ) ) . '<span>' . esc_html( $_link['label'] ) . '</span></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
 
 				echo '</div>';
@@ -66,17 +66,17 @@ $_subpanels = panel()->subpanels();
                 <div class="_icon">
 					<?php echo KSES::strong( panel()->r()->icon( 'ui-radar' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 </div>
-                <h3><?php _e( "Generator", "demopress" ); ?></h3>
-				<?php echo '<h4>' . panel()->r()->icon( $_subpanels[ $_subpanel ]['icon'] ) . $_subpanels[ $_subpanel ]['title'] . '</h4>'; ?>
+                <h3><?php esc_html_e( "Generator", "demopress" ); ?></h3>
+                <h4><?php echo KSES::strong( panel()->r()->icon( $_subpanels[ $_subpanel ]['icon'] ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo esc_html( $_subpanels[ $_subpanel ]['title'] ); ?></h4>
                 <div class="_info">
-					<?php echo $_subpanels[ $_subpanel ]['info']; ?>
+					<?php echo esc_html( $_subpanels[ $_subpanel ]['info'] ); ?>
                 </div>
             </div>
             <div class="d4p-panel-buttons">
-                <input type="submit" value="<?php _e( "Run Generator", "demopress" ); ?>" class="button-primary"/>
+                <input type="submit" value="<?php esc_attr_e( "Run Generator", "demopress" ); ?>" class="button-primary"/>
             </div>
             <div class="d4p-return-to-top">
-                <a href="#wpwrap"><?php _e( "Return to top", "demopress" ); ?></a>
+                <a href="#wpwrap"><?php esc_html_e( "Return to top", "demopress" ); ?></a>
             </div>
         </div>
 	<?php } else { ?>
@@ -85,25 +85,25 @@ $_subpanels = panel()->subpanels();
                 <div class="_icon">
 					<?php echo KSES::strong( panel()->r()->icon( 'ui-radar' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 </div>
-                <h3><?php _e( "Generator", "demopress" ); ?></h3>
-                <h4><?php echo panel()->r()->icon( 'ui-play' ); ?><?php _e( "Status", "demopress" ) ?></h4>
+                <h3><?php esc_html_e( "Generator", "demopress" ); ?></h3>
+                <h4><?php echo KSES::strong( panel()->r()->icon( 'ui-play' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php esc_html_e( "Status", "demopress" ); ?></h4>
 				<?php if ( demopress_gen()->is_running() ) { ?>
                     <div class="_info">
-						<?php _e( "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immediate, it can take up to 15 seconds for the running process to get the stop message.", "demopress" ) ?>
+						<?php esc_html_e( "The generator is currently running. You can use the button below to stop it. If you choose to stop it, you must know that the stop is not immediate, it can take up to 15 seconds for the running process to get the stop message.", "demopress" ) ?>
                     </div>
 				<?php } else if ( demopress_gen()->is_finished() || demopress_gen()->is_error() ) { ?>
                     <div class="_info">
-						<?php _e( "The generator is has finished the last task. Use the button below to reset the last task data.", "demopress" ) ?>
+						<?php esc_html_e( "The generator is has finished the last task. Use the button below to reset the last task data.", "demopress" ) ?>
                     </div>
 				<?php } ?>
             </div>
 			<?php if ( demopress_gen()->is_running() ) { ?>
                 <div class="d4p-panel-buttons">
-                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=stoptask' ), 'demopress-task-stop' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Stop Generator", "demopress" ); ?></a>
+                    <a href="<?php echo esc_url( wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=stoptask' ), 'demopress-task-stop' ) ); ?>" style="text-align: center" class="button-secondary"><?php esc_html_e( "Stop Generator", "demopress" ); ?></a>
                 </div>
 			<?php } else if ( demopress_gen()->is_finished() || demopress_gen()->is_error() ) { ?>
                 <div class="d4p-panel-buttons">
-                    <a href="<?php echo wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=resettask' ), 'demopress-task-reset' ); ?>" style="text-align: center" class="button-secondary"><?php _e( "Reset Generator", "demopress" ); ?></a>
+                    <a href="<?php echo esc_url( wp_nonce_url( admin_url( 'options-general.php?page=demopress&panel=dashboard&demopress_handler=getback&single-action=resettask' ), 'demopress-task-reset' ) ); ?>" style="text-align: center" class="button-secondary"><?php esc_html_e( "Reset Generator", "demopress" ); ?></a>
                 </div>
 			<?php } ?>
         </div>

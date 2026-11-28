@@ -2,27 +2,27 @@
 
 namespace Dev4Press\Plugin\DemoPress\Admin;
 
-use Dev4Press\v50\Core\Admin\Submenu\Plugin as BasePlugin;
+use Dev4Press\v56\Core\Admin\Submenu\Plugin as BasePlugin;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Plugin extends BasePlugin {
-	public $plugin = 'demopress';
-	public $plugin_prefix = 'demopress';
-	public $plugin_menu = 'DemoPress';
-	public $plugin_title = 'DemoPress';
-	public $buy_me_a_coffee = true;
+	public string $plugin = 'demopress';
+	public string $plugin_prefix = 'demopress';
+	public string $plugin_menu = 'DemoPress';
+	public string $plugin_title = 'DemoPress';
+	public bool $buy_me_a_coffee = true;
 
-	public $auto_mod_interface_colors = true;
+	public bool $auto_mod_interface_colors = true;
 
-	public function constructor() {
+	public function constructor(): void {
 		$this->url  = DEMOPRESS_URL;
 		$this->path = DEMOPRESS_PATH;
 	}
 
-	public function admin_menu_items() {
+	public function admin_menu_items(): void {
 		$this->setup_items = array(
 			'install' => array(
 				'title' => __( "Install", "demopress" ),
@@ -64,25 +64,24 @@ class Plugin extends BasePlugin {
 		);
 	}
 
-	public function register_scripts_and_styles() {
+	public function register_scripts_and_styles(): void {
+		$script_path    = $this->path . 'build/admin.js';
+		$script_version = is_file( $script_path ) ? (string) filemtime( $script_path ) : demopress_settings()->file_version();
+
 		$this->enqueue->register( 'css', 'demopress-admin',
 			array(
-				'path' => 'css/',
+				'path' => 'build/',
 				'file' => 'admin',
 				'ext'  => 'css',
-				'min'  => true,
 				'ver'  => demopress_settings()->file_version(),
 				'src'  => 'plugin',
-				'int'  => array(),
 			) )->register( 'js', 'demopress-admin',
 			array(
-				'path' => 'js/',
+				'path' => 'build/',
 				'file' => 'admin',
 				'ext'  => 'js',
-				'min'  => true,
-				'ver'  => demopress_settings()->file_version(),
+				'ver'  => $script_version,
 				'src'  => 'plugin',
-				'int'  => array(),
 			) );
 	}
 
@@ -95,19 +94,19 @@ class Plugin extends BasePlugin {
 		) );
 	}
 
-	protected function extra_enqueue_scripts_plugin() {
+	protected function extra_enqueue_scripts_plugin(): void {
 		$this->enqueue();
 	}
 
-	public function svg_icon() : string {
+	public function svg_icon(): string {
 		return demopress()->svg_icon;
 	}
 
-	public function run_getback() {
+	public function run_getback(): void {
 		new GetBack( $this );
 	}
 
-	public function run_postback() {
+	public function run_postback(): void {
 		new PostBack( $this );
 	}
 

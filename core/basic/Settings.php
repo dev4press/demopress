@@ -2,16 +2,16 @@
 
 namespace Dev4Press\Plugin\DemoPress\Basic;
 
-use Dev4Press\v50\Core\Plugins\Settings as BaseSettings;
+use Dev4Press\v56\Core\Plugins\Settings as BaseSettings;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Settings extends BaseSettings {
-	public $base = 'demopress';
+	public string $base = 'demopress';
 
-	public $settings = array(
+	public array $settings = array(
 		'core'     => array(
 			'activated' => 0
 		),
@@ -36,23 +36,13 @@ class Settings extends BaseSettings {
 		)
 	);
 
-	public static function instance() : Settings {
-		static $instance = null;
-
-		if ( ! isset( $instance ) ) {
-			$instance = new Settings();
-		}
-
-		return $instance;
-	}
-
 	protected function constructor() {
 		$this->info = new Information();
 
 		add_action( 'demopress_load_settings', array( $this, 'init' ) );
 	}
 
-	protected function _name( $name, $force_scope = '' ) : string {
+	protected function _name( string $name, string $force_scope = '' ): string {
 		return 'dev4press_' . $this->info->code . '_' . $name;
 	}
 }

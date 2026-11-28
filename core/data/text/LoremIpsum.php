@@ -2,6 +2,7 @@
 
 namespace Dev4Press\Plugin\DemoPress\Data\Text;
 
+use Dev4Press\Plugin\DemoPress\Base\Generator;
 use Dev4Press\Plugin\DemoPress\Library\LoremIpsum as LibLoremIpsum;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -13,8 +14,8 @@ class LoremIpsum extends Base {
 	public $scope = 'local';
 
 	/**
-	 * @param array                                      $settings
-	 * @param \Dev4Press\Plugin\DemoPress\Base\Generator $generator
+	 * @param array $settings
+	 * @param Generator $generator
 	 *
 	 * @return mixed
 	 */
